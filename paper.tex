@@ -164,7 +164,7 @@ Writing \(F = \begin{pmatrix}
 From these we observe that \((e, h, f)\) must also be an \(\spl_2\)-triple, so \(h, f\) must be as in the previous subsection.
 We also see that \(H_{11} = 0\).
 Recalling that left multiplication by \(e\) is a down-shift, and right multiplication is a left-shift, we see that \(H_{12}\) is all zeroes except for the leftmost column, and \(H_{21}\) is all zeroes except for the bottom row.
-Similarly for \(F_{12}\) and \(F_{21}\).
+% Then \(F_{12}\) must be all zeros except for the two leftmost columns, and \(F_{21}\) must be all zeroes except for the bottom two rows.
 Then our final constraint is that 
 \[-2F = [H, F] = \]
 \[\begin{pmatrix}
@@ -174,17 +174,32 @@ Then our final constraint is that
     F_{12} H_{21} & F_{11} H_{12} + F_{12} H_{22} \\
     F_{22} H_{21} & F_{21} H_{12} + F_{22} H_{22}
 \end{pmatrix}.\]
-Now \(H_{12} F_{21} = F_{12} H_{21} = 0\), by our facts about them from further above.
-By the equation above then, we also get \(F_{11} = 0\).
-So, the equation above simplifies to 
+Now \(H_{12} = F_{12}e\), and \(H_{21} = eF_{21}\), from the equation \(H = [E, F]\).
+Substituting in the equation above then,
 \[-2F = \begin{pmatrix}
-    0 & H_{12} f \\
-    h F_{21} & H_{21} F_{12}
+    F_{12} e F_{21} & F_{12}e f \\
+    eF_{21} F_{11} + h F_{21} & eF_{21} F_{12} + hf
 \end{pmatrix} - \begin{pmatrix}
-    0 & F_{12} h \\
-    f H_{21} & F_{21} H_{12}
+    F_{12} e F_{21} & F_{11} F_{12}e + F_{12} h \\
+    f eF_{21} & F_{21} F_{12}e + fh
+\end{pmatrix} =\]
+\[\begin{pmatrix}
+    0 & F_{12}(fe + h) \\
+    eF_{21} F_{11} + h F_{21} & eF_{21} F_{12} + hf
+\end{pmatrix} - \begin{pmatrix}
+    0 & F_{11} F_{12}e + F_{12} h \\
+    (ef - h)F_{21} & F_{21} F_{12}e + fh
+\end{pmatrix} =\]
+\[\begin{pmatrix}
+    0 & F_{12}fe \\
+    eF_{21} F_{11} & eF_{21} F_{12} + hf
+\end{pmatrix} - \begin{pmatrix}
+    0 & F_{11} F_{12}e \\
+    ef F_{21} & F_{21} F_{12}e + fh
 \end{pmatrix}.\]
-
+Now we see that \(F_{11} = 0\), and consequently that \(F_{12} = F_{21} = 0\) as well.
+This shows that \(H_{12} = H_{21} = 0\).
+We conclude that \(H\) and \(F\) just have \(h\) and \(f\) in their bottom-right corners, respectively.
 
 \section{Definition of springer fiber at slodowy slice}
 % Explain why these are Springer fibers at Slodowy slices.
