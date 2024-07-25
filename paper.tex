@@ -149,7 +149,7 @@ We have \(Af_n = \sum_{ij} b_{ij} e_{ij}\).
 Then \(A^2 f_n = \sum_{ij} b_{ij} (e_{i, j - 1} + a_{ij} f_1)\), so we must have \(\sum_{ij} b_{ij} a_{ij} = 0\).
 Similarly, since \(A^3 f_n \in \langle e_{ij}\rangle\), we see that \(\sum_{ij} b_{ij} a_{i, j - 1} = 0\).
 Continuing in this way, we obtain that for all \(k \geq 0\),
-\[\sum_{ij} b_{ij} a_{i,j - k} = 0.\]
+\begin{equation}\label{ab_nilp}\sum_{ij} b_{ij} a_{i,j - k} = 0.\end{equation}
 In fact this is in fact a sufficient condition for \(A_{X, a, b}\) to be nilpotent, as can be seen from the characteristic polynomial of \(A_{X, a, b}\).
 However, we will not do this calculation here, instead just showing that it is sufficient by giving a Jordan basis.
 
@@ -226,8 +226,8 @@ This condition can be simplified even more.
     The condition (1) holds iff there exist nonnegative \(m_1, m_2, m_3\), \(a_1, ..., a_{m_3}\), and \(b_1, ..., b_{m_3}\) satisfying the following conditions.
     \begin{itemize}
         \item \(m = m_1 + m_2 + m_3\)
-        \item \(a = (a_1, ..., a_{m_1}, 0, 0, ..., 0)\)
-        \item \(b = (0, 0, ..., 0, b_1, ..., b_{m_3})\)
+        \item \(a = (0, 0, ..., 0, a_1, ..., a_{m_3})\)
+        \item \(b = (b_1, ..., b_{m_1}, 0, 0, ..., 0)\)
         \item If \(m_1 \neq 0\), then \(a_{m_1} \neq 0\)
         \item If \(m_3 \neq 0\), then \(b_1 \neq 0\)
     \end{itemize}
@@ -258,7 +258,19 @@ Looking at the definition of \(e_{ij}'\) above, we see that
 \[a_{ij}' = a_{ij} + \sum_{\{(i',j') : i' \leq i, j' \leq \lambda_i\} \setminus \{(i, j)\}} c_{i',j'}^i a_{i', j' - (\lambda_i - j)}.\]
 \par Now, for each \(i\), choose the coefficients \(c_{i',j'}^i\) to maximize the value \(\max\{j : (a_{i,1}', ..., a_{i, j}') = 0\}\).
 In other words, we choose \(c_{i'j'}^i\) to zero out the largest possible prefix of \((a_{i, 1}, ..., a_{i, \lambda_i})\).
-
+\begin{lemma}
+    The condition of \cref{ab_nilp} on \(a\) and \(b\) holds iff there exist nonnegative \(p_i, q_i, r_i\), \(\alpha_{i, j}\), \(\beta_{i, j}\) such that for each \(i\), the following conditions are satisfied.
+    \begin{itemize}
+        \item \(\lambda_i = p_i + q_i + r_i\)
+        \item \((a_{i,1}, ..., a_{i,\lambda_i}) = (0, 0, ..., 0, \alpha_{i,1}, ..., \alpha_{i, r_i})\)
+        \item \((b_{i, 1}, ..., b_{i, \lambda_i}) = (\beta_{i, 1}, ..., \beta_{i, p_i}, 0, 0, ..., 0)\)
+        \item If \(r_i \neq 0\), then \(a_1 \neq 0\)
+        \item If \(p_i \neq 0\), then \(b_{p_i} \neq 0\)
+    \end{itemize}
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
 
 \subsection{TODO}
 \begin{itemize}
