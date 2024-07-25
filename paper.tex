@@ -109,6 +109,7 @@ Then we can use it to show that \(f_{i,i + 1} = f_{i + 1, i + 2} + h_{i + 1, i +
 From the first equation we find that
 \[-h_{1,1} = f_{1, 2} = f_{n - 1, n} + \sum_{i = 1}^{n - 1} h_{ii} = \sum_{i = 1}^{n} h_{ii} \implies\]
 \[\sum_i h_{ii} = 0.\]
+Oops, I didn't actually need to prove that, since \(h \in \spl_n\)... it's nice to know that it's the unique solution in \(\gl_n\) though?
 This shows that \(h_{11} = n - 1, h_{22} = n - 3, ..., h_{nn} = 1 - n\).
 So we have determined \(h\); it is 
 \[h = \begin{pmatrix}
@@ -135,7 +136,54 @@ Now, we can use our expression for \(f\) in terms of \(h\) to obtain
 \end{pmatrix}.\]
 
 \subsection{Finding an \(\spl_2\)-triple in a slightly less simple case}
-Now, suppose \(e = \)
+Now, let 
+\[E = \begin{pmatrix}
+    0 & 0 \\
+    0 & e
+\end{pmatrix} \in \spl_{m + n},\]
+with \(e\) as in the previous subsection.
+We will find \(H, F\) so that \((E, H, F)\) is an \(\spl_2\)-triple.
+Writing \(F = \begin{pmatrix}
+    F_{11} & F_{12} \\
+    F_{21} & f
+\end{pmatrix}\), and similarly for \(H\), we have
+\[2E = [H, E] = \begin{pmatrix}
+    0 & H_{12}e \\
+    0 & he
+\end{pmatrix} - \begin{pmatrix}
+    0 & 0 \\
+    e H_{21} & eh
+\end{pmatrix},\]
+\[H = [E, F] = \begin{pmatrix}
+    0 & 0 \\
+    e F_{21} & ef
+\end{pmatrix} - \begin{pmatrix}
+    0 & F_{12}e \\
+    0 & fe
+\end{pmatrix}.\]
+From these we observe that \((e, h, f)\) must also be an \(\spl_2\)-triple, so \(h, f\) must be as in the previous subsection.
+We also see that \(H_{11} = 0\).
+Recalling that left multiplication by \(e\) is a down-shift, and right multiplication is a left-shift, we see that \(H_{12}\) is all zeroes except for the leftmost column, and \(H_{21}\) is all zeroes except for the bottom row.
+Similarly for \(F_{12}\) and \(F_{21}\).
+Then our final constraint is that 
+\[-2F = [H, F] = \]
+\[\begin{pmatrix}
+    H_{12} F_{21} & H_{12} F_{22} \\
+    H_{21} F_{11} + H_{22} F_{21} & H_{21} F_{12} + H_{22} F_{22}
+\end{pmatrix} - \begin{pmatrix}
+    F_{12} H_{21} & F_{11} H_{12} + F_{12} H_{22} \\
+    F_{22} H_{21} & F_{21} H_{12} + F_{22} H_{22}
+\end{pmatrix}.\]
+Now \(H_{12} F_{21} = F_{12} H_{21} = 0\), by our facts about them from further above.
+By the equation above then, we also get \(F_{11} = 0\).
+So, the equation above simplifies to 
+\[-2F = \begin{pmatrix}
+    0 & H_{12} f \\
+    h F_{21} & H_{21} F_{12}
+\end{pmatrix} - \begin{pmatrix}
+    0 & F_{12} h \\
+    f H_{21} & F_{21} H_{12}
+\end{pmatrix}.\]
 
 
 \section{Definition of springer fiber at slodowy slice}
