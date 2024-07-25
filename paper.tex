@@ -249,26 +249,39 @@ And indeed it is not.
 However, we will see that we can change basis of \(\mathbb{C}^m\) so that a similar thing is true.
 \par Let \(c_{i',j'}^i \in \mathbb{C}\) be some arbitrary coefficients.
 Given our Jordan basis \(e_{ij}\) of \(\mathbb{C}^m\), we can define a new Jordan basis \(e_{ij}'\) of \(\mathbb{C}^m\) by 
-\[e_{i, \lambda_i}' = e_{i, \lambda_i} + \sum_{\{(i',j') : i' \leq i, j' \leq \lambda_i\} \setminus \{(i, j)\}} c^i_{i',j'} e_{i',j'}.\]
+\[e_{i, \lambda_i}' = e_{i, \lambda_i} + \sum_{\{(i',j') : i' \geq i\} \setminus \{(i, j)\}} c^i_{i',j'} e_{i',j'}.\]
 Then we define
-\[e_{i,j}' = X^{\lambda_i - j} e_{i, \lambda_i}' = e_{ij} + \sum_{\{(i', j') : i' \leq i, j' \leq \lambda_i\} \setminus \{(i, j)\}} c^i_{i',j'} e_{i', j' - (\lambda_i - j)}.\]
+\[e_{i,j}' = X^{\lambda_i - j} e_{i, \lambda_i}' = e_{ij} + \sum_{\{(i', j') : i' \geq i\} \setminus \{(i, j)\}} c^i_{i',j'} e_{i', j' - (\lambda_i - j)}.\]
 Let us calculate the new value \(a'\) of \(a\) in this new basis.
 That is, we want the values \(a_{ij}'\) that satisfy \(Ae_{ij}' = e_{i, j - 1}' + a_{ij}' f_1\).
 Looking at the definition of \(e_{ij}'\) above, we see that
-\[a_{ij}' = a_{ij} + \sum_{\{(i',j') : i' \leq i, j' \leq \lambda_i\} \setminus \{(i, j)\}} c_{i',j'}^i a_{i', j' - (\lambda_i - j)}.\]
+\[a_{ij}' = a_{ij} + \sum_{\{(i',j') : i' \geq i\} \setminus \{(i, j)\}} c_{i',j'}^i a_{i', j' - (\lambda_i - j)}.\]
 \par Now, for each \(i\), choose the coefficients \(c_{i',j'}^i\) to maximize the value \(\max\{j : (a_{i,1}', ..., a_{i, j}') = 0\}\).
 In other words, we choose \(c_{i'j'}^i\) to zero out the largest possible prefix of \((a_{i, 1}, ..., a_{i, \lambda_i})\).
 \begin{lemma}
-    The condition of \cref{ab_nilp} on \(a\) and \(b\) holds iff there exist nonnegative \(p_i, q_i, r_i\), \(\alpha_{i, j}\), \(\beta_{i, j}\) such that for each \(i\), the following conditions are satisfied.
+    If the condition of \cref{ab_nilp} on \(a'\) and \(b'\) holds, then there exist nonnegative \(p_i, q_i, r_i\), \(\alpha_{i, j}\), \(\beta_{i, j}\) such that for each \(i\), the following conditions are satisfied.
     \begin{itemize}
         \item \(\lambda_i = p_i + q_i + r_i\)
-        \item \((a_{i,1}, ..., a_{i,\lambda_i}) = (0, 0, ..., 0, \alpha_{i,1}, ..., \alpha_{i, r_i})\)
-        \item \((b_{i, 1}, ..., b_{i, \lambda_i}) = (\beta_{i, 1}, ..., \beta_{i, p_i}, 0, 0, ..., 0)\)
-        \item If \(r_i \neq 0\), then \(a_1 \neq 0\)
-        \item If \(p_i \neq 0\), then \(b_{p_i} \neq 0\)
+        \item \((a_{i,1}', ..., a_{i,\lambda_i}') = (0, 0, ..., 0, \alpha_{i,1}, ..., \alpha_{i, r_i})\)
+        \item \((b_{i, 1}', ..., b_{i, \lambda_i}') = (\beta_{i, 1}, ..., \beta_{i, p_i}, 0, 0, ..., 0)\)
+        \item If \(r_i \neq 0\), then \(\alpha_{i,1} \neq 0\)
+        \item If \(p_i \neq 0\), then \(\beta_{i, p_i} \neq 0\)
     \end{itemize}
 \end{lemma}
 \begin{proof}
+    We begin with the first row of \(\lambda\), namely \(i = 1\).
+    Let \(k = \min\{j : a'_{1,j} \neq 0\}\) and \(l = \max\{j : b'_{1, j} \neq 0\}\).
+    I just need to show that \(l < k\).
+    Suppose not.
+    Then \((l - k)\) is nonnegative, and by \cref{ab_nilp} we have 
+    \[0 = \sum_{ij} b_{ij}' a_{j - (l - k)}' = b_{1,l}' a_{1,k}' + \sum_{i' \geq 1, (i', j') \neq (1, \lambda_1)} b'_{ij} a'_{j - (l - k)}.\]
+    This suggests defining 
+    \[e_{1,\lambda_1}'' = b_{1, l}'e_{1, \lambda_1}' + \sum_{i' \geq 1, (i', j') \neq (1, \lambda_1)} b'_{i',j' - (\lambda_1 - l)} e'_{i'j'}.\]
+    Then for \(j \leq k\),
+    \[a_{1,j}'' = b'_{1, l} a'_{1, j} + \sum_{i' \geq 1, (i', j') \neq (1, \lambda_1)} b'_{i', j' - (\lambda_1 - l)} a'_{i', j' - (\lambda_1 - j)} = \]
+    \[\sum_{i', j'} b'_{i', j' - (\lambda_1 - l)} a'_{i', j' - (\lambda_1 - j)} = \sum_{i', j'} b'_{i', j'} a'_{i', (j' + (\lambda_1 - l)) - (\lambda_1 - j)} = \sum_{i',j'} b'_{i',j'} a'_{i', j' - (l - j)}.\]
+    This last thing is zero by \cref{ab_nilp}, using that \(l - j \geq 0\).
+    But this contradicts the definition of the \(c_{i'j'}^1\), because we made it so that \((a''_{1, 1}, ..., a''_{1, k}) = 0\).
     
 \end{proof}
 
