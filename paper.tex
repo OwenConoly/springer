@@ -83,6 +83,8 @@ Observe that \(e, f\) must be nilpotent, and \(h\) must be Cartan (???).
 If \(\mathfrak{g}\) is semisimple, then given any nilpotent \(e \in \mathfrak{g}\), the Jacobson-Morozov theorem \cite[3.7.1]{ehf} says that there exist \(h, f \in \mathfrak{g}\) such that \((e, h, f)\) is an \(\spl_2\)-triple.
 \par Given \((e, h, f)\), we define the \emph{Slodowy slice at \(e\)} as \(\mathcal{S}_e := e + \ker \ad_f\).
 By the Jacobson-Morozov theorem, we can always find a Slodowy slice at any nilpotent \(e \in \mathfrak{g}\), when \(\mathfrak{g}\) is semisimple.
+
+\subsection{Finding an \(\spl_2\)-triple in a simple case}
 \par Let
 \[e = \begin{pNiceArray}{ccccc}
  0 \\
@@ -103,7 +105,38 @@ We can use this to show that \(h_{ij} = 0\) when \(i \neq j\).
 Then we can use it to show that \(h_{ii} = h_{i - 1, i - 1} + 2\), so that \(h_{ii} = h_{11} + 2(i - 1)\).
 \par Similarly, from \([e, f] = h\) we get that \(h_{ij} = (ef - fe)_{ij} = f_{i - 1, j} - f_{i, j + 1}\).
 We can use this to show that \(f_{ij} = 0\) when \(j \neq i + 1\).
-Then we can use it to show that \(f_{i,i + 1} = f_{i + 1, i + 2} + h_{i, i}\), that \(f_{1,2} = h_{1, 1}\), and that \(f_{n - 1, n} = h_{n,n}\).
+Then we can use it to show that \(f_{i,i + 1} = f_{i + 1, i + 2} + h_{i + 1, i + 1}\), that \(f_{1,2} = -h_{1, 1}\), and that \(f_{n - 1, n} = h_{n,n}\).
+From the first equation we find that
+\[-h_{1,1} = f_{1, 2} = f_{n - 1, n} + \sum_{i = 1}^{n - 1} h_{ii} = \sum_{i = 1}^{n} h_{ii} \implies\]
+\[\sum_i h_{ii} = 0.\]
+This shows that \(h_{11} = n - 1, h_{22} = n - 3, ..., h_{nn} = 1 - n\).
+So we have determined \(h\); it is 
+\[h = \begin{pmatrix}
+    n - 1  & \\
+    & n - 3 \\
+    & & \ddots \\
+    & & & 3 - n \\
+    & & & & 1 - n 
+\end{pmatrix}.\]
+Now, we can use our expression for \(f\) in terms of \(h\) to obtain
+\[f = \begin{pmatrix}
+    0 & 1 - n \\
+    & 0 & (1 - n) + (3 - n) \\
+    & & \ddots & \ddots \\
+    & & & 0 & (1 - n) + \cdots + (n - 1) \\
+    & & & & 0
+\end{pmatrix} = \]
+\[\begin{pmatrix}
+    0 & 1 (1 - n) \\
+      & 0 & 2 (2 - n) \\
+    & & 0 & (n - 2) (-2) \\
+    & & & 0 & (n - 1) (-1)\\
+    & &  & & 0
+\end{pmatrix}.\]
+
+\subsection{Finding an \(\spl_2\)-triple in a slightly less simple case}
+Now, suppose \(e = \)
+
 
 \section{Definition of springer fiber at slodowy slice}
 % Explain why these are Springer fibers at Slodowy slices.
