@@ -84,26 +84,26 @@ If \(\mathfrak{g}\) is semisimple, then given any nilpotent \(e \in \mathfrak{g}
 \par Given \((e, h, f)\), we define the \emph{Slodowy slice at \(e\)} as \(\mathcal{S}_e := e + \ker \ad_f\).
 By the Jacobson-Morozov theorem, we can always find a Slodowy slice at any nilpotent \(e \in \mathfrak{g}\), when \(\mathfrak{g}\) is semisimple.
 \par Let
-\[e = \begin{pNiceArray}{ccc|ccccc}
-    & & & & & & & \\
-    & & & & & & &    \\
-    & & & & & & & \\
-   \hline
-     & & & 0 \\
-   & & & 1 & 0 \\
-   & & &  & 1 & \ddots \\
-   & & &  &   & \ddots & 0 \\
-   & & &  &   &  & 1 & 0
-   \end{pNiceArray} \in \mathfrak{sl}_{m + n},\]
-where there are \(n\) ones.
+\[e = \begin{pNiceArray}{ccccc}
+ 0 \\
+    1 & 0 \\
+  & 1 & \ddots \\
+   & & \ddots & 0 \\
+   &   &  & 1 & 0
+   \end{pNiceArray} \in \mathfrak{sl}_{n},\]
+where there are \(n - 1\) ones.
 We will find the Slodowy slice at \(e\).
-\par As a first step, we will find an \(\spl_2\) triple with \(e\) as its first element.
+\par As a first step, we will find an \(\spl_2\)-triple with \(e\) as its first element.
 Note that \([h', e'] = 2e'\), and \([e', f'] = h'\), and \([h', f'] = -2f'\).
 Thus \(e, h, f\) must obey the same relations.
 In particular, \(he - eh = 2e\).  
-\(eh\) is the last \(n\) rows of \(h\), shifted down one, and \(he\) is the last \(n - 1\) columns of \(h\), shifted left one.
-Somehow (TODO: fill in) we conclude that \(f\) and \(h\) are something.
-
+The matrix \(eh\) is \(h\) shifted down one, and \(he\) is \(h\) shifted left one.
+Thus, \(2e_{ij} = (he - eh)_{ij} = h_{i, j + 1} - h_{i - 1, j}\).
+We can use this to show that \(h_{ij} = 0\) when \(i \neq j\).
+Then we can use it to show that \(h_{ii} = h_{i - 1, i - 1} + 2\), so that \(h_{ii} = h_{11} + 2(i - 1)\).
+\par Similarly, from \([e, f] = h\) we get that \(h_{ij} = (ef - fe)_{ij} = f_{i - 1, j} - f_{i, j + 1}\).
+We can use this to show that \(f_{ij} = 0\) when \(j \neq i + 1\).
+Then we can use it to show that \(f_{i,i + 1} = f_{i + 1, i + 2} + h_{i, i}\), that \(f_{1,2} = h_{1, 1}\), and that \(f_{n - 1, n} = h_{n,n}\).
 
 \section{Definition of springer fiber at slodowy slice}
 % Explain why these are Springer fibers at Slodowy slices.
