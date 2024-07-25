@@ -70,8 +70,8 @@
 Let \(G \subseteq \GL_m(\mathbb{C})\) be a connected semisimple Lie group, and let \(\mathfrak{g} \subseteq \gl_m(\mathbb{C})\) be its Lie algebra.
 % ^I take this scope because it is about what Yuzhou Gu said.
 Let \(\mathcal{N} \subseteq \mathfrak{g}\) be the subset consisting of nilpotent elements.
-Let \(\mathcal{F}l\) be the variety of Borel subalgebras of \(\mathfrak{g}\).
-Let \(\widetilde{\mathcal{N}} = \{(\mathfrak{m}, n) : n \in \mathfrak{m}\} \subseteq \mathcal{M} \times \mathcal{N}\).
+Let \(\mathcal{B}\) be the variety of Borel subalgebras of \(\mathfrak{g}\).
+Let \(\widetilde{\mathcal{N}} = \{(\mathfrak{b}, n) : n \in \mathfrak{b}\} \subseteq \mathcal{B} \times \mathcal{N}\).
 Let \(\pi : \widetilde{\mathcal{N}} \to \mathcal{N}\) be the projection onto the second coordinate.
 For \(n \in \mathcal{N}\), we call \(\pi^{-1}(n)\) the \emph{Springer fiber at \(n\)}.
 
@@ -212,8 +212,28 @@ To begin, I show that their union is \(F\).
 \end{proof}
 
 \begin{lemma}
-    
+    Each \(\mathcal{F}_\delta\) is irreducible of dimension \(m\).
 \end{lemma}
+\begin{proof}
+    Let \(\mathcal{E}\) be the variety of partial flags of \(E\) of shape \((\delta_0, ..., \delta_{n + 1})\).
+    Define \(g : \mathcal{F}_\delta \to \mathcal{E}\) by
+    \[(V, a, b) \mapsto 0 \subseteq V_{i_0} \cap E \subseteq V_{i_1} \cap E \subseteq \cdots \subseteq V_{i_{n + 1}} \cap E = E.\]
+    It is clear that \(g\) is surjective, as the definition of \(\mathcal{F}_\delta\) places no restriction on the intersections \(V_i \cap E\).
+    Now let's look more closely at the fibers \(g^{-1}(U)\).
+    \par First let's find the flags \(V\) such that there exist \(a, b\) with \(g(V, a, b) = U\).
+    We see that, for instance, \(V_{i_0} \cap E = U_1\).
+    In fact \(V_{i_0} \subseteq E\), so \(V_{i_0} = U_1\).
+    But we are free to choose the vector spaces between \(0\) and \(V_{i_0}\) however we wish, so we get some degrees of freedom like \(\mathcal{F}_{\delta_0}\), the complete flag variety on \(\mathbb{C}^{\delta_0} \cong V_{i_0} / 0\).
+    Similarly, for every \(j = 1, ..., n + 1\), we can choose the vector spaces between \(V_{i_{j - 1}}\) and \(V_{i_j}\) arbitrarily, so we get degrees of freedom like \(\mathcal{F}_{\delta_{i_j}}\), the complete flag variety on \(\mathbb{C}^{\delta_{i_j}} \cong V_{i_j} / V_{i_{j - 1}}\).
+    Finally, to meet the constraint of \((V, a, b)\) being in \(\mathcal{F}_\delta\), we can choose any \(b \in U_1\) and any \(a\) such that \(\overline{a} \in U_n^\perp\).
+    Thus we get an isomorphism
+    \[g^{-1}(U) \cong \mathcal{F}_{\delta_0} \times \cdots \times \mathcal{F}_{\delta_{n + 1}} \times \mathbb{C}^{\delta_0} \times \mathbb{C}^{\delta_{n + 1}}.\]
+
+\end{proof}
+
+\begin{theorem}
+    The \(\mathcal{F}_\delta\)'s are the irreducible components of \(\mathcal{F}\).
+\end{theorem}
 
 \subsection{When \(X\) is a Jordan block}
 Suppose \(X\) is a single Jordan block of size \(m\).
