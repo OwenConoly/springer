@@ -201,6 +201,20 @@ Now we see that \(F_{11} = 0\), and consequently that \(F_{12} = F_{21} = 0\) as
 This shows that \(H_{12} = H_{21} = 0\).
 We conclude that \(H\) and \(F\) just have \(h\) and \(f\) in their bottom-right corners, respectively.
 
+\subsection{Finding the previous Slodowy slices}
+First we find \(\ker \ad_f\).
+
+To find the Slodowy slice associated to the previous \(\spl_2\)-triple \((E, H, F)\), we just need to find \(\ker\ad_F\).
+We have 
+\[[F, X] = \begin{pmatrix}
+    0 & 0 \\
+    f X_{21} & fX_{22}
+\end{pmatrix} - \begin{pmatrix}
+    0 & X_{12} f\\
+    0 & X_{22} f
+\end{pmatrix}.\]
+
+
 \section{Definition of springer fiber at slodowy slice}
 % Explain why these are Springer fibers at Slodowy slices.
 \par Let \(\mathcal{N}_m \subseteq \gl_m(\mathbb{C})\) be the subset consisting of nilpotent elements.
