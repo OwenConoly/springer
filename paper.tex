@@ -1,0 +1,270 @@
+\documentclass[12pt,psamsfonts]{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{blkarray}
+\usepackage{upquote}
+\usepackage{tikz}
+\usepackage{bbm}
+\usepackage{url}
+\usepackage{tikz-cd}
+\usepackage{enumerate}
+
+\newcommand{\deriv}[2]{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\newcommand{\pderiv}[2]{\frac{\partial #1}{\partial #2}}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\stab}{stab}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Image}{Image}
+\DeclareMathOperator{\cof}{cof}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\atan2}{atan2}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\Br}{Br}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\inv}{inv}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\gl}{\mathfrak{gl}}
+\DeclareMathOperator{\spl}{\mathfrak{sl}}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\opp}{\mathrm{opp}}
+\newcommand{\un}{\mathrm{un}}
+\newcommand{\al}{\mathrm{al}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\comment}{}
+
+\usepackage[capitalize,nameinlink,noabbrev]{cleveref} % to emulate \autoref style
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+% \newcommand{\theoremautorefname}{Theorem}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\definitionautorefname}{Definition}
+
+\bibliographystyle{plain}
+\usepackage{nicematrix}
+
+% \author{Owen Conoly}
+% \date{Date}
+% \title{Title}
+
+\begin{document}
+
+% \maketitle
+\section{Definition of one thing}
+Let \(G \subseteq \GL_m(\mathbb{C})\) be a connected semisimple Lie group, and let \(\mathfrak{g} \subseteq \gl_m(\mathbb{C})\) be its Lie algebra.
+% ^I take this scope because it is about what Yuzhou Gu said.
+Let \(\mathcal{N} \subseteq \mathfrak{g}\) be the subset consisting of nilpotent elements.
+Let \(\mathcal{F}l\) be the variety of Borel subalgebras of \(\mathfrak{g}\).
+Let \(\widetilde{\mathcal{N}} = \{(\mathfrak{m}, n) : n \in \mathfrak{m}\} \subseteq \mathcal{M} \times \mathcal{N}\).
+Let \(\pi : \widetilde{\mathcal{N}} \to \mathcal{N}\) be the projection onto the second coordinate.
+For \(n \in \mathcal{N}\), we call \(\pi^{-1}(n)\) the \emph{Springer fiber at \(n\)}.
+
+\section{Slodowy slice}
+A basis for \(\spl_2(\mathbb{C})\) is
+\[e' := \begin{pmatrix}0 & 1 \\ 0 & 0 \\\end{pmatrix}, h' := \begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix}, f' := \begin{pmatrix}0 & 0 \\1 & 0\end{pmatrix}.\]
+Given a Lie algebra \(\mathfrak{g}\), and a homomorphism \(\phi : \spl_2 \to \mathfrak{g}\) sending \((e', h', f')\) to \((e, h, f)\), we say that \((e, h, f)\) is an \emph{\(\spl_2\)-triple}.
+Observe that \(e, f\) must be nilpotent, and \(h\) must be Cartan (???).
+If \(\mathfrak{g}\) is semisimple, then given any nilpotent \(e \in \mathfrak{g}\), the Jacobson-Morozov theorem \cite[3.7.1]{ehf} says that there exist \(h, f \in \mathfrak{g}\) such that \((e, h, f)\) is an \(\spl_2\)-triple.
+\par Given \((e, h, f)\), we define the \emph{Slodowy slice at \(e\)} as \(\mathcal{S}_e := e + \ker \ad_f\).
+By the Jacobson-Morozov theorem, we can always find a Slodowy slice at any nilpotent \(e \in \mathfrak{g}\), when \(\mathfrak{g}\) is semisimple.
+\par Let
+\[e = \begin{pNiceArray}{ccc|ccccc}
+    & & & & & & & \\
+    & & & & & & &    \\
+    & & & & & & & \\
+   \hline
+     & & & 0 \\
+   & & & 1 & 0 \\
+   & & &  & 1 & \ddots \\
+   & & &  &   & \ddots & 0 \\
+   & & &  &   &  & 1 & 0
+   \end{pNiceArray} \in \mathfrak{sl}_{m + n},\]
+where there are \(n\) ones.
+We will find the Slodowy slice at \(e\).
+\par As a first step, we will find an \(\spl_2\) triple with \(e\) as its first element.
+Note that \([h', e'] = 2e'\), and \([e', f'] = h'\), and \([h', f'] = -2f'\).
+Thus \(e, h, f\) must obey the same relations.
+In particular, \(he - eh = 2e\).  
+\(eh\) is the last \(n\) rows of \(h\), shifted down one, and \(he\) is the last \(n - 1\) columns of \(h\), shifted left one.
+Somehow (TODO: fill in) we conclude that \(f\) and \(h\) are something.
+
+
+\section{Definition of springer fiber at slodowy slice}
+% Explain why these are Springer fibers at Slodowy slices.
+\par Let \(\mathcal{N}_m \subseteq \gl_m(\mathbb{C})\) be the subset consisting of nilpotent elements.
+For \(X \in \mathcal{N}\) and \(a, b \in \mathbb{C}^m\), let
+\[A_{X, a, b} = \begin{pNiceArray}{ccc|ccccc}
+ & & & & & & & \vert \\
+ & X & & & & & & b    \\
+ & & & & & & & \vert \\
+\hline
+\text{---} & a & \text{---} & 0 \\
+& & & 1 & 0 \\
+& & &  & 1 & \ddots \\
+& & &  &   & \ddots & 0 \\
+& & &  &   &  & 1 & 0
+\end{pNiceArray} \in \mathfrak{gl}_{m + n}(\mathbb{C}).\]
+
+% \par Note that \(X \mapsto A_{X, a, b}\) gives a map \(\gl_m(\mathbb{C}) \to \gl_{m + n}(\mathbb{C})\).
+Let \(\mathcal{M}\) be the variety of Borel subalgebras of \(\gl_{m + n}(\mathbb{C})\).
+Let
+\[\widetilde{\mathcal{N}} = \{(\mathfrak{m}, a, b, X) : A_{X, a, b} \in \mathfrak{m}\} \subseteq \mathcal{M} \times \mathbb{C}^m \times \mathbb{C}^m \times \mathcal{N}.\]
+Let \(\pi : \widetilde{\mathcal{N}} \to \mathcal{N}\) be the projection onto the last coordinate.
+For \(X \in \mathcal{N}\), we call \(\pi^{-1}(X)\) the \emph{other Springer fiber at \(X\)}.
+\section{Finding the Springer fibers of section 2}
+We have \(\mathcal{M} = \{AHA^{-1} : A \in \GL_{m + n}(\mathbb{C})\}\), where \(H \subseteq \gl_{m + n}(\mathbb{C})\) is the set of upper triangular matrices.
+We say a map \(X : \gl_{m + n} \to \gl_{m + n}\) preserves a flag \(V_0 \subseteq \cdots \subseteq V_{m + n}\) if \(XV_i \subseteq V_i\) for each \(i\).
+Let \(E_0 \subseteq \cdots \subseteq E_{m + n}\) be the standard flag of \(\mathbb{C}^{m + n}\).
+Since \(H\) is the set of \(X\) which preserve \(E\),
+\[\mathcal{M} = \{\{X : \forall i. \; X(AE_i) \subseteq AE_i\} : A \in \GL_n(\mathbb{C})\}.\]
+So, for \(X \in \mathcal{N}\),
+\[\pi^{-1}(X) \cong \{(V, a, b) : \forall i. \; A_{X, a, b} V_i \subseteq V_i\}.\]
+\par In this section we will find the irreducible components of \(\pi^{-1}(X)\).
+Since \(\pi^{-1}(X) \cong \pi^{-1}(AXA^{-1})\) for any invertible \(A\), we will assume that \(X\) is in Jordan normal form.
+\par Let \(\lambda\) be the shape of \(X\), and let \((e_{ij})_{i \leq r, j \leq \lambda_i}\) be a Jordan basis for \(X\), with \(X e_{ij} = e_{i,j - 1}\).
+Let \(f_1, ..., f_n\) be the standard basis for \(\mathbb{C}^n\), with \(A_{X, a, b} f_i = f_{i + 1}\).
+
+\subsection{A necessary condition for \(A_{X, a, b}\) to be nilpotent}
+Suppose \(A := A_{X, a, b}\) is nilpotent.
+Define the \emph{height} of a vector \(v \in \mathbb{C}^{m + n}\) as the smallest \(k \geq 0\) such that \(A_{X, a, b}^k v = 0\).
+Clearly, for \(i \leq j\), we have that the height of \(f_i\) is geq the height of \(f_j\).
+Thus, for each \(k \geq 0\), we must have \(A_{X, a, b}^k f_n \in \langle e_{ij} \rangle_{ij}\).
+We have \(Af_n = \sum_{ij} b_{ij} e_{ij}\).
+Then \(A^2 f_n = \sum_{ij} b_{ij} (e_{i, j - 1} + a_{ij} f_1)\), so we must have \(\sum_{ij} b_{ij} a_{ij} = 0\).
+Similarly, since \(A^3 f_n \in \langle e_{ij}\rangle\), we see that \(\sum_{ij} b_{ij} a_{i, j - 1} = 0\).
+Continuing in this way, we obtain that for all \(k \geq 0\),
+\[\sum_{ij} b_{ij} a_{i,j - k} = 0.\]
+In fact this is in fact a sufficient condition for \(A_{X, a, b}\) to be nilpotent, as can be seen from the characteristic polynomial of \(A_{X, a, b}\).
+However, we will not do this calculation here, instead just showing that it is sufficient by giving a Jordan basis.
+
+\subsection{When \(X\) is all zeroes}
+In this case we have \(A(y, z) = (z_n b, (a \cdot y, z_1, ..., z_{n - 1}))\), and the condition becomes
+\[\sum_i b_i a_i = 0.\]
+In this case we will be able to write down explicitly the irreducible components of \(F := \{(V, a, b) : \forall i. \; A_{X, a, b} V_i \subseteq V_i\} \cong \pi^{-1}(X)\).
+For any nonnegative \(\delta_0, \delta_1, ..., \delta_n, \delta_{n + 1}\) summing to \(m\), define the corresponding sequence \(i_0 = \delta_0\), \(i_n = \delta_{n + 1} + i_n\), and for \(j \in \{1, ..., n\}\), \(i_j = i_{j - 1} + 1 + \delta_j\).
+Let \(E\) be the span of the \(e_i\)'s, and let \(E' = \{(x, 0) \in E : x \cdot a = 0\}\), where the dot is the \(m\)-dimensional dot product.
+Then define \(F_\delta\) as the set of \((V, a, b) \in F\) such that 
+\begin{itemize}
+    \item \(b \in V_{i_0} \subseteq E'\)
+    \item for all \(j \in \{1, ..., n\}\), we have \(f_j \in V_{i_j} \subseteq E' + \langle f_1, ..., f_j \rangle\)
+\end{itemize}
+I claim that the \(F_\delta\)'s are the irreducible components of \(F\).
+To begin, I show that their union is \(F\).
+
+\begin{lemma}
+    Let \((V, a, b) \in \mathcal{F}\).
+    Write \(f_0 = b\), and \(F = \langle f_0, f_1, ..., f_n \rangle\).
+    For each \(i\), either \(F \subseteq V_i\), or else there exists \(j\) such that \(e_j \notin V_i\), but \(\langle e_0, ..., e_{j - 1} \rangle \subseteq V_i \subseteq E' + \langle e_1, ..., e_j \rangle\).
+\end{lemma}
+\begin{proof}
+    For \(i = 0\), we may take \(j = 0\).
+    Now assume the statement holds for \(i\), and we will prove it for \(i + 1\).
+    If \(F \subseteq V_i\), then \(F \subseteq V_{i + 1}\), and we are done.
+    \par So, suppose there is \(j\) such that \(e_j \notin V_i\), but \(\langle e_0, ..., e_{j - 1} \rangle \subseteq V_i \subseteq E' + \langle e_0, ..., e_j \rangle\).
+    We have two cases: either \(V_{i + 1} = V_i + \langle e_j \rangle\), or not.
+    \begin{itemize}
+        \item If so, then either \(j = n\), in which case \(F \subseteq V_{i + 1}\), or else \(j \neq n\), in which case \(e_{j + 1} \notin V_{i + 1}\), but \(\langle e_0, ..., e_j \rangle \subseteq V_{i + 1} \subseteq E' + \langle e_0, ..., e_{j + 1} \rangle\).
+        \item If not, then \(e_j \notin V_{i + 1}\).
+        Let \(v_{i + 1}\) be so that \(V_{i + 1} = V_i + \langle v_{i + 1} \rangle\).
+        I just need to show that \(v_{i + 1} \in Y + \langle e_1, ..., e_j \rangle\).
+        It suffices to show that \(v_{i + 1}^\top e_k = 0\) for \(k > j\).
+        And to do this, it suffices to show that \((Av_{i + 1})^\top e_{k - 1} = 0\) for \(k > j\).
+        \par Note that \(Av_{i + 1} \in V_i \cap A \mathbb{C}^{2n} \subseteq \langle e_1, ..., e_j \rangle\).
+        So, for \(k > j + 1\) it is clear that \((Av_{i + 1})^\top e_{k - 1} = 0\).
+        Now, suppose for contradiction that \((Av_{i + 1})^\top e_j \neq 0\).
+        Then \(Av_{i + 1}\) is linearly independent of \(e_1, ..., e_{j + 1}\).
+        Since \(Av_{i + 1} \in \langle e_1, ..., e_j \rangle\), it follows that \(e_j \in \langle e_1, ..., e_{j - 1}, Av_{i + 1} \rangle \subseteq V_i\), a contradiction.
+    \end{itemize}
+\end{proof}
+
+\begin{corollary}
+    \(\mathcal{F} = \bigcup_\delta \mathcal{F}_\delta\)
+\end{corollary}
+\begin{proof}
+    Let \((V, a, b) \in F\).
+    Let \(i_0 = \min\{i : b \in V_i\}\), and let \(i' = \max\{i : V_i \subseteq E'\}\).
+    We want that \(b \in V_{i_0} \subseteq E'\), so we want that \(i_0 \leq i'\).
+    For contradiction, suppose \(i' < i_0\).
+
+\end{proof}
+
+\begin{lemma}
+    Each \(\mathcal{F}_\delta\) is a closed subvariety of \(\mathcal{F}\).
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
+
+\begin{lemma}
+    
+\end{lemma}
+
+\subsection{When \(X\) is a Jordan block}
+Suppose \(X\) is a single Jordan block of size \(m\).
+In this case we just write the basis of \(\mathbb{C}^m\) as \(e_1, ..., e_m\), and the above condition on \(a\) and \(b\) simply becomes
+\begin{equation}
+    \forall k \geq 0. \; \sum_{i = k + 1}^m b_i a_{i - k} = 0.
+\end{equation}
+This condition can be simplified even more.
+\begin{lemma}
+    The condition (1) holds iff there exist nonnegative \(m_1, m_2, m_3\), \(a_1, ..., a_{m_3}\), and \(b_1, ..., b_{m_3}\) satisfying the following conditions.
+    \begin{itemize}
+        \item \(m = m_1 + m_2 + m_3\)
+        \item \(a = (a_1, ..., a_{m_1}, 0, 0, ..., 0)\)
+        \item \(b = (0, 0, ..., 0, b_1, ..., b_{m_3})\)
+        \item If \(m_1 \neq 0\), then \(a_{m_1} \neq 0\)
+        \item If \(m_3 \neq 0\), then \(b_1 \neq 0\)
+    \end{itemize}
+\end{lemma}
+\begin{proof}
+    If \(a\) and \(b\) are of this form, then for every \(k \geq 0\) we have \(b_i a_{i - k} = 0\), so clearly the condition holds.
+    \par Now suppose (1) holds.
+    If \(a\) or \(b\) is zero, this is trivial.
+    Otherwise, let \(m_1 = \max\{i : a_i \neq 0\}\), and let \(m_3 = \min\{i : b_i \neq 0\}\).
+    We just need to show that \(m_1 < m_3\).
+    For contradiction, suppose \(m_1 - m_3\) is nonnegative.
+    Then by (1), \(0 = \sum_i b_i a_{i - (m_1 - m_3)} = b_1 a_{m_1}\), contradicting that \(b_1\) and \(a_{m_1}\) are nonzero.
+\end{proof}
+
+\subsection{In the case of general \(X\)}
+In the case where \(X\) was a single Jordan block, it was helpful to have the condition that all the nonzero \(a\)'s were to the right of all the nonzero \(b\)'s.
+In the general case, it is not clear that such a thing should be true.
+And indeed it is not.
+However, we will see that we can change basis of \(\mathbb{C}^m\) so that a similar thing is true.
+\par Let \(c_{i',j'}^i \in \mathbb{C}\) be some arbitrary coefficients.
+Given our Jordan basis \(e_{ij}\) of \(\mathbb{C}^m\), we can define a new Jordan basis \(e_{ij}'\) of \(\mathbb{C}^m\) by 
+\[e_{i, \lambda_i}' = e_{i, \lambda_i} + \sum_{\{(i',j') : i' \leq i, j' \leq \lambda_i\} \setminus \{(i, j)\}} c^i_{i',j'} e_{i',j'}.\]
+Then we define
+\[e_{i,j}' = X^{\lambda_i - j} e_{i, \lambda_i}' = e_{ij} + \sum_{\{(i', j') : i' \leq i, j' \leq \lambda_i\} \setminus \{(i, j)\}} c^i_{i',j'} e_{i', j' - (\lambda_i - j)}.\]
+Let us calculate the new value \(a'\) of \(a\) in this new basis.
+That is, we want the values \(a_{ij}'\) that satisfy \(Ae_{ij}' = e_{i, j - 1}' + a_{ij}' f_1\).
+Looking at the definition of \(e_{ij}'\) above, we see that
+\[a_{ij}' = a_{ij} + \sum_{\{(i',j') : i' \leq i, j' \leq \lambda_i\} \setminus \{(i, j)\}} c_{i',j'}^i a_{i', j' - (\lambda_i - j)}.\]
+\par Now, for each \(i\), choose the coefficients \(c_{i',j'}^i\) to maximize the value \(\max\{j : (a_{i,1}', ..., a_{i, j}') = 0\}\).
+In other words, we choose \(c_{i'j'}^i\) to zero out the largest possible prefix of \((a_{i, 1}, ..., a_{i, \lambda_i})\).
+
+
+\subsection{TODO}
+\begin{itemize}
+    \item Why are SOn flags what they are.
+\end{itemize}
+
+\bibliography{paper}
+\end{document}
+ 
