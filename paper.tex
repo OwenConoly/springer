@@ -205,7 +205,7 @@ We conclude that \(H\) and \(F\) just have \(h\) and \(f\) in their bottom-right
 First we find \(\ker \ad_f\).
 We have \((fX)_{ij} = i (n - i) A_{i + 1,j}\), and \((Xf)_{ij} = (j - 1) (n - (j - 1)) A_{i, j - 1}\).
 So, for all \(i, j \in \{1, ..., n\}\), we have 
-\[i(n - i)A_{i + 1,j} = (j - 1)(n - (j - 1))A_{1, j - 1}.\]
+\[i(n - i)A_{i + 1,j} = (j - 1)(n - (j - 1))A_{i, j - 1}.\]
 Taking \(j = 1\), we find that \(A_{i,1} = 0\) for \(i \geq 2\).
 Then, taking \(j > 1\), we find that for \(i, j \in \{1, ..., n - 1\}\),
 \[A_{i + 1, j + 1} = \frac{(j - 1)(n - (j - 1))}{i(n - i)} A_{ij}.\]
@@ -220,7 +220,21 @@ We have
     0 & X_{22} f
 \end{pmatrix}.\]
 Thus, \(X_{21}\) must be all zeroes except for the first row, and \(X_{12}\) must be all zeroes except for the last column, and \(X_{22} \in \ker\ad_f\).
+There is no restriction on \(X_{11}\).
 This describes \(\ker\ad_F\).
+
+\begin{lemma}
+    Let \(J\) be a jordan block with zeroes along the diagonal, and let  \(A\) be upper triangular and nonzero.
+    Then \(J + A\) is not nilpotent.
+\end{lemma}
+\begin{proof}
+    It is straightforward to show by induction that if \(v_i = 0\) for \(i < j\), and \(v_j \neq 0\), then \(((J + A)^k v_j)_{j + k} = v_j\).
+    Let \(i\) be such that \(Ae_i \neq 0\).
+    Then \((J + A)^{i - 1} e_1\) has nonzero \(e_i\)-component.
+    Then \((J + A)^i e_1\) has some nonzero \(e_{i'}\)-component for some \(i' \leq i\).
+    Then \((J + A)^{i + (n - i')} e_1\) has some nonzero \(e_n\)-component.
+    And \(i + (n - i') \geq n\), so we're done.
+\end{proof}
 
 \section{Definition of springer fiber at slodowy slice}
 % Explain why these are Springer fibers at Slodowy slices.
