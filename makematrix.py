@@ -1,4 +1,6 @@
 def matrix(a, b, n):
+	a = [row[::-1] for row in a]
+	b = [row[::-1] for row in b]
 	m = sum(len(row) for row in a)
 	out = ""
 	out += "SparseArray[{"
@@ -6,7 +8,7 @@ def matrix(a, b, n):
 	for i in range(1, len(a) + 1):
 		for j in range(1, len(a[i-1]) + 1):
 			if j < len(a[i-1]):
-				out += f"{{{boxnum}, {boxnum+1}}} -> 1,"
+				out += f"{{{boxnum+1}, {boxnum}}} -> 1,"
 			if a[i-1][j-1] != 0:
 				out += f"{{{m + 1}, {boxnum}}} -> {a[i-1][j-1]},"
 			if b[i-1][j-1] != 0:
@@ -14,7 +16,7 @@ def matrix(a, b, n):
 			boxnum += 1
 	for i in range(m + 1, m + n + 1):
 		if i != m + n:
-			out += f"{{{i}, {i+1}}} -> 1,"
+			out += f"{{{i+1}, {i}}} -> 1,"
 	if out[-1] == ",":
 		out = out[:-1]
 	out += f"}}, {{{m + n}, {m + n}}}]\n"
