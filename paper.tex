@@ -222,9 +222,17 @@ We have
 Thus, \(X_{21}\) must be all zeroes except for the first row, and \(X_{12}\) must be all zeroes except for the last column, and \(X_{22} \in \ker\ad_f\).
 There is no restriction on \(X_{11}\).
 This describes \(\ker\ad_F\).
+\par For \(X \in \mathcal{S}_{m,n}\), define \(u(X) := X_{11}\).
+
+\subsection{Finding \(\widetilde{\mathcal{N}}_{m,n}\)}
+Let \(\mathcal{N}_m \subseteq \gl_m\) be the nilpotent elements.
+Let \(\mathcal{S}_{m,n}'\) be the set of \(X \in \mathcal{S}_{m,n}\) such that both \(X\) and \(u(X)\) are nilpotent.
+Let \(\widetilde{\mathcal{N}}_{m,n} = \{(\mathfrak{b}, X) : X \in \mathfrak{b}\} \subseteq \mathcal{B}_{m + n} \times \mathcal{S}_{m,n}'\).
+Define \(\pi_{m,n} : \widetilde{\mathcal{N}}_{m,n} \to \mathcal{N}_m\) by \((\mathfrak{b}, X) \mapsto X_{11}\).
+For \(Y \in \gl_m\), we call \(\pi_{m,n}^{-1}(Y)\) the \emph{n-dim-Slodowy-slice Springer fiber} at \(Y\).
 
 \begin{lemma}
-    Let \(J\) be a jordan block with zeroes along the diagonal, and let  \(A\) be upper triangular and nonzero.
+    Let \(J\) be a jordan block with zeroes along the diagonal, and let \(A\) be upper triangular and nonzero.
     Then \(J + A\) is not nilpotent.
 \end{lemma}
 \begin{proof}
@@ -235,6 +243,118 @@ This describes \(\ker\ad_F\).
     Then \((J + A)^{i + (n - i')} e_1\) has some nonzero \(e_n\)-component.
     And \(i + (n - i') \geq n\), so we're done.
 \end{proof}
+
+\begin{lemma}
+    Let \(X \in \gl_m\), and let 
+    \[Y = \begin{pmatrix}
+        y_{11} & y_{12} & y_{13} & \cdots & y_{1,n-1} & y_{1n} \\
+        d_1 & y_{22} & y_{23} & \cdots & y_{2,n-1} & y_{2n} \\
+            & d_2   & y_{33} & \cdots & y_{3,n-1} & y_{3n} \\
+            & & \ddots & \cdots & \vdots  & \vdots \\
+            & & & d_{n - 2} & y_{n-1,n-1} & y_{n - 1,n}\\
+            & & & & d_{n - 1} & y_{nn}
+    \end{pmatrix} \in \gl_n.\]
+    For any \(a, b \in \mathbb{C}^m\),
+    \[\det 
+    \begin{pNiceArray}{ccc|ccc}
+        & & & & & \vert \\
+        & X & & & & b    \\
+        & & & & & \vert \\
+       \hline
+       \text{---} & a & \text{---} &  \\
+       & & & & Y & \\
+       & & &  \\
+       \end{pNiceArray} = \]
+       \[\det X \det Y + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
+            & & & \vert \\
+            & X & & b     \\
+            & & & \vert \\
+            \hline 
+        \text{---} & a & \text{---} & 0
+       \end{pNiceArray}\]
+\end{lemma}
+\begin{proof}
+    By induction on \(n\).
+    In the case \(n = 1\), expanding along the last row (taking the usual interpretation of the empty product) gives the desired result.
+    \par Now suppose \(n > 1\).
+    Expanding along the last row, we get 
+    \[d_{n - 1} \det \begin{pNiceArray}{ccc|ccc}
+        & & & & & \vert \\
+        & X & & & & b    \\
+        & & & & & \vert \\
+       \hline
+       \text{---} & a & \text{---} &  \\
+       & & & & Y_{n,n-1} & \\
+       & & &  \\
+       \end{pNiceArray} -
+    y_{nn} \det \begin{pNiceArray}{ccc|ccc}
+        & & & & & \\
+        & X & & & &   \\
+        & & & & & \\
+       \hline
+       \text{---} & a & \text{---} &  \\
+       & & & & Y_{n,n} & \\
+       & & &  \\
+       \end{pNiceArray}.\]
+    Using our inductive hypothesis for the first determiniant, and using that \(\det \begin{pNiceArray}{c|c}
+        A_{11} & 0 \\
+        A_{21} & A_{22}
+    \end{pNiceArray} = \det A_{11} \det A_{22}\) for the second, the expression becomes
+    \[d_{n - 1} \left(\det X \det Y_{n,n-1} + \left(\prod_{i \leq n - 2} d_i\right) \det \begin{pNiceArray}{ccc|c}
+        & & & \vert \\
+        & X & & b     \\
+        & & & \vert \\
+        \hline 
+    \text{---} & a & \text{---} & 0
+   \end{pNiceArray}\right)
+   - y_{nn} \det X \det Y_{nn} = \]
+   \[(d_{n - 1} Y_{n,n-1} - y_{nn} \det Y_{nn})\det X + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
+        & & & \vert \\
+        & X & & b     \\
+        & & & \vert \\
+        \hline 
+    \text{---} & a & \text{---} & 0
+   \end{pNiceArray} = \]
+   \[\det Y \det X + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
+        & & & \vert \\
+        & X & & b     \\
+        & & & \vert \\
+        \hline 
+    \text{---} & a & \text{---} & 0
+   \end{pNiceArray}.\]
+\end{proof}
+
+\begin{corollary}
+    If \(X\) is nilpotent, and
+    \[\begin{pNiceArray}{ccc|ccc}
+        & & & & & \vert \\
+        & X & & & & b    \\
+        & & & & & \vert \\
+       \hline
+       \text{---} & a & \text{---} &  \\
+       & & & & Y & \\
+       & & &  \\
+       \end{pNiceArray}\]
+    is nilpotent  as well, then \(Y\) is nilpotent (TODO: and that other determinant is zero).
+    \begin{proof}
+        By the previous lemma, the characteristic polynomial of the big matrix is
+        \[g_X(\lambda) g_Y(\lambda) + f(\lambda),\]
+        where \(g_X(\lambda) = \lambda^m\) is the characteristic polynomial of \(X\), and \(f(\lambda)\) is some polynomial of degree at most \(m - 1\).
+    \end{proof}
+\end{corollary}
+\par Now, taking the previous corolloary and the first lemma together, we see that 
+\[\mathcal{S}_{m,n}' = \left\{ \begin{pNiceArray}{ccc|cccc}
+    & & & & & & \vert \\
+    & X & & & & & b    \\
+    & & & & & & \vert \\
+   \hline
+   \text{---} & a & \text{---} & 0 \\
+    & & & 1 & 0  & \\
+    &  & & & \ddots & \ddots  \\
+    & & & & & 1 & 0
+   \end{pNiceArray} : a, b \in \mathbb{C}^m, X \in \gl_m \textrm{ is nilpotent}\right\}.\]
+
+
 
 \section{Definition of springer fiber at slodowy slice}
 % Explain why these are Springer fibers at Slodowy slices.
