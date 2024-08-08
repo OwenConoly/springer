@@ -513,48 +513,54 @@ This condition can be simplified even more.
     Then by (1), \(0 = \sum_i b_i a_{i - (m_1 - m_3)} = b_1 a_{m_1}\), contradicting that \(b_1\) and \(a_{m_1}\) are nonzero.
 \end{proof}
 
-\subsection{In the case of general \(X\)}
-In the case where \(X\) was a single Jordan block, it was helpful to have the condition that all the nonzero \(a\)'s were to the right of all the nonzero \(b\)'s.
-In the general case, it is not clear that such a thing should be true.
-And indeed it is not.
-However, we will see that we can change basis of \(\mathbb{C}^m\) so that a similar thing is true.
-\par Let \(c_{i',j'}^i \in \mathbb{C}\) be some arbitrary coefficients.
-Given our Jordan basis \(e_{ij}\) of \(\mathbb{C}^m\), we can define a new Jordan basis \(e_{ij}'\) of \(\mathbb{C}^m\) by 
-\[e_{i, \lambda_i}' = e_{i, \lambda_i} + \sum_{\{(i',j') : i' \geq i\} \setminus \{(i, j)\}} c^i_{i',j'} e_{i',j'}.\]
-Then we define
-\[e_{i,j}' = X^{\lambda_i - j} e_{i, \lambda_i}' = e_{ij} + \sum_{\{(i', j') : i' \geq i\} \setminus \{(i, j)\}} c^i_{i',j'} e_{i', j' - (\lambda_i - j)}.\]
-Let us calculate the new value \(a'\) of \(a\) in this new basis.
-That is, we want the values \(a_{ij}'\) that satisfy \(Ae_{ij}' = e_{i, j - 1}' + a_{ij}' f_1\).
-Looking at the definition of \(e_{ij}'\) above, we see that
-\[a_{ij}' = a_{ij} + \sum_{\{(i',j') : i' \geq i\} \setminus \{(i, j)\}} c_{i',j'}^i a_{i', j' - (\lambda_i - j)}.\]
-\par Now, for each \(i\), choose the coefficients \(c_{i',j'}^i\) to maximize the value \(\max\{j : (a_{i,1}', ..., a_{i, j}') = 0\}\).
-In other words, we choose \(c_{i'j'}^i\) to zero out the largest possible prefix of \((a_{i, 1}, ..., a_{i, \lambda_i})\).
+\subsection{A `normalization' fact about Jordan bases}
+Let \(V\) be a finite-dimensional vector space, \(A : V \to V\) a nilpotent operator, and \(f : V \to \mathbb{C}\) a linear map.
+Let \((e_{ij} : i \leq m, j \leq \lambda_i)\) be a Jordan basis for \(A\).
+
 \begin{lemma}
-    If the condition of \cref{ab_nilp} on \(a'\) and \(b'\) holds, then there exist nonnegative \(p_i, q_i, r_i\), \(\alpha_{i, j}\), \(\beta_{i, j}\) such that for each \(i\), the following conditions are satisfied.
-    \begin{itemize}
-        \item \(\lambda_i = p_i + q_i + r_i\)
-        \item \((a_{i,1}', ..., a_{i,\lambda_i}') = (0, 0, ..., 0, \alpha_{i,1}, ..., \alpha_{i, r_i})\)
-        \item \((b_{i, 1}', ..., b_{i, \lambda_i}') = (\beta_{i, 1}, ..., \beta_{i, p_i}, 0, 0, ..., 0)\)
-        \item If \(r_i \neq 0\), then \(\alpha_{i,1} \neq 0\)
-        \item If \(p_i \neq 0\), then \(\beta_{i, p_i} \neq 0\)
-    \end{itemize}
+    There is a Jordan basis \(e_{ij}\) for \(A\) such that there is at most one pair \((i, j)\) with \(f(e_{ij}) \neq 0\).
 \end{lemma}
 \begin{proof}
-    We begin with the first row of \(\lambda\), namely \(i = 1\).
-    Let \(k = \min\{j : a'_{1,j} \neq 0\}\) and \(l = \max\{j : b'_{1, j} \neq 0\}\).
-    I just need to show that \(l < k\).
-    Suppose not.
-    Then \((l - k)\) is nonnegative, and by \cref{ab_nilp} we have 
-    \[0 = \sum_{ij} b_{ij}' a_{j - (l - k)}' = b_{1,l}' a_{1,k}' + \sum_{i' \geq 1, (i', j') \neq (1, \lambda_1)} b'_{ij} a'_{j - (l - k)}.\]
-    This suggests defining 
-    \[e_{1,\lambda_1}'' = b_{1, l}'e_{1, \lambda_1}' + \sum_{i' \geq 1, (i', j') \neq (1, \lambda_1)} b'_{i',j' - (\lambda_1 - l)} e'_{i'j'}.\]
-    Then for \(j \leq k\),
-    \[a_{1,j}'' = b'_{1, l} a'_{1, j} + \sum_{i' \geq 1, (i', j') \neq (1, \lambda_1)} b'_{i', j' - (\lambda_1 - l)} a'_{i', j' - (\lambda_1 - j)} = \]
-    \[\sum_{i', j'} b'_{i', j' - (\lambda_1 - l)} a'_{i', j' - (\lambda_1 - j)} = \sum_{i', j'} b'_{i', j'} a'_{i', (j' + (\lambda_1 - l)) - (\lambda_1 - j)} = \sum_{i',j'} b'_{i',j'} a'_{i', j' - (l - j)}.\]
-    This last thing is zero by \cref{ab_nilp}, using that \(l - j \geq 0\).
-    But this contradicts the definition of the \(c_{i'j'}^1\), because we made it so that \((a''_{1, 1}, ..., a''_{1, k}) = 0\).
-    
+    For any change of basis \(P : V \to V\) commuting with \(A\), we obtain a new Jordan basis \((P(e_{ij}) : i \leq m, j \leq \lambda_i)\).
+    For any such \(P\), define 
+    \[S_P = \sum_i \begin{cases}-1, & \forall j. \; f \circ P(e_{ij}) = 0 \\ \lambda_i - \min\{j : f \circ P(e_{ij}) \neq 0\}, & \textrm{otherwise} \end{cases}.\]
+    Let \(P\) be any operator, among all invertible operators commuting with \(A\), which minimizes \(S_P\).
+    Write \(e_{i,j}' := P(e_{i,j})\).
+    \par Suppose for contradiction that there are two distinct \(i\)'s (and some \(j\)'s) with \(f(e_{ij}') \neq 0\).
+    Then we can take \(e_{i_1, j_1}'\) and \(e_{i_2, j_2}'\), where for \(k \in \{1,2\}\) we have \(f(e_{i_k, j_k}') \neq 0\), and \(\forall j < j_k. \; f(e_{i_k, j}') = 0\).
+    Wlog, assume \(\lambda_{i_1} - j_1 \leq \lambda_{i_2} - j_2\).
+    Then, we can define \(Q : V \to V\) by
+    \begin{itemize}
+        \item \(Q(e_{i_1, \lambda_1}') := e_{i_1, \lambda_1}' - \frac{f(e'_{i_1, j_1})}{f(e'_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}'\)
+        \item For \(j < \lambda_1\), \(Q(e_{i_1, j}') := A^{\lambda_{i_1} - j} Q(e_{i_1, \lambda_{i_1}}')\)
+        \item For \(i \neq i_1\), \(Q(e_{ij}') = e_{ij}'\).
+    \end{itemize}
+    Clearly \(Q\) is invertible, and it commutes with \(A\).
+    Further, I claim that \(S_{QP}  < S_P\).
+    It suffices to show that \(\forall j \leq j_1. \; f \circ Q(e_{i_1,j}') = 0\).
+    We have 
+    \[f \circ Q(e_{i_1,j}') = f\left(A^{\lambda_{i_1} - j}\left(e_{i_1, \lambda_1}' - \frac{f(e'_{i_1, j_1})}{f(e'_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}'\right)\right) =\]
+    \[f\left(e_{i_1, j}' - \frac{f(e'_{i_1, j_1})}{f(e'_{i_2, j_2})} e_{i_2, j_2 + (j - j_1)}'\right) = f(e_{i_1, j}') - \frac{f(e'_{i_1, j_1})}{f(e'_{i_2, j_2})} e'_{i_2, j_2 + (j - j_1)}.\]
+    Clearly (by design), this expression is zero when \(j = j_1\).
+    And for \(j < j_1\), we have \(f(e'_{i_1, j}) = f(e'_{i_2, j_2 + (j_2 - j_1)}) = 0\), so it is zero then as well.
+    Thus we see that \(S_{QP} < S_P\), contradicting that \(S_P\) is minimal.
+    So there must be at most one \(i\) such that there exists \(j\) such that \(f(e_{ij}') \neq 0\).
+    \par If there is no such \(i\), we have found the desired basis.
+    So, suppose there is such an \(i_0\).
+    Let \(U = \langle e_{i_0, j} \rangle\).
+    Simply write \(e_j := e_{i_0, j}\).
+    For any \(P : U \to U\), let \(S_P := \#\{j : f(P(e_j)) \neq 0\}\).
+    Choose \(P\) to minimize \(S_P\), and then let \(e_j' := P(e_j)\).
+    Suppose, for contradiction, that \(S_P > 1\).
+    Then let \(j_0 = \min\{j : f(e_j') \neq 0\}\), and let \(k\) be distinct from \(j\) with \(f(e_k') \neq 0\).
+    Then make the change of basis \(e_{\lambda_{i_0}}'' := e_{\lambda_{i_0}}' + ...\).
 \end{proof}
+
+\subsection{In the case of general \(X\)}
+In the case where \(X\) was a single Jordan block, it was helpful to have the condition that all the nonzero \(a\)'s were to the right of all the nonzero \(b\)'s.
+This allowed some tricks with right-shifting.
+In the general case, the parameters \(a\) and \(b\) are not necessarily in such a helpful form.
+We will see, however, that we can change basis of \(\mathbb{C}^m\) to put them in a nice form.
 
 \section{A different variety}
 Define \(R = \{(X, \mathfrak{b}_1, \mathfrak{b}_2) : X \in \mathfrak{b}_1 \land u(X) \in \mathfrak{b}_2\} \subseteq \mathcal{S}_{m,n}' \times \mathcal{B}_{m + n} \times \mathcal{B}_m\).
