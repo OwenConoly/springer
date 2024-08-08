@@ -510,6 +510,21 @@ So, we take the chain beginning with \(v_i - (A^{q_i + \max_{k > i} p_k} v_i >> 
 \par TODO: where did I use the fact that \(n + \max_i p_i \geq q_{i_0} + p_{i_0}\)?
 
 \subsubsection{Second case: \(n + \max_i p_i \leq q_{i_0} + p_{i_0}\)}
+Again we list the chains in (roughly) decreasing order.
+Note that, since \(n + \max_i p_i \leq q_{i_0} + p_{i_0}\), in particular we have \(n \leq q_{i_0}\), and \(n \leq q_i\) for all \(i \leq i_0\).
+Now, for all \(i \neq i_0\) with \(q_i \geq n\), take the chain of length \(p_i + q_i\) starting with \(e_{i,p_i + q_i}\).
+Then, take the chain starting with \(e_{i_0, \lambda_{i_0}}\), of length \(\lambda_{i_0}\).
+\par Let \(i_1 = \min\{i : n > q_i\}\).
+Let \(P = \max_{i \geq i_1} p_i\).
+Then take the chain beginning with \(f_1 - (A^{n + p} f_1 >> n + p)\), of length  \(n + P\).
+\par Finally, we handle \(i \geq i_1\).  
+(In this case \(q_i < n\).)
+If \(p_i \leq \max_{k > i} p_k\), then take the chain beginning with \(e_{i, p_i + q_i}\) of length \(p_i + q_i\).
+Otherwise, set 
+\[v_i = A^{n - q_i} f_1 - \sum_{k = 1}^{p_i} b_{i,k}' e_{i, q_i + k}.\]
+Note that \(A^{q_i} v_i\) is just \(b'\) with row \(i\) zeroed out.
+Now, we take the chain beginning with \(v_i - (A^{q_i + \max_{k > i} p_k} v_i >> q_i + \max_{k > i} p_k)\), of length \(q_i + \max_{k > i} p_k\).
+\par TODO: where did I use the fact that \(n + \max_i p_i \leq q_{i_0} + p_{i_0}\).
 
 \section{Finding the Springer fibers of section 2}
 We have \(\mathcal{M} = \{AHA^{-1} : A \in \GL_{m + n}(\mathbb{C})\}\), where \(H \subseteq \gl_{m + n}(\mathbb{C})\) is the set of upper triangular matrices.
