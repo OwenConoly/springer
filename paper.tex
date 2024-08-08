@@ -92,7 +92,7 @@ If \(\mathfrak{g}\) is semisimple, then given any nilpotent \(e \in \mathfrak{g}
 \par Given \((e, h, f)\), we define the \emph{Slodowy slice at \(e\)} as \(\mathcal{S}_e := e + \ker \ad_f\).
 By the Jacobson-Morozov theorem, we can always find a Slodowy slice at any nilpotent \(e \in \mathfrak{g}\), when \(\mathfrak{g}\) is semisimple.
 
-\subsection{Finding an \(\spl_2\)-triple in a simple case}
+\section{Finding \(\spl_2\)-triples \((E, H, F)\) in \(\gl_{m + n}\) with a particular \(E\).}
 \par Let
 \[e = \begin{pNiceArray}{ccccc}
  0 \\
@@ -100,10 +100,16 @@ By the Jacobson-Morozov theorem, we can always find a Slodowy slice at any nilpo
   & 1 & \ddots \\
    & & \ddots & 0 \\
    &   &  & 1 & 0
-   \end{pNiceArray} \in \mathfrak{sl}_{n},\]
-where there are \(n - 1\) ones.
-We will find the Slodowy slice at \(e\).
-\par As a first step, we will find an \(\spl_2\)-triple with \(e\) as its first element.
+   \end{pNiceArray} \in \mathfrak{gl}_{n},\]
+and let \(E = \begin{pmatrix}0 & 0 \\ 0 & e\end{pmatrix} \in \gl_{m + n}\).
+We will show that there is exactly one \(\spl_2\)-triple \((E, H, F)\), and we will find what it looks like.
+First we solve the case \(m = 0\) (so \(E = e\)), and then we use this to solve the case of arbitrary \(m\).
+
+\begin{lemma}\label{simple_sl2_triple}
+    There is exactly one way to choose \(h, f \in \gl_n\) so that \((e, h, f)\) is an \(\spl_2\)-triple.
+\end{lemma}
+\begin{proof}
+    
 Note that \([h', e'] = 2e'\), and \([e', f'] = h'\), and \([h', f'] = -2f'\).
 Thus \(e, h, f\) must obey the same relations.
 In particular, \(he - eh = 2e\).  
@@ -117,7 +123,7 @@ Then we can use it to show that \(f_{i,i + 1} = f_{i + 1, i + 2} + h_{i + 1, i +
 From the first equation we find that
 \[-h_{1,1} = f_{1, 2} = f_{n - 1, n} + \sum_{i = 1}^{n - 1} h_{ii} = \sum_{i = 1}^{n} h_{ii} \implies\]
 \[\sum_i h_{ii} = 0.\]
-Oops, I didn't actually need to prove that, since \(h \in \spl_n\)... it's nice to know that it's the unique solution in \(\gl_n\) though?
+Remark: this is just the statement that \(h \in \spl_n\); in other words, we will see that every choice of \(\spl_2\)-triple in \(\gl_{m + n}\) is also an \(\spl_2\)-triple in \(\spl_{m + n}\).
 This shows that \(h_{11} = n - 1, h_{22} = n - 3, ..., h_{nn} = 1 - n\).
 So we have determined \(h\); it is 
 \[h = \begin{pmatrix}
@@ -142,16 +148,14 @@ Now, we can use our expression for \(f\) in terms of \(h\) to obtain
     & & & 0 & (n - 1) (-1)\\
     & &  & & 0
 \end{pmatrix}.\]
+\end{proof}
 
-\subsection{Finding an \(\spl_2\)-triple in a slightly less simple case}
-Now, let 
-\[E = \begin{pmatrix}
-    0 & 0 \\
-    0 & e
-\end{pmatrix} \in \spl_{m + n},\]
-with \(e\) as in the previous subsection.
-We will find \(H, F\) so that \((E, H, F)\) is an \(\spl_2\)-triple.
-Writing \(F = \begin{pmatrix}
+\begin{lemma}\label{sl2_triple}
+    There is exactly one way to choose \(H, F \in \gl_{m + n}\) so that \((E, H, F)\) is an \(\spl_2\)-triple.
+\end{lemma}
+\begin{proof}
+Suppose we have \(H, F\) so that \((E, H, F)\) is an \(\spl_2\)-triple.
+Writing \(F =: \begin{pmatrix}
     F_{11} & F_{12} \\
     F_{21} & f
 \end{pmatrix}\), and similarly for \(H\), we have
@@ -169,7 +173,7 @@ Writing \(F = \begin{pmatrix}
     0 & F_{12}e \\
     0 & fe
 \end{pmatrix}.\]
-From these we observe that \((e, h, f)\) must also be an \(\spl_2\)-triple, so \(h, f\) must be as in the previous subsection.
+From these we observe that \((e, h, f)\) must also be an \(\spl_2\)-triple, so \(h, f\) must be as in \cref{simple_sl2_triple}.
 We also see that \(H_{11} = 0\).
 Recalling that left multiplication by \(e\) is a down-shift, and right multiplication is a left-shift, we see that \(H_{12}\) is all zeroes except for the leftmost column, and \(H_{21}\) is all zeroes except for the bottom row.
 % Then \(F_{12}\) must be all zeros except for the two leftmost columns, and \(F_{21}\) must be all zeroes except for the bottom two rows.
@@ -208,8 +212,9 @@ Substituting in the equation above then,
 Now we see that \(F_{11} = 0\), and consequently that \(F_{12} = F_{21} = 0\) as well.
 This shows that \(H_{12} = H_{21} = 0\).
 We conclude that \(H\) and \(F\) just have \(h\) and \(f\) in their bottom-right corners, respectively.
+\end{proof}
 
-\subsection{Finding the previous Slodowy slices}
+\section{Finding the Slodowy slices with the same \(E\)}
 First we find \(\ker \ad_f\).
 We have \((fX)_{ij} = i (n - i) A_{i + 1,j}\), and \((Xf)_{ij} = (j - 1) (n - (j - 1)) A_{i, j - 1}\).
 So, for all \(i, j \in \{1, ..., n\}\), we have 
@@ -237,7 +242,7 @@ Let \(\mathcal{N}_m \subseteq \gl_m\) be the nilpotent elements.
 Let \(\mathcal{S}_{m,n}'\) be the set of \(X \in \mathcal{S}_{m,n}\) such that both \(X\) and \(u(X)\) are nilpotent.
 Let \(\widetilde{\mathcal{N}}_{m,n} = \{(\mathfrak{b}, X) : X \in \mathfrak{b}\} \subseteq \mathcal{B}_{m + n} \times \mathcal{S}_{m,n}'\).
 Define \(\pi_{m,n} : \widetilde{\mathcal{N}}_{m,n} \to \mathcal{N}_m\) by \((\mathfrak{b}, X) \mapsto X_{11}\).
-For \(Y \in \gl_m\), we call \(\pi_{m,n}^{-1}(Y)\) the \emph{n-dim-Slodowy-slice Springer fiber} at \(Y\).
+For \(Y \in \gl_m\), we call \(\pi_{m,n}^{-1}(Y)\) the \emph{Springer fiber at the \(n\)-Slodowy slice at \(Y\)}.
 
 \begin{lemma}
     Let \(J\) be a jordan block with zeroes along the diagonal, and let \(A\) be upper triangular and nonzero.
@@ -351,7 +356,7 @@ For \(Y \in \gl_m\), we call \(\pi_{m,n}^{-1}(Y)\) the \emph{n-dim-Slodowy-slice
     \end{proof}
 \end{corollary}
 \par Now, taking the previous corolloary and the first lemma together, we see that 
-\[\mathcal{S}_{m,n}' = \left\{ \begin{pNiceArray}{ccc|cccc}
+\[\mathcal{S}_{m,n}' = \left\{\begin{pNiceArray}{ccc|cccc}
     & & & & & & \vert \\
     & X & & & & & b    \\
     & & & & & & \vert \\
@@ -364,10 +369,9 @@ For \(Y \in \gl_m\), we call \(\pi_{m,n}^{-1}(Y)\) the \emph{n-dim-Slodowy-slice
 
 
 
-\section{Definition of springer fiber at slodowy slice}
-% Explain why these are Springer fibers at Slodowy slices.
+\section{Simplifying the definition of a Springer fiber at a Slodowy slice}
 \par Let \(\mathcal{N}_m \subseteq \gl_m(\mathbb{C})\) be the subset consisting of nilpotent elements.
-For \(X \in \mathcal{N}\) and \(a, b \in \mathbb{C}^m\), let
+For \(X \in \mathcal{N}_m\) and \(a, b \in \mathbb{C}^m\), let
 \[A_{X, a, b} = \begin{pNiceArray}{ccc|ccccc}
  & & & & & & & \vert \\
  & X & & & & & & b    \\
@@ -379,13 +383,26 @@ For \(X \in \mathcal{N}\) and \(a, b \in \mathbb{C}^m\), let
 & & &  &   & \ddots & 0 \\
 & & &  &   &  & 1 & 0
 \end{pNiceArray} \in \mathfrak{gl}_{m + n}(\mathbb{C}).\]
+By the definition given in the previous section, we have 
+\[\widetilde{\mathcal{N}}_{m, n} = \{(\mathfrak{b}, X) : X \in \mathfrak{b}\} \subseteq \mathcal{B}_{m + n} \times \mathcal{S}_{m,n}',\]
+and the Springer fiber at the \(n\)-Slodowy slice at a nilpotent \(X \in \gl_m\) is
+\[\pi_{m,n}^{-1}(X) = \{(\mathfrak{b}, A_{X, a, b}) : A_{X, a, b} \in \mathfrak{b}, A_{X, a, b} \in \mathcal{S}_{m, n}'\} \] 
+\[= \{(\mathfrak{b}, A_{X, a, b}) : A_{X, a, b} \in \mathfrak{b}, A_{X, a, b} \textrm{nilpotent}\}\]
+\[\cong \{(\mathfrak{b}, a, b) : A_{X, a, b} \in \mathfrak{b}, A_{X, a, b} \textrm{ nilpotent}\}.\]
+We will make one last simplification to this by using a correspondence between Borel subalgebras and complete flags.
+TODO: fix the next few paragraphs, they are out of context.
+\par We have \(\mathcal{M} = \{AHA^{-1} : A \in \GL_{m + n}(\mathbb{C})\}\), where \(H \subseteq \gl_{m + n}(\mathbb{C})\) is the set of upper triangular matrices.
+We say a map \(X : \gl_{m + n} \to \gl_{m + n}\) preserves a flag \(V_0 \subseteq \cdots \subseteq V_{m + n}\) if \(XV_i \subseteq V_i\) for each \(i\).
+Let \(E_0 \subseteq \cdots \subseteq E_{m + n}\) be the standard flag of \(\mathbb{C}^{m + n}\).
+Since \(H\) is the set of \(X\) which preserve \(E\),
+\[\mathcal{M} = \{\{X : \forall i. \; X(AE_i) \subseteq AE_i\} : A \in \GL_n(\mathbb{C})\}.\]
+So, for \(X \in \mathcal{N}\),
+\[\pi^{-1}(X) \cong \{(V, a, b) : \forall i. \; A_{X, a, b} V_i \subseteq V_i\}.\]
+\par In this section we will find the irreducible components of \(\pi^{-1}(X)\).
+Since \(\pi^{-1}(X) \cong \pi^{-1}(AXA^{-1})\) for any invertible \(A\), we will assume that \(X\) is in Jordan normal form.
+\par Let \(\lambda\) be the shape of \(X\), and let \((e_{ij})_{i \leq r, j \leq \lambda_i}\) be a Jordan basis for \(X\), with \(X e_{ij} = e_{i,j - 1}\).
+Let \(f_1, ..., f_n\) be the standard basis for \(\mathbb{C}^n\), with \(A_{X, a, b} f_i = f_{i + 1}\).
 
-% \par Note that \(X \mapsto A_{X, a, b}\) gives a map \(\gl_m(\mathbb{C}) \to \gl_{m + n}(\mathbb{C})\).
-Let \(\mathcal{M}\) be the variety of Borel subalgebras of \(\gl_{m + n}(\mathbb{C})\).
-Let
-\[\widetilde{\mathcal{N}} = \{(\mathfrak{m}, a, b, X) : A_{X, a, b} \in \mathfrak{m}\} \subseteq \mathcal{M} \times \mathbb{C}^m \times \mathbb{C}^m \times \mathcal{N}.\]
-Let \(\pi : \widetilde{\mathcal{N}} \to \mathcal{N}\) be the projection onto the last coordinate.
-For \(X \in \mathcal{N}\), we call \(\pi^{-1}(X)\) the \emph{other Springer fiber at \(X\)}.
 
 \section{A necessary condition for \(A_{X, a, b}\) to be nilpotent}
 Suppose \(A := A_{X, a, b}\) is nilpotent.
@@ -533,19 +550,6 @@ Otherwise, set
 Note that \(A^{q_i} v_i\) is just \(b'\) with row \(i\) zeroed out.
 Now, we take the chain beginning with \(v_i - (A^{q_i + \max_{k > i} p_k} v_i >> q_i + \max_{k > i} p_k)\), of length \(q_i + \max_{k > i} p_k\).
 \par TODO: where did I use the fact that \(n + \max_i p_i \leq q_{i_0} + p_{i_0}\).
-
-\section{Finding the Springer fibers of section 2}
-We have \(\mathcal{M} = \{AHA^{-1} : A \in \GL_{m + n}(\mathbb{C})\}\), where \(H \subseteq \gl_{m + n}(\mathbb{C})\) is the set of upper triangular matrices.
-We say a map \(X : \gl_{m + n} \to \gl_{m + n}\) preserves a flag \(V_0 \subseteq \cdots \subseteq V_{m + n}\) if \(XV_i \subseteq V_i\) for each \(i\).
-Let \(E_0 \subseteq \cdots \subseteq E_{m + n}\) be the standard flag of \(\mathbb{C}^{m + n}\).
-Since \(H\) is the set of \(X\) which preserve \(E\),
-\[\mathcal{M} = \{\{X : \forall i. \; X(AE_i) \subseteq AE_i\} : A \in \GL_n(\mathbb{C})\}.\]
-So, for \(X \in \mathcal{N}\),
-\[\pi^{-1}(X) \cong \{(V, a, b) : \forall i. \; A_{X, a, b} V_i \subseteq V_i\}.\]
-\par In this section we will find the irreducible components of \(\pi^{-1}(X)\).
-Since \(\pi^{-1}(X) \cong \pi^{-1}(AXA^{-1})\) for any invertible \(A\), we will assume that \(X\) is in Jordan normal form.
-\par Let \(\lambda\) be the shape of \(X\), and let \((e_{ij})_{i \leq r, j \leq \lambda_i}\) be a Jordan basis for \(X\), with \(X e_{ij} = e_{i,j - 1}\).
-Let \(f_1, ..., f_n\) be the standard basis for \(\mathbb{C}^n\), with \(A_{X, a, b} f_i = f_{i + 1}\).
 
 \subsection{When \(X\) is all zeroes}
 In this case we have \(A(y, z) = (z_n b, (a \cdot y, z_1, ..., z_{n - 1}))\), and the condition becomes
