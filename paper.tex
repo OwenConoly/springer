@@ -502,8 +502,14 @@ Something to do with the condition on \(n\)...
 \par Now, we handle the \(i\) with \(q_i < n + r\).
 If \(p_i \leq \max_{k > i} p_k\), then we take the chain beginning with \(e_{i,p_i + q_i}\) of length \(p_i + q_i\).
 Otherwise, we set 
-\[v_i = A^{n + r - q_i} e_{i_0, \lambda_{i_0}} - \sum_{k = 1}^{p_i}b_{i,k} e_{i,k + q_i}.\]
-Note that \(v_i\) is just 
+\[v_i = A^{n + r - q_i} e_{i_0, \lambda_{i_0}} - \sum_{k = 1}^{p_i}b_{i,k}' e_{i,k + q_i}.\]
+Note that \(A^{q_i} v_i\) is just \(b'\) with row \(i\) zeroed out.
+Then, \(A^{q_i + \max_{k > i} p_k} v_i\) will have, in addition, rows \(k\) zeroed out, for all \(k > i\).
+This ensures that shifting \(A^{q_i + \max_{k > i} p_k} v_i\) right \(q_i + \max_{k > i} p_k\) times will be inverted by applying \(A\), and thus shifting left, \(q_i + \max_{k > i} p_k\) times.
+So, we take the chain beginning with \(v_i - (A^{q_i + \max_{k > i} p_k} v_i >> q_i + \max_{k > i} p_i)\), which has length \(q_i + \max_{k > i} p_k\).
+\par TODO: where did I use the fact that \(n + \max_i p_i \geq q_{i_0} + p_{i_0}\)?
+
+\subsubsection{Second case: \(n + \max_i p_i \leq q_{i_0} + p_{i_0}\)}
 
 \section{Finding the Springer fibers of section 2}
 We have \(\mathcal{M} = \{AHA^{-1} : A \in \GL_{m + n}(\mathbb{C})\}\), where \(H \subseteq \gl_{m + n}(\mathbb{C})\) is the set of upper triangular matrices.
