@@ -403,6 +403,41 @@ Since \(\pi^{-1}(X) \cong \pi^{-1}(AXA^{-1})\) for any invertible \(A\), we will
 \par Let \(\lambda\) be the shape of \(X\), and let \((e_{ij})_{i \leq r, j \leq \lambda_i}\) be a Jordan basis for \(X\), with \(X e_{ij} = e_{i,j - 1}\).
 Let \(f_1, ..., f_n\) be the standard basis for \(\mathbb{C}^n\), with \(A_{X, a, b} f_i = f_{i + 1}\).
 
+\section{Finding a centralizer}
+For nilpotent \(X\) in Jordan form and \(a\) in `normalized' form (i.e., with at most one nonzero element, which is a one), we will find the centralizer of \(A_{X, a, b}\) in 
+\[\{(A, I) : A \in \gl_m\} \subseteq \gl_{m + n}.\]
+Note that an element of the form \((A, I)\) commutes with \(A_{X, a, b}\) if and only if \(A\) commutes with \(X\), and \(aA = a\), and \(Ab = b\).
+So, we just have to find 
+\[\{A \in \gl_m : AX = XA, aA = a, Ab = b\}.\]
+We begin by finding 
+\[\{A \in \gl_m : AX = XA\}.\]
+We write the shape of \(X\) as \(\lambda = (\lambda_1, ..., \lambda_k)\), so that 
+\[X = \begin{pmatrix}
+    J_{\lambda_1} & \\
+    & \ddots \\
+    & & J_{\lambda_k}
+\end{pmatrix}.\]
+Then we write \(A\) as the block matrix
+\[A =: \begin{pmatrix}
+    A_{11} & \cdots & A_{1k}\\
+    \vdots & & \vdots\\
+    A_{k1} & \cdots & A_{kk}
+\end{pmatrix},\]
+where \(A_{ij}\) is a block of size \(\lambda_i \times \lambda_j\).
+We have 
+\[XA = \begin{pmatrix}
+    J_{\lambda_1}A_{11} & \cdots & J_{\lambda_1}A_{1k}\\
+    \vdots & & \vdots\\
+    J_{\lambda_k}A_{k1} & \cdots & J_{\lambda_k}A_{kk}
+\end{pmatrix}, \textrm{ and } AX = \begin{pmatrix}
+    A_{11} J_{\lambda_1} & \cdots & A_{1k} J_{\lambda_k}\\
+    \vdots & & \vdots\\
+    A_{k1} J_{\lambda_1} & \cdots & A_{kk} J_{\lambda_k}
+\end{pmatrix}.\]
+So, the constraint that \(XA = AX\) is simply saying that 
+\[\forall i,j. \; J_{\lambda_i} A_{ij} = A_{ij} J_{\lambda_j}.\]
+It's easy to see that left multiplication by \(J_{\lambda_i}\) is just a down-shift by one, and right multiplication by \(J_{\lambda_j}\) is a left-shift by one.
+This means that \(A_{ij}\) is constrained to be a ``lower-left-Toeplitz'' matrix; one of the form
 
 \section{A necessary condition for \(A_{X, a, b}\) to be nilpotent}
 Suppose \(A := A_{X, a, b}\) is nilpotent.
