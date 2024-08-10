@@ -547,6 +547,8 @@ Since the \(u_{ij}'\) can be chosen arbitrarily, apart from the condition above,
 The dimension of \(u'_{ij}\) is \(\min(\lambda_i, \lambda_j)\) in the case that \(i \neq i_0\), and \(\min(\lambda_i - j_0, \lambda_j)\) when \(i = i_0\).
 Write \(d_{ij}\) for this dimension.
 For each \(i\), let \(q_i\) be the length of the longest prefix of \(b_i\) which consists of zeroes.
+Then if \(A_{X, a, b}\) is nilpotent, we must have \(q_{i_0} \geq j_0\).
+So we may as well set \(q_{i_0} := q_{i_0} - j_0\).
 \par Fix an \(i\).
 I claim the rank of the matrix of \(b\)'s is \(h := \max_j [d_{ij} - q_j]\), or zero if this quantity is always negative.
 First, to see that the rank is at least this big, note that for any \(j \in \argmax_j [d_{ij} - q_j]\), the rank of the \(j\)th ``column block'' of the matrix of \(b\)'s is equal to \(h\).
@@ -554,7 +556,15 @@ Then, to see that the rank is at most this big, note that every row after the fi
 So, the total degrees of freedom for the \(u_{ij}\) is 
 \[\sum_j d_{ij} - \max(0, \max_j [d_{ij} - q_j]).\]
 Then summing over all the \(i\), we get the dimension of \(C_3\):
-\[\sum_i \sum_j d_{ij} -\max(0, \max_j [d_{ij} - q_j]).\]
+\[\sum_i \left[\sum_j d_{ij} -\max(0, \max_j [d_{ij} - q_j])\right] = \sum_{ij} d_{ij} - \sum_i \max(0, \max_j[d_{ij} - q_j]).\]
+When \(i \neq i_0\), then \(d_{ii} = \lambda_i \geq q_i\), and therefore \(\max(0, \max_j [d_{ij} - q_j]) = \max_j [d_{ij} - q_j]\).
+When \(i = i_0\), then \(d_{ii} = \lambda_i - j_0 \geq q_{i_0}\).
+So, we can simplify the above expression:
+\[\sum_{ij} d_{ij} - \sum_i \max_j [d_{ij} - q_j].\]
+Note that \(\max_j [d_{ij} - q_j] = \max_j [\min(p_i + q_i, p_j + q_j) - q_j]\).
+This thing being maximized equals \(\min(p_i + q_i - q_j, p_j)\).
+It would be really helpful if I could simplify this to \(p_j\) or something.
+I don't think so, though.
 
 \section{A necessary condition for \(A_{X, a, b}\) to be nilpotent}
 Suppose \(A := A_{X, a, b}\) is nilpotent.
