@@ -11,6 +11,12 @@
 \usepackage{url}
 \usepackage{tikz-cd}
 \usepackage{enumerate}
+\usepackage{rotating}
+
+\newcommand{\leftshift}{\mathbin{\rotatebox[origin=c]{0}{$\ll$}}}
+\newcommand{\downshift}{\mathbin{\rotatebox[origin=c]{90}{$\ll$}}}
+\newcommand{\rightshift}{\mathbin{\rotatebox[origin=c]{180}{$\ll$}}}
+\newcommand{\upshift}{\mathbin{\rotatebox[origin=c]{270}{$\ll$}}}
 
 \newcommand{\deriv}[2]{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
 \newcommand{\pderiv}[2]{\frac{\partial #1}{\partial #2}}
@@ -437,7 +443,107 @@ We have
 So, the constraint that \(XA = AX\) is simply saying that 
 \[\forall i,j. \; J_{\lambda_i} A_{ij} = A_{ij} J_{\lambda_j}.\]
 It's easy to see that left multiplication by \(J_{\lambda_i}\) is just a down-shift by one, and right multiplication by \(J_{\lambda_j}\) is a left-shift by one.
-This means that \(A_{ij}\) is constrained to be a ``lower-left-Toeplitz'' matrix; one of the form
+This means that \(A_{ij}\) is constrained to be a ``lower-left-Toeplitz'' matrix.
+A Toeplitz matrix is one which is constant along diagonal bands: \(\forall ijk. \; x_{ij} = x_{i + k,j + k}\).
+A lower-left-Toeplitz matrix is one which is all zeroes except for the bottom-left corner; that is, the bands start in the bottom-left corner, and continue until hitting the band which includes the lower-right corner or the band which includes the upper-left corner (whichever comes first).
+In other words, an \(n \times m\) lower-left-Toeplitz matrix is one which satisfies \(x_{ij} = 0\) for all \(i,j\) with \(i < j\) and all \(i,j\) with \(i - j < m - n\).
+In yet other words, a matrix is lower-left-Toeplitz if it is Toeplitz, satisfies \(x_{1j} = 0\) for \(j \neq 1\), and satisfies \(x_{in} = 0\) for \(i \neq m\).
+Anyway, it is easy to see that the lower-left-Toeplitz matrices are exactly those matrices \(A\) such that left-shifting \(A\) by one has the same result as down-shifting by one.
+\par So, we have found the set 
+\[C_1 := \{A \in \gl_m : AX = XA\}.\]
+It is just the set of \(A = [A_{ij}]_{ij}\), where each \(A_{ij}\) is lower-left-Toeplitz.
+\par Let \(v_{ij}\) be the leftmost column of \(A_{ij}\), so that
+\[A_{ij} = \begin{pmatrix}
+    v_{ij} \downshift 0 & \cdots & v_{ij} \downshift [\lambda_j - 1]
+\end{pmatrix}.\]
+Since \(A_{ij}\) is lower-left-Toeplitz, \(v_{ij}\) is of the form 
+\[v_{ij} = \begin{pmatrix}
+    0\\
+    v_{ij}'
+\end{pmatrix},\]
+where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) can be chosen freely.
+Now we determine which matrices of this form satisfy \(aA = a\).
+For simplicity, we will instead find the matrices \(A\) such that \(aA = 0\) (so that \(a(A + I) = a\)).
+(Note that \(I \in C_1\), and \(C_1\) is closed under addition, so this is really the same thing.)
+\par In the case that \(a = 0\), clearly every \(A\) works.
+Otherwise, let \(i_0, j_0\) be such that \(a_{i_0,j_0} = 1\).
+Now, clearly the constraint that \(aA = 0\) is just saying that the \((i_0,j_0)\)th row of \(A\) must be zero.
+That is, for each \(j\) the \(j_0\)th row of \(A_{i_0j}\) must be zero.
+This just requires that for each \(j\), we must have 
+\[v_{ij} = \begin{pmatrix}
+    0\\
+    v_{ij}'
+\end{pmatrix},\]
+where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i - j_0, \lambda_j)}\) can be chosen freely.
+So, we have now found the set 
+\[C_2 := \{A \in \gl_m : AX = XA, aA = a\}.\]
+It is the matrices of the form \(I + A\), where \(A_{ij}\) is a block matrix of size \(\lambda_i \times \lambda_j\) with 
+\[A_{ij} = T(v_{ij}) = T\begin{pmatrix}
+    0\\
+    v_{ij}'
+\end{pmatrix},\]
+where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) in the case \(i \neq i_0\) and \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i - j_0, \lambda_j)}\) if \(i = i_0\).
+\par Now we are only left with finding the matrices \(A \in C_2\) satisfying \(Ab = b\).
+This just means finding the matrices \(A\), of the form given above, which satisfy \(Ab = 0\).
+We may restate this as the condition that for every \(i\),
+\[\begin{pmatrix}
+    A_{i1} & \cdots & A_{in}
+\end{pmatrix}b = 0.\]
+Taking the transpose, 
+\[b^\top \begin{pmatrix}
+    A_{i1}^\top\\
+    \vdots\\
+    A_{in}^\top
+\end{pmatrix} = 0.\]
+Now, the rightmost column of \(A_{ij}^\top\) is \(v_{ij}\) upside-down (rows reversed).
+Write \(u_{ij}\) to refer to \(v_{ij}\) upside-down, and \(u_{ij}'\) to refer to \(v_{ij}'\) upside-down.
+Then the second-rightmost column is \(u_{ij} \upshift 1\), and so on until the first column is \(u_{ij} \upshift [\lambda_i - 1]\).
+So, we can reformulate this condition by requiring that for all \(l\),
+\[b^\top \begin{pmatrix}
+    u_{i1} \upshift l\\
+    \vdots\\
+    u_{in} \upshift l
+\end{pmatrix} = 0.\]
+Writing
+\[b = \begin{pmatrix}
+    b_1\\
+    \vdots\\
+    b_k
+\end{pmatrix},\]
+clearly this is equivalent to requiring that for all \(l\),
+\[\begin{pmatrix}
+    b_1^\top \rightshift l & \cdots & b_k^\top \rightshift l
+\end{pmatrix} \begin{pmatrix}
+    u_{i1}\\
+    \vdots\\
+    u_{ik}
+\end{pmatrix} = 0.\]
+Then writing \(b_j = \begin{pmatrix}
+    b_j'\\
+    \vdots
+\end{pmatrix}\), where \(b_j'\) has the same dimension as \(u_{ij}\), we can rewrite this constraint as 
+\[\begin{pmatrix}
+    b_1'^\top \rightshift l & \cdots & b_k'^\top \rightshift l
+\end{pmatrix} \begin{pmatrix}
+    u_{i1}'\\
+    \vdots\\
+    u_{ik}'
+\end{pmatrix} = 0.\]
+Finally, requiring the above equation for all \(l\) is the same thing as requiring
+\[\begin{pmatrix}
+    b_1'^\top \rightshift 0 & \cdots & b_k'^\top \rightshift 0\\
+    \vdots &  & \vdots \\
+    b_1'^\top \rightshift [\lambda_i - 1] & \cdots & b_k'^\top \rightshift [\lambda_i - 1]
+\end{pmatrix} \begin{pmatrix}
+    u_{i1}'\\
+    \vdots\\
+    u_{ik}'
+\end{pmatrix} = 0.\]
+This is the most that we will simplify the constraint.
+Recall that the \(v_{ij}'\) can be chosen arbitrarily, so the \(u_{ij}'\) can be chosen arbitrarily as well.
+That is, the set \(C_3 := \{A \in \gl_m : AX = XA, aA = a, Ab = b\}\) is the set of \(I + A\) for any \(A\) that can be recovered from \(u_{ij}'\) meeting the above condition.
+\par Now we find the dimension of \(C_3\).
+Since the \(u_{ij}'\) can be chosen arbitrarily, apart from the condition above, we just need to add up their dimensions and subtract the rank of the matrix constructed of the \(b\)'s.
 
 \section{A necessary condition for \(A_{X, a, b}\) to be nilpotent}
 Suppose \(A := A_{X, a, b}\) is nilpotent.
