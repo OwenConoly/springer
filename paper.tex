@@ -544,6 +544,17 @@ Recall that the \(v_{ij}'\) can be chosen arbitrarily, so the \(u_{ij}'\) can be
 That is, the set \(C_3 := \{A \in \gl_m : AX = XA, aA = a, Ab = b\}\) is the set of \(I + A\) for any \(A\) that can be recovered from \(u_{ij}'\) meeting the above condition.
 \par Now we find the dimension of \(C_3\).
 Since the \(u_{ij}'\) can be chosen arbitrarily, apart from the condition above, we just need to add up their dimensions and subtract the rank of the matrix constructed of the \(b\)'s.
+The dimension of \(u'_{ij}\) is \(\min(\lambda_i, \lambda_j)\) in the case that \(i \neq i_0\), and \(\min(\lambda_i - j_0, \lambda_j)\) when \(i = i_0\).
+Write \(d_{ij}\) for this dimension.
+For each \(i\), let \(q_i\) be the length of the longest prefix of \(b_i\) which consists of zeroes.
+\par Fix an \(i\).
+I claim the rank of the matrix of \(b\)'s is \(h := \max_j [d_{ij} - q_j]\), or zero if this quantity is always negative.
+First, to see that the rank is at least this big, note that for any \(j \in \argmax_j [d_{ij} - q_j]\), the rank of the \(j\)th ``column block'' of the matrix of \(b\)'s is equal to \(h\).
+Then, to see that the rank is at most this big, note that every row after the first \(h\) rows is just zeroes.
+So, the total degrees of freedom for the \(u_{ij}\) is 
+\[\sum_j d_{ij} - \max(0, \max_j [d_{ij} - q_j]).\]
+Then summing over all the \(i\), we get the dimension of \(C_3\):
+\[\sum_i \sum_j d_{ij} -\max(0, \max_j [d_{ij} - q_j]).\]
 
 \section{A necessary condition for \(A_{X, a, b}\) to be nilpotent}
 Suppose \(A := A_{X, a, b}\) is nilpotent.
