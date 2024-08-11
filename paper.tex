@@ -684,20 +684,25 @@ Note that \(A^{r + n} e_{i_0, \lambda_{i_0}} = b'\), so \(A^{r + n + P} e_{i_0, 
 Also note that if we shift \(b'\) left \(P\) times, we zero out all the rows \(i\) where \(q_i < n + r\).
 This ensures that the operation of shifting \(b' << P\) right \(r + n + P\) times is invertible by applying \(A\), and thus shifting left, \(r + n + P\) times.
 So, we take the chain of length \(r + n + P\) beginning with \(v\).
-\par Now, we want to show that this chain is linearly independent from the chains we have already listed.
-Because \(A^{r + n + P} e_{i_0, \lambda_{i_0}}\) is in the span of the chains we have already listed, it suffices to show that \(A^k e_{i_0, \lambda_{i_0}}\) is linearly independent of the previous chains, for all \(k < r + n + P\).
-Indeed, by the definition of \(P\), we have that \(A^k e_{i_0, \lambda_{i_0}}\) has a nonzero \(e_{ij}\)-component, for some \(i\) with \(q_i < n + r\); and the chains we have listed previously all have \(e_{ij}\)-component equal to zero for \(i\) with \(q_i < n + r\).
+\par Now, it is clear that \(e_{i_0, p_{i_0} + q_{i_0} + i}\) is in the span of the chains we have listed so far for each \(i \geq 1\).
+It is also clear that \(b' \leftshift k\) is in the span, for each \(k \geq 0\).
 \par Now, we handle the \(i\) with \(q_i < n + r\).
 We take as an inductive hypothesis that for all \(i' < i\) and all \(j\), we have \(e_{i'j}\) in the span of the chains we have already listed.
 \par If \(p_i \leq \max_{k > i} p_k\), then we take the chain beginning with \(e_{i,p_i + q_i}\) of length \(p_i + q_i\).
-To see that this is linearly independent of what came before... TODO.
+Clearly we then have \(e_{i'j}\) in the span of the chains we have listed, for \(i' \leq i\).
 \par Otherwise, we set 
 \[v_i = A^{n + r - q_i} e_{i_0, \lambda_{i_0}} - \sum_{k = 1}^{p_i}b_{i,k}' e_{i,k + q_i}.\]
 Note that \(A^{q_i} v_i\) is just \(b'\) with row \(i\) zeroed out.
 Then, \(A^{q_i + \max_{k > i} p_k} v_i\) will have, in addition, rows \(k\) zeroed out, for all \(k > i\).
 This ensures that shifting \(A^{q_i + \max_{k > i} p_k} v_i\) right \(q_i + \max_{k > i} p_k\) times will be inverted by applying \(A\), and thus shifting left, \(q_i + \max_{k > i} p_k\) times.
 So, we take the chain beginning with \(v_i - (A^{q_i + \max_{k > i} p_k} v_i >> q_i + \max_{k > i} p_i)\), which has length \(q_i + \max_{k > i} p_k\).
-\par TODO: where did I use the fact that \(n + \max_i p_i \geq q_{i_0} + p_{i_0}\)?
+\par Now, we want to show that for each \(j\), \(e_{ij}\) is in the span of the chains we've listed so far.
+Since \(A^{q_i + \max_{k > i} p_k} v_i\) has rows \(k\) zeroed out for \(k \geq i\), our inductive hypothesis tells us that \(A^{q_i + \max_{k > i} p_k} v_i \rightshift q_i + \max_{k > i} p_k\) is in the span of the chains already listed.
+So it suffices to show that the closure of \(\langle v_i \rangle\) under action by \(A\) contains the span of \(e_{ij}\).
+And \(A^{n + r - q_i} e_{i_0, \lambda_{i_0}}\) is also in the span of chains already listed, so it suffices to show that the closure of \(\langle \sum_k b'_{ik} e_{i,k + q_i}\rangle \) under action by \(A\) contains \(\langle e_{ij}\rangle\).
+And this just follows from the fact that \(b'_{i,p_i}\) is nonzero.
+\par Now, I've shown that my purported Jordan basis has a large enough span; to show that it is indeed a Jordan basis I just need to count the number of vectors and show that we obtain \(m + n\).
+TODO: do this.
 
 \subsubsection{Second case: \(n + \max_i p_i \leq q_{i_0} + p_{i_0}\)}
 Again we list the chains in (roughly) decreasing order.
