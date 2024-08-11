@@ -702,7 +702,20 @@ So it suffices to show that the closure of \(\langle v_i \rangle\) under action 
 And \(A^{n + r - q_i} e_{i_0, \lambda_{i_0}}\) is also in the span of chains already listed, so it suffices to show that the closure of \(\langle \sum_k b'_{ik} e_{i,k + q_i}\rangle \) under action by \(A\) contains \(\langle e_{ij}\rangle\).
 And this just follows from the fact that \(b'_{i,p_i}\) is nonzero.
 \par Now, I've shown that my purported Jordan basis has a large enough span; to show that it is indeed a Jordan basis I just need to count the number of vectors and show that we obtain \(m + n\).
-TODO: do this.
+Indeed, the sum of the lengths is
+\[\left[\sum_{i : q_i \geq n + r} (p_i + q_i)\right] + (r + n + \max_{i : q_i < n + r} p_i) + \sum_{i : q_i < n + r} \begin{cases}
+    p_i + q_i, & p_i \leq \max_{k > i} p_k \\
+    q_i + \max_{k > i} p_i, & p_i > \max_{k > i} p_k
+\end{cases} = \]
+\[\left[\sum_{i : q_i \geq n + r} (p_i + q_i)\right] + (r + n + \max_{i : q_i < n + r} p_i) + \sum_{i : q_i < n + r} (q_i + \min(p_i, \max_{k > i} p_i)).\]
+Let \(i_1 < \cdots < i_s\) be the `peaks': that is, the set \(I_1 = \{i : q_i < n + r \land p_i > \max_{k > i} p_k\}\).
+(As I should've mentioned before, we take the max of the empty set to be zero.)
+Let \(I_2 = \{i : q_i < n + r\} \setminus I_1\).
+Then 
+\[\sum_{i : q_i < n + r} (q_i + \min(p_i, \max_{k > i} p_i)) = \sum_{i \in I_2} (p_i + q_i) + \sum_{k = 1}^s (q_{i_k} + p_{i_{k + 1}}).\]
+Clearly then, the whole sum is \(m + n\).
+
+
 
 \subsubsection{Second case: \(n + \max_i p_i \leq q_{i_0} + p_{i_0}\)}
 Again we list the chains in (roughly) decreasing order.
