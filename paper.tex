@@ -403,11 +403,30 @@ Let \(E_0 \subseteq \cdots \subseteq E_{m + n}\) be the standard flag of \(\math
 Since \(H\) is the set of \(X\) which preserve \(E\),
 \[\mathcal{M} = \{\{X : \forall i. \; X(AE_i) \subseteq AE_i\} : A \in \GL_n(\mathbb{C})\}.\]
 So, for \(X \in \mathcal{N}\),
-\[\pi^{-1}(X) \cong \{(V, a, b) : \forall i. \; A_{X, a, b} V_i \subseteq V_i\}.\]
-\par In this section we will find the irreducible components of \(\pi^{-1}(X)\).
-Since \(\pi^{-1}(X) \cong \pi^{-1}(AXA^{-1})\) for any invertible \(A\), we will assume that \(X\) is in Jordan normal form.
-\par Let \(\lambda\) be the shape of \(X\), and let \((e_{ij})_{i \leq r, j \leq \lambda_i}\) be a Jordan basis for \(X\), with \(X e_{ij} = e_{i,j - 1}\).
+\[\pi^{-1}(X) \cong \{(V, a, b) : \forall i. \; A_{X, a, b} V_i \subseteq V_{i - 1}\}.\]
+
+\section{Finding the Springer fiber at a Slodowy slice}
+\par Fix any \(X \in \mathcal{N}\).
+In this section we find the irreducible components of
+\[\pi^{-1}(X) \cong V := \{(U, a, b) : \forall i. \; A_{X, a, b} U_{i + 1} \subseteq U_i\}.\]
+
+\begin{lemma}
+    \(V = V_0 \cup \bigcup_{w, r} V_{w,r}\), where 
+    \[V_0 = \{(U, 0, b)\} \subseteq V,\]
+    and
+    \[V_{w,r} = \{(U, a, b) : \exists P \in \GL_{m}. \; \exists b'. \; (P^{-1}, I_n) A_{X, a, b} (P, I_n) = A_{X, e_{wr}, b'} \} \subseteq V.\]
+\end{lemma}
+\begin{proof}
+    TODO
+\end{proof}
+Now, we will find the irreducible components of \(V_0\) and the \(V_{w,r}\).
+These will all happen to be equidimensional, so we will see that their closures in \(V\) are the irreducible components of \(V\).
+\par We begin with \(V_0\), which will be easy.
+
+% Since \(\pi^{-1}(X) \cong \pi^{-1}(AXA^{-1})\) for any invertible \(A\), we will assume that \(X\) is in Jordan normal form.
 Let \(f_1, ..., f_n\) be the standard basis for \(\mathbb{C}^n\), with \(A_{X, a, b} f_i = f_{i + 1}\).
+
+
 
 \section{Finding a centralizer}
 For nilpotent \(X\) in Jordan form and \(a\) in `normalized' form (i.e., with at most one nonzero element, which is a one), we will find the centralizer of \(A_{X, a, b}\) in 
