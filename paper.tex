@@ -407,21 +407,34 @@ So, for \(X \in \mathcal{N}\),
 
 \section{Finding the Springer fiber at a Slodowy slice}
 \par Fix any \(X \in \mathcal{N}\).
-In this section we find the irreducible components of
+Let \((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}\) be a Jordan basis for \(X\).
+For convenience we define \(e_{i0} := 0\); now we may express the fact that \((e_{ij})\) is a Jordan basis by writing \(\forall i. Xe_{ij} = e_{i,j - 1}\).
+\par In this section we find the irreducible components of
 \[\pi^{-1}(X) \cong V := \{(U, a, b) : \forall i. \; A_{X, a, b} U_{i + 1} \subseteq U_i\}.\]
+\par For \(1 \leq w \leq k\) and \(0 \leq r \leq \lambda_w\) (note that we allow \(r = 0\)), define 
+\[V_{w,r} := \{(U, a, b) \in V : \exists P \in \GL_{m}. \; \exists b'. \; (P^{-1}, I_n) A_{X, a, b} (P, I_n) = A_{X, e_{wr}, b'} \}.\]
 
 \begin{lemma}
-    \(V = V_0 \cup \bigcup_{w, r} V_{w,r}\), where 
-    \[V_0 = \{(U, 0, b)\} \subseteq V,\]
-    and
-    \[V_{w,r} = \{(U, a, b) : \exists P \in \GL_{m}. \; \exists b'. \; (P^{-1}, I_n) A_{X, a, b} (P, I_n) = A_{X, e_{wr}, b'} \} \subseteq V.\]
+    \(V = \bigcup_{1 \leq w \leq k, 0 \leq r \leq \lambda_{w}} V_{w,r}\).
+    Further, \(V_{w_1r_1} = V_{w_2r_2}\) exactly when either \(r_1 = r_2 = 0\), or \(\lambda_{w_1} = \lambda_{w_2} \land r_1 = r_2\).
+    When \(V_{w_1r_1} \neq V_{w_2r_2}\), we have \(V_{w_1r_1} \cap V_{w_2r_2} = \emptyset\).
 \end{lemma}
 \begin{proof}
     TODO
 \end{proof}
-Now, we will find the irreducible components of \(V_0\) and the \(V_{w,r}\).
-These will all happen to be equidimensional, so we will see that their closures in \(V\) are the irreducible components of \(V\).
-\par We begin with \(V_0\), which will be easy.
+Now, fix any \(w\) and \(r\).
+We will find the irreducible components of \(V_{w,r}\).
+These will all happen to be equidimensional (with dimensions independent of \(w\) and \(r\)), so their closures in \(V\) will be the irreducible components of \(V\).
+\par Let 
+\[G := \{A \in \GL_m : A^{-1} X A = X\},\]
+and 
+\[G_{wr} := \{A \in \GL_m : \forall b. \exists b'. (A^{-1}, I_n) A_{X, e_{wr}, b} (A, I_n) = A_{X, e_{wr}, b'}\}.\]
+If you write out the condition \(A_{X, e_{wr}, b} (A, I_n) = (A, I_n) A_{X, e_{wr}, b'}\), it is plain to see that 
+\[G_{wr} = \{A \in G : e_{wr}A = e_{wr}\}.\]
+\par Now, define 
+\[U_{wr} = \{(U, e_{wr}, b) \in V_{wr}\}.\]
+Consider the map \(\varphi : U_{wr} \times G \to V_{wr}\), defined by
+\[((U, e_{wr}, b), A) \mapsto (AU, e_{wr}A, Ab)\]
 
 % Since \(\pi^{-1}(X) \cong \pi^{-1}(AXA^{-1})\) for any invertible \(A\), we will assume that \(X\) is in Jordan normal form.
 Let \(f_1, ..., f_n\) be the standard basis for \(\mathbb{C}^n\), with \(A_{X, a, b} f_i = f_{i + 1}\).
