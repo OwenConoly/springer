@@ -407,12 +407,13 @@ So, for \(X \in \mathcal{N}\),
 
 \section{Finding the Springer fiber at a Slodowy slice}
 \par Fix any \(X \in \mathcal{N}\).
+As we have fixed \(X\), we now write \(A_{a, b} := A_{X, a, b}\).
 Let \((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}\) be a Jordan basis for \(X\).
 For convenience we define \(e_{i0} := 0\); now we may express the fact that \((e_{ij})\) is a Jordan basis by writing \(\forall i. Xe_{ij} = e_{i,j - 1}\).
 \par In this section we find the irreducible components of
-\[\pi^{-1}(X) \cong V := \{(U, a, b) : \forall i. \; A_{X, a, b} U_{i + 1} \subseteq U_i\}.\]
+\[\pi^{-1}(X) \cong V := \{(A_{a, b}, U) : \forall i. \; A_{a, b} U_{i + 1} \subseteq U_i\}.\]
 \par For \(1 \leq w \leq k\) and \(0 \leq r \leq \lambda_w\) (note that we allow \(r = 0\)), define 
-\[V_{w,r} := \{(U, a, b) \in V : \exists P \in \GL_{m}. \; \exists b'. \; (P^{-1}, I_n) A_{X, a, b} (P, I_n) = A_{X, e_{wr}, b'} \}.\]
+\[V_{w,r} := \{(A_{a, b}, U) \in V : \exists P \in \GL_{m}. \; \exists b'. \; (P^{-1}, I_n) A_{a, b} (P, I_n) = A_{e_{wr}, b'} \}.\]
 
 \begin{lemma}
     \(V = \bigcup_{1 \leq w \leq k, 0 \leq r \leq \lambda_{w}} V_{w,r}\).
@@ -426,15 +427,35 @@ Now, fix any \(w\) and \(r\).
 We will find the irreducible components of \(V_{w,r}\).
 These will all happen to be equidimensional (with dimensions independent of \(w\) and \(r\)), so their closures in \(V\) will be the irreducible components of \(V\).
 \par Let 
-\[G := \{A \in \GL_m : A^{-1} X A = X\},\]
-and 
-\[G_{wr} := \{A \in \GL_m : \forall b. \exists b'. (A^{-1}, I_n) A_{X, e_{wr}, b} (A, I_n) = A_{X, e_{wr}, b'}\}.\]
-If you write out the condition \(A_{X, e_{wr}, b} (A, I_n) = (A, I_n) A_{X, e_{wr}, b'}\), it is plain to see that 
+\[G := \{P \in \GL_m : P^{-1} X P = X\},\]
+and
+\[G_{wr} := \{P \in \GL_m : \forall b. \exists b'. (P^{-1}, I_n) A_{e_{wr}, b} (P, I_n) = A_{e_{wr}, b'}\}.\]
+If you write out the condition \(A_{e_{wr}, b} (A, I_n) = (A, I_n) A_{X, e_{wr}, b'}\) as a matrix equation, it is plain to see that 
 \[G_{wr} = \{A \in G : e_{wr}A = e_{wr}\}.\]
 \par Now, define 
 \[U_{wr} = \{(U, e_{wr}, b) \in V_{wr}\}.\]
-Consider the map \(\varphi : U_{wr} \times G \to V_{wr}\), defined by
-\[((U, e_{wr}, b), A) \mapsto (AU, e_{wr}A, Ab)\]
+Let \(G\) act on \(V_{wr}\) by
+\[P \cdot (A_{e_{wr},b}, U) := ((P, I_n) A_{e_{wr}, b} (P, I_n)^{-1}, (P, I_n)U) = (A_{e_{wr} P^{-1}, Pb}, (P, I_n) U).\]
+\par Consider the map \(\varphi : U_{wr} \times G \to V_{wr}\) defined by
+\[(x, P) \mapsto P \cdot x.\]
+By restriction of \(G\) to \(G_{wr}\) and \(V_{wr}\) to \(U_{wr}\), we obtain an action of \(G_{wr}\) on \(U_{wr}\).
+Then, letting \(G_{wr}\) act on \(G\) by left multiplication, we obtain an action of \(G_{wr}\) on \(U_{wr} \times G\).
+\begin{lemma}
+    The map \(\varphi\) is a topological quotient of \(U_{wr} \times G\) by the action of the algebraic group \(G_{wr}\).
+\end{lemma}
+\begin{proof}
+    TODO.
+    See \url{http://www-fourier.ujf-grenoble.fr/~mbrion/notes_luminy.pdf}, definition 1.18.
+\end{proof}
+Now we only have to find the irreducible components of \(U_{wr} \times G\)
+
+\begin{lemma}
+    Let \(p : X \to Y\) be a topological quotient.
+    Then the irreducible components of \(Y\) are the images of those of \(X\).
+\end{lemma}
+\begin{proof}
+    Let \(C_i\) be the irreducible components of \(X\).
+\end{proof}
 
 % Since \(\pi^{-1}(X) \cong \pi^{-1}(AXA^{-1})\) for any invertible \(A\), we will assume that \(X\) is in Jordan normal form.
 Let \(f_1, ..., f_n\) be the standard basis for \(\mathbb{C}^n\), with \(A_{X, a, b} f_i = f_{i + 1}\).
