@@ -483,133 +483,8 @@ It is the matrices of the form \(I + A\), where \(A_{ij}\) is a block matrix of 
     v_{ij}'
 \end{pmatrix},\]
 where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) in the case \(i \neq i_0\) and \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i - j_0, \lambda_j)}\) if \(i = i_0\).
-\par Now we are only left with finding the matrices \(A \in C_2\) satisfying \(Ab = b\).
-This just means finding the matrices \(A\), of the form given above, which satisfy \(Ab = 0\).
-We may restate this as the condition that for every \(i\),
-\[\begin{pmatrix}
-    A_{i1} & \cdots & A_{in}
-\end{pmatrix}b = 0.\]
-Taking the transpose, 
-\[b^\top \begin{pmatrix}
-    A_{i1}^\top\\
-    \vdots\\
-    A_{in}^\top
-\end{pmatrix} = 0.\]
-Now, the rightmost column of \(A_{ij}^\top\) is \(v_{ij}\) upside-down (rows reversed).
-Write \(u_{ij}\) to refer to \(v_{ij}\) upside-down, and \(u_{ij}'\) to refer to \(v_{ij}'\) upside-down.
-Then the second-rightmost column is \(u_{ij} \upshift 1\), and so on until the first column is \(u_{ij} \upshift [\lambda_i - 1]\).
-So, we can reformulate this condition by requiring that for all \(l\),
-\[b^\top \begin{pmatrix}
-    u_{i1} \upshift l\\
-    \vdots\\
-    u_{in} \upshift l
-\end{pmatrix} = 0.\]
-Writing
-\[b = \begin{pmatrix}
-    b_1\\
-    \vdots\\
-    b_k
-\end{pmatrix},\]
-clearly this is equivalent to requiring that for all \(l\),
-\[\begin{pmatrix}
-    b_1^\top \rightshift l & \cdots & b_k^\top \rightshift l
-\end{pmatrix} \begin{pmatrix}
-    u_{i1}\\
-    \vdots\\
-    u_{ik}
-\end{pmatrix} = 0.\]
-Then writing \(b_j = \begin{pmatrix}
-    b_j'\\
-    \vdots
-\end{pmatrix}\), where \(b_j'\) has the same dimension as \(u_{ij}\), we can rewrite this constraint as 
-\[\begin{pmatrix}
-    b_1'^\top \rightshift l & \cdots & b_k'^\top \rightshift l
-\end{pmatrix} \begin{pmatrix}
-    u_{i1}'\\
-    \vdots\\
-    u_{ik}'
-\end{pmatrix} = 0.\]
-Finally, requiring the above equation for all \(l\) is the same thing as requiring
-\[\begin{pmatrix}
-    b_1'^\top \rightshift 0 & \cdots & b_k'^\top \rightshift 0\\
-    \vdots &  & \vdots \\
-    b_1'^\top \rightshift [\lambda_i - 1] & \cdots & b_k'^\top \rightshift [\lambda_i - 1]
-\end{pmatrix} \begin{pmatrix}
-    u_{i1}'\\
-    \vdots\\
-    u_{ik}'
-\end{pmatrix} = 0.\]
-This is the most that we will simplify the constraint.
-Recall that the \(v_{ij}'\) can be chosen arbitrarily, so the \(u_{ij}'\) can be chosen arbitrarily as well.
-That is, the set \(C_3 := \{A \in \gl_m : AX = XA, aA = a, Ab = b\}\) is the set of \(I + A\) for any \(A\) that can be recovered from \(u_{ij}'\) meeting the above condition.
-\par Now we find the dimension of \(C_3\).
-Since the \(u_{ij}'\) can be chosen arbitrarily, apart from the condition above, we just need to add up their dimensions and subtract the rank of the matrix constructed of the \(b\)'s.
-The dimension of \(u'_{ij}\) is \(\min(\lambda_i, \lambda_j)\) in the case that \(i \neq i_0\), and \(\min(\lambda_i - j_0, \lambda_j)\) when \(i = i_0\).
-Write \(d_{ij}\) for this dimension.
-For each \(i\), let \(q_i\) be the length of the longest prefix of \(b_i\) which consists of zeroes.
-Then if \(A_{X, a, b}\) is nilpotent, we must have \(q_{i_0} \geq j_0\).
-So we may as well set \(q_{i_0} := q_{i_0} - j_0\).
-\par Fix an \(i\).
-I claim the rank of the matrix of \(b\)'s is \(h := \max_j [d_{ij} - q_j]\), or zero if this quantity is always negative.
-First, to see that the rank is at least this big, note that for any \(j \in \argmax_j [d_{ij} - q_j]\), the rank of the \(j\)th ``column block'' of the matrix of \(b\)'s is equal to \(h\).
-Then, to see that the rank is at most this big, note that every row after the first \(h\) rows is just zeroes.
-So, the total degrees of freedom for the \(u_{ij}\) is 
-\[\sum_j d_{ij} - \max(0, \max_j [d_{ij} - q_j]).\]
-Then summing over all the \(i\), we get the dimension of \(C_3\):
-\[\sum_i \left[\sum_j d_{ij} -\max(0, \max_j [d_{ij} - q_j])\right] = \sum_{ij} d_{ij} - \sum_i \max(0, \max_j[d_{ij} - q_j]).\]
-When \(i \neq i_0\), then \(d_{ii} = \lambda_i \geq q_i\), and therefore \(\max(0, \max_j [d_{ij} - q_j]) = \max_j [d_{ij} - q_j]\).
-When \(i = i_0\), then \(d_{ii} = \lambda_i - j_0 \geq q_{i_0}\).
-So, we can simplify the above expression:
-\[\sum_{ij} d_{ij} - \sum_i \max_j [d_{ij} - q_j].\]
-Note that \(\max_j [d_{ij} - q_j] = \max_j [\min(p_i + q_i, p_j + q_j) - q_j]\).
-This thing being maximized equals \(\min(p_i + q_i - q_j, p_j)\).
-It would be really helpful if I could simplify this to \(p_j\) or something.
-I don't think so, though.
-
-\section{A necessary condition for \(A_{X, a, b}\) to be nilpotent}
-Suppose \(A := A_{X, a, b}\) is nilpotent.
-Define the \emph{height} of a vector \(v \in \mathbb{C}^{m + n}\) as the smallest \(k \geq 0\) such that \(A_{X, a, b}^k v = 0\).
-Clearly, for \(i \leq j\), we have that the height of \(f_i\) is geq the height of \(f_j\).
-Thus, for each \(k \geq 0\), we must have \(A_{X, a, b}^k f_n \in \langle e_{ij} \rangle_{ij}\).
-We have \(Af_n = \sum_{ij} b_{ij} e_{ij}\).
-Then \(A^2 f_n = \sum_{ij} b_{ij} (e_{i, j - 1} + a_{ij} f_1)\), so we must have \(\sum_{ij} b_{ij} a_{ij} = 0\).
-Similarly, since \(A^3 f_n \in \langle e_{ij}\rangle\), we see that \(\sum_{ij} b_{ij} a_{i, j - 1} = 0\).
-Continuing in this way, we obtain that for all \(k \geq 0\),
-\begin{equation}\label{ab_nilp}\sum_{ij} b_{ij} a_{i,j - k} = 0.\end{equation}
-In fact this is in fact a sufficient condition for \(A_{X, a, b}\) to be nilpotent, as can be seen from the characteristic polynomial of \(A_{X, a, b}\).
-However, we will not do this calculation here, instead just showing that it is sufficient by giving a Jordan basis.
-
 
 \section{A Jordan basis for \(A_{X, a, b}\)}
-For illustration, we will begin with the case that \(X\) is a single Jordan block.
-Then we will move to the general case.
-
-\subsection{When \(X\) is a Jordan block}
-Suppose \(X\) is a single Jordan block of size \(m\).
-In this case we just write the basis of \(\mathbb{C}^m\) as \(e_1, ..., e_m\), and the above condition on \(a\) and \(b\) simply becomes
-\begin{equation}
-    \forall k \geq 0. \; \sum_{i = k + 1}^m b_i a_{i - k} = 0.
-\end{equation}
-This condition can be simplified even more.
-\begin{lemma}
-    The condition (1) holds iff there exist nonnegative \(m_1, m_2, m_3\), \(a_1, ..., a_{m_3}\), and \(b_1, ..., b_{m_3}\) satisfying the following conditions.
-    \begin{itemize}
-        \item \(m = m_1 + m_2 + m_3\)
-        \item \(a = (0, 0, ..., 0, a_1, ..., a_{m_3})\)
-        \item \(b = (b_1, ..., b_{m_1}, 0, 0, ..., 0)\)
-        \item If \(m_1 \neq 0\), then \(a_{m_1} \neq 0\)
-        \item If \(m_3 \neq 0\), then \(b_1 \neq 0\)
-    \end{itemize}
-\end{lemma}
-\begin{proof}
-    If \(a\) and \(b\) are of this form, then for every \(k \geq 0\) we have \(b_i a_{i - k} = 0\), so clearly the condition holds.
-    \par Now suppose (1) holds.
-    If \(a\) or \(b\) is zero, this is trivial.
-    Otherwise, let \(m_1 = \max\{i : a_i \neq 0\}\), and let \(m_3 = \min\{i : b_i \neq 0\}\).
-    We just need to show that \(m_1 < m_3\).
-    For contradiction, suppose \(m_1 - m_3\) is nonnegative.
-    Then by (1), \(0 = \sum_i b_i a_{i - (m_1 - m_3)} = b_1 a_{m_1}\), contradicting that \(b_1\) and \(a_{m_1}\) are nonzero.
-\end{proof}
 
 \subsection{A `normalization' fact about Jordan bases}
 Let \(V\) be a finite-dimensional vector space, \(A : V \to V\) a nilpotent operator, and \(f : V \to \mathbb{C}\) a linear map.
@@ -655,26 +530,15 @@ Let \((e_{ij} : i \leq m, j \leq \lambda_i)\) be a Jordan basis for \(A\).
 \end{proof}
 
 \subsection{The general case}
-In the case where \(X\) was a single Jordan block, it was helpful to have the condition that all the nonzero \(a\)'s were to the right of all the nonzero \(b\)'s.
-This allowed some tricks with right-shifting.
-In the general case, the parameters \(a\) and \(b\) are not necessarily in such a helpful form.
-We will see, however, that we can change basis of \(\mathbb{C}^m\) to put them in a nice form.
-\par Recall our nilpotent operator \(A_{X, a, b}\) on \(\mathbb{C}^m \times \mathbb{C}^n\).
-We can define a map \(\mathbb{C}^m \to \mathbb{C}\) by \(x \mapsto x \cdot a\).
-Then, by the previous lemma, we can choose a Jordan basis \(e_{ij}\) of \(\mathbb{C}^m\) so that at most one \((i, j)\) has \(f(e_{ij}) \neq 0\).
-This implies that there are some \(P, k, b'\) such that \(PA_{X, a, b}P^{-1} = A_{X, 1_k, b'}\).
-So, without loss of generality, we may consider this case, where \(a = 1_k\).
-\par Write our basis of \(\mathbb{C}^m\) as \(e_{ij}\) and our basis of \(\mathbb{C}^n\) as \(f_j\).
-Let \(i_0, r\) be such that \(a = e_{i_0, \lambda_{i_0} - r + 1}\).
-Let \(b' = A^{n + r} e_{i_0, \lambda_{i_0}} = b + e_{i_0, \lambda_{i_0} - r - n}\).
-Let \(b_{ij}'\) be the projection of \(b'\) onto \(e_{ij}\).
-For each \(i\), let \(p_i = \max\{j : b_{ij}' \neq 0\}\).
-Then for each \(i \neq i_0\), let \(q_i = \lambda_i - p_i\).  Let \(q_{i_0} = \lambda_{i_0} - r - p_{i_0}\).
+Let \(X\) be nilpotent in Jordan form, and let \(a = \mathbbm{1}_{w,1}\), and let \(b\) be such that \(\forall j. \; b_{wj} = 0\).
+We describe a Jordan basis for \(A_{X, a, b}\).
+
+\par Let \(\mu\) be the result of removing the row \(w\) from \(\lambda\).
+For each row \(i\), let \(p_i = \max\{j : b_{ij} \neq 0\}\) (the maximum of the empty set is zero).
+Then set \(q_i = \lambda_i - p_i\).  Let \(q_{i_0} = \lambda_{i_0} - r - p_{i_0}\).
 Normally we index \(e_{ij}\) so that \(\lambda_i\) is nonincreasing with \(i\).
 Now, it will be more convenient to assume our indices are such that \(q_i\) is nonincreasing, so we will do that.
-\par We have two cases, which will closely resemble the cases we had when \(X\) was a single Jordan block.
-\subsubsection{First case: \(n + \max_i p_i \geq q_{i_0} + p_{i_0}\)}
-We list the chains in (roughly) decreasing order.
+We list the chains in (roughly) order of decreasing length.
 First, for each \(i\) such that \(q_i \geq n + r\), we take the chain of length \(p_i + q_i\) beginning with \(e_{i, p_i + q_i}\).
 \par Now we handle \(e_{i_0, \lambda_{i_0}}\).
 Let \(P = \max_{i : q_i < n + r} p_i\).
@@ -714,25 +578,6 @@ Let \(I_2 = \{i : q_i < n + r\} \setminus I_1\).
 Then 
 \[\sum_{i : q_i < n + r} (q_i + \min(p_i, \max_{k > i} p_i)) = \sum_{i \in I_2} (p_i + q_i) + \sum_{k = 1}^s (q_{i_k} + p_{i_{k + 1}}).\]
 Clearly then, the whole sum is \(m + n\).
-
-
-
-\subsubsection{Second case: \(n + \max_i p_i \leq q_{i_0} + p_{i_0}\)}
-Again we list the chains in (roughly) decreasing order.
-Note that, since \(n + \max_i p_i \leq q_{i_0} + p_{i_0}\), in particular we have \(n \leq q_{i_0}\), and \(n \leq q_i\) for all \(i \leq i_0\).
-Now, for all \(i \neq i_0\) with \(q_i \geq n\), take the chain of length \(p_i + q_i\) starting with \(e_{i,p_i + q_i}\).
-Then, take the chain starting with \(e_{i_0, \lambda_{i_0}}\), of length \(\lambda_{i_0}\).
-\par Let \(i_1 = \min\{i : n > q_i\}\).
-Let \(P = \max_{i \geq i_1} p_i\).
-Then take the chain beginning with \(f_1 - (A^{n + p} f_1 >> n + p)\), of length  \(n + P\).
-\par Finally, we handle \(i \geq i_1\).  
-(In this case \(q_i < n\).)
-If \(p_i \leq \max_{k > i} p_k\), then take the chain beginning with \(e_{i, p_i + q_i}\) of length \(p_i + q_i\).
-Otherwise, set 
-\[v_i = A^{n - q_i} f_1 - \sum_{k = 1}^{p_i} b_{i,k}' e_{i, q_i + k}.\]
-Note that \(A^{q_i} v_i\) is just \(b'\) with row \(i\) zeroed out.
-Now, we take the chain beginning with \(v_i - (A^{q_i + \max_{k > i} p_k} v_i >> q_i + \max_{k > i} p_k)\), of length \(q_i + \max_{k > i} p_k\).
-\par TODO: where did I use the fact that \(n + \max_i p_i \leq q_{i_0} + p_{i_0}\).
 
 \subsection{When \(X\) is all zeroes}
 In this case we have \(A(y, z) = (z_n b, (a \cdot y, z_1, ..., z_{n - 1}))\), and the condition becomes
