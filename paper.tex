@@ -463,6 +463,16 @@ Then, letting \(G_{wr}\) act on \(G\) by left multiplication, we obtain an actio
 \end{proof}
 Our strategy is to find the irreducible components \(X \subseteq U_{wr}\), and we will then argue that the irreducible components of \(V_{wr}\) are of the form \(\varphi(X \times G)\).
 So, we will now find the irreducible components of \(U_{wr}\).
+\par To do this, we will use a known result about the irreducible components of the usual Springer fiber at an element \(J(\mu) \in \gl_{m + n}\).
+(I should define this somewhere else, but \(J(\mu)\) just has the blocks in order of nonincreasing size.)
+\begin{theorem}
+    (Needs citation!)
+    The irreducible components of the Springer fiber at \(J(\mu)\) are in bijection with the standard Young tableaus of shape \(\mu\).
+    Further, the irreducible components are equidimensional, of dimension \(\sum_{i \neq j} \min(\mu_i, \mu_j) = \sum_i (i - 1) \mu_i\).
+\end{theorem}
+Let \(W_\mu\) denote the Springer fiber at \(J(\mu)\), and let \((W_{\mu, d})_d\) be the irreducible components.
+We remark that the Springer fiber at \(PJ(\mu)P^{-1}\) is \(PW_\mu\), and its irreducible components are \((PW_{\mu, d})_d\).
+We will use this result; to find the regular Springer fiber at any \(X \in \gl_{m + n}\), we just need to find \(P\) such that \(P^{-1}XP\) is in Jordan normal form; equivalently, we just need to find a Jordan basis for \(X\).
 
 
 % Since \(\pi^{-1}(X) \cong \pi^{-1}(AXA^{-1})\) for any invertible \(A\), we will assume that \(X\) is in Jordan normal form.
