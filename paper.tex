@@ -439,7 +439,7 @@ Let \(G\) act on \(V_{wr}\) by
 \par Consider the map \(\varphi : U_{wr} \times G \to V_{wr}\) defined by
 \[(x, P) \mapsto P \cdot x.\]
 By restriction of \(G\) to \(G_{wr}\) and \(V_{wr}\) to \(U_{wr}\), we obtain an action of \(G_{wr}\) on \(U_{wr}\).
-Then, letting \(G_{wr}\) act on \(G\) by left multiplication, we obtain an action of \(G_{wr}\) on \(U_{wr} \times G\).
+Then, letting \(G_{wr}\) act on \(G\) by \(g \cdot h := hg^{-1}\), we obtain an action of \(G_{wr}\) on \(U_{wr} \times G\).
 \begin{lemma}
     As an algebraic variety, \(G\) is irreducible.
 \end{lemma}
@@ -452,8 +452,18 @@ Then, letting \(G_{wr}\) act on \(G\) by left multiplication, we obtain an actio
     % The map \(X \mapsto \overline{\varphi(X \times G)}\) is a bijection from the irreducible components of \(U_{wr}\) to the irreducible components of \(V_{wr}\).
 \end{lemma}
 \begin{proof}
-    What kind?
-    All I need is something that allows me to deduce the dimension of the quotient!
+    Let \(y \in V_{wr}\).
+    By definition of \(V_{wr}\), there is \(P_y \in G\) with \(P_y \cdot y \in U_{wr}\).
+    We have
+    \[\varphi^{-1}(y) = \{(x, P) : P \cdot x = y = P_y^{-1} \cdot (P_y \cdot y)\} = \]
+    \[\{(x, P) : x = (P^{-1} P_y^{-1}) \cdot (P_y \cdot y) \} = \]
+    \[\{((P^{-1}P_y^{-1}) \cdot (P_y \cdot y), P) : (P^{-1} P_y^{-1}) \in G_{wr}\} = \] 
+    \[(\textrm{taking } Q := P^{-1}P_y^{-1}, \textrm{ so } P = (QP_y)^{-1} = P_y^{-1} Q^{-1})\]
+    \[\{(Q \cdot (P_y \cdot y), P_y^{-1} Q^{-1}) : Q \in G_{wr}\} = \]
+    \[\{Q \cdot (P_y \cdot y, P_y^{-1}) : Q \in G_{wr}\}.\]
+    So we see that the fibers are exactly the \(G_{wr}\)-orbits.
+    \par Now, what kind of quotient is this?
+    All I need is something that allows me to deduce the dimension of the quotient...
     % Because \(X\) and \(G\) are irreducible, \(X \times G\) is irreducible, and therefore \(\varphi(X \times G)\) is, as well.
     % Let \(X_1, ..., X_k\) be the irreducible components of \(U_{wr}\).
     % It is clear that \(V_{mr} = \bigcup_i \overline{\varphi(X_i \times G)}\).
