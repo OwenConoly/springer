@@ -405,7 +405,7 @@ Since \(H\) is the set of \(X\) which preserve \(E\),
 So, for \(X \in \mathcal{N}\),
 \[\pi^{-1}(X) \cong \{(V, a, b) : \forall i. \; A_{X, a, b} V_i \subseteq V_{i - 1}\}.\]
 
-\section{Finding the Springer fiber at a Slodowy slice}
+\section{Strategy and setup for finding the irreducible components of a Springer fiber at a Slodowy slice}
 \par Fix any \(X \in \mathcal{N}\).
 As we have fixed \(X\), we now write \(A_{a, b} := A_{X, a, b}\).
 Let \((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}\) be a Jordan basis for \(X\).
@@ -486,24 +486,29 @@ Let \(e_{ij}'\) be a Jordan basis for \(X'\).
 Let \(f_1, ..., f_n\) be a Jordan basis for the restriction of \(A_{X, 0, b}\) to \(\mathbb{}\)...
 Set \(m' := m - r\), and \(n' := n + r\).
 Let \(f_1', ..., f_{n'}'\) blah.
-Define the linear map \(Q_{wr} : \mathbb{C}^{m + n} \to \mathbb{C}^{m + n}\) by:
+Define the linear map \(Q_{wr} : \mathbb{C}^{m' + n'} \to \mathbb{C}^{m + n}\) by:
 \begin{itemize}
-    \item For \(i \neq w\), \(e_{ij} \mapsto e_{ij}'\)
-    \item For \(j \leq \lambda_w - r\), \(e_{wj} \mapsto e_{wj}'\)
-    \item If \(r \neq 0\), then \(e_{w,\lambda_w} \mapsto f_1'\), and blah.
+    \item For all \(i\), \(e_{ij}' \mapsto e_{ij}\).
+    \item For \(j = 1, ..., r\), \(f_{n + j}' \mapsto e_{w,(\lambda_w - r) + j}\).
+    \item For \(j = 1, ..., n\), \(f_j' \mapsto f_j + e_{w, (\lambda_w - r) - n + j}\).
 \end{itemize}
+% The inverse map \(Q_{wr}^{-1} : \mathbb{C}^{m + n} \to \mathbb{C}^{m' + n'}\) is
+% \begin{itemize}
+%     \item For all \(i \neq w\), \(e_{ij} \mapsto e_{ij}'\).
+%     \item For \(j = 1, ..., \lambda_w - r\), \(e_{wj} \mapsto e_{wj}'\).
+%     \item For \(j = 1, ..., r\), \(e_{wj} \mapsto f'_{n + j}\).
+%     \item For \(j = 1, ..., n\), \(f_j \mapsto f'_j - e_{w,\lambda_w - n + r}\)
+% \end{itemize}
+Observe that conjugation by \(Q_{wr}\) maps \(U_{wr}\) to \(U'_{wr}\), and conjugation by \(Q_{wr}^{-1}\) maps \(U'_{wr}\) to \(U_{wr}\).
+We conclude that \(U_{wr} \cong U_{wr}'\); so to find the irreducible components of \(U_{wr}\) we just need to find the irreducible components of \(U_{wr}'\).
+To clear the context, which is rather cluttered by now, and to avoid writing primes everywhere, we move to a new section.
 
-We begin by choosing a new basis to simplify things by setting \(a = 0\) (that is, we will work with the matrices of the form \(A_{X',0,b'}\)).
-Here is the new basis.
-For \(i \neq w\), take the chain beginning with \(e_{i,\lambda_i}\).
-Then take the chain beginning with \(e_{w,r - 1}\).
+\section{Finding the irreducible components of \(U\)}
+Let \(X\) be nilpotent of shape \(\lambda\), etc.
+Start fresh finding irreducible components of \(U_{w0}\).
 
-
-
-% Since \(\pi^{-1}(X) \cong \pi^{-1}(AXA^{-1})\) for any invertible \(A\), we will assume that \(X\) is in Jordan normal form.
-Let \(f_1, ..., f_n\) be the standard basis for \(\mathbb{C}^n\), with \(A_{X, a, b} f_i = f_{i + 1}\).
-
-
+\section{Finding the irreducible components of a springer fiber at a slodowy slice}
+Apply things from the previous two sections, and conclude.
 
 \section{Finding a centralizer}
 For nilpotent \(X\) in Jordan form and \(a\) in `normalized' form (i.e., with at most one nonzero element, which is a one), we will find the centralizer of \(A_{X, a, b}\) in 
