@@ -13,10 +13,10 @@
 \usepackage{enumerate}
 \usepackage{rotating}
 
-\newcommand{\leftshift}{\mathbin{\rotatebox[origin=c]{0}{$\ll$}}}
-\newcommand{\downshift}{\mathbin{\rotatebox[origin=c]{90}{$\ll$}}}
-\newcommand{\rightshift}{\mathbin{\rotatebox[origin=c]{180}{$\ll$}}}
-\newcommand{\upshift}{\mathbin{\rotatebox[origin=c]{270}{$\ll$}}}
+\newcommand{\leftshift}{$\,\texttt{<<}\,$}
+\newcommand{\downshift}{\mathbin{\rotatebox[origin=c]{90}{\leftshift}}}
+\newcommand{\rightshift}{\mathbin{\rotatebox[origin=c]{180}{\leftshift}}}
+\newcommand{\upshift}{\mathbin{\rotatebox[origin=c]{270}{\leftshift}}}
 
 \newcommand{\deriv}[2]{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
 \newcommand{\pderiv}[2]{\frac{\partial #1}{\partial #2}}
@@ -498,11 +498,14 @@ We conclude that \(U_{wr} \cong U_{wr}'\); so to find the irreducible components
 To clear the context, which is rather cluttered by now, and to avoid writing primes everywhere, we move to a new section.
 
 \section{Finding the irreducible components of \(U_0\)}
-Let \(X\) be nilpotent of shape \(\lambda\).
-Let 
-\[U_0 = \{\]
-Start fresh finding irreducible components of \(U_{w0}\).
-\par To do this, we will use a known result about the irreducible components of the usual Springer fiber at an element \(J(\mu) \in \gl_{m + n}\).
+Let \(X\) be nilpotent with Jordan basis \((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}\).
+Let \(V = \{(A_{a,b}, U) : \forall i. \; A_{a,b} U_{i + 1} \subseteq U\}\).
+Let
+\[U_0 = \{(A_{0,b}, U) \in V\}.\]
+We will find the irreducible components of \(U_0\).
+We note that even finding the irreducible components of \(\{A_{0,0}, U \in V\}\) is a pretty hard problem.
+Not ambitious enough to try to re-solve that problem, we will use its solution.
+\par To find the irreducible components of \(U_0\), we will use a known result about the irreducible components of the usual Springer fiber at an element \(J(\mu) \in \gl_{m + n}\).
 (I should define this somewhere else, but \(J(\mu)\) just has the blocks in order of nonincreasing size.)
 \begin{theorem}
     (Needs citation!)
@@ -512,10 +515,61 @@ Start fresh finding irreducible components of \(U_{w0}\).
 Let \(W_\mu\) denote the Springer fiber at \(J(\mu)\), and let \((W_{\mu, d})_d\) be the irreducible components.
 We remark that the Springer fiber at \(PJ(\mu)P^{-1}\) is \(PW_\mu\), and its irreducible components are \((PW_{\mu, d})_d\).
 We will use this result; to find the regular Springer fiber at any \(X \in \gl_{m + n}\), we just need to find \(P\) such that \(P^{-1}XP\) is in Jordan normal form; equivalently, we just need to find a Jordan basis for \(X\).
-So, our strategy will be to find a subset of \(U_{wr}\) such that \(A_{e_{wr},b}\) has some fixed Jordan form \(\mu\), and the map \(b \mapsto P\) is algebraic.
+\par So, our strategy will be to find a subset of \(U_0\) such that \(A_{0,b}\) has some fixed Jordan form \(\mu\), and we have an algebraic map \(b \mapsto P\) such that for \(A_{0,b}\) in the subset, \(PJ(\mu)P^{-1} = A_{0,b}\).
 Then we can break this subset into irreducible components by putting the Springer fiber at \(b\) in correspondence with one of the \(W_{\mu,d}\).
 I think this explanation of intuition is important, so I should try to make it better.
-\par So, with this as our motivation, we find a Jordan basis for the matrices \(A\) with \((A, U) \in U_{wr}\).
+\par Finding the map \(b \mapsto P\) amounts to finding a Jordan basis for \(A_{0,b}\).
+So, with this as our motivation, we find a Jordan basis for \(A_{0,b}\).
+
+\par We write \(b_{ij}\) to denote the projection of \(b \in \mathbb{C}^m\) onto \(e_{ij}\).
+For each row \(i\), let \(p_i = \max\{j : b_{ij} \neq 0\}\) (the maximum of the empty set is zero).
+Then set \(q_i = \lambda_i - p_i\).
+Normally we index \(e_{ij}\) so that \(\lambda_i\) is nonincreasing with \(i\).
+Now, it will be more convenient to assume our indices are such that \(q_i\) is nonincreasing, so we will do that: from now on, we assume that \(q_i\) is nonincreasing.
+\par We list the chains of the Jordan basis in (roughly) order of decreasing length.
+First, for each \(i\) such that \(q_i \geq n\), we take the chain of length \(p_i + q_i\) beginning with \(e_{i, p_i + q_i}\).
+\par Now we handle \(f_n\).
+Let \(P = \max_{i : q_i < n} p_i\).
+Set 
+\[v = f_n - (A^{n + P}f_n \rightshift n + P).\]
+Note that \(A^n f_n = b\), so \(A^{n + P} f_n = A^P b = b \leftshift P\).
+By shifting \(b\) left \(P\) times, we zero out all the rows \(i\) where \(q_i < n\).
+This ensures that the operation of shifting \(b' \leftshift P\) right \(n + P\) times is invertible by applying \(A\), and thus shifting left, \(n + P\) times.
+So, we take the chain of length \(n + P\) beginning with \(v\).
+\par Now, it is clear that each \(f_i\) is in the span of the chains we have listed so far.
+It is also clear that \(b \leftshift k\) is in the span, for each \(k \geq 0\).
+\par Now, we handle the \(i\) with \(q_i < n\).
+We take as an inductive hypothesis that for all \(i' < i\) and all \(j\), we have \(e_{i'j}\) in the span of the chains we have already listed.
+\par If \(p_i \leq \max_{k > i} p_k\), then we take the chain beginning with \(e_{i,p_i + q_i}\) of length \(p_i + q_i\).
+Clearly we then have \(e_{i'j}\) in the span of the chains we have listed, for \(i' \leq i\).
+\par Otherwise, we set 
+\[v_i = A^{n - q_i} f_n - \sum_{k = 1}^{p_i}b_{i,k} e_{i,k + q_i}.\]
+Note that \(A^{q_i} v_i\) is just \(b\) with row \(i\) zeroed out.
+Then, \(A^{q_i + \max_{k > i} p_k} v_i\) will have, in addition, rows \(k\) zeroed out, for all \(k > i\).
+This ensures that shifting \(A^{q_i + \max_{k > i} p_k} v_i\) right \(q_i + \max_{k > i} p_k\) times will be inverted by applying \(A\), and thus shifting left, \(q_i + \max_{k > i} p_k\) times.
+So, we take the chain beginning with \(v_i - (A^{q_i + \max_{k > i} p_k} v_i >> q_i + \max_{k > i} p_i)\), which has length \(q_i + \max_{k > i} p_k\).
+\par Now, we want to show that for each \(j\), \(e_{ij}\) is in the span of the chains we've listed so far.
+Since \(A^{q_i + \max_{k > i} p_k} v_i\) has rows \(k\) zeroed out for \(k \geq i\), our inductive hypothesis tells us that \(A^{q_i + \max_{k > i} p_k} v_i \rightshift q_i + \max_{k > i} p_k\) is in the span of the chains already listed.
+So it suffices to show that the closure of \(\langle v_i \rangle\) under action by \(A\) contains the span of \(e_{ij}\).
+And \(A^{n - q_i} f_n\) is also in the span of chains already listed, so it suffices to show that the closure of \(\langle \sum_k b_{ik} e_{i,k + q_i}\rangle \) under action by \(A\) contains \(\langle e_{ij}\rangle\).
+And this just follows from the fact that \(b_{i,p_i}\) is nonzero.
+\par Now, I've shown that my purported Jordan basis has a large enough span; to show that it is indeed a Jordan basis I just need to count the number of vectors and show that we obtain \(m + n\).
+I list the purported basis here:
+\begin{itemize}
+    \item TODO
+\end{itemize}
+Indeed, the sum of the lengths is
+\[\left[\sum_{i : q_i \geq n + r} (p_i + q_i)\right] + (r + n + \max_{i : q_i < n + r} p_i) + \sum_{i : q_i < n + r} \begin{cases}
+    p_i + q_i, & p_i \leq \max_{k > i} p_k \\
+    q_i + \max_{k > i} p_i, & p_i > \max_{k > i} p_k
+\end{cases} = \]
+\[\left[\sum_{i : q_i \geq n + r} (p_i + q_i)\right] + (r + n + \max_{i : q_i < n + r} p_i) + \sum_{i : q_i < n + r} (q_i + \min(p_i, \max_{k > i} p_i)).\]
+Let \(i_1 < \cdots < i_s\) be the `peaks': that is, the set \(I_1 = \{i : q_i < n + r \land p_i > \max_{k > i} p_k\}\).
+(As I should've mentioned before, we take the max of the empty set to be zero.)
+Let \(I_2 = \{i : q_i < n + r\} \setminus I_1\).
+Then 
+\[\sum_{i : q_i < n + r} (q_i + \min(p_i, \max_{k > i} p_i)) = \sum_{i \in I_2} (p_i + q_i) + \sum_{k = 1}^s (q_{i_k} + p_{i_{k + 1}}).\]
+Clearly then, the whole sum is \(m + n\).
 
 
 
@@ -641,56 +695,6 @@ Let \((e_{ij} : i \leq m, j \leq \lambda_i)\) be a Jordan basis for \(A\).
     Then we define \(P_2(e_{\lambda_{i_0}}) := P_1(e_{\lambda_{i_0}}) - \frac{f\circ P_1(e_{j_0 + 2})}{f\circ P_1(e_{j_0})} e_{\lambda_{i_0} - 2}\), and notice that \(f \circ P_2(e_j) = 0\) for all \(j \leq j_0 + 2\) except for \(j_0\).    
     Eventually we get \(P_{\lambda_{i_0} - j_0}\), and by applying this to the \(e_j\)'s we obtain a basis of \(U\), in which there is exactly one \(j\) with \(f \circ P_{\lambda_{i_0} - j_0}(e_j) \neq 0\).
 \end{proof}
-
-\subsection{The general case}
-Let \(X\) be nilpotent in Jordan form, and let \(a = \mathbbm{1}_{w,1}\), and let \(b\) be such that \(\forall j. \; b_{wj} = 0\).
-We describe a Jordan basis for \(A_{X, a, b}\).
-
-\par Let \(\mu\) be the result of removing the row \(w\) from \(\lambda\).
-For each row \(i\), let \(p_i = \max\{j : b_{ij} \neq 0\}\) (the maximum of the empty set is zero).
-Then set \(q_i = \lambda_i - p_i\).  Let \(q_{i_0} = \lambda_{i_0} - r - p_{i_0}\).
-Normally we index \(e_{ij}\) so that \(\lambda_i\) is nonincreasing with \(i\).
-Now, it will be more convenient to assume our indices are such that \(q_i\) is nonincreasing, so we will do that.
-We list the chains in (roughly) order of decreasing length.
-First, for each \(i\) such that \(q_i \geq n + r\), we take the chain of length \(p_i + q_i\) beginning with \(e_{i, p_i + q_i}\).
-\par Now we handle \(e_{i_0, \lambda_{i_0}}\).
-Let \(P = \max_{i : q_i < n + r} p_i\).
-Set 
-\[v = e_{i_0, \lambda_{i_0}} - (A^{r + n + P}e_{i_0, \lambda_{i_0}} >> r + n + P).\]
-Note that \(A^{r + n} e_{i_0, \lambda_{i_0}} = b'\), so \(A^{r + n + P} e_{i_0, \lambda_{i_0}} = A^P b' = b' << P\).
-Also note that if we shift \(b'\) left \(P\) times, we zero out all the rows \(i\) where \(q_i < n + r\).
-This ensures that the operation of shifting \(b' << P\) right \(r + n + P\) times is invertible by applying \(A\), and thus shifting left, \(r + n + P\) times.
-So, we take the chain of length \(r + n + P\) beginning with \(v\).
-\par Now, it is clear that \(e_{i_0, p_{i_0} + q_{i_0} + i}\) is in the span of the chains we have listed so far for each \(i \geq 1\).
-It is also clear that \(b' \leftshift k\) is in the span, for each \(k \geq 0\).
-\par Now, we handle the \(i\) with \(q_i < n + r\).
-We take as an inductive hypothesis that for all \(i' < i\) and all \(j\), we have \(e_{i'j}\) in the span of the chains we have already listed.
-\par If \(p_i \leq \max_{k > i} p_k\), then we take the chain beginning with \(e_{i,p_i + q_i}\) of length \(p_i + q_i\).
-Clearly we then have \(e_{i'j}\) in the span of the chains we have listed, for \(i' \leq i\).
-\par Otherwise, we set 
-\[v_i = A^{n + r - q_i} e_{i_0, \lambda_{i_0}} - \sum_{k = 1}^{p_i}b_{i,k}' e_{i,k + q_i}.\]
-Note that \(A^{q_i} v_i\) is just \(b'\) with row \(i\) zeroed out.
-Then, \(A^{q_i + \max_{k > i} p_k} v_i\) will have, in addition, rows \(k\) zeroed out, for all \(k > i\).
-This ensures that shifting \(A^{q_i + \max_{k > i} p_k} v_i\) right \(q_i + \max_{k > i} p_k\) times will be inverted by applying \(A\), and thus shifting left, \(q_i + \max_{k > i} p_k\) times.
-So, we take the chain beginning with \(v_i - (A^{q_i + \max_{k > i} p_k} v_i >> q_i + \max_{k > i} p_i)\), which has length \(q_i + \max_{k > i} p_k\).
-\par Now, we want to show that for each \(j\), \(e_{ij}\) is in the span of the chains we've listed so far.
-Since \(A^{q_i + \max_{k > i} p_k} v_i\) has rows \(k\) zeroed out for \(k \geq i\), our inductive hypothesis tells us that \(A^{q_i + \max_{k > i} p_k} v_i \rightshift q_i + \max_{k > i} p_k\) is in the span of the chains already listed.
-So it suffices to show that the closure of \(\langle v_i \rangle\) under action by \(A\) contains the span of \(e_{ij}\).
-And \(A^{n + r - q_i} e_{i_0, \lambda_{i_0}}\) is also in the span of chains already listed, so it suffices to show that the closure of \(\langle \sum_k b'_{ik} e_{i,k + q_i}\rangle \) under action by \(A\) contains \(\langle e_{ij}\rangle\).
-And this just follows from the fact that \(b'_{i,p_i}\) is nonzero.
-\par Now, I've shown that my purported Jordan basis has a large enough span; to show that it is indeed a Jordan basis I just need to count the number of vectors and show that we obtain \(m + n\).
-Indeed, the sum of the lengths is
-\[\left[\sum_{i : q_i \geq n + r} (p_i + q_i)\right] + (r + n + \max_{i : q_i < n + r} p_i) + \sum_{i : q_i < n + r} \begin{cases}
-    p_i + q_i, & p_i \leq \max_{k > i} p_k \\
-    q_i + \max_{k > i} p_i, & p_i > \max_{k > i} p_k
-\end{cases} = \]
-\[\left[\sum_{i : q_i \geq n + r} (p_i + q_i)\right] + (r + n + \max_{i : q_i < n + r} p_i) + \sum_{i : q_i < n + r} (q_i + \min(p_i, \max_{k > i} p_i)).\]
-Let \(i_1 < \cdots < i_s\) be the `peaks': that is, the set \(I_1 = \{i : q_i < n + r \land p_i > \max_{k > i} p_k\}\).
-(As I should've mentioned before, we take the max of the empty set to be zero.)
-Let \(I_2 = \{i : q_i < n + r\} \setminus I_1\).
-Then 
-\[\sum_{i : q_i < n + r} (q_i + \min(p_i, \max_{k > i} p_i)) = \sum_{i \in I_2} (p_i + q_i) + \sum_{k = 1}^s (q_{i_k} + p_{i_{k + 1}}).\]
-Clearly then, the whole sum is \(m + n\).
 
 \subsection{When \(X\) is all zeroes}
 In this case we have \(A(y, z) = (z_n b, (a \cdot y, z_1, ..., z_{n - 1}))\), and the condition becomes
