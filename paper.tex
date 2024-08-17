@@ -473,6 +473,31 @@ So, we will now find the irreducible components of \(U_{wr}\).
 Let \(W_\mu\) denote the Springer fiber at \(J(\mu)\), and let \((W_{\mu, d})_d\) be the irreducible components.
 We remark that the Springer fiber at \(PJ(\mu)P^{-1}\) is \(PW_\mu\), and its irreducible components are \((PW_{\mu, d})_d\).
 We will use this result; to find the regular Springer fiber at any \(X \in \gl_{m + n}\), we just need to find \(P\) such that \(P^{-1}XP\) is in Jordan normal form; equivalently, we just need to find a Jordan basis for \(X\).
+So, our strategy will be to find a subset of \(U_{wr}\) such that \(A_{e_{wr},b}\) has some fixed Jordan form \(\mu\), and the map \(b \mapsto P\) is algebraic.
+Then we can break this subset into irreducible components by putting the Springer fiber at \(b\) in correspondence with one of the \(W_{\mu,d}\).
+I think this explanation of intuition is important, so I should try to make it better.
+\par So, with this as our motivation, we find a Jordan basis for the matrices \(A\) with \((A, U) \in U_{wr}\).
+Actually this will be unnecessarily difficult to think about; it is easiest in the case \(r = 0\).
+So, we will change basis to make \(r = 0\).
+Let \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_k)\).
+Let \(X'\) be in Jordan normal form with shape \(\lambda'\).
+Let \(U_{wr}' = \{(A_{X', 0, b}, U) : \forall i. A_{X', 0, b} U_{i + 1} \subseteq U_i\}\).
+Let \(e_{ij}'\) be a Jordan basis for \(X'\).
+Let \(f_1, ..., f_n\) be a Jordan basis for the restriction of \(A_{X, 0, b}\) to \(\mathbb{}\)...
+Set \(m' := m - r\), and \(n' := n + r\).
+Let \(f_1', ..., f_{n'}'\) blah.
+Define the linear map \(Q_{wr} : \mathbb{C}^{m + n} \to \mathbb{C}^{m + n}\) by:
+\begin{itemize}
+    \item For \(i \neq w\), \(e_{ij} \mapsto e_{ij}'\)
+    \item For \(j \leq \lambda_w - r\), \(e_{wj} \mapsto e_{wj}'\)
+    \item If \(r \neq 0\), then \(e_{w,\lambda_w} \mapsto f_1'\), and blah.
+\end{itemize}
+
+We begin by choosing a new basis to simplify things by setting \(a = 0\) (that is, we will work with the matrices of the form \(A_{X',0,b'}\)).
+Here is the new basis.
+For \(i \neq w\), take the chain beginning with \(e_{i,\lambda_i}\).
+Then take the chain beginning with \(e_{w,r - 1}\).
+
 
 
 % Since \(\pi^{-1}(X) \cong \pi^{-1}(AXA^{-1})\) for any invertible \(A\), we will assume that \(X\) is in Jordan normal form.
