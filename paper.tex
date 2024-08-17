@@ -441,21 +441,28 @@ Let \(G\) act on \(V_{wr}\) by
 By restriction of \(G\) to \(G_{wr}\) and \(V_{wr}\) to \(U_{wr}\), we obtain an action of \(G_{wr}\) on \(U_{wr}\).
 Then, letting \(G_{wr}\) act on \(G\) by left multiplication, we obtain an action of \(G_{wr}\) on \(U_{wr} \times G\).
 \begin{lemma}
-    The map \(\varphi\) is a topological quotient of \(U_{wr} \times G\) by the action of the algebraic group \(G_{wr}\).
+    As an algebraic variety, \(G\) is irreducible.
 \end{lemma}
 \begin{proof}
-    TODO.
-    See \url{http://www-fourier.ujf-grenoble.fr/~mbrion/notes_luminy.pdf}, definition 1.18.
+    not sure why at the moment
 \end{proof}
-Now we only have to find the irreducible components of \(U_{wr} \times G\)
-
 \begin{lemma}
-    Let \(p : X \to Y\) be a topological quotient.
-    Then the irreducible components of \(Y\) are the images of those of \(X\).
+    % The map \(\varphi\) is a geometric quotient of \(U_{wr} \times G\) by the action of the algebraic group \(G_{wr}\).
+    The map \(\varphi\) is some sort of quotient by the action of \(G_{wr}\).
+    % The map \(X \mapsto \overline{\varphi(X \times G)}\) is a bijection from the irreducible components of \(U_{wr}\) to the irreducible components of \(V_{wr}\).
 \end{lemma}
 \begin{proof}
-    Let \(C_i\) be the irreducible components of \(X\).
+    What kind?
+    % Because \(X\) and \(G\) are irreducible, \(X \times G\) is irreducible, and therefore \(\varphi(X \times G)\) is, as well.
+    % Let \(X_1, ..., X_k\) be the irreducible components of \(U_{wr}\).
+    % It is clear that \(V_{mr} = \bigcup_i \overline{\varphi(X_i \times G)}\).
+    % And if we take \(x \in X_i \setminus \bigcup_{j \neq i} X_j\), it is clear (since \(G\) acts faithfully on itself) that \(\varphi(x, I_m)\)
+    % All that remains is to show that \(X_i \notin \bigcup_{j \neq i} \overline{\varphi(X_i \times G)}\).
+    % Indeed, 
 \end{proof}
+Our strategy is to find the irreducible components \(X \subseteq U_{wr}\), and we will then argue that the irreducible components of \(V_{wr}\) are of the form \(\varphi(X \times G)\).
+So, we will now find the irreducible components of \(U_{wr}\).
+
 
 % Since \(\pi^{-1}(X) \cong \pi^{-1}(AXA^{-1})\) for any invertible \(A\), we will assume that \(X\) is in Jordan normal form.
 Let \(f_1, ..., f_n\) be the standard basis for \(\mathbb{C}^n\), with \(A_{X, a, b} f_i = f_{i + 1}\).
