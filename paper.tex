@@ -503,6 +503,28 @@ Let \(V = \{(A_{a,b}, U) : \forall i. \; A_{a,b} U_{i + 1} \subseteq U\}\).
 Let
 \[U_0 = \{(A_{0,b}, U) \in V\}.\]
 We will find the irreducible components of \(U_0\).
+\par We write \(b_{ij}\) to denote the projection of \(b \in \mathbb{C}^m\) onto \(e_{ij}\).
+For each row \(i\), let \(p_i(b) = \max\{j : b_{ij} \neq 0\}\) (the maximum of the empty set is zero).
+Then set \(q_i(b) = \lambda_i - p_i(b)\).
+When it is clear enough from context, we will just write \(p_i\) and \(q_i\) instead of \(p_i(b)\) and \(q_i(b)\).
+
+For any \(I' \subseteq \{1, ..., k\}\) and any values \((\rho_i)_{i \in I'}\) such that (1) \(\rho_i \leq \lambda_i\) and (2) \(\rho_i\) is decreasing with \(i\), define 
+\[U_{I', (\rho_i)} := \{(A_{0, b}, U) \in U_0 : I' = \{i : p_i > \max_{j : q_j > q_i} p_j\} \land \forall i \in I'. \; p_i = \rho_i \}.\]
+\begin{lemma}
+    \(U_0 = \bigcup_{I', (\rho_i)} U_{I', (\rho_i)}\), where \(I'\) ranges over all possible subsets of \(\{1, ..., k\}\), and \((\rho_i)\) ranges over all possible maps \(I' \to \mathbb{N}_{>0}\) such that \(\rho_i\) is decreasing as \(i\) increases.
+\end{lemma}
+\begin{proof}
+    Let \((A_{0, b}, U) \in U_0\).
+    Define \(I' = \{i : p_i > \max_{j : q_j > q_i} p_j\}\), and for \(i \in I'\), \(\rho_i := p_i\).
+    All we need to do is show that each \(\rho_i\) is positive and that \(\rho_i\) is decreasing.
+    Then we get that \((A_{0,b}, U) \in U_{I', (\rho_i)}\), and we are done.
+    \par Recall that by convention we take that the maximum of the empty set is zero.
+    So, the fact that \(\rho_i > \max_{j : q_j > q_i} p_j\) tells us that \(\rho_i\) is positive.
+    Now, let \(i < i'\), with \(i, i' \in I'\).
+    If we had \(p_i \leq p_{i'}\), then \(q_i \geq q_{i'}\)
+
+\end{proof}
+
 We note that even finding the irreducible components of \(\{A_{0,0}, U \in V\}\) is a pretty hard problem.
 Not ambitious enough to try to re-solve that problem, we will use its solution.
 \par To find the irreducible components of \(U_0\), we will use a known result about the irreducible components of the usual Springer fiber at an element \(J(\mu) \in \gl_{m + n}\).
@@ -519,10 +541,7 @@ We will use this result; to find the regular Springer fiber at any \(X \in \gl_{
 Then we obtain an irreducible component by picking one of these subsets of the possible values of \(b\) and picking a Springer fiber at \(J(\mu)\).
 \par Finding the map \(b \mapsto P\) amounts to finding a Jordan basis for \(A_{0,b}\).
 So, with this as our motivation, we find a Jordan basis for \(A_{0,b}\).
-\par We write \(b_{ij}\) to denote the projection of \(b \in \mathbb{C}^m\) onto \(e_{ij}\).
-For each row \(i\), let \(p_i = \max\{j : b_{ij} \neq 0\}\) (the maximum of the empty set is zero).
-Then set \(q_i = \lambda_i - p_i\).
-Normally we index \(e_{ij}\) so that \(\lambda_i\) is nonincreasing with \(i\).
+\par Normally we index \(e_{ij}\) so that \(\lambda_i\) is nonincreasing with \(i\).
 Now, it will be more convenient to assume our indices are such that \(q_i\) is nonincreasing, so we will do that: from now on, we assume that \(q_i\) is nonincreasing.
 \par We list the chains of the Jordan basis in (roughly) order of decreasing length.
 First, for each \(i\) such that \(q_i \geq n\), we take the chain of length \(p_i + q_i\) beginning with \(e_{i, p_i + q_i}\).
