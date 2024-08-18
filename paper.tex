@@ -87,7 +87,11 @@ Let \(\widetilde{\mathcal{N}} = \{(\mathfrak{b}, n) : n \in \mathfrak{b}\} \subs
 Let \(\pi : \widetilde{\mathcal{N}} \to \mathcal{N}\) be the projection onto the second coordinate.
 For \(n \in \mathcal{N}\), we call \(\pi^{-1}(n)\) the \emph{Springer fiber at \(n\)}.
 \par We mention some results about Springer fibers, which we will use later in this paper.
-TODO: mention them.
+\begin{theorem}
+    (Needs citation!)
+    The irreducible components of the Springer fiber at \(J(\mu)\) are in bijection with the standard Young tableaus of shape \(\mu\).
+    Further, the irreducible components are equidimensional, of dimension \(\sum_{i \neq j} \min(\mu_i, \mu_j) = \sum_i (i - 1) \mu_i\).
+\end{theorem}
 
 \section{Slodowy slice}
 A basis for \(\spl_2(\mathbb{C})\) is
@@ -516,6 +520,7 @@ When it is clear enough from context, we will just write \(p_i\) and \(q_i\) ins
     TODO: something about overlap being small (they're not disjoint).  
     They are distinct.
     Is that good enough for my purposes?
+    Ah, I think it is good enough if I instead say that the sets of \(b\)'s are distinct.
 \end{lemma}
 \begin{proof}
     Let \((A_{0, b}, U) \in U_0\).
@@ -541,30 +546,18 @@ When it is clear enough from context, we will just write \(p_i\) and \(q_i\) ins
 \begin{proof}
     
 \end{proof}
-\par TODO: explain here why we are finding a Jordan basis here.
-Fix any \(I\) and \((\rho_i)\) as in Lemma 8.1.
-We will find an algebraic map \(b \mapsto P_b\) with the desired property.
-This is equivalent to finding an algebraic map taking \(b\) to a Jordan basis for \(A_{0,b}\).
-This is what we do.
-
-We note that even finding the irreducible components of \(\{A_{0,0}, U \in V\}\) is a pretty hard problem.
-Not ambitious enough to try to re-solve that problem, we will use its solution.
-\par To find the irreducible components of \(U_0\), we will use a known result about the irreducible components of the usual Springer fiber at an element \(J(\mu) \in \gl_{m + n}\).
+Fix any \(I\) and \((\rho_i)\) satisfying the conditions of Lemma 8.1.
+We will find the irreducible components of \(U_{I, (\rho_i)}\), and show that their closures are in fact irreducible components of \(U_0\).
+\par I claim that \(A_{0,b}\) has the same shape for every \((A_{0, b}, U) \in U_{I, (\rho_i)}\).
+Call this shape \(\mu\).
+By finding a algebraic map taking \(b\) to a Jordan basis for \(A_{0,b}\), we will put \(U_{I, (\rho_i)}\) in isomorphism with the product (choice of \(b\)) \(\times\) (Springer fiber at \(J(\mu)\)).
+Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find the irreducible components of \(U_{I, (\rho_i)}\).
 (I should define this somewhere else, but \(J(\mu)\) just has the blocks in order of nonincreasing size.)
-\begin{theorem}
-    (Needs citation!)
-    The irreducible components of the Springer fiber at \(J(\mu)\) are in bijection with the standard Young tableaus of shape \(\mu\).
-    Further, the irreducible components are equidimensional, of dimension \(\sum_{i \neq j} \min(\mu_i, \mu_j) = \sum_i (i - 1) \mu_i\).
-\end{theorem}
+
+\par TODO: where does this paragraph go?
 Let \(W_\mu\) denote the Springer fiber at \(J(\mu)\), and let \((W_{\mu, d})_d\) be the irreducible components.
 We remark that the Springer fiber at \(PJ(\mu)P^{-1}\) is \(PW_\mu\), and its irreducible components are \((PW_{\mu, d})_d\).
-We will use this result; to find the regular Springer fiber at any \(X \in \gl_{m + n}\), we just need to find \(P\) such that \(P^{-1}XP\) is in Jordan normal form; equivalently, we just need to find a Jordan basis for \(X\).
-\par So, our strategy will be to find a subset of the possible values of \(b\) such that \(A_{0,b}\) has some fixed Jordan form \(\mu\), and we have an algebraic map \(b \mapsto P_b\) such that for \(A_{0,b}\) in the subset, \(P_bJ(\mu)P_b^{-1} = A_{0,b}\).
-Then we obtain an irreducible component by picking one of these subsets of the possible values of \(b\) and picking a Springer fiber at \(J(\mu)\).
-\par Finding the map \(b \mapsto P\) amounts to finding a Jordan basis for \(A_{0,b}\).
-So, with this as our motivation, we find a Jordan basis for \(A_{0,b}\).
-
-
+\par TODO: begin Jordan basis thing in earnest here.
 \par Normally we index \(e_{ij}\) so that \(\lambda_i\) is nonincreasing with \(i\).
 Now, it will be more convenient to assume our indices are such that \(q_i\) is nonincreasing, so we will do that: from now on, we assume that \(q_i\) is nonincreasing.
 \par We list the chains of the Jordan basis in (roughly) order of decreasing length.
