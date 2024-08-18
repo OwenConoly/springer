@@ -570,7 +570,7 @@ Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find
     \end{itemize}
 \end{lemma}
 \begin{proof}
-    There are three things to check: (1) the chains are no longer than their claimed lengths, (2) the claimed lengths sum to \(m\), and (3) the span of the chains is \(\mathbb{C}^m\).
+    There are three things to check: (1) the chains are no longer than their claimed lengths, (2) the claimed lengths sum to \(m + n\), and (3) the span of the chains is \(\mathbb{C}^{m + n}\).
     \par We have defined \(P\) and \(P_i\) in terms of the \(\rho_i\) to make it clear that they only depend on \(I\) and the \(\rho_i\).
     Now we provide more useful characterizations.
     It is immediate from the definition of \(U_{I, (\rho_i)}\) that \(P = \max_{l : q_l < n} p_l\), and \(P_i = \max_{l : q_l < q_i} p_l\).
@@ -596,6 +596,14 @@ Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find
         This shows that the chain has length at most \(q_i + P_i\), as desired.
     \end{proof}
     \begin{proof}[Proof of (2)]
+        The sum of the lengths is
+        \[\sum_{i \notin I} (p_i + q_i) + (n + P) + \sum_{i \in I} (q_i + P_i).\]
+        Writing \(I = \{i_1 < \cdots < i_{|I|}\}\), we note that \(P = p_{i_1}\), that \(P_{i_{|I|}} = 0\), and that for \(l < |I|\) we have \(P_{i_l} = p_{i_{l + 1}}\).
+        Thus, the sum above is 
+        \[\sum_{i \notin I} (p_i + q_i) + (n + p_{i_1}) + \sum_{l = 1}^{|I|} (q_{i_l} + p_{i_{l + 1}}) = \]
+        \[\sum_{i \notin I} (p_i + q_i) + n + \sum_{l = 1}^{|I|} (q_{i_l} + p_{i_l}) = n + \sum_i (q_i + p_i) = m + n.\]
+    \end{proof}
+    \begin{proof}
         
     \end{proof}
 \end{proof}
