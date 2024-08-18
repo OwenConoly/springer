@@ -514,8 +514,9 @@ The point is that we want the list \(q_{n_1}', ..., q_{n_k}'\) to be nonincreasi
 To break ties in an arbitrary canonical way, we say that if \(q_\gamma' = q_\delta'\), then we put the one with the bigger subscript first.
 \par Now, in the rest of this section it will be convenient for us to have the values \(q_i'\) in nonincreasing order.
 To avoid death by double subscript, we define \(e_{ij}(b) := e_{n_ij}'\), \(\lambda_i(b) := \lambda_{n_i}'\), \(p_i(b) := p_{n_i}'\), \(q_i(b) := q_{n_i}'\).
-
-\par For any \(I \subseteq \{1, ..., k\}\) and any values \((\rho_{i_\alpha})_{\alpha \in I'}\) such that (1) \(\rho_{i_\alpha} \leq \lambda_{i_\alpha}\) and (2) \(\rho_{i_\alpha}\) is decreasing with \(\alpha\), define 
+\par TODO: try to introduce the same notation less obnoxiously.
+Agh wait, this doesn't work out with my \(\rho_i\)'s...
+\par For any \(I \subseteq \{1, ..., k\}\) and any values \((\rho_i)_{i \in I'}\) such that (1) \(\rho_i \leq \lambda_i\) and (2) \(\rho_{i_\alpha}\) is decreasing with \(\alpha\), define 
 \[U_{I', (\rho_i)} := \{(A_{0, b}, U) \in U_0 : I' = \{i : p_i > \max_{j : q_j > q_i} p_j\} \land \forall i \in I'. \; p_i = \rho_i \}.\]
 \begin{lemma}
     \(U_0 = \bigcup_{I', (\rho_i)} U_{I', (\rho_i)}\), where \(I'\) ranges over all possible subsets of \(\{1, ..., k\}\), and \((\rho_i)\) ranges over all possible maps \(I' \to \mathbb{N}_{>0}\) such that \(\rho_i\) is decreasing as \(i\) increases.
