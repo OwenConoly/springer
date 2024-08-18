@@ -603,42 +603,33 @@ Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find
         \[\sum_{i \notin I} (p_i + q_i) + (n + p_{i_1}) + \sum_{l = 1}^{|I|} (q_{i_l} + p_{i_{l + 1}}) = \]
         \[\sum_{i \notin I} (p_i + q_i) + n + \sum_{l = 1}^{|I|} (q_{i_l} + p_{i_l}) = n + \sum_i (q_i + p_i) = m + n.\]
     \end{proof}
-    \begin{proof}
-        
+    \begin{proof}[Proof of (3)]
+        Let \(W\) be the span of the chains listed.
+        We need to show that \(W = \mathbb{C}^{m + n}\).
+        Because every \(i \in I\) satisfies \(q_i < n\), clearly \(\langle e_{ij}\rangle_{i,j : q_i \geq n} \subseteq W\).
+        \par I claim that \(f_n \in W\) as well.
+        To see this, we consider the chain beginning with \(f_n - (A^{n + P} f_n \rightshift n + P)\).
+        As explained in the proof of (1), we have \(A^{n + P} f_n \in \langle e_{ij}\rangle_{i,j : q_i \geq n}\).
+        Consequently, \((A^{n + P} f_n \rightshift n + P) \in \langle e_{ij} \rangle_{i,j : q_i \geq n} \subseteq W\).
+        Because \(f_n - (A^{n + P} f_n \rightshift n + P) \in W\), this implies that \(f_n \in W\).
+        \par Because \(AW \subseteq W\) (obvious, since \(W\) is the span of chains), the fact that \(f_n \in W\) implies that \(f_i \in W\) for each \(i\), and also \(b \leftshift l \in W\) for each \(l \geq 0\).
+        \par Now we are left with showing that \(\langle e_{ij} \rangle_{i,j : q_i < n} \subseteq W\).
+        This is obvious for \(i \notin I\).
+        For \(i \in I\), we do it inductively.
+        Fix \(i \in I\), and suppose we have already shown that for all \(i' \in I\) with \(q_{i'} > q_i\), we have \(\langle e_{ij} \rangle_{j \textrm{ arbitrary}} \subseteq W\).
+        We will show that \(\langle e_{ij} \rangle_{j \textrm{ arbitrary}} \subseteq W\).
+        \par To see this, we consider the chain beginning with \(v_i - (A^{q_i + P_i} v_i \rightshift q_i + P_i)\).
+        (Recall \(v_i = A^{n - q_i} f_n - \sum_{l = 1}^{p_i} b_{il} e_{i,l + q_i}\).)
+        Because \(AW \subseteq W\), and \(b_{i,p_i} \neq 0\) (by definition of \(p_i\)), it suffices to show that \(\sum_{l = 1}^{p_i} b_{il} e_{i,k + q_i} \in W\).
+        As explained in the proof of (1), we have \(A^{q_i + P_i} v_i \in \langle e_{lj} \rangle_{q_l \geq q_i}\).
+        And since \(A^{q_i + P_i} v_i\) has row \(i\) zeroed out, in fact \(A^{q_i + P_i} v_i \in \langle e_{lj} \rangle_{l : l \neq i \land q_l \geq q_i}\).
+        Hence, \(A^{q_i + P_i} v_i \rightshift q_i + P_i \in \langle e_{lj} \rangle_{l : l \neq i \land q_l \geq q_i}\).
+        By our inductive hypothesis, \(\langle e_{lj} \rangle_{l : l \neq i \land q_l \geq q_i} \subseteq W\), and consequently \(A^{q_i + P_i} v_i \rightshift q_i + P_i \in W\).
+        Since we know \(v_i - (A^{q_i + P_i} v_i \rightshift q_i + P_i) \in W\), this implies that \(v_i \in W\).
+        Because \(A^{n - q_i} f_n \in W\), this then implies that \(\sum_{l = 1}^{p_i} b_{il} e_{i,l + q_i} \in W\), as desired.
     \end{proof}
+    We proved (1), (2), (3), so we are done.
 \end{proof}
-\par We list the chains of the Jordan basis.
-First, for each \(i \notin I\), we take the chain of length \(p_i + q_i\) beginning with \(e_{i,p_i + q_i} = e_{i\lambda_i}\).
-\par Now, it is clear that each \(f_i\) is in the span of the chains we have listed so far.
-It is also clear that \(b \leftshift k\) is in the span, for each \(k \geq 0\).
-\par Now, we handle the \(i\) with \(q_i < n\).
-We take as an inductive hypothesis that for all \(i' < i\) and all \(j\), we have \(e_{i'j}\) in the span of the chains we have already listed.
-\par If \(p_i \leq \max_{k > i} p_k\), then we take the chain beginning with \(e_{i,p_i + q_i}\) of length \(p_i + q_i\).
-Clearly we then have \(e_{i'j}\) in the span of the chains we have listed, for \(i' \leq i\).
-\par Now, we want to show that for each \(j\), \(e_{ij}\) is in the span of the chains we've listed so far.
-Since \(A^{q_i + \max_{k > i} p_k} v_i\) has rows \(k\) zeroed out for \(k \geq i\), our inductive hypothesis tells us that \(A^{q_i + \max_{k > i} p_k} v_i \rightshift q_i + \max_{k > i} p_k\) is in the span of the chains already listed.
-So it suffices to show that the closure of \(\langle v_i \rangle\) under action by \(A\) contains the span of \(e_{ij}\).
-And \(A^{n - q_i} f_n\) is also in the span of chains already listed, so it suffices to show that the closure of \(\langle \sum_k b_{ik} e_{i,k + q_i}\rangle \) under action by \(A\) contains \(\langle e_{ij}\rangle\).
-And this just follows from the fact that \(b_{i,p_i}\) is nonzero.
-\par Now, I've shown that my purported Jordan basis has a large enough span; to show that it is indeed a Jordan basis I just need to count the number of vectors and show that we obtain \(m + n\).
-I list the purported basis here:
-\begin{itemize}
-    \item TODO
-\end{itemize}
-Indeed, the sum of the lengths is
-\[\left[\sum_{i : q_i \geq n + r} (p_i + q_i)\right] + (r + n + \max_{i : q_i < n + r} p_i) + \sum_{i : q_i < n + r} \begin{cases}
-    p_i + q_i, & p_i \leq \max_{k > i} p_k \\
-    q_i + \max_{k > i} p_i, & p_i > \max_{k > i} p_k
-\end{cases} = \]
-\[\left[\sum_{i : q_i \geq n + r} (p_i + q_i)\right] + (r + n + \max_{i : q_i < n + r} p_i) + \sum_{i : q_i < n + r} (q_i + \min(p_i, \max_{k > i} p_i)).\]
-Let \(i_1 < \cdots < i_s\) be the `peaks': that is, the set \(I_1 = \{i : q_i < n + r \land p_i > \max_{k > i} p_k\}\).
-(As I should've mentioned before, we take the max of the empty set to be zero.)
-Let \(I_2 = \{i : q_i < n + r\} \setminus I_1\).
-Then 
-\[\sum_{i : q_i < n + r} (q_i + \min(p_i, \max_{k > i} p_i)) = \sum_{i \in I_2} (p_i + q_i) + \sum_{k = 1}^s (q_{i_k} + p_{i_{k + 1}}).\]
-Clearly then, the whole sum is \(m + n\).
-
-
 
 \section{Finding the irreducible components of a springer fiber at a slodowy slice}
 Apply things from the previous two sections, and conclude.
