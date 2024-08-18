@@ -13,7 +13,7 @@
 \usepackage{enumerate}
 \usepackage{rotating}
 
-\newcommand{\leftshift}{$\,\texttt{<<}\,$}
+\newcommand{\leftshift}{\,\texttt{<<}\,}
 \newcommand{\downshift}{\mathbin{\rotatebox[origin=c]{90}{\leftshift}}}
 \newcommand{\rightshift}{\mathbin{\rotatebox[origin=c]{180}{\leftshift}}}
 \newcommand{\upshift}{\mathbin{\rotatebox[origin=c]{270}{\leftshift}}}
@@ -511,9 +511,11 @@ We will find the irreducible components of \(U_0\).
 For each row \(i\), let \(p_i(b) = \max\{j : b_{ij} \neq 0\}\) (the maximum of the empty set is zero).
 Then set \(q_i(b) = \lambda_i - p_i(b)\).
 When it is clear enough from context, we will just write \(p_i\) and \(q_i\) instead of \(p_i(b)\) and \(q_i(b)\).
-\par For any \(I \subseteq \{1, ..., k\}\) and any values \((\rho_i)_{i \in I}\) such that (1) \(\rho_i \leq \lambda_i\), (2) \(\rho_i\) is decreasing with \(i\), and (3) \(\lambda_i - \rho_i\) is decreasing with \(i\), define 
+\par For any \(I \subseteq \{1, ..., k\}\) and any values \((\rho_i)_{i \in I}\) %such that (1) \(\rho_i \leq \lambda_i\), (2) \(\rho_i\) is decreasing with \(i\), and (3) \(\lambda_i - \rho_i\) is decreasing with \(i\)
+, define 
 \[U_{I, (\rho_i)} := \] 
-\[\{(A_{0, b}, U) \in U_0 : \{(p_i, q_i) : i \in I\} = \{(p_i, q_i) : p_i = \max_{j : q_j = q_i} p_j > \max_{j : q_j < q_i} p_j \} \] 
+\[\{(A_{0, b}, U) \in U_0 : \]
+\[\{(p_i, q_i) : i \in I\} = \{(p_i, q_i) : n > q_i \land p_i = \max_{j : q_j = q_i} p_j > \max_{j : q_j < q_i} p_j \} \] 
 \[\land \forall i \in I. \; p_i = \rho_i \}.\]
 \begin{lemma}
     \(U_0 = \bigcup_{I, (\rho_i)} U_{I, (\rho_i)}\), where \(I\) ranges over all subsets of \(\{1, ..., k\}\), and \((\rho_i)\) ranges over all maps \(I \to \mathbb{N}_{>0}\) such that \(\rho_i\) and \(\lambda_i - \rho_i\) are both decreasing with \(i\).
@@ -524,7 +526,7 @@ When it is clear enough from context, we will just write \(p_i\) and \(q_i\) ins
 \end{lemma}
 \begin{proof}
     Let \((A_{0, b}, U) \in U_0\).
-    Let \(I' = \{(p_i, q_i) : p_i = \max_{j : q_j = q_i} p_j > \max_{j : q_j < q_i} p_j\}\).
+    Let \(I' = \{(p_i, q_i) : p_i = n > q_i \land \max_{j : q_j = q_i} p_j > \max_{j : q_j < q_i} p_j\}\).
     Then let \(I = \{\max\{i : (p_i, q_i) = (p, q)\} : (p, q) \in I'\}\).
     Choosing the maximal \(i\) is an arbitrary choice; we just have to pick one.
     For \(i \in I\), \(\rho_i := p_i\).
@@ -535,7 +537,7 @@ When it is clear enough from context, we will just write \(p_i\) and \(q_i\) ins
     \par Let \(i, j \in I\) with \(i < j\).
     Since \(\lambda_i \geq \lambda_j\), we have either \(p_i \geq p_j\) or \(q_i \geq q_j\).
     Further, since \((p_i, q_i) \neq (p_j, q_j)\) (clear from definition of \(I\)), either \(p_i > p_j\) or \(q_i > q_j\).
-    And for \(i, j \in I'\) we clearly have \(p_i > p_j \iff q_i > q_j\).
+    And for \(i, j \in I\) we clearly have \(p_i > p_j \iff q_i > q_j\).
     So in either case, both \(p_i > p_j\) and \(q_i > q_j\), and consequently both \(\rho_i > \rho_j\) and \(\lambda_i - \rho_i > \lambda_j - \rho_j\).
 \end{proof}
 
@@ -553,34 +555,58 @@ Call this shape \(\mu\).
 By finding a algebraic map taking \(b\) to a Jordan basis for \(A_{0,b}\), we will put \(U_{I, (\rho_i)}\) in isomorphism with the product (choice of \(b\)) \(\times\) (Springer fiber at \(J(\mu)\)).
 Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find the irreducible components of \(U_{I, (\rho_i)}\).
 (I should define this somewhere else, but \(J(\mu)\) just has the blocks in order of nonincreasing size.)
-\par TODO: where does this paragraph go?
-Let \(W_\mu\) denote the Springer fiber at \(J(\mu)\), and let \((W_{\mu, d})_d\) be the irreducible components.
-We remark that the Springer fiber at \(PJ(\mu)P^{-1}\) is \(PW_\mu\), and its irreducible components are \((PW_{\mu, d})_d\).
+% \par TODO: where does this paragraph go?
+% Let \(W_\mu\) denote the Springer fiber at \(J(\mu)\), and let \((W_{\mu, d})_d\) be the irreducible components.
+% We remark that the Springer fiber at \(PJ(\mu)P^{-1}\) is \(PW_\mu\), and its irreducible components are \((PW_{\mu, d})_d\).
 \par So, now we find a Jordan basis for \(A_{0, b}\).
+\begin{lemma}
+    Let \(P = \max_{i \in I} \rho_i\), and for \(i \in I\), let \(P_i = \max_{j \in I : j > i} \rho_j\).
+    The following vectors give a Jordan basis for \(A_{0,b}\).
+    (For convenience, we write \(A := A_{0,b}\) in this lemma and proof.)
+    \begin{itemize}
+        \item For \(i \notin I\), the chain of length \(p_i + q_i\) beginning with \(e_{i, p_i + q_i}\)
+        \item The chain of length \(n + P\) beginning with \(f_n - (A^{n + P}f_n \rightshift n + P)\)
+        \item For \(i \in I\), the chain of length \(q_i + P_i\) beginning with \(v_i - (A^{q_i + P_i} v_i \rightshift q_i + P_i)\), where \(v_i := A^{n - q_i} f_n - \sum_{l = 1}^{p_i} b_{il} e_{i,l + q_i}\)
+    \end{itemize}
+\end{lemma}
+\begin{proof}
+    There are three things to check: (1) the chains are no longer than their claimed lengths, (2) the claimed lengths sum to \(m\), and (3) the span of the chains is \(\mathbb{C}^m\).
+    \par We have defined \(P\) and \(P_i\) in terms of the \(\rho_i\) to make it clear that they only depend on \(I\) and the \(\rho_i\).
+    Now we provide more useful characterizations.
+    It is immediate from the definition of \(U_{I, (\rho_i)}\) that \(P = \max_{l : q_l < n} p_l\), and \(P_i = \max_{l : q_l < q_i} p_l\).
+    \begin{proof}[Proof of (1)]
+        It is obvious that a chain beginning with \(e_{i, p_i + q_i}\) has length \(p_i + q_i\).
+        \par Now consider the chain beginning with \(f_n - (A^{n + P} f_n \rightshift n + P)\).
+        Note that \(A^n f_n = b\), so \(A^{n + P} f_n = A^P b = b \leftshift P\).
+        By shifting \(b\) left \(P\) times, we zero out all the rows \(i\) where \(q_i < n\).
+        This ensures that the operation of shifting \(b \leftshift P\) right \(n + P\) times is invertible by shifting left \(n + P\) times.
+        That is,
+        \[A^{n + P} f_n = b \leftshift P = ((b \leftshift P) \rightshift n + P) \leftshift n + P = A^{n + P}(A^{n + P}f_n \rightshift n + P).\]
+        This shows that the chain has length at most \(n + P\), as desired.
+        \par Now, let \(i \in I\).
+        We have \(v_i = A^{n - q_i} f_n - \sum_{l = 1}^{p_i} b_{il} e_{i,l + q_i}\).
+        First we note that \(q_i < n\) by the definition of \(U_{I, (\rho_i)}\), so the definition of \(v_i\) makes sense.
+        We consider the chain beginning with \(v_i - (A^{q_i + P_i} v_i \rightshift q_i + P_i)\).
+        Note that \(A^{q_i} v_i\) is just \(b\) with row \(i\) zeroed out.
+        For brevity, we write \(b_i := A^{q_i} v_i\).
+        Note that \(b_i \leftshift P_i\) has rows \(l\) zeroed out, for all \(l\) with \(q_l < q_i\).
+        This ensures that shifting \(b_i \leftshift P_i\) right \(q_i + P_i\) times can be inverted by shifting left \(q_i + P_i\) times.
+        That is,
+        \[A^{q_i + P_i} v_i = b_i \leftshift P_i = ((b_i \leftshift P_i) \rightshift q_i + P_i) \leftshift q_i + P_i = A^{q_i + P_i}(A^{q_i + P_i} v_i \rightshift q_i + P_i).\]
+        This shows that the chain has length at most \(q_i + P_i\), as desired.
+    \end{proof}
+    \begin{proof}[Proof of (2)]
+        
+    \end{proof}
+\end{proof}
 \par We list the chains of the Jordan basis.
-First, for each \(i \notin I\), we take the chain of length \(p_i + q_i\) beginning with \(e_{i,p_i + q_i} = e_{i\lambda_i}\)
-% First, for each \(i\) such that \(q_i \geq n\), we take the chain of length \(p_i + q_i\) beginning with \(e_{i, p_i + q_i}\).
-(Agh, the definition of I was wrong, we also need the the condition relating \(q_i\) to \(n\).)
-\par Now we handle \(f_n\).
-Let \(P = \max_{i : q_i < n} p_i = (something in terms of \rho)\).
-Set 
-\[v = f_n - (A^{n + P}f_n \rightshift n + P).\]
-Note that \(A^n f_n = b\), so \(A^{n + P} f_n = A^P b = b \leftshift P\).
-By shifting \(b\) left \(P\) times, we zero out all the rows \(i\) where \(q_i < n\).
-This ensures that the operation of shifting \(b' \leftshift P\) right \(n + P\) times is invertible by applying \(A\), and thus shifting left, \(n + P\) times.
-So, we take the chain of length \(n + P\) beginning with \(v\).
+First, for each \(i \notin I\), we take the chain of length \(p_i + q_i\) beginning with \(e_{i,p_i + q_i} = e_{i\lambda_i}\).
 \par Now, it is clear that each \(f_i\) is in the span of the chains we have listed so far.
 It is also clear that \(b \leftshift k\) is in the span, for each \(k \geq 0\).
 \par Now, we handle the \(i\) with \(q_i < n\).
 We take as an inductive hypothesis that for all \(i' < i\) and all \(j\), we have \(e_{i'j}\) in the span of the chains we have already listed.
 \par If \(p_i \leq \max_{k > i} p_k\), then we take the chain beginning with \(e_{i,p_i + q_i}\) of length \(p_i + q_i\).
 Clearly we then have \(e_{i'j}\) in the span of the chains we have listed, for \(i' \leq i\).
-\par Otherwise, we set 
-\[v_i = A^{n - q_i} f_n - \sum_{k = 1}^{p_i}b_{i,k} e_{i,k + q_i}.\]
-Note that \(A^{q_i} v_i\) is just \(b\) with row \(i\) zeroed out.
-Then, \(A^{q_i + \max_{k > i} p_k} v_i\) will have, in addition, rows \(k\) zeroed out, for all \(k > i\).
-This ensures that shifting \(A^{q_i + \max_{k > i} p_k} v_i\) right \(q_i + \max_{k > i} p_k\) times will be inverted by applying \(A\), and thus shifting left, \(q_i + \max_{k > i} p_k\) times.
-So, we take the chain beginning with \(v_i - (A^{q_i + \max_{k > i} p_k} v_i >> q_i + \max_{k > i} p_i)\), which has length \(q_i + \max_{k > i} p_k\).
 \par Now, we want to show that for each \(j\), \(e_{ij}\) is in the span of the chains we've listed so far.
 Since \(A^{q_i + \max_{k > i} p_k} v_i\) has rows \(k\) zeroed out for \(k \geq i\), our inductive hypothesis tells us that \(A^{q_i + \max_{k > i} p_k} v_i \rightshift q_i + \max_{k > i} p_k\) is in the span of the chains already listed.
 So it suffices to show that the closure of \(\langle v_i \rangle\) under action by \(A\) contains the span of \(e_{ij}\).
