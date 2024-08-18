@@ -503,18 +503,10 @@ Let \(V = \{(A_{a,b}, U) : \forall i. \; A_{a,b} U_{i + 1} \subseteq U\}\).
 Let
 \[U_0 = \{(A_{0,b}, U) \in V\}.\]
 We will find the irreducible components of \(U_0\).
-% \par We write \(b_{ij}'\) to denote the projection of \(b \in \mathbb{C}^m\) onto \(e_{ij}'\).
-% For each row \(i\), let \(p_i'(b) = \max\{j : b_{ij}' \neq 0\}\) (the maximum of the empty set is zero).
-% Then set \(q_i'(b) = \lambda_i' - p_i'(b)\).
-% When it is clear enough from context, we will just write \(p_i'\) and \(q_i'\) instead of \(p_i'(b)\) and \(q_i'(b)\).
-% Then, let \(\{n_1(b), ..., n_k(b)\} = \{1, ..., k\}\) be such that the list 
-% \[(q_{n_1}', n_1), ..., (q_{n_k}', n_k)\]
-% is in reverse lexicographical order; that is, for any \(\alpha < \beta\), we have either \(q_{n_\alpha}' > q_{n_\beta}'\) or \(q_{n_\alpha}' = q_{n_\beta}' \land n_\alpha > n_\beta\).
-% The point is that we want the list \(q_{n_1}', ..., q_{n_k}'\) to be nonincreasing.
-% To break ties in an arbitrary canonical way, we say that if \(q_\gamma' = q_\delta'\), then we put the one with the bigger subscript first.
-% \par Now, in the rest of this section it will be convenient for us to have the values \(q_i'\) in nonincreasing order.
-% To avoid death by double subscript, we define \(e_{ij}(b) := e_{n_ij}'\), \(\lambda_i(b) := \lambda_{n_i}'\), \(p_i(b) := p_{n_i}'\), \(q_i(b) := q_{n_i}'\).
-% \par TODO: try to introduce the same notation less obnoxiously.
+\par We write \(b_{ij}\) to denote the projection of \(b \in \mathbb{C}^m\) onto \(e_{ij}\).
+For each row \(i\), let \(p_i(b) = \max\{j : b_{ij} \neq 0\}\) (the maximum of the empty set is zero).
+Then set \(q_i(b) = \lambda_i - p_i(b)\).
+When it is clear enough from context, we will just write \(p_i\) and \(q_i\) instead of \(p_i(b)\) and \(q_i(b)\).
 \par For any \(I \subseteq \{1, ..., k\}\) and any values \((\rho_i)_{i \in I}\) such that (1) \(\rho_i \leq \lambda_i\), (2) \(\rho_i\) is decreasing with \(i\), and (3) \(\lambda_i - \rho_i\) is decreasing with \(i\), define 
 \[U_{I, (\rho_i)} := \] 
 \[\{(A_{0, b}, U) \in U_0 : \{(p_i, q_i) : i \in I\} = \{(p_i, q_i) : p_i = \max_{j : q_j = q_i} p_j > \max_{j : q_j < q_i} p_j \} \] 
