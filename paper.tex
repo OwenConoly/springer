@@ -515,20 +515,21 @@ To break ties in an arbitrary canonical way, we say that if \(q_\gamma' = q_\del
 \par Now, in the rest of this section it will be convenient for us to have the values \(q_i'\) in nonincreasing order.
 To avoid death by double subscript, we define \(e_{ij}(b) := e_{n_ij}'\), \(\lambda_i(b) := \lambda_{n_i}'\), \(p_i(b) := p_{n_i}'\), \(q_i(b) := q_{n_i}'\).
 \par TODO: try to introduce the same notation less obnoxiously.
-Agh wait, this doesn't work out with my \(\rho_i\)'s...
-\par For any \(I \subseteq \{1, ..., k\}\) and any values \((\rho_i)_{i \in I'}\) such that (1) \(\rho_i \leq \lambda_i\) and (2) \(\rho_{i_\alpha}\) is decreasing with \(\alpha\), define 
-\[U_{I', (\rho_i)} := \{(A_{0, b}, U) \in U_0 : I' = \{i : p_i > \max_{j : q_j > q_i} p_j\} \land \forall i \in I'. \; p_i = \rho_i \}.\]
+\par For any \(I' \subseteq \{1, ..., k\}\) and any values \((\rho_i')_{i \in I'}\) such that (1) \(\rho_i' \leq \lambda_i\) and (2) \(\rho_i'\) is decreasing with \(i\), define 
+\[U_{I', (\rho_i')} := \{(A_{0, b}, U) \in U_0 : I' = \{n_i : p_i > \max_{j > i} p_j\} \land \forall i \in I'. \; p_i = \rho_{n_i}' \}.\]
 \begin{lemma}
-    \(U_0 = \bigcup_{I', (\rho_i)} U_{I', (\rho_i)}\), where \(I'\) ranges over all possible subsets of \(\{1, ..., k\}\), and \((\rho_i)\) ranges over all possible maps \(I' \to \mathbb{N}_{>0}\) such that \(\rho_i\) is decreasing as \(i\) increases.
+    \(U_0 = \bigcup_{I', (\rho_i')} U_{I', (\rho_i')}\), where \(I'\) ranges over all possible subsets of \(\{1, ..., k\}\), and \((\rho_i')\) ranges over all possible maps \(I' \to \mathbb{N}_{>0}\) such that \(\rho_i'\) is decreasing as \(i\) increases.
 \end{lemma}
 \begin{proof}
     Let \((A_{0, b}, U) \in U_0\).
-    Define \(I' = \{i : p_i > \max_{j : q_j > q_i} p_j\}\), and for \(i \in I'\), \(\rho_i := p_i\).
-    All we need to do is show that each \(\rho_i\) is positive and that \(\rho_i\) is decreasing.
-    Then we get that \((A_{0,b}, U) \in U_{I', (\rho_i)}\), and we are done.
-    \par Recall that by convention we take that the maximum of the empty set is zero.
-    So, the fact that \(\rho_i > \max_{j : q_j > q_i} p_j\) tells us that \(\rho_i\) is positive.
-    Now, let \(i < i'\), with \(i, i' \in I'\).
+    Define \(I' := \{n_i : p_i > \max_{j > i} p_j\}\), and for \(n_i \in I'\), \(\rho_{n_i}' := p_i\).
+    All we need to do is show that each \(\rho_i'\) is positive and that \(\rho_i'\) is decreasing.
+    Then we get that \((A_{0,b}, U) \in U_{I', (\rho_i')}\), and we are done.
+    \par Recall that by convention the maximum of the empty set is zero.
+    So, the fact that \(p_i > \max_{j > i} p_j\) tells us that \(\rho_{n_i}' = p_i\) is positive.
+    Now, let \(n_i < n_{i'}\), with \(n_i, n_{i'} \in I'\).
+    We have \(p_i > \max_{j > i} p_j\); that is, \(\) AGH CONFUSION
+    We have two cases: either \(i < i'\), or \(i' < i\).
     If we had \(p_i \leq p_{i'}\), then \(q_i \geq q_{i'}\)
 
 \end{proof}
