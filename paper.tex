@@ -503,34 +503,43 @@ Let \(V = \{(A_{a,b}, U) : \forall i. \; A_{a,b} U_{i + 1} \subseteq U\}\).
 Let
 \[U_0 = \{(A_{0,b}, U) \in V\}.\]
 We will find the irreducible components of \(U_0\).
-\par We write \(b_{ij}'\) to denote the projection of \(b \in \mathbb{C}^m\) onto \(e_{ij}'\).
-For each row \(i\), let \(p_i'(b) = \max\{j : b_{ij}' \neq 0\}\) (the maximum of the empty set is zero).
-Then set \(q_i'(b) = \lambda_i' - p_i'(b)\).
-When it is clear enough from context, we will just write \(p_i'\) and \(q_i'\) instead of \(p_i'(b)\) and \(q_i'(b)\).
-Then, let \(\{n_1(b), ..., n_k(b)\} = \{1, ..., k\}\) be such that the list 
-\[(q_{n_1}', n_1), ..., (q_{n_k}', n_k)\]
-is in reverse lexicographical order; that is, for any \(\alpha < \beta\), we have either \(q_{n_\alpha}' > q_{n_\beta}'\) or \(q_{n_\alpha}' = q_{n_\beta}' \land n_\alpha > n_\beta\).
-The point is that we want the list \(q_{n_1}', ..., q_{n_k}'\) to be nonincreasing.
-To break ties in an arbitrary canonical way, we say that if \(q_\gamma' = q_\delta'\), then we put the one with the bigger subscript first.
-\par Now, in the rest of this section it will be convenient for us to have the values \(q_i'\) in nonincreasing order.
-To avoid death by double subscript, we define \(e_{ij}(b) := e_{n_ij}'\), \(\lambda_i(b) := \lambda_{n_i}'\), \(p_i(b) := p_{n_i}'\), \(q_i(b) := q_{n_i}'\).
-\par TODO: try to introduce the same notation less obnoxiously.
-\par For any \(I' \subseteq \{1, ..., k\}\) and any values \((\rho_i')_{i \in I'}\) such that (1) \(\rho_i' \leq \lambda_i\) and (2) \(\rho_i'\) is decreasing with \(i\), define 
-\[U_{I', (\rho_i')} := \{(A_{0, b}, U) \in U_0 : I' = \{n_i : p_i > \max_{j > i} p_j\} \land \forall i \in I'. \; p_i = \rho_{n_i}' \}.\]
+% \par We write \(b_{ij}'\) to denote the projection of \(b \in \mathbb{C}^m\) onto \(e_{ij}'\).
+% For each row \(i\), let \(p_i'(b) = \max\{j : b_{ij}' \neq 0\}\) (the maximum of the empty set is zero).
+% Then set \(q_i'(b) = \lambda_i' - p_i'(b)\).
+% When it is clear enough from context, we will just write \(p_i'\) and \(q_i'\) instead of \(p_i'(b)\) and \(q_i'(b)\).
+% Then, let \(\{n_1(b), ..., n_k(b)\} = \{1, ..., k\}\) be such that the list 
+% \[(q_{n_1}', n_1), ..., (q_{n_k}', n_k)\]
+% is in reverse lexicographical order; that is, for any \(\alpha < \beta\), we have either \(q_{n_\alpha}' > q_{n_\beta}'\) or \(q_{n_\alpha}' = q_{n_\beta}' \land n_\alpha > n_\beta\).
+% The point is that we want the list \(q_{n_1}', ..., q_{n_k}'\) to be nonincreasing.
+% To break ties in an arbitrary canonical way, we say that if \(q_\gamma' = q_\delta'\), then we put the one with the bigger subscript first.
+% \par Now, in the rest of this section it will be convenient for us to have the values \(q_i'\) in nonincreasing order.
+% To avoid death by double subscript, we define \(e_{ij}(b) := e_{n_ij}'\), \(\lambda_i(b) := \lambda_{n_i}'\), \(p_i(b) := p_{n_i}'\), \(q_i(b) := q_{n_i}'\).
+% \par TODO: try to introduce the same notation less obnoxiously.
+\par For any \(I \subseteq \{1, ..., k\}\) and any values \((\rho_i)_{i \in I}\) such that (1) \(\rho_i \leq \lambda_i\), (2) \(\rho_i\) is decreasing with \(i\), and (3) \(\lambda_i - \rho_i\) is decreasing with \(i\), define 
+\[U_{I, (\rho_i)} := \] 
+\[\{(A_{0, b}, U) \in U_0 : \{(p_i, q_i) : i \in I\} = \{(p_i, q_i) : p_i = \max_{j : q_j = q_i} p_j > \max_{j : q_j < q_i} p_j \} \] 
+\[\land \forall i \in I. \; p_i = \rho_i \}.\]
 \begin{lemma}
-    \(U_0 = \bigcup_{I', (\rho_i')} U_{I', (\rho_i')}\), where \(I'\) ranges over all possible subsets of \(\{1, ..., k\}\), and \((\rho_i')\) ranges over all possible maps \(I' \to \mathbb{N}_{>0}\) such that the maps \(i \mapsto \rho_i'\) and \(i \mapsto \lambda'_i - \rho_i'\) are both decreasing with \(i\).
+    \(U_0 = \bigcup_{I, (\rho_i)} U_{I, (\rho_i)}\), where \(I\) ranges over all subsets of \(\{1, ..., k\}\), and \((\rho_i)\) ranges over all maps \(I \to \mathbb{N}_{>0}\) such that \(\rho_i\) and \(\lambda_i - \rho_i\) are both decreasing with \(i\).
+    TODO: something about overlap being small (they're not disjoint).  
+    They are distinct.
+    Is that good enough for my purposes?
 \end{lemma}
 \begin{proof}
     Let \((A_{0, b}, U) \in U_0\).
-    Define \(I := \{i : p_i > \max_{j > i} p_j\}\), and let \(I' := \{n_i : i \in I\}\).
-    And for \(i \in I\), \(\rho_{n_i}' := p_i\).
-    All we need to do is show that each \(\rho_i'\) is positive and that \(\rho_i'\) is decreasing.
-    Then we get that \((A_{0,b}, U) \in U_{I', (\rho_i')}\), and we are done.
+    Let \(I' = \{(p_i, q_i) : p_i = \max_{j : q_j = q_i} p_j > \max_{j : q_j < q_i} p_j\}\).
+    Then let \(I = \{\max\{i : (p_i, q_i) = (p, q)\} : (p, q) \in I'\}\).
+    Choosing the maximal \(i\) is an arbitrary choice; we just have to pick one.
+    For \(i \in I\), \(\rho_i := p_i\).
+    All we need to do is show that each \(\rho_i\) is positive, and that \(\rho_i\) and \(\lambda_i - \rho_i\) are decreasing.
+    Then we get that \((A_{0,b}, U) \in U_{I, (\rho_i)}\), and we are done.
     \par Recall that by convention the maximum of the empty set is zero.
-    So, the fact that \(p_i > \max_{j > i} p_j\) tells us that \(\rho_{n_i}' = p_i\) is positive.
-    \par For \(i, j \in I\) with \(i < j\), we have \(q_i \geq q_j\) (as \(q\) is nonincreasing), and also \(p_i > p_j\) (as \(i \in I\), and consequently \(p_i > \max_{l > i} p_l\)).
-    Thus, \(\lambda_i > \lambda_j\).
-
+    So, the fact that \(p_i > \max_{j > i} p_j\) tells us that \(\rho_i = p_i\) is positive.
+    \par Let \(i, j \in I\) with \(i < j\).
+    Since \(\lambda_i \geq \lambda_j\), we have either \(p_i \geq p_j\) or \(q_i \geq q_j\).
+    Further, since \((p_i, q_i) \neq (p_j, q_j)\) (clear from definition of \(I\)), either \(p_i > p_j\) or \(q_i > q_j\).
+    And for \(i, j \in I'\) we clearly have \(p_i > p_j \iff q_i > q_j\).
+    So in either case, both \(p_i > p_j\) and \(q_i > q_j\), and consequently both \(\rho_i > \rho_j\) and \(\lambda_i - \rho_i > \lambda_j - \rho_j\).
 \end{proof}
 
 We note that even finding the irreducible components of \(\{A_{0,0}, U \in V\}\) is a pretty hard problem.
