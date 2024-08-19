@@ -87,7 +87,7 @@ Let \(\widetilde{\mathcal{N}} = \{(\mathfrak{b}, n) : n \in \mathfrak{b}\} \subs
 Let \(\pi : \widetilde{\mathcal{N}} \to \mathcal{N}\) be the projection onto the second coordinate.
 For \(n \in \mathcal{N}\), we call \(\pi^{-1}(n)\) the \emph{Springer fiber at \(n\)}.
 \par We mention some results about Springer fibers, which we will use later in this paper.
-\begin{theorem}
+\begin{theorem}\label{usual_springer_fiber}
     (Needs citation!)
     The irreducible components of the Springer fiber at \(J(\mu)\) are in bijection with the standard Young tableaus of shape \(\mu\).
     Further, the irreducible components are equidimensional, of dimension \(\sum_{i \neq j} \min(\mu_i, \mu_j) = \sum_i (i - 1) \mu_i\).
@@ -779,92 +779,6 @@ Let \((e_{ij} : i \leq m, j \leq \lambda_i)\) be a Jordan basis for \(A\).
     Then we define \(P_2(e_{\lambda_{i_0}}) := P_1(e_{\lambda_{i_0}}) - \frac{f\circ P_1(e_{j_0 + 2})}{f\circ P_1(e_{j_0})} e_{\lambda_{i_0} - 2}\), and notice that \(f \circ P_2(e_j) = 0\) for all \(j \leq j_0 + 2\) except for \(j_0\).    
     Eventually we get \(P_{\lambda_{i_0} - j_0}\), and by applying this to the \(e_j\)'s we obtain a basis of \(U\), in which there is exactly one \(j\) with \(f \circ P_{\lambda_{i_0} - j_0}(e_j) \neq 0\).
 \end{proof}
-
-\subsection{When \(X\) is all zeroes}
-In this case we have \(A(y, z) = (z_n b, (a \cdot y, z_1, ..., z_{n - 1}))\), and the condition becomes
-\[\sum_i b_i a_i = 0.\]
-In this case we will be able to write down explicitly the irreducible components of \(F := \{(V, a, b) : \forall i. \; A_{X, a, b} V_i \subseteq V_i\} \cong \pi^{-1}(X)\).
-For any nonnegative \(\delta_0, \delta_1, ..., \delta_n, \delta_{n + 1}\) summing to \(m\), define the corresponding sequence \(i_0 = \delta_0\), \(i_n = \delta_{n + 1} + i_n\), and for \(j \in \{1, ..., n\}\), \(i_j = i_{j - 1} + 1 + \delta_j\).
-Let \(E\) be the span of the \(e_i\)'s, and let \(E' = \{(x, 0) \in E : x \cdot a = 0\}\), where the dot is the \(m\)-dimensional dot product.
-Then define \(F_\delta\) as the set of \((V, a, b) \in F\) such that 
-\begin{itemize}
-    \item \(b \in V_{i_0} \subseteq E'\)
-    \item for all \(j \in \{1, ..., n\}\), we have \(f_j \in V_{i_j} \subseteq E' + \langle f_1, ..., f_j \rangle\)
-\end{itemize}
-I claim that the \(F_\delta\)'s are the irreducible components of \(F\).
-To begin, I show that their union is \(F\).
-
-\begin{lemma}
-    Let \((V, a, b) \in \mathcal{F}\).
-    Write \(f_0 = b\), and \(F = \langle f_0, f_1, ..., f_n \rangle\).
-    For each \(i\), either \(F \subseteq V_i\), or else there exists \(j\) such that \(e_j \notin V_i\), but \(\langle e_0, ..., e_{j - 1} \rangle \subseteq V_i \subseteq E' + \langle e_1, ..., e_j \rangle\).
-\end{lemma}
-\begin{proof}
-    For \(i = 0\), we may take \(j = 0\).
-    Now assume the statement holds for \(i\), and we will prove it for \(i + 1\).
-    If \(F \subseteq V_i\), then \(F \subseteq V_{i + 1}\), and we are done.
-    \par So, suppose there is \(j\) such that \(e_j \notin V_i\), but \(\langle e_0, ..., e_{j - 1} \rangle \subseteq V_i \subseteq E' + \langle e_0, ..., e_j \rangle\).
-    We have two cases: either \(V_{i + 1} = V_i + \langle e_j \rangle\), or not.
-    \begin{itemize}
-        \item If so, then either \(j = n\), in which case \(F \subseteq V_{i + 1}\), or else \(j \neq n\), in which case \(e_{j + 1} \notin V_{i + 1}\), but \(\langle e_0, ..., e_j \rangle \subseteq V_{i + 1} \subseteq E' + \langle e_0, ..., e_{j + 1} \rangle\).
-        \item If not, then \(e_j \notin V_{i + 1}\).
-        Let \(v_{i + 1}\) be so that \(V_{i + 1} = V_i + \langle v_{i + 1} \rangle\).
-        I just need to show that \(v_{i + 1} \in Y + \langle e_1, ..., e_j \rangle\).
-        It suffices to show that \(v_{i + 1}^\top e_k = 0\) for \(k > j\).
-        And to do this, it suffices to show that \((Av_{i + 1})^\top e_{k - 1} = 0\) for \(k > j\).
-        \par Note that \(Av_{i + 1} \in V_i \cap A \mathbb{C}^{2n} \subseteq \langle e_1, ..., e_j \rangle\).
-        So, for \(k > j + 1\) it is clear that \((Av_{i + 1})^\top e_{k - 1} = 0\).
-        Now, suppose for contradiction that \((Av_{i + 1})^\top e_j \neq 0\).
-        Then \(Av_{i + 1}\) is linearly independent of \(e_1, ..., e_{j + 1}\).
-        Since \(Av_{i + 1} \in \langle e_1, ..., e_j \rangle\), it follows that \(e_j \in \langle e_1, ..., e_{j - 1}, Av_{i + 1} \rangle \subseteq V_i\), a contradiction.
-    \end{itemize}
-\end{proof}
-
-\begin{corollary}
-    \(\mathcal{F} = \bigcup_\delta \mathcal{F}_\delta\)
-\end{corollary}
-\begin{proof}
-    Let \((V, a, b) \in F\).
-    Let \(i_0 = \min\{i : b \in V_i\}\), and let \(i' = \max\{i : V_i \subseteq E'\}\).
-    We want that \(b \in V_{i_0} \subseteq E'\), so we want that \(i_0 \leq i'\).
-    For contradiction, suppose \(i' < i_0\).
-
-\end{proof}
-
-\begin{lemma}
-    Each \(\mathcal{F}_\delta\) is a closed subvariety of \(\mathcal{F}\).
-\end{lemma}
-\begin{proof}
-    
-\end{proof}
-
-\begin{lemma}
-    Each \(\mathcal{F}_\delta\) is irreducible of dimension \(m\).
-\end{lemma}
-\begin{proof}
-    Let \(\mathcal{E}\) be the variety of partial flags of \(E\) of shape \((\delta_0, ..., \delta_{n + 1})\).
-    Define \(g : \mathcal{F}_\delta \to \mathcal{E}\) by
-    \[(V, a, b) \mapsto 0 \subseteq V_{i_0} \cap E \subseteq V_{i_1} \cap E \subseteq \cdots \subseteq V_{i_{n + 1}} \cap E = E.\]
-    It is clear that \(g\) is surjective, as the definition of \(\mathcal{F}_\delta\) places no restriction on the intersections \(V_i \cap E\).
-    Now let's look more closely at the fibers \(g^{-1}(U)\).
-    \par First let's find the flags \(V\) such that there exist \(a, b\) with \(g(V, a, b) = U\).
-    We see that, for instance, \(V_{i_0} \cap E = U_1\).
-    In fact \(V_{i_0} \subseteq E\), so \(V_{i_0} = U_1\).
-    But we are free to choose the vector spaces between \(0\) and \(V_{i_0}\) however we wish, so we get some degrees of freedom like \(\mathcal{F}_{\delta_0}\), the complete flag variety on \(\mathbb{C}^{\delta_0} \cong V_{i_0} / 0\).
-    Similarly, for every \(j = 1, ..., n + 1\), we can choose the vector spaces between \(V_{i_{j - 1}}\) and \(V_{i_j}\) arbitrarily, so we get degrees of freedom like \(\mathcal{F}_{\delta_{i_j}}\), the complete flag variety on \(\mathbb{C}^{\delta_{i_j}} \cong V_{i_j} / V_{i_{j - 1}}\).
-    Finally, to meet the constraint of \((V, a, b)\) being in \(\mathcal{F}_\delta\), we can choose any \(b \in U_1\) and any \(a\) such that \(\overline{a} \in U_n^\perp\).
-    Thus we get an isomorphism
-    \[g^{-1}(U) \cong \mathcal{F}_{\delta_0} \times \cdots \times \mathcal{F}_{\delta_{n + 1}} \times \mathbb{C}^{\delta_0} \times \mathbb{C}^{\delta_{n + 1}}.\]
-
-\end{proof}
-
-\begin{theorem}
-    The \(\mathcal{F}_\delta\)'s are the irreducible components of \(\mathcal{F}\).
-\end{theorem}
-
-\subsection{In the case that \(X\) is a Jordan block}
-This case seems harder to work with explicitly than the case that \(X\) is zero, so our strategy is to reuse 
-
 
 \section{A different variety}
 Define \(R = \{(X, \mathfrak{b}_1, \mathfrak{b}_2) : X \in \mathfrak{b}_1 \land u(X) \in \mathfrak{b}_2\} \subseteq \mathcal{S}_{m,n}' \times \mathcal{B}_{m + n} \times \mathcal{B}_m\).
