@@ -545,7 +545,7 @@ Then let \(U_{I, (\rho_i)} = \{(A_{0, b}, U) \in V : b \in B_{I, (\rho_i)}\}\).
     So in either case, both \(p_i > p_j\) and \(q_i > q_j\), and consequently both \(\rho_i > \rho_j\) and \(\lambda_i - \rho_i > \lambda_j - \rho_j\).
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{alternative_bs}
     Here we have an alternative characterization of \(B_{I, (\rho_i)}\).
     Namely,
     \[B_{I, (\rho_i)} = \{b \in \mathbb{C}^m : \forall i \in I. \; p_i = \rho_i \land \forall i \notin I. \; p_i = \min(p_{i_k}, \lambda_i - q_{i_k}), \]
@@ -555,7 +555,7 @@ Then let \(U_{I, (\rho_i)} = \{(A_{0, b}, U) \in V : b \in B_{I, (\rho_i)}\}\).
     TODO
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\label{bs_iso}
     \[B_{I, (\rho_i)} \cong \prod_{i \in I} \mathbb{C}^{blah} \times \prod_{i \notin I}\]
 \end{corollary}
 Fix any \(I\) and \((\rho_i)\) satisfying the conditions of Lemma 8.1.
@@ -654,6 +654,19 @@ Let \(X_\mu\) be the Springer fiber at \(J(\mu)\).
     \[(A_{0,b}, U) \mapsto (b, P_b^{-1} U).\]
 \end{proof}
 At last we have reached the base of our recursive procedure, and we begin to propagate upwards.
+We write \((X_{\mu, \alpha})_\alpha\) to denote the irreducible components of \(X_\mu\).
+\begin{lemma}
+    The irreducible components of \(U_{I, (\rho_i)}\) are exactly the subvarieties of the form
+    \[\{(P_b J(\mu) P_b^{-1}, P_b U) : b \in B_{I, (\rho_i)}, U \in X_{\mu, \alpha}\}.\]
+    There are blah of these, and each has dimension blah.
+\end{lemma}
+\begin{proof}
+    Components of \(B_{I, (\rho_i)} \times X_\mu\) are obviously blah.
+    Their dimensions are blah, and there are... of them.
+    taking image under the isomorphism gives the desired result.
+\end{proof}
+From \cref{bs_iso}, we know that \(B_{I, (\rho_i)}\) is irreducible, of dimension blah.
+
 The irreducible components of \(U_{I, (\rho_i)}\) are blah.
 Thus, the irreducible components of \(U_0\) are blah.
 
