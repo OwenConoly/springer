@@ -660,7 +660,15 @@ Thus, the irreducible components of \(U_0\) are blah.
 \section{Finding the irreducible components of a springer fiber at a slodowy slice}
 Apply things from the previous two sections, and conclude.
 
-\section{Finding a centralizer}
+\section{Self-contained linear algebra facts}
+\subsection{The centralizer of a nilpotent matrix}
+\begin{definition}
+    A matrix \(Y\) is \emph{Toeplitz} if it is constant along bands parallel to the main diagonal.
+    That is, \(\forall i,j,k. \; Y_{ij} = Y_{i + k, j + k}\).
+\end{definition}
+\begin{definition}
+    An \(m \times n\) matrix \(Y\) is \emph{lower-left Toeplitz} if it is Toeplitz and, in addition, only the lower 
+\end{definition}
 For nilpotent \(X\) in Jordan form and \(a\) in `normalized' form (i.e., with at most one nonzero element, which is a one), we will find the centralizer of \(A_{X, a, b}\) in 
 \[\{(A, I) : A \in \gl_m\} \subseteq \gl_{m + n}.\]
 Note that an element of the form \((A, I)\) commutes with \(A_{X, a, b}\) if and only if \(A\) commutes with \(X\), and \(aA = a\), and \(Ab = b\).
@@ -734,8 +742,6 @@ It is the matrices of the form \(I + A\), where \(A_{ij}\) is a block matrix of 
     v_{ij}'
 \end{pmatrix},\]
 where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) in the case \(i \neq i_0\) and \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i - j_0, \lambda_j)}\) if \(i = i_0\).
-
-\section{A Jordan basis for \(A_{X, a, b}\)}
 
 \subsection{A `normalization' fact about Jordan bases}
 Let \(V\) be a finite-dimensional vector space, \(A : V \to V\) a nilpotent operator, and \(f : V \to \mathbb{C}\) a linear map.
