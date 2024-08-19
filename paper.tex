@@ -513,19 +513,19 @@ Then set \(q_i(b) = \lambda_i - p_i(b)\).
 When it is clear enough from context, we will just write \(p_i\) and \(q_i\) instead of \(p_i(b)\) and \(q_i(b)\).
 \par For any \(I \subseteq \{1, ..., k\}\) and any values \((\rho_i)_{i \in I}\) %such that (1) \(\rho_i \leq \lambda_i\), (2) \(\rho_i\) is decreasing with \(i\), and (3) \(\lambda_i - \rho_i\) is decreasing with \(i\)
 , define 
-\[U_{I, (\rho_i)} := \] 
-\[\{(A_{0, b}, U) \in U_0 : \]
+\[B_{I, (\rho_i)} := \{b \in \mathbb{C}^m : \]
 \[\{(p_i, q_i) : i \in I\} = \{(p_i, q_i) : n > q_i \land p_i = \max_{j : q_j = q_i} p_j > \max_{j : q_j < q_i} p_j \} \] 
 \[\land \forall i \in I. \; p_i = \rho_i \}.\]
+Then let \(U_{I, (\rho_i)} = \{(A_{0, b}, U) \in V : b \in B_{I, (\rho_i)}\}\).
 \begin{lemma}
-    \(U_0 = \bigcup_{I, (\rho_i)} U_{I, (\rho_i)}\), where \(I\) ranges over all subsets of \(\{1, ..., k\}\), and \((\rho_i)\) ranges over all maps \(I \to \mathbb{N}_{>0}\) such that \(\rho_i\) and \(\lambda_i - \rho_i\) are both decreasing with \(i\).
+    \(\mathbb{C}^m = \bigcup_{I, (\rho_i)} B_{I, (\rho_i)}\), where \(I\) ranges over all subsets of \(\{1, ..., k\}\), and \((\rho_i)\) ranges over all maps \(I \to \mathbb{N}_{>0}\) such that \(\rho_i\) and \(\lambda_i - \rho_i\) are both decreasing with \(i\).
     TODO: something about overlap being small (they're not disjoint).  
     They are distinct.
     Is that good enough for my purposes?
     Ah, I think it is good enough if I instead say that the sets of \(b\)'s are distinct.
 \end{lemma}
 \begin{proof}
-    Let \((A_{0, b}, U) \in U_0\).
+    Let \(b \in \mathbb{C}^m\).
     Let \(I' = \{(p_i, q_i) : p_i = n > q_i \land \max_{j : q_j = q_i} p_j > \max_{j : q_j < q_i} p_j\}\).
     Then let \(I = \{\max\{i : (p_i, q_i) = (p, q)\} : (p, q) \in I'\}\).
     Choosing the maximal \(i\) is an arbitrary choice; we just have to pick one.
@@ -542,12 +542,18 @@ When it is clear enough from context, we will just write \(p_i\) and \(q_i\) ins
 \end{proof}
 
 \begin{lemma}
-    Here we have an alternative characterization of \(U_{I, (\rho_i)}\).
-    Namely, \(p_i = \rho_i\) for \(i \in I\) and for \(i \notin I\), we have \(p_i \leq something\).
+    Here we have an alternative characterization of \(B_{I, (\rho_i)}\).
+    Namely,
+    \[B_{I, (\rho_i)} = \{b \in \mathbb{C}^m : \forall i \in I. \; p_i = \rho_i \land \forall i \notin I. \; p_i = \min(p_{i_k}, \lambda_i - q_{i_k}), \]
+    \[\textrm{ where } k = ...\}\]
 \end{lemma}
 \begin{proof}
-    
+    TODO
 \end{proof}
+
+\begin{corollary}
+    \[B_{I, (\rho_i)} \cong \prod_{i \in I} \mathbb{C}^{blah} \times \prod_{i \notin I}\]
+\end{corollary}
 Fix any \(I\) and \((\rho_i)\) satisfying the conditions of Lemma 8.1.
 We will find the irreducible components of \(U_{I, (\rho_i)}\), and show that their closures are in fact irreducible components of \(U_0\).
 \par I claim that \(A_{0,b}\) has the same shape for every \((A_{0, b}, U) \in U_{I, (\rho_i)}\).
