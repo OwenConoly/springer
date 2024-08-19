@@ -139,6 +139,133 @@ If \(\mathfrak{g}\) is semisimple, then given any nilpotent \(e \in \mathfrak{g}
 \par Given \((e, h, f)\), we define the \emph{Slodowy slice at \(e\)} as \(\mathcal{S}_e := e + \ker \ad_f\).
 By the Jacobson-Morozov theorem, we can always find a Slodowy slice at any nilpotent \(e \in \mathfrak{g}\), when \(\mathfrak{g}\) is semisimple.
 
+\section{Some linear algebra facts}
+\subsection{The centralizer of a nilpotent matrix}
+\begin{definition}
+    A matrix \(Y\) is \emph{Toeplitz} if it is constant along bands parallel to the main diagonal.
+    That is, \(\forall i,j,k. \; Y_{ij} = Y_{i + k, j + k}\).
+\end{definition}
+\begin{definition}
+    An \(m \times n\) matrix \(Y\) is \emph{lower-left Toeplitz} if it is Toeplitz and, in addition, only the lower 
+\end{definition}
+For nilpotent \(X\) in Jordan form and \(a\) in `normalized' form (i.e., with at most one nonzero element, which is a one), we will find the centralizer of \(A_{X, a, b}\) in 
+\[\{(A, I) : A \in \gl_m\} \subseteq \gl_{m + n}.\]
+Note that an element of the form \((A, I)\) commutes with \(A_{X, a, b}\) if and only if \(A\) commutes with \(X\), and \(aA = a\), and \(Ab = b\).
+So, we just have to find 
+\[\{A \in \gl_m : AX = XA, aA = a, Ab = b\}.\]
+We begin by finding 
+\[\{A \in \gl_m : AX = XA\}.\]
+We write the shape of \(X\) as \(\lambda = (\lambda_1, ..., \lambda_k)\), so that 
+\[X = \begin{pmatrix}
+    J_{\lambda_1} & \\
+    & \ddots \\
+    & & J_{\lambda_k}
+\end{pmatrix}.\]
+Then we write \(A\) as the block matrix
+\[A =: \begin{pmatrix}
+    A_{11} & \cdots & A_{1k}\\
+    \vdots & & \vdots\\
+    A_{k1} & \cdots & A_{kk}
+\end{pmatrix},\]
+where \(A_{ij}\) is a block of size \(\lambda_i \times \lambda_j\).
+We have 
+\[XA = \begin{pmatrix}
+    J_{\lambda_1}A_{11} & \cdots & J_{\lambda_1}A_{1k}\\
+    \vdots & & \vdots\\
+    J_{\lambda_k}A_{k1} & \cdots & J_{\lambda_k}A_{kk}
+\end{pmatrix}, \textrm{ and } AX = \begin{pmatrix}
+    A_{11} J_{\lambda_1} & \cdots & A_{1k} J_{\lambda_k}\\
+    \vdots & & \vdots\\
+    A_{k1} J_{\lambda_1} & \cdots & A_{kk} J_{\lambda_k}
+\end{pmatrix}.\]
+So, the constraint that \(XA = AX\) is simply saying that 
+\[\forall i,j. \; J_{\lambda_i} A_{ij} = A_{ij} J_{\lambda_j}.\]
+It's easy to see that left multiplication by \(J_{\lambda_i}\) is just a down-shift by one, and right multiplication by \(J_{\lambda_j}\) is a left-shift by one.
+This means that \(A_{ij}\) is constrained to be a ``lower-left-Toeplitz'' matrix.
+A Toeplitz matrix is one which is constant along diagonal bands: \(\forall ijk. \; x_{ij} = x_{i + k,j + k}\).
+A lower-left-Toeplitz matrix is one which is all zeroes except for the bottom-left corner; that is, the bands start in the bottom-left corner, and continue until hitting the band which includes the lower-right corner or the band which includes the upper-left corner (whichever comes first).
+In other words, an \(n \times m\) lower-left-Toeplitz matrix is one which satisfies \(x_{ij} = 0\) for all \(i,j\) with \(i < j\) and all \(i,j\) with \(i - j < m - n\).
+In yet other words, a matrix is lower-left-Toeplitz if it is Toeplitz, satisfies \(x_{1j} = 0\) for \(j \neq 1\), and satisfies \(x_{in} = 0\) for \(i \neq m\).
+Anyway, it is easy to see that the lower-left-Toeplitz matrices are exactly those matrices \(A\) such that left-shifting \(A\) by one has the same result as down-shifting by one.
+\par So, we have found the set 
+\[C_1 := \{A \in \gl_m : AX = XA\}.\]
+It is just the set of \(A = [A_{ij}]_{ij}\), where each \(A_{ij}\) is lower-left-Toeplitz.
+\par Let \(v_{ij}\) be the leftmost column of \(A_{ij}\), so that
+\[A_{ij} = \begin{pmatrix}
+    v_{ij} \downshift 0 & \cdots & v_{ij} \downshift [\lambda_j - 1]
+\end{pmatrix}.\]
+Since \(A_{ij}\) is lower-left-Toeplitz, \(v_{ij}\) is of the form 
+\[v_{ij} = \begin{pmatrix}
+    0\\
+    v_{ij}'
+\end{pmatrix},\]
+where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) can be chosen freely.
+Now we determine which matrices of this form satisfy \(aA = a\).
+For simplicity, we will instead find the matrices \(A\) such that \(aA = 0\) (so that \(a(A + I) = a\)).
+(Note that \(I \in C_1\), and \(C_1\) is closed under addition, so this is really the same thing.)
+\par In the case that \(a = 0\), clearly every \(A\) works.
+Otherwise, let \(i_0, j_0\) be such that \(a_{i_0,j_0} = 1\).
+Now, clearly the constraint that \(aA = 0\) is just saying that the \((i_0,j_0)\)th row of \(A\) must be zero.
+That is, for each \(j\) the \(j_0\)th row of \(A_{i_0j}\) must be zero.
+This just requires that for each \(j\), we must have 
+\[v_{ij} = \begin{pmatrix}
+    0\\
+    v_{ij}'
+\end{pmatrix},\]
+where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i - j_0, \lambda_j)}\) can be chosen freely.
+So, we have now found the set 
+\[C_2 := \{A \in \gl_m : AX = XA, aA = a\}.\]
+It is the matrices of the form \(I + A\), where \(A_{ij}\) is a block matrix of size \(\lambda_i \times \lambda_j\) with 
+\[A_{ij} = T(v_{ij}) = T\begin{pmatrix}
+    0\\
+    v_{ij}'
+\end{pmatrix},\]
+where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) in the case \(i \neq i_0\) and \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i - j_0, \lambda_j)}\) if \(i = i_0\).
+
+\subsection{A `normalization' fact about Jordan bases}
+Let \(V\) be a finite-dimensional vector space, \(A : V \to V\) a nilpotent operator, and \(f : V \to \mathbb{C}\) a linear map.
+Let \((e_{ij} : i \leq m, j \leq \lambda_i)\) be a Jordan basis for \(A\).
+
+\begin{lemma}
+    There is a Jordan basis \(e_{ij}\) for \(A\) such that there is at most one pair \((i, j)\) with \(f(e_{ij}) \neq 0\).
+\end{lemma}
+\begin{proof}
+    For any change of basis \(P : V \to V\) commuting with \(A\), we obtain a new Jordan basis \((P(e_{ij}) : i \leq m, j \leq \lambda_i)\).
+    For any such \(P\), define 
+    \[S_P = \sum_i \begin{cases}-1, & \forall j. \; f \circ P(e_{ij}) = 0 \\ \lambda_i - \min\{j : f \circ P(e_{ij}) \neq 0\}, & \textrm{otherwise} \end{cases}.\]
+    Let \(P\) be any operator, among all invertible operators commuting with \(A\), which minimizes \(S_P\).
+    Write \(e_{i,j}' := P(e_{i,j})\).
+    \par Suppose for contradiction that there are two distinct \(i\)'s (and some \(j\)'s) with \(f(e_{ij}') \neq 0\).
+    Then we can take \(e_{i_1, j_1}'\) and \(e_{i_2, j_2}'\), where for \(k \in \{1,2\}\) we have \(f(e_{i_k, j_k}') \neq 0\), and \(\forall j < j_k. \; f(e_{i_k, j}') = 0\).
+    Wlog, assume \(\lambda_{i_1} - j_1 \leq \lambda_{i_2} - j_2\).
+    Then, we can define \(Q : V \to V\) by
+    \begin{itemize}
+        \item \(Q(e_{i_1, \lambda_1}') := e_{i_1, \lambda_1}' - \frac{f(e'_{i_1, j_1})}{f(e'_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}'\)
+        \item For \(j < \lambda_1\), \(Q(e_{i_1, j}') := A^{\lambda_{i_1} - j} Q(e_{i_1, \lambda_{i_1}}')\)
+        \item For \(i \neq i_1\), \(Q(e_{ij}') = e_{ij}'\).
+    \end{itemize}
+    Clearly \(Q\) is invertible, and it commutes with \(A\).
+    Further, I claim that \(S_{QP}  < S_P\).
+    It suffices to show that \(\forall j \leq j_1. \; f \circ Q(e_{i_1,j}') = 0\).
+    We have 
+    \[f \circ Q(e_{i_1,j}') = f\left(A^{\lambda_{i_1} - j}\left(e_{i_1, \lambda_1}' - \frac{f(e'_{i_1, j_1})}{f(e'_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}'\right)\right) =\]
+    \[f\left(e_{i_1, j}' - \frac{f(e'_{i_1, j_1})}{f(e'_{i_2, j_2})} e_{i_2, j_2 + (j - j_1)}'\right) = f(e_{i_1, j}') - \frac{f(e'_{i_1, j_1})}{f(e'_{i_2, j_2})} e'_{i_2, j_2 + (j - j_1)}.\]
+    Clearly (by design), this expression is zero when \(j = j_1\).
+    And for \(j < j_1\), we have \(f(e'_{i_1, j}) = f(e'_{i_2, j_2 + (j_2 - j_1)}) = 0\), so it is zero then as well.
+    Thus we see that \(S_{QP} < S_P\), contradicting that \(S_P\) is minimal.
+    So there must be at most one \(i\) such that there exists \(j\) such that \(f(e_{ij}') \neq 0\).
+    \par If there is no such \(i\), we have found the desired basis.
+    So, suppose there is such an \(i_0\).
+    Let \(U = \langle e_{i_0, j}' \rangle\).
+    Simply write \(e_j := e_{i_0, j}'\).
+    Let \(j_0 = \min\{j : f(e_j) \neq 0\}\).
+    We just have to change basis to zero out \(e_j\) for \(j \neq j_0\).
+    Let \(P_1(e_{\lambda_{i_0}}) := e_{\lambda_{i_0}} - \frac{f(e_{j_0 + 1})}{f(e_{j_0})} e_{\lambda_{i_0} - 1}\), and notice that \(f \circ P_1(e_j) = 0\) for all \(j \leq j_0 + 1\) except for \(j_0\).
+    Then we define \(P_2(e_{\lambda_{i_0}}) := P_1(e_{\lambda_{i_0}}) - \frac{f\circ P_1(e_{j_0 + 2})}{f\circ P_1(e_{j_0})} e_{\lambda_{i_0} - 2}\), and notice that \(f \circ P_2(e_j) = 0\) for all \(j \leq j_0 + 2\) except for \(j_0\).    
+    Eventually we get \(P_{\lambda_{i_0} - j_0}\), and by applying this to the \(e_j\)'s we obtain a basis of \(U\), in which there is exactly one \(j\) with \(f \circ P_{\lambda_{i_0} - j_0}(e_j) \neq 0\).
+\end{proof}
+
+
 \section{Finding \(\spl_2\)-triples \((E, H, F)\) in \(\gl_{m + n}\) with a particular \(E\).}
 \par Let
 \[e = \begin{pNiceArray}{ccccc}
@@ -716,132 +843,6 @@ We write \((X_{\mu, \alpha})_\alpha\) to denote the irreducible components of \(
 
 \section{Finding the irreducible components of a springer fiber at a slodowy slice}
 Apply things from the previous two sections, and conclude.
-
-\section{Self-contained linear algebra facts}
-\subsection{The centralizer of a nilpotent matrix}
-\begin{definition}
-    A matrix \(Y\) is \emph{Toeplitz} if it is constant along bands parallel to the main diagonal.
-    That is, \(\forall i,j,k. \; Y_{ij} = Y_{i + k, j + k}\).
-\end{definition}
-\begin{definition}
-    An \(m \times n\) matrix \(Y\) is \emph{lower-left Toeplitz} if it is Toeplitz and, in addition, only the lower 
-\end{definition}
-For nilpotent \(X\) in Jordan form and \(a\) in `normalized' form (i.e., with at most one nonzero element, which is a one), we will find the centralizer of \(A_{X, a, b}\) in 
-\[\{(A, I) : A \in \gl_m\} \subseteq \gl_{m + n}.\]
-Note that an element of the form \((A, I)\) commutes with \(A_{X, a, b}\) if and only if \(A\) commutes with \(X\), and \(aA = a\), and \(Ab = b\).
-So, we just have to find 
-\[\{A \in \gl_m : AX = XA, aA = a, Ab = b\}.\]
-We begin by finding 
-\[\{A \in \gl_m : AX = XA\}.\]
-We write the shape of \(X\) as \(\lambda = (\lambda_1, ..., \lambda_k)\), so that 
-\[X = \begin{pmatrix}
-    J_{\lambda_1} & \\
-    & \ddots \\
-    & & J_{\lambda_k}
-\end{pmatrix}.\]
-Then we write \(A\) as the block matrix
-\[A =: \begin{pmatrix}
-    A_{11} & \cdots & A_{1k}\\
-    \vdots & & \vdots\\
-    A_{k1} & \cdots & A_{kk}
-\end{pmatrix},\]
-where \(A_{ij}\) is a block of size \(\lambda_i \times \lambda_j\).
-We have 
-\[XA = \begin{pmatrix}
-    J_{\lambda_1}A_{11} & \cdots & J_{\lambda_1}A_{1k}\\
-    \vdots & & \vdots\\
-    J_{\lambda_k}A_{k1} & \cdots & J_{\lambda_k}A_{kk}
-\end{pmatrix}, \textrm{ and } AX = \begin{pmatrix}
-    A_{11} J_{\lambda_1} & \cdots & A_{1k} J_{\lambda_k}\\
-    \vdots & & \vdots\\
-    A_{k1} J_{\lambda_1} & \cdots & A_{kk} J_{\lambda_k}
-\end{pmatrix}.\]
-So, the constraint that \(XA = AX\) is simply saying that 
-\[\forall i,j. \; J_{\lambda_i} A_{ij} = A_{ij} J_{\lambda_j}.\]
-It's easy to see that left multiplication by \(J_{\lambda_i}\) is just a down-shift by one, and right multiplication by \(J_{\lambda_j}\) is a left-shift by one.
-This means that \(A_{ij}\) is constrained to be a ``lower-left-Toeplitz'' matrix.
-A Toeplitz matrix is one which is constant along diagonal bands: \(\forall ijk. \; x_{ij} = x_{i + k,j + k}\).
-A lower-left-Toeplitz matrix is one which is all zeroes except for the bottom-left corner; that is, the bands start in the bottom-left corner, and continue until hitting the band which includes the lower-right corner or the band which includes the upper-left corner (whichever comes first).
-In other words, an \(n \times m\) lower-left-Toeplitz matrix is one which satisfies \(x_{ij} = 0\) for all \(i,j\) with \(i < j\) and all \(i,j\) with \(i - j < m - n\).
-In yet other words, a matrix is lower-left-Toeplitz if it is Toeplitz, satisfies \(x_{1j} = 0\) for \(j \neq 1\), and satisfies \(x_{in} = 0\) for \(i \neq m\).
-Anyway, it is easy to see that the lower-left-Toeplitz matrices are exactly those matrices \(A\) such that left-shifting \(A\) by one has the same result as down-shifting by one.
-\par So, we have found the set 
-\[C_1 := \{A \in \gl_m : AX = XA\}.\]
-It is just the set of \(A = [A_{ij}]_{ij}\), where each \(A_{ij}\) is lower-left-Toeplitz.
-\par Let \(v_{ij}\) be the leftmost column of \(A_{ij}\), so that
-\[A_{ij} = \begin{pmatrix}
-    v_{ij} \downshift 0 & \cdots & v_{ij} \downshift [\lambda_j - 1]
-\end{pmatrix}.\]
-Since \(A_{ij}\) is lower-left-Toeplitz, \(v_{ij}\) is of the form 
-\[v_{ij} = \begin{pmatrix}
-    0\\
-    v_{ij}'
-\end{pmatrix},\]
-where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) can be chosen freely.
-Now we determine which matrices of this form satisfy \(aA = a\).
-For simplicity, we will instead find the matrices \(A\) such that \(aA = 0\) (so that \(a(A + I) = a\)).
-(Note that \(I \in C_1\), and \(C_1\) is closed under addition, so this is really the same thing.)
-\par In the case that \(a = 0\), clearly every \(A\) works.
-Otherwise, let \(i_0, j_0\) be such that \(a_{i_0,j_0} = 1\).
-Now, clearly the constraint that \(aA = 0\) is just saying that the \((i_0,j_0)\)th row of \(A\) must be zero.
-That is, for each \(j\) the \(j_0\)th row of \(A_{i_0j}\) must be zero.
-This just requires that for each \(j\), we must have 
-\[v_{ij} = \begin{pmatrix}
-    0\\
-    v_{ij}'
-\end{pmatrix},\]
-where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i - j_0, \lambda_j)}\) can be chosen freely.
-So, we have now found the set 
-\[C_2 := \{A \in \gl_m : AX = XA, aA = a\}.\]
-It is the matrices of the form \(I + A\), where \(A_{ij}\) is a block matrix of size \(\lambda_i \times \lambda_j\) with 
-\[A_{ij} = T(v_{ij}) = T\begin{pmatrix}
-    0\\
-    v_{ij}'
-\end{pmatrix},\]
-where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) in the case \(i \neq i_0\) and \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i - j_0, \lambda_j)}\) if \(i = i_0\).
-
-\subsection{A `normalization' fact about Jordan bases}
-Let \(V\) be a finite-dimensional vector space, \(A : V \to V\) a nilpotent operator, and \(f : V \to \mathbb{C}\) a linear map.
-Let \((e_{ij} : i \leq m, j \leq \lambda_i)\) be a Jordan basis for \(A\).
-
-\begin{lemma}
-    There is a Jordan basis \(e_{ij}\) for \(A\) such that there is at most one pair \((i, j)\) with \(f(e_{ij}) \neq 0\).
-\end{lemma}
-\begin{proof}
-    For any change of basis \(P : V \to V\) commuting with \(A\), we obtain a new Jordan basis \((P(e_{ij}) : i \leq m, j \leq \lambda_i)\).
-    For any such \(P\), define 
-    \[S_P = \sum_i \begin{cases}-1, & \forall j. \; f \circ P(e_{ij}) = 0 \\ \lambda_i - \min\{j : f \circ P(e_{ij}) \neq 0\}, & \textrm{otherwise} \end{cases}.\]
-    Let \(P\) be any operator, among all invertible operators commuting with \(A\), which minimizes \(S_P\).
-    Write \(e_{i,j}' := P(e_{i,j})\).
-    \par Suppose for contradiction that there are two distinct \(i\)'s (and some \(j\)'s) with \(f(e_{ij}') \neq 0\).
-    Then we can take \(e_{i_1, j_1}'\) and \(e_{i_2, j_2}'\), where for \(k \in \{1,2\}\) we have \(f(e_{i_k, j_k}') \neq 0\), and \(\forall j < j_k. \; f(e_{i_k, j}') = 0\).
-    Wlog, assume \(\lambda_{i_1} - j_1 \leq \lambda_{i_2} - j_2\).
-    Then, we can define \(Q : V \to V\) by
-    \begin{itemize}
-        \item \(Q(e_{i_1, \lambda_1}') := e_{i_1, \lambda_1}' - \frac{f(e'_{i_1, j_1})}{f(e'_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}'\)
-        \item For \(j < \lambda_1\), \(Q(e_{i_1, j}') := A^{\lambda_{i_1} - j} Q(e_{i_1, \lambda_{i_1}}')\)
-        \item For \(i \neq i_1\), \(Q(e_{ij}') = e_{ij}'\).
-    \end{itemize}
-    Clearly \(Q\) is invertible, and it commutes with \(A\).
-    Further, I claim that \(S_{QP}  < S_P\).
-    It suffices to show that \(\forall j \leq j_1. \; f \circ Q(e_{i_1,j}') = 0\).
-    We have 
-    \[f \circ Q(e_{i_1,j}') = f\left(A^{\lambda_{i_1} - j}\left(e_{i_1, \lambda_1}' - \frac{f(e'_{i_1, j_1})}{f(e'_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}'\right)\right) =\]
-    \[f\left(e_{i_1, j}' - \frac{f(e'_{i_1, j_1})}{f(e'_{i_2, j_2})} e_{i_2, j_2 + (j - j_1)}'\right) = f(e_{i_1, j}') - \frac{f(e'_{i_1, j_1})}{f(e'_{i_2, j_2})} e'_{i_2, j_2 + (j - j_1)}.\]
-    Clearly (by design), this expression is zero when \(j = j_1\).
-    And for \(j < j_1\), we have \(f(e'_{i_1, j}) = f(e'_{i_2, j_2 + (j_2 - j_1)}) = 0\), so it is zero then as well.
-    Thus we see that \(S_{QP} < S_P\), contradicting that \(S_P\) is minimal.
-    So there must be at most one \(i\) such that there exists \(j\) such that \(f(e_{ij}') \neq 0\).
-    \par If there is no such \(i\), we have found the desired basis.
-    So, suppose there is such an \(i_0\).
-    Let \(U = \langle e_{i_0, j}' \rangle\).
-    Simply write \(e_j := e_{i_0, j}'\).
-    Let \(j_0 = \min\{j : f(e_j) \neq 0\}\).
-    We just have to change basis to zero out \(e_j\) for \(j \neq j_0\).
-    Let \(P_1(e_{\lambda_{i_0}}) := e_{\lambda_{i_0}} - \frac{f(e_{j_0 + 1})}{f(e_{j_0})} e_{\lambda_{i_0} - 1}\), and notice that \(f \circ P_1(e_j) = 0\) for all \(j \leq j_0 + 1\) except for \(j_0\).
-    Then we define \(P_2(e_{\lambda_{i_0}}) := P_1(e_{\lambda_{i_0}}) - \frac{f\circ P_1(e_{j_0 + 2})}{f\circ P_1(e_{j_0})} e_{\lambda_{i_0} - 2}\), and notice that \(f \circ P_2(e_j) = 0\) for all \(j \leq j_0 + 2\) except for \(j_0\).    
-    Eventually we get \(P_{\lambda_{i_0} - j_0}\), and by applying this to the \(e_j\)'s we obtain a basis of \(U\), in which there is exactly one \(j\) with \(f \circ P_{\lambda_{i_0} - j_0}(e_j) \neq 0\).
-\end{proof}
 
 \section{A different variety}
 Define \(R = \{(X, \mathfrak{b}_1, \mathfrak{b}_2) : X \in \mathfrak{b}_1 \land u(X) \in \mathfrak{b}_2\} \subseteq \mathcal{S}_{m,n}' \times \mathcal{B}_{m + n} \times \mathcal{B}_m\).
