@@ -78,26 +78,63 @@ We will review the definition of a Springer fiber and define, for a nilpotent \(
 For every \(n\) and every nilpotent \(Y \in \gl_m\), we will find the irreducible components of the Springer fiber at the \(n\)-Slodowy slice at \(Y\).
 Finally, we will use our results about Springer fibers at \(n\)-Slodowy slices to find the irreducible components of some other variety (which probably needs a name), and show that they all have the same dimension.
 
-\section{Springer fibers}
-Let \(G \subseteq \GL_m(\mathbb{C})\) be a connected semisimple Lie group, and let \(\mathfrak{g} \subseteq \gl_m(\mathbb{C})\) be its Lie algebra.
+\section{Preliminary Definitions and Facts}
+\subsection{Conventions and Notations}
+We write \(\GL_m, \spl_m\) to denote \(\GL_m(\mathbb{C}), \spl_m(\mathbb{C})\), and so on.
+By \(J_m\) we refer to the nilpotent \(m \times m\) Jordan block (which, by convention, has ones \emph{below} the diagonal).
+Given a partition \(\lambda = (\lambda_1, ..., \lambda_k)\), we write \(J(\lambda)\) to denote the block matrix
+\[\begin{pmatrix}
+    J_{\lambda_1} \\
+    & \ddots \\
+    & & J_{\lambda_k}
+\end{pmatrix}.\]
+
+
+
+\subsection{Springer fibers}
+Let \(G \subseteq \GL_m\) be a connected semisimple Lie group, and let \(\mathfrak{g} \subseteq \gl_m\) be its Lie algebra.
+(TODO: either say something interesting about the Lie group, or just get rid of it and talk only about the Lie algebra.)
 % ^I take this scope because it is about what Yuzhou Gu said.
 Let \(\mathcal{N} \subseteq \mathfrak{g}\) be the subset consisting of nilpotent elements.
 Let \(\mathcal{B}\) be the variety of Borel subalgebras of \(\mathfrak{g}\).
 Let \(\widetilde{\mathcal{N}} = \{(\mathfrak{b}, n) : n \in \mathfrak{b}\} \subseteq \mathcal{B} \times \mathcal{N}\).
 Let \(\pi : \widetilde{\mathcal{N}} \to \mathcal{N}\) be the projection onto the second coordinate.
+We call this the \emph{Springer resolution}.
 For \(n \in \mathcal{N}\), we call \(\pi^{-1}(n)\) the \emph{Springer fiber at \(n\)}.
-\par We mention some results about Springer fibers, which we will use later in this paper.
+
+\subsection{Springer fibers in \(\gl_m\)}
+Now we let \(\mathcal{N}\) be the set of nilpotent elements in \(\gl_m\), and \(\mathcal{B}\) the variety of Borel subalgebras of \(\gl_m\).
+Let \(H \subseteq \gl_m\) be the subalgebra of upper triangular matrices.
+The variety of Borel subalgebras of \(\gl_m\) is \(\mathcal{B} = \{gHg^{-1} : g \in \GL_m\}\).
+Thus, the Springer fiber at \(X \in \mathcal{N}\) is 
+\[S_X = \{gHg^{-1} : X \in gHg^{-1}\}.\]
+\begin{definition}
+    A \emph{flag} \((V_i)\) of \(\mathbb{C}^m\) is a sequence of subspaces
+    \[0 = V_0 \subseteq V_1 \subseteq \cdots \subseteq V_m = \mathbb{C}^m,\]
+    where \(\dim V_i = i\).
+\end{definition}
+We say that \(X \in \gl_m\) \emph{preserves} a flag \((V_i)\) if \(\forall i. \; XV_i \subseteq V_i\).
+Note that \(X \in \mathcal{N}\) preserves a flag \((V_i)\) if and only if \(\forall i. \; XV_i \subseteq V_{i - 1}\).
+\par The simplest flag is the \emph{standard flag} \((E_i)\), where \(E_i := \langle e_1, ..., e_i \rangle\).
+Note that the group \(H\) is exactly the subset of \(\gl_m\) which preserves \(E_i\).
+\par We can think of \(\mathcal{B}\) as the set of flags of \(\mathbb{C}^m\), via the correspondence 
+\[gHg^{-1} \leftrightarrow (gE_i).\]
+Note that \(X\) preserves \((gE_i)\) if and only if \(X \in gHg^{-1}\).
+Thus, we may write the Springer fiber at \(X \in \mathcal{N}\) in terms of flags, as 
+\[S_X = \{(gE_i) : X \in gHg^{-1}\} = \{(V_i) : \forall i. \; XV_i \subseteq V_{i - 1}\}.\]
+
 \begin{theorem}\label{usual_springer_fiber}
     (Needs citation!)
     The irreducible components of the Springer fiber at \(J(\mu)\) are in bijection with the standard Young tableaus of shape \(\mu\).
     Further, the irreducible components are equidimensional, of dimension \(\sum_{i \neq j} \min(\mu_i, \mu_j) = \sum_i (i - 1) \mu_i\).
 \end{theorem}
 
-\section{Slodowy slice}
-A basis for \(\spl_2(\mathbb{C})\) is
+\subsection{Slodowy Slices}
+
+A basis for \(\spl_2\) is
 \[e' := \begin{pmatrix}0 & 1 \\ 0 & 0 \\\end{pmatrix}, h' := \begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix}, f' := \begin{pmatrix}0 & 0 \\1 & 0\end{pmatrix}.\]
 Given a Lie algebra \(\mathfrak{g}\), and a homomorphism \(\phi : \spl_2 \to \mathfrak{g}\) sending \((e', h', f')\) to \((e, h, f)\), we say that \((e, h, f)\) is an \emph{\(\spl_2\)-triple}.
-Observe that \(e, f\) must be nilpotent, and \(h\) must be Cartan (???).
+Observe that \(e, f\) must be nilpotent, and \(h\) must be Cartan (TODO: what?)
 If \(\mathfrak{g}\) is semisimple, then given any nilpotent \(e \in \mathfrak{g}\), the Jacobson-Morozov theorem \cite[3.7.1]{ehf} says that there exist \(h, f \in \mathfrak{g}\) such that \((e, h, f)\) is an \(\spl_2\)-triple.
 \par Given \((e, h, f)\), we define the \emph{Slodowy slice at \(e\)} as \(\mathcal{S}_e := e + \ker \ad_f\).
 By the Jacobson-Morozov theorem, we can always find a Slodowy slice at any nilpotent \(e \in \mathfrak{g}\), when \(\mathfrak{g}\) is semisimple.
@@ -567,7 +604,6 @@ We will find the irreducible components of \(U_{I, (\rho_i)}\), and show that th
 Call this shape \(\mu\).
 By finding a algebraic map taking \(b\) to a Jordan basis for \(A_{0,b}\), we will put \(U_{I, (\rho_i)}\) in isomorphism with the product (choice of \(b\)) \(\times\) (Springer fiber at \(J(\mu)\)).
 Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find the irreducible components of \(U_{I, (\rho_i)}\).
-(I should define this somewhere else, but \(J(\mu)\) just has the blocks in order of nonincreasing size.)
 \par So, now we find a Jordan basis for \(A_{0, b}\).
 \begin{lemma}
     Let \(P = \max_{i \in I} \rho_i\), and for \(i \in I\), let \(P_i = \max_{j \in I : j > i} \rho_j\).
