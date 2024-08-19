@@ -561,9 +561,6 @@ Call this shape \(\mu\).
 By finding a algebraic map taking \(b\) to a Jordan basis for \(A_{0,b}\), we will put \(U_{I, (\rho_i)}\) in isomorphism with the product (choice of \(b\)) \(\times\) (Springer fiber at \(J(\mu)\)).
 Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find the irreducible components of \(U_{I, (\rho_i)}\).
 (I should define this somewhere else, but \(J(\mu)\) just has the blocks in order of nonincreasing size.)
-% \par TODO: where does this paragraph go?
-% Let \(W_\mu\) denote the Springer fiber at \(J(\mu)\), and let \((W_{\mu, d})_d\) be the irreducible components.
-% We remark that the Springer fiber at \(PJ(\mu)P^{-1}\) is \(PW_\mu\), and its irreducible components are \((PW_{\mu, d})_d\).
 \par So, now we find a Jordan basis for \(A_{0, b}\).
 \begin{lemma}
     Let \(P = \max_{i \in I} \rho_i\), and for \(i \in I\), let \(P_i = \max_{j \in I : j > i} \rho_j\).
@@ -636,6 +633,23 @@ Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find
     \end{proof}
     We proved (1), (2), (3), so we are done.
 \end{proof}
+
+Let \(\mu\) be the shape of the Jordan basis given in the previous lemma.
+Let \(X_\mu\) be the Springer fiber at \(J(\mu)\).
+
+\begin{lemma}
+    \(U_{I, (\rho_i)} \cong B_{I, (\rho_i)} \times X_\mu\).
+\end{lemma}
+\begin{proof}
+    For \(b \in B_{I, (\rho_i)}\), let \(P_b\) be the change-of-basis matrix, with columns given by the Jordan basis of the previous lemma, so that \(J(\mu) = P_b^{-1} A_{0,b} P_b\).
+    From looking at the Jordan basis of the previous lemma (the basis can be expressed in terms of \(A, \lambda, e_{ij}, f_i, I, \rho_i, b\)), it is clear that the map \(P : B_{I, (\rho_i)} \to \GL_{m + n}\), given by \(b \mapsto P_b\), is algebraic.
+    \par Now, we remark that the Springer fiber at \(A_{0,b}\) is simply \(\{P_b U : U \in X_\mu\}\).
+    This gives us the isomorphism \(B_{I, (\rho_i)} \times X_\mu \to U_{I, (\rho_i)}\).
+    \[(b, U) \mapsto (P_b J(\mu) P_b^{-1}, P_b U),\]
+    with inverse
+    \[(A_{0,b}, U) \mapsto (b, P_b^{-1} U).\]
+\end{proof}
+At last we have reached the base of our recursive procedure, and we begin to propagate upwards.
 
 \section{Finding the irreducible components of a springer fiber at a slodowy slice}
 Apply things from the previous two sections, and conclude.
