@@ -140,55 +140,55 @@ If \(\mathfrak{g}\) is semisimple, then given any nilpotent \(e \in \mathfrak{g}
 By the Jacobson-Morozov theorem, we can always find a Slodowy slice at any nilpotent \(e \in \mathfrak{g}\), when \(\mathfrak{g}\) is semisimple.
 
 \section{Some linear algebra facts}
+In this section we prove some facts about linear algebra that will be useful to us later.
 \subsection{The centralizer of a nilpotent matrix}
 \begin{definition}
     A matrix \(Y\) is \emph{Toeplitz} if it is constant along bands parallel to the main diagonal.
     That is, \(\forall i,j,k. \; Y_{ij} = Y_{i + k, j + k}\).
 \end{definition}
 \begin{definition}
-    An \(m \times n\) matrix \(Y\) is \emph{lower-left Toeplitz} if it is Toeplitz and, in addition, only the lower 
+    An \(m \times n\) matrix \(Y\) is \emph{lower-left Toeplitz} if it is Toeplitz and, in addition, we have \(y_{n - i, j - 1} = 0\) whenever \(i + j \geq \min(m,n)\).
 \end{definition}
+That is, \(Y\) is lower-left Toeplitz if it is Toeplitz, and the only nonzero entries are those with Manhattan distance less than \(\min(m,n)\) from the lower-left corner.
+
+\begin{lemma}
+    Let \(\lambda = (\lambda_1, ..., \lambda_k)\) be a partition.
+    The centralizer of \(J(\lambda)\) is the set of matrices 
+    \[M = \begin{pmatrix}
+        M_{11} & \cdots & M_{1k}\\
+        \vdots &        & \vdots\\
+        M_{k1} & \cdots & M_{kk}
+    \end{pmatrix},\]
+    where each \(M_{ij}\) is a \(\lambda_i \times \lambda_j\) matrix, such that each \(M_{ij}\) is lower-left Toeplitz.
+\end{lemma}
+\begin{proof}
+    Let 
+    \[M = \begin{pmatrix}
+        M_{11} & \cdots & M_{1k}\\
+        \vdots &        & \vdots\\
+        M_{k1} & \cdots & M_{kk}
+    \end{pmatrix}.\]
+    We need to show that \(J(\lambda)M = MJ(\lambda)\) if and only if each \(M_{ij}\) is lower-left Toeplitz.
+    \par We have 
+    \[J(\lambda)M = \begin{pmatrix}
+        J_{\lambda_1}M_{11} & \cdots & J_{\lambda_1}M_{1k}\\
+        \vdots & & \vdots\\
+        J_{\lambda_k}M_{k1} & \cdots & J_{\lambda_k}M_{kk}
+    \end{pmatrix}, \textrm{ and } MJ(\lambda) = \begin{pmatrix}
+        M_{11} J_{\lambda_1} & \cdots & M_{1k} J_{\lambda_k}\\
+        \vdots & & \vdots\\
+        M_{k1} J_{\lambda_1} & \cdots & M_{kk} J_{\lambda_k}
+    \end{pmatrix}.\]
+    So, we have \(J(\lambda)M = MJ(\lambda)\) if and only if \(\forall i,j. \; J_{\lambda_i} M_{ij} = M_{ij} J_{\lambda_j}\).
+    Multiplying on the left by \(J_{\lambda_i}\) just shifts each row down by one, and multiplying on the right by \(J_{\lambda_j}\) shifts each column left by one.
+    The matrices for which left-shifting gives the same result as down-shifting are exactly the lower-left Toeplitz matrices.
+\end{proof}
 For nilpotent \(X\) in Jordan form and \(a\) in `normalized' form (i.e., with at most one nonzero element, which is a one), we will find the centralizer of \(A_{X, a, b}\) in 
 \[\{(A, I) : A \in \gl_m\} \subseteq \gl_{m + n}.\]
 Note that an element of the form \((A, I)\) commutes with \(A_{X, a, b}\) if and only if \(A\) commutes with \(X\), and \(aA = a\), and \(Ab = b\).
 So, we just have to find 
 \[\{A \in \gl_m : AX = XA, aA = a, Ab = b\}.\]
-We begin by finding 
-\[\{A \in \gl_m : AX = XA\}.\]
-We write the shape of \(X\) as \(\lambda = (\lambda_1, ..., \lambda_k)\), so that 
-\[X = \begin{pmatrix}
-    J_{\lambda_1} & \\
-    & \ddots \\
-    & & J_{\lambda_k}
-\end{pmatrix}.\]
-Then we write \(A\) as the block matrix
-\[A =: \begin{pmatrix}
-    A_{11} & \cdots & A_{1k}\\
-    \vdots & & \vdots\\
-    A_{k1} & \cdots & A_{kk}
-\end{pmatrix},\]
-where \(A_{ij}\) is a block of size \(\lambda_i \times \lambda_j\).
-We have 
-\[XA = \begin{pmatrix}
-    J_{\lambda_1}A_{11} & \cdots & J_{\lambda_1}A_{1k}\\
-    \vdots & & \vdots\\
-    J_{\lambda_k}A_{k1} & \cdots & J_{\lambda_k}A_{kk}
-\end{pmatrix}, \textrm{ and } AX = \begin{pmatrix}
-    A_{11} J_{\lambda_1} & \cdots & A_{1k} J_{\lambda_k}\\
-    \vdots & & \vdots\\
-    A_{k1} J_{\lambda_1} & \cdots & A_{kk} J_{\lambda_k}
-\end{pmatrix}.\]
-So, the constraint that \(XA = AX\) is simply saying that 
-\[\forall i,j. \; J_{\lambda_i} A_{ij} = A_{ij} J_{\lambda_j}.\]
-It's easy to see that left multiplication by \(J_{\lambda_i}\) is just a down-shift by one, and right multiplication by \(J_{\lambda_j}\) is a left-shift by one.
-This means that \(A_{ij}\) is constrained to be a ``lower-left-Toeplitz'' matrix.
-A Toeplitz matrix is one which is constant along diagonal bands: \(\forall ijk. \; x_{ij} = x_{i + k,j + k}\).
-A lower-left-Toeplitz matrix is one which is all zeroes except for the bottom-left corner; that is, the bands start in the bottom-left corner, and continue until hitting the band which includes the lower-right corner or the band which includes the upper-left corner (whichever comes first).
-In other words, an \(n \times m\) lower-left-Toeplitz matrix is one which satisfies \(x_{ij} = 0\) for all \(i,j\) with \(i < j\) and all \(i,j\) with \(i - j < m - n\).
-In yet other words, a matrix is lower-left-Toeplitz if it is Toeplitz, satisfies \(x_{1j} = 0\) for \(j \neq 1\), and satisfies \(x_{in} = 0\) for \(i \neq m\).
-Anyway, it is easy to see that the lower-left-Toeplitz matrices are exactly those matrices \(A\) such that left-shifting \(A\) by one has the same result as down-shifting by one.
-\par So, we have found the set 
-\[C_1 := \{A \in \gl_m : AX = XA\}.\]
+
 It is just the set of \(A = [A_{ij}]_{ij}\), where each \(A_{ij}\) is lower-left-Toeplitz.
 \par Let \(v_{ij}\) be the leftmost column of \(A_{ij}\), so that
 \[A_{ij} = \begin{pmatrix}
@@ -563,15 +563,8 @@ and the Springer fiber at the \(n\)-Slodowy slice at a nilpotent \(X \in \gl_m\)
 \[\pi_{m,n}^{-1}(X) = \{(\mathfrak{b}, A_{X, a, b}) : A_{X, a, b} \in \mathfrak{b}, A_{X, a, b} \in \mathcal{S}_{m, n}'\} \] 
 \[= \{(\mathfrak{b}, A_{X, a, b}) : A_{X, a, b} \in \mathfrak{b}, A_{X, a, b} \textrm{nilpotent}\}\]
 \[\cong \{(\mathfrak{b}, a, b) : A_{X, a, b} \in \mathfrak{b}, A_{X, a, b} \textrm{ nilpotent}\}.\]
-We will make one last simplification to this by using a correspondence between Borel subalgebras and complete flags.
-TODO: fix the next few paragraphs, they are out of context.
-\par We have \(\mathcal{M} = \{AHA^{-1} : A \in \GL_{m + n}(\mathbb{C})\}\), where \(H \subseteq \gl_{m + n}(\mathbb{C})\) is the set of upper triangular matrices.
-We say a map \(X : \gl_{m + n} \to \gl_{m + n}\) preserves a flag \(V_0 \subseteq \cdots \subseteq V_{m + n}\) if \(XV_i \subseteq V_i\) for each \(i\).
-Let \(E_0 \subseteq \cdots \subseteq E_{m + n}\) be the standard flag of \(\mathbb{C}^{m + n}\).
-Since \(H\) is the set of \(X\) which preserve \(E\),
-\[\mathcal{M} = \{\{X : \forall i. \; X(AE_i) \subseteq AE_i\} : A \in \GL_n(\mathbb{C})\}.\]
-So, for \(X \in \mathcal{N}\),
-\[\pi^{-1}(X) \cong \{(V, a, b) : \forall i. \; A_{X, a, b} V_i \subseteq V_{i - 1}\}.\]
+\par Using our correspondence between \(\mathcal{B}_{m + n}\) and complete flags of \(\mathbb{C}^{m + n}\), we obtain 
+\[\pi_{m,n}^{-1}(X) \cong \{(V, a, b) : \forall i. \; A_{X, a, b} V_i \subseteq V_{i - 1}\}.\]
 
 \section{Strategy and setup for finding the irreducible components of a Springer fiber at a Slodowy slice}
 \par Fix any \(X \in \mathcal{N}\).
