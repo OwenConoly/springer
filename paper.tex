@@ -247,18 +247,24 @@ Let \(V\) be a finite-dimensional vector space, \(A : V \to V\) a nilpotent oper
     Define \(e'_{ij}\) as follows.
     \begin{itemize}
         \item \(e_{i_1, \lambda_1}' := e_{i_1, \lambda_1} - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}\)
-        \item CONTINUE HERE
-        \item For \(j < \lambda_1\), \(Q(e_{i_1, j}') := A^{\lambda_{i_1} - j} Q(e_{i_1, \lambda_{i_1}}')\)
-        \item For \(i \neq i_1\), \(Q(e_{ij}') = e_{ij}'\).
+        \item For \(j < \lambda_1\), \(e_{i_1, j}' := A^{\lambda_{i_1} - j} e_{i_1, \lambda_{i_1}}'\)
+        \item For \(i \neq i_1\), \(e_{ij}' := e_{ij}\).
     \end{itemize}
-    Clearly \(Q\) is invertible, and it commutes with \(A\).
-    Further, I claim that \(S_{QP}  < S_P\).
-    It suffices to show that \(\forall j \leq j_1. \; f \circ Q(e_{i_1,j}') = 0\).
+    Clearly this is a Jordan basis for \(A\).
+    Further, I claim that \(S((e'_{ij})_{ij})  < S((e_{ij})_{ij})\).
+    It suffices to show that \(\forall j \leq j_1. \; f (e_{i_1,j}) = 0\).
     We have 
-    \[f \circ Q(e_{i_1,j}') = f\left(A^{\lambda_{i_1} - j}\left(e_{i_1, \lambda_1}' - \frac{f(e'_{i_1, j_1})}{f(e'_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}'\right)\right) =\]
-    \[f\left(e_{i_1, j}' - \frac{f(e'_{i_1, j_1})}{f(e'_{i_2, j_2})} e_{i_2, j_2 + (j - j_1)}'\right) = f(e_{i_1, j}') - \frac{f(e'_{i_1, j_1})}{f(e'_{i_2, j_2})} e'_{i_2, j_2 + (j - j_1)}.\]
+    \[f (e_{i_1,j}') = f\left(A^{\lambda_{i_1} - j}\left(e_{i_1, \lambda_1} - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}\right)\right) =\]
+    \[f\left(e_{i_1, j} - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})} e_{i_2, j_2 + (j - j_1)}\right) = f(e_{i_1, j}) - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})} f(e_{i_2, j_2 + (j - j_1)}).\]
     Clearly (by design), this expression is zero when \(j = j_1\).
-    And for \(j < j_1\), we have \(f(e'_{i_1, j}) = f(e'_{i_2, j_2 + (j_2 - j_1)}) = 0\), so it is zero then as well.
+    And for \(j < j_1\), we have \(f(e_{i_1, j}) = f(e_{i_2, j_2 + (j - j_1)}) = 0\), so it is zero then as well.
+    Thus we see that the measure \(S\) of this new basis is smaller, as desired.
+\end{proof}
+
+\begin{lemma}
+    Something else; CONTINUE HERE
+\end{lemma}
+\begin{proof}
     Thus we see that \(S_{QP} < S_P\), contradicting that \(S_P\) is minimal.
     So there must be at most one \(i\) such that there exists \(j\) such that \(f(e_{ij}') \neq 0\).
     \par If there is no such \(i\), we have found the desired basis.
