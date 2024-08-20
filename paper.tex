@@ -139,8 +139,10 @@ If \(\mathfrak{g}\) is semisimple, then given any nilpotent \(e \in \mathfrak{g}
 \par Given \((e, h, f)\), we define the \emph{Slodowy slice at \(e\)} as \(\mathcal{S}_e := e + \ker \ad_f\).
 By the Jacobson-Morozov theorem, we can always find a Slodowy slice at any nilpotent \(e \in \mathfrak{g}\), when \(\mathfrak{g}\) is semisimple.
 
-\section{Some linear algebra facts}
+\section{Linear Algebra Facts}
 In this section we prove linear algebra facts that will be useful later.
+A reader uninterested in their verification may wish to read the theorem statements and skip ahead to the next section.
+
 \subsection{The centralizer of a nilpotent matrix}
 \begin{definition}
     A matrix \(Y\) is \emph{Toeplitz} if it is constant along bands parallel to the main diagonal.
@@ -150,7 +152,7 @@ In this section we prove linear algebra facts that will be useful later.
     An \(m \times n\) matrix \(Y\) is \emph{lower-left Toeplitz} if it is Toeplitz and, in addition, we have \(y_{n - i, j - 1} = 0\) whenever \(i + j \geq \min(m,n)\).
 \end{definition}
 That is, \(Y\) is lower-left Toeplitz if it is Toeplitz, and the only nonzero entries are those with Manhattan distance less than \(\min(m,n)\) from the lower-left corner.
-In yet other words, only the leftmost \(\min(m,n)\) diagonal bands are nonzero.
+In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\) diagonal bands are zero.
 
 \begin{lemma}
     Let \(\lambda = (\lambda_1, ..., \lambda_k)\) be a partition of \(m\).
@@ -224,11 +226,9 @@ It is the matrices of the form \(I + A\), where \(A_{ij}\) is a block matrix of 
 where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) in the case \(i \neq i_0\) and \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i - j_0, \lambda_j)}\) if \(i = i_0\).
 
 \subsection{A `normalization' fact about Jordan bases}
-Let \(V\) be a finite-dimensional vector space, \(A : V \to V\) a nilpotent operator, and \(f : V \to \mathbb{C}\) a linear map.
-% Let \((e_{ij} : i \leq m, j \leq \lambda_i)\) be a Jordan basis for \(A\).
 
-\begin{lemma}
-    There is a Jordan basis \(e_{ij}\) for \(A\) such that there is at most one \(i\) such that there exists \(j\) such that \(f(e_{ij}) \neq 0\).
+\begin{lemma}\label{normalization_helper_one}
+    For any finite-dimensional \(V\), nilpotent \(A : V \to V\), and linear \(f : V \to \mathbb{C}\), there is a Jordan basis \(e_{ij}\) for \(A\) such that there is at most one \(i\) such that there exists \(j\) such that \(f(e_{ij}) \neq 0\).
 \end{lemma}
 \begin{proof}
     For any Jordan basis \((e_{ij})_{ij}\) of \(A\), define
@@ -239,7 +239,7 @@ Let \(V\) be a finite-dimensional vector space, \(A : V \to V\) a nilpotent oper
     \par Now, we have two cases.
     In the first case, \((e_{ij})_{ij}\) already satisfies the desired property.
     In this case we are done.
-    In the other case, there exist \(i_1, j_1, i_2, j_2\) with \(f(e_{i_1j_1}) \neq 0\) and \(f(e_{i_2j_2}) \neq 0\).
+    In the other case, there exist \(i_1, j_1, i_2, j_2\) with \(i_1 \neq i_2\), and \(f(e_{i_1j_1}) \neq 0\), and \(f(e_{i_2j_2}) \neq 0\).
     We let \(j_1, j_2\) be minimal with this property, so that \(\forall j < j_1. \; f(e_{i_1j}) = 0\), and \(\forall j < j_2. \; f(e_{i_2j}) = 0\).
     Wlog, we assume that \(\lambda_{i_1} - j_1 \leq \lambda_{i_2} - j_2\).
     \par By our inductive hypothesis, all we need to do is find a Jordan basis \((e_{ij}')_{ij}\) with \(S((e_{ij}')_{ij}) < S((e_{ij})_{ij})\).
@@ -258,24 +258,40 @@ Let \(V\) be a finite-dimensional vector space, \(A : V \to V\) a nilpotent oper
     \[f\left(e_{i_1, j} - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})} e_{i_2, j_2 + (j - j_1)}\right) = f(e_{i_1, j}) - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})} f(e_{i_2, j_2 + (j - j_1)}).\]
     Clearly (by design), this expression is zero when \(j = j_1\).
     And for \(j < j_1\), we have \(f(e_{i_1, j}) = f(e_{i_2, j_2 + (j - j_1)}) = 0\), so it is zero then as well.
-    Thus we see that the measure \(S\) of this new basis is smaller, as desired.
+    Hence the measure \(S\) of this new basis is smaller, as desired.
 \end{proof}
 
-\begin{lemma}
-    Something else; CONTINUE HERE
+\begin{lemma}\label{normalization_helper_two}
+    For any \(n\) and linear \(f : \mathbb{C}^n \to \mathbb{C}\), there is a Jordan basis \(e_j\) for \(J_n\) such that there is at most one \(j\) with \(f(e_j) \neq 0\).
 \end{lemma}
 \begin{proof}
-    Thus we see that \(S_{QP} < S_P\), contradicting that \(S_P\) is minimal.
-    So there must be at most one \(i\) such that there exists \(j\) such that \(f(e_{ij}') \neq 0\).
-    \par If there is no such \(i\), we have found the desired basis.
-    So, suppose there is such an \(i_0\).
-    Let \(U = \langle e_{i_0, j}' \rangle\).
-    Simply write \(e_j := e_{i_0, j}'\).
-    Let \(j_0 = \min\{j : f(e_j) \neq 0\}\).
-    We just have to change basis to zero out \(e_j\) for \(j \neq j_0\).
-    Let \(P_1(e_{\lambda_{i_0}}) := e_{\lambda_{i_0}} - \frac{f(e_{j_0 + 1})}{f(e_{j_0})} e_{\lambda_{i_0} - 1}\), and notice that \(f \circ P_1(e_j) = 0\) for all \(j \leq j_0 + 1\) except for \(j_0\).
-    Then we define \(P_2(e_{\lambda_{i_0}}) := P_1(e_{\lambda_{i_0}}) - \frac{f\circ P_1(e_{j_0 + 2})}{f\circ P_1(e_{j_0})} e_{\lambda_{i_0} - 2}\), and notice that \(f \circ P_2(e_j) = 0\) for all \(j \leq j_0 + 2\) except for \(j_0\).    
-    Eventually we get \(P_{\lambda_{i_0} - j_0}\), and by applying this to the \(e_j\)'s we obtain a basis of \(U\), in which there is exactly one \(j\) with \(f \circ P_{\lambda_{i_0} - j_0}(e_j) \neq 0\).
+    Let \(e_j\) be a Jordan basis for \(J_n\).
+    If \(\{j : f(e_j) \neq 0\}\) is the empty set, we are done.
+    Otherwise, let \(j_0 = \min\{j : f(e_j) \neq 0\}\).
+    For any Jordan basis \(f_j\) with \(j_0 = \min\{j : f(e_j) \neq 0\}\), define 
+    \[S((f_j)_j) := \begin{cases}
+        -1, & \{j > j_0 : f(e_j) \neq 0\} = \emptyset \\
+        n - \min\{j > j_0 : f(e_j) \neq 0\}, & \textrm{otherwise}
+    \end{cases}.\]
+    We proceed by induction on \(S\).
+    That is, let \((e_j)_j\) be a Jordan basis for \(J_n\) with \(j_0 = \min\{j : f(e_j) \neq 0\}\).
+    Our inductive hypothesis is that if there exists a Jordan basis \((e_j')_j\) with \(j_0 = \min\{j : f(e_j') \neq 0\}\) and \(S((e_j')_j) < S((e_j)_j)\), then the conclusion holds.
+    \par We have two cases: either \((e_j)_j\) satisfies the desired property, or not.
+    If not, then let \(j_1 = \min\{j > j_0 : f(e_j) \neq 0\}\), and define a new Jordan basis \(e_j'\) as follows.
+    \begin{itemize}
+        \item \(e_n' := e_n - \frac{f(e_{j_1})}{f(e_{j_0})} e_{n - (j_1 - j_0)}\)
+        \item For \(j < n\), \(e_j' := J_n^{n - j} e_n'\)
+    \end{itemize}
+    It is straightforward to check that \(j_0 = \min\{j : f(e_j) \neq 0\}\), and that \(S((e_j')_j) \leq S((e_j)_j) - 1\).
+    By our inductive hypothesis, we are done.
+\end{proof}
+
+\begin{theorem}\label{normalization}
+    For any finite-dimensional \(V\), nilpotent \(A : V \to V\), and linear \(f : V \to \mathbb{C}\), there is a Jordan basis \(e_{ij}\) for \(A\) such that there is at most one pair \((i, j)\) with \(f(e_{ij}) \neq 0\).
+\end{theorem}
+\begin{proof}
+    \cref{normalization_helper_one} gives us a Jordan basis \(e_{ij}\) such that for all \(i \neq i_0\) and all \(j\), we have \(f(e_{ij}) = 0\).
+    Restricting \(A\) to \(\langle e_{i_0j}\rangle_{j \textrm{ arbitrary}}\) gives a Jordan block, and then applying \cref{normalization_helper_two} gives the desired result.
 \end{proof}
 
 
