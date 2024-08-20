@@ -140,7 +140,7 @@ If \(\mathfrak{g}\) is semisimple, then given any nilpotent \(e \in \mathfrak{g}
 By the Jacobson-Morozov theorem, we can always find a Slodowy slice at any nilpotent \(e \in \mathfrak{g}\), when \(\mathfrak{g}\) is semisimple.
 
 \section{Some linear algebra facts}
-In this section we prove some facts about linear algebra that will be useful to us later.
+In this section we prove linear algebra facts that will be useful later.
 \subsection{The centralizer of a nilpotent matrix}
 \begin{definition}
     A matrix \(Y\) is \emph{Toeplitz} if it is constant along bands parallel to the main diagonal.
@@ -150,10 +150,11 @@ In this section we prove some facts about linear algebra that will be useful to 
     An \(m \times n\) matrix \(Y\) is \emph{lower-left Toeplitz} if it is Toeplitz and, in addition, we have \(y_{n - i, j - 1} = 0\) whenever \(i + j \geq \min(m,n)\).
 \end{definition}
 That is, \(Y\) is lower-left Toeplitz if it is Toeplitz, and the only nonzero entries are those with Manhattan distance less than \(\min(m,n)\) from the lower-left corner.
+In yet other words, only the leftmost \(\min(m,n)\) diagonal bands are nonzero.
 
 \begin{lemma}
-    Let \(\lambda = (\lambda_1, ..., \lambda_k)\) be a partition.
-    The centralizer of \(J(\lambda)\) is the set of matrices 
+    Let \(\lambda = (\lambda_1, ..., \lambda_k)\) be a partition of \(m\).
+    The centralizer of \(J(\lambda)\) in \(\gl_m\) is the subalgebra consisting of matrices 
     \[M = \begin{pmatrix}
         M_{11} & \cdots & M_{1k}\\
         \vdots &        & \vdots\\
@@ -606,27 +607,28 @@ Then, letting \(G_{wr}\) act on \(G\) by \(g \cdot h := hg^{-1}\), we obtain an 
     It's just \(\mathbb{C}^{something}\), since its blocks are the lower-left-toeplitz matrices.
 \end{proof}
 \begin{lemma}
-    % The map \(\varphi\) is a geometric quotient of \(U_{wr} \times G\) by the action of the algebraic group \(G_{wr}\).
-    The map \(\varphi\) is some sort of quotient by the action of \(G_{wr}\).
-    % The map \(X \mapsto \overline{\varphi(X \times G)}\) is a bijection from the irreducible components of \(U_{wr}\) to the irreducible components of \(V_{wr}\).
+    The map \(\varphi\) is a principal \(G_{wr}\)-bundle.
 \end{lemma}
 \begin{proof}
-    Let \(y \in V_{wr}\).
+    We need to show that \(G_{wr}\) acts freely and transitively on the fibers of \(\varphi\).
+    It is obvious that \(G_{wr}\) acts freely on \(U_{wr} \times G\); it is enough to note that it acts freely on \(G\).
+    \par Let \(y \in V_{wr}\).
     By definition of \(V_{wr}\), there is \(P_y \in G\) with \(P_y \cdot y \in U_{wr}\).
     We have
-    \[\varphi^{-1}(y) = \{(x, P) : P \cdot x = y = P_y^{-1} \cdot (P_y \cdot y)\} = \]
-    \[\{(x, P) : x = (P^{-1} P_y^{-1}) \cdot (P_y \cdot y) \} = \]
-    \[\{((P^{-1}P_y^{-1}) \cdot (P_y \cdot y), P) : (P^{-1} P_y^{-1}) \in G_{wr}\} = \] 
-    \[(\textrm{taking } Q := P^{-1}P_y^{-1}, \textrm{ so } P = (QP_y)^{-1} = P_y^{-1} Q^{-1})\]
-    \[\{(Q \cdot (P_y \cdot y), P_y^{-1} Q^{-1}) : Q \in G_{wr}\} = \]
-    \[\{Q \cdot (P_y \cdot y, P_y^{-1}) : Q \in G_{wr}\}.\]
-    So we see that the fibers are exactly the \(G_{wr}\)-orbits.
-    \par Now, what kind of quotient is this?
-    All I need is something that allows me to deduce the dimension of the quotient...
-    Ah, it it a twisted product actually.
-    Each \(G_{wr}\)-orbit is isomorphic to \(G_{wr}\).
-    Given \((y, Q) \in G_{wr} (x, P)\), we send it to \(Q^{-1}P\); given \(Q \in G_{wr}\), we send it to \((Q \cdot x, PQ^{-1})\).
-    These are inverse maps.
+    \begin{align*}
+        \varphi^{-1}(y) = \{(x, P) : P \cdot x = y \} & = \\
+        \{(P^{-1} y, P) : P^{-1} y \in U_{wr} \} & = \\
+        \{((P^{-1}P_y^{-1}) \cdot (P_y \cdot y), P) : (P^{-1} P_y^{-1}) \cdot (P_y \cdot y) \in U_{wr}\} & .
+    \end{align*}
+    For any \(x \in U_{wr}\) (in particular for \(x = P_y \cdot y\)), we have \(G_{wr} = \{g \in G : g \cdot x \in U_{wr}\}\).
+    Therefore, the fiber above becomes
+    \[\{((P^{-1}P_y^{-1}) \cdot (P_y \cdot y), P) : (P^{-1} P_y^{-1}) \in G_{wr}\}.\]
+    Setting \(Q := P^{-1} P_y^{-1}\), so that \(P = P_y^{-1} Q^{-1}\), the above becomes
+    \begin{align*}
+        \{(Q \cdot (P_y \cdot y), P_y^{-1} Q^{-1}) : Q \in G_{wr}\} & = \\
+        \{Q \cdot (P_y \cdot y, P_y^{-1}) : Q \in G_{wr}\} & .
+    \end{align*}
+        We see that the fibers are exactly the \(G_{wr}\)-orbits; or in other words, \(G_{wr}\) acts transitively on the fibers, as desired.
     % Because \(X\) and \(G\) are irreducible, \(X \times G\) is irreducible, and therefore \(\varphi(X \times G)\) is, as well.
     % Let \(X_1, ..., X_k\) be the irreducible components of \(U_{wr}\).
     % It is clear that \(V_{mr} = \bigcup_i \overline{\varphi(X_i \times G)}\).
