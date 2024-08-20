@@ -225,23 +225,29 @@ where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) in the case \(i \n
 
 \subsection{A `normalization' fact about Jordan bases}
 Let \(V\) be a finite-dimensional vector space, \(A : V \to V\) a nilpotent operator, and \(f : V \to \mathbb{C}\) a linear map.
-Let \((e_{ij} : i \leq m, j \leq \lambda_i)\) be a Jordan basis for \(A\).
+% Let \((e_{ij} : i \leq m, j \leq \lambda_i)\) be a Jordan basis for \(A\).
 
 \begin{lemma}
-    There is a Jordan basis \(e_{ij}\) for \(A\) such that there is at most one pair \((i, j)\) with \(f(e_{ij}) \neq 0\).
+    There is a Jordan basis \(e_{ij}\) for \(A\) such that there is at most one \(i\) such that there exists \(j\) such that \(f(e_{ij}) \neq 0\).
 \end{lemma}
 \begin{proof}
-    For any change of basis \(P : V \to V\) commuting with \(A\), we obtain a new Jordan basis \((P(e_{ij}) : i \leq m, j \leq \lambda_i)\).
-    For any such \(P\), define 
-    \[S_P = \sum_i \begin{cases}-1, & \forall j. \; f \circ P(e_{ij}) = 0 \\ \lambda_i - \min\{j : f \circ P(e_{ij}) \neq 0\}, & \textrm{otherwise} \end{cases}.\]
-    Let \(P\) be any operator, among all invertible operators commuting with \(A\), which minimizes \(S_P\).
-    Write \(e_{i,j}' := P(e_{i,j})\).
-    \par Suppose for contradiction that there are two distinct \(i\)'s (and some \(j\)'s) with \(f(e_{ij}') \neq 0\).
-    Then we can take \(e_{i_1, j_1}'\) and \(e_{i_2, j_2}'\), where for \(k \in \{1,2\}\) we have \(f(e_{i_k, j_k}') \neq 0\), and \(\forall j < j_k. \; f(e_{i_k, j}') = 0\).
-    Wlog, assume \(\lambda_{i_1} - j_1 \leq \lambda_{i_2} - j_2\).
-    Then, we can define \(Q : V \to V\) by
+    For any Jordan basis \((e_{ij})_{ij}\) of \(A\), define
+    \[S((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}) := \sum_i \begin{cases}-1, & \forall j. \; f (e_{ij}) = 0 \\ \lambda_i - \min\{j : f (e_{ij}) \neq 0\}, & \textrm{otherwise} \end{cases}.\]
+    We proceed by induction on the measure \(S\).
+    That is, let \((e_{ij})_{ij}\) be a Jordan basis for \(A\).
+    Our inductive hypothesis is that if there exists a Jordan basis \((e_{ij}')_{ij}\) with \(S((e_{ij}')_{ij}) < S((e_{ij})_{ij})\), then we get the desired conclusion.
+    \par Now, we have two cases.
+    In the first case, \((e_{ij})_{ij}\) already satisfies the desired property.
+    In this case we are done.
+    In the other case, there exist \(i_1, j_1, i_2, j_2\) with \(f(e_{i_1j_1}) \neq 0\) and \(f(e_{i_2j_2}) \neq 0\).
+    We let \(j_1, j_2\) be minimal with this property, so that \(\forall j < j_1. \; f(e_{i_1j}) = 0\), and \(\forall j < j_2. \; f(e_{i_2j}) = 0\).
+    Wlog, we assume that \(\lambda_{i_1} - j_1 \leq \lambda_{i_2} - j_2\).
+    \par By our inductive hypothesis, all we need to do is find a Jordan basis \((e_{ij}')_{ij}\) with \(S((e_{ij}')_{ij}) < S((e_{ij})_{ij})\).
+    This is what we do.
+    Define \(e'_{ij}\) as follows.
     \begin{itemize}
-        \item \(Q(e_{i_1, \lambda_1}') := e_{i_1, \lambda_1}' - \frac{f(e'_{i_1, j_1})}{f(e'_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}'\)
+        \item \(e_{i_1, \lambda_1}' := e_{i_1, \lambda_1} - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}\)
+        \item CONTINUE HERE
         \item For \(j < \lambda_1\), \(Q(e_{i_1, j}') := A^{\lambda_{i_1} - j} Q(e_{i_1, \lambda_{i_1}}')\)
         \item For \(i \neq i_1\), \(Q(e_{ij}') = e_{ij}'\).
     \end{itemize}
@@ -681,12 +687,8 @@ When it is clear enough from context, we will just write \(p_i\) and \(q_i\) ins
 \[\{(p_i, q_i) : i \in I\} = \{(p_i, q_i) : n > q_i \land p_i = \max_{j : q_j = q_i} p_j > \max_{j : q_j < q_i} p_j \} \] 
 \[\land \forall i \in I. \; p_i = \rho_i \}.\]
 Then let \(U_{I, (\rho_i)} = \{(A_{0, b}, U) \in V : b \in B_{I, (\rho_i)}\}\).
-\begin{lemma}
+\begin{lemma}\label{bs_union}
     \(\mathbb{C}^m = \bigcup_{I, (\rho_i)} B_{I, (\rho_i)}\), where \(I\) ranges over all subsets of \(\{1, ..., k\}\), and \((\rho_i)\) ranges over all maps \(I \to \mathbb{N}_{>0}\) such that \(\rho_i\) and \(\lambda_i - \rho_i\) are both decreasing with \(i\).
-    TODO: something about overlap being small (they're not disjoint).  
-    They are distinct.
-    Is that good enough for my purposes?
-    Ah, I think it is good enough if I instead say that the sets of \(b\)'s are distinct.
 \end{lemma}
 \begin{proof}
     Let \(b \in \mathbb{C}^m\).
@@ -703,6 +705,15 @@ Then let \(U_{I, (\rho_i)} = \{(A_{0, b}, U) \in V : b \in B_{I, (\rho_i)}\}\).
     Further, since \((p_i, q_i) \neq (p_j, q_j)\) (clear from definition of \(I\)), either \(p_i > p_j\) or \(q_i > q_j\).
     And for \(i, j \in I\) we clearly have \(p_i > p_j \iff q_i > q_j\).
     So in either case, both \(p_i > p_j\) and \(q_i > q_j\), and consequently both \(\rho_i > \rho_j\) and \(\lambda_i - \rho_i > \lambda_j - \rho_j\).
+\end{proof}
+
+\begin{lemma}
+    There are blah \(B_{I, (\rho_i)}\) with \((\rho_i)\) satisfying the constraints of \cref{bs_union}, and none is contained in the union of the others.
+\end{lemma}
+\begin{proof}
+    seems hard to count.
+    total number is product over L of (number of rows of length L) times (count where we assume there is only one row of each length).
+    
 \end{proof}
 
 \begin{lemma}\label{alternative_bs}
