@@ -151,7 +151,7 @@ A reader uninterested in their verification may wish to read the theorem stateme
 \begin{definition}
     An \(m \times n\) matrix \(Y\) is \emph{lower-left Toeplitz} if it is Toeplitz and, in addition, we have \(y_{n - i, j - 1} = 0\) whenever \(i + j \geq \min(m,n)\).
 \end{definition}
-That is, \(Y\) is lower-left Toeplitz if it is Toeplitz, and the only nonzero entries are those with Manhattan distance less than \(\min(m,n)\) from the lower-left corner.
+That is, \(Y\) is lower-left Toeplitz if it is Toeplitz, and the only nonzero entries are those with Manhattan distance less than \(\min(m,n)\) from the entry in the bottom-left corner.
 In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\) diagonal bands are zero.
 
 \begin{lemma}
@@ -290,7 +290,7 @@ where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) in the case \(i \n
     For any finite-dimensional \(V\), nilpotent \(A : V \to V\), and linear \(f : V \to \mathbb{C}\), there is a Jordan basis \(e_{ij}\) for \(A\) such that there is at most one pair \((i, j)\) with \(f(e_{ij}) \neq 0\).
 \end{theorem}
 \begin{proof}
-    \cref{normalization_helper_one} gives us a Jordan basis \(e_{ij}\) such that for all \(i \neq i_0\) and all \(j\), we have \(f(e_{ij}) = 0\).
+    \cref{normalization_helper_one} provides a Jordan basis \(e_{ij}\) such that for all \(i \neq i_0\) and all \(j\), we have \(f(e_{ij}) = 0\).
     Restricting \(A\) to \(\langle e_{i_0j}\rangle_{j \textrm{ arbitrary}}\) gives a Jordan block, and then applying \cref{normalization_helper_two} gives the desired result.
 \end{proof}
 
@@ -738,21 +738,7 @@ Then let \(U_{I, (\rho_i)} = \{(A_{0, b}, U) \in V : b \in B_{I, (\rho_i)}\}\).
     
 \end{proof}
 
-\begin{lemma}\label{alternative_bs}
-    Here we have an alternative characterization of \(B_{I, (\rho_i)}\).
-    Namely,
-    \[B_{I, (\rho_i)} = \{b \in \mathbb{C}^m : \forall i \in I. \; p_i = \rho_i \land \forall i \notin I. \; p_i = \min(p_{i_k}, \lambda_i - q_{i_k}), \]
-    \[\textrm{ where } k = ...\}\]
-\end{lemma}
-\begin{proof}
-    TODO
-\end{proof}
-
-\begin{corollary}\label{bs_iso}
-    \[B_{I, (\rho_i)} \cong \prod_{i \in I} \mathbb{C}^{blah} \times \prod_{i \notin I}\]
-\end{corollary}
-
-\subsection{Irreducible components of \(U_{I, (\rho_i)}\)}
+\subsection{A study of \(U_{I, (\rho_i)}\)}
 Fix any \(I\) and \((\rho_i)\) satisfying the conditions of Lemma 8.1.
 We will find the irreducible components of \(U_{I, (\rho_i)}\), and show that their closures are in fact irreducible components of \(U_0\).
 \par I claim that \(A_{0,b}\) has the same shape for every \((A_{0, b}, U) \in U_{I, (\rho_i)}\).
@@ -832,7 +818,7 @@ Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find
     We proved (1), (2), (3), so we are done.
 \end{proof}
 
-Let \(\mu\) be the shape of the Jordan basis given in the previous lemma.
+Let \(\mu(I, (\rho_i))\) be the shape of the Jordan basis given in the previous lemma.
 Let \(X_\mu\) be the Springer fiber at \(J(\mu)\).
 
 \begin{lemma}
@@ -847,6 +833,33 @@ Let \(X_\mu\) be the Springer fiber at \(J(\mu)\).
     with inverse
     \[(A_{0,b}, U) \mapsto (b, P_b^{-1} U).\]
 \end{proof}
+
+\subsection{A study of \(B_{I, (\rho_i)}\)}
+Fix any \(I\) and \((\rho_i)\) satisfying the conditions of \cref{bs_union}.
+Define \(\{i_1 < \cdots < i_r\} := I\).
+For notational convenience (although we assign meaning to neither \(i_0\) nor \(i_{r + 1}\)), we define \(q_{i_0} := n\), and \(p_{i_{r + 1}} := 0\).
+To see why this choice makes some sort of sense, look at the shape \(\mu\) of the Jordan basis of the previous subsection.
+Note that for any \(b \in B_{I, (\rho_i)}\) we have \(p_{i_1} > \cdots > p_{i_r} > p_{i_{r + 1}}\), and also \(q_{i_0} > q_{i_1} > \cdots > q_{i_r}\).
+\par First, we provide an alternative characterization of \(B_{I, (\rho_i)}\).
+\begin{lemma}\label{alternative_bs}
+    \(B_{I, (\rho_i)} = B_{I, (\rho_i)}'\), where
+    \[B_{I, (\rho_i)}' := \{b \in \mathbb{C}^m : \forall i \in I. \; p_i \leq \rho_i \land \forall i \notin I. \; p_i = \min(p_{i_k}, \lambda_i - q_{i_k}), \]
+    \[\textrm{ where } k = \min\{k \in \{1, ..., r\} : q_{i_{k - 1}} + p_{i_k} > \lambda_i\}\}.\]
+\end{lemma}
+\begin{proof}
+    First we show that \(B_{I, (\rho_i)} \subseteq B_{I, (\rho_i)}'\).
+    Let \(b \in B_{I, (\rho_i)}\).
+    It is clear that \(\forall i \in I. \; p_i = \rho_i\).
+    So, let \(i \notin I\), and let \(k = \min\{k : q_{i_{k - 1}} + p_{i_k} > \lambda_i\}\).
+    We need to show that \(p_i \leq \min(p_{i_k}, \lambda_i - q_{i_k})\).
+    
+\end{proof}
+
+\begin{corollary}\label{bs_iso}
+    \[B_{I, (\rho_i)} \cong \prod_{i \in I} \mathbb{C}^{blah} \times \prod_{i \notin I}\]
+\end{corollary}
+
+\subsection{Conclusion}
 At last we have reached the base of our recursive procedure, and we begin to propagate upwards.
 We write \((X_{\mu, \alpha})_\alpha\) to denote the irreducible components of \(X_\mu\).
 \begin{lemma}
@@ -862,7 +875,6 @@ We write \((X_{\mu, \alpha})_\alpha\) to denote the irreducible components of \(
     taking image under the isomorphism gives the desired result.
 \end{proof}
 
-\subsection{Conclusion}
 \begin{lemma}
     The irreducible components of \(U_0\) are exactly the \(U_{I, (\rho_i), \alpha}\).
     They are distinct.
