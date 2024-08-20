@@ -710,7 +710,9 @@ Then, we define \(B_{I, (\rho_i)}\) as the set of \(b \in \mathbb{C}^m\) satisfy
     \item For all \(k \in \{1, ..., r\}\), \(p_i = \rho_i\).
     \item For all \(k \in \{0, ..., r\}\), \(p_{i_{k + 1}} = \max_{i : q_i < q_{i_k}} p_i\).
 \end{itemize}
-Let \(U_{I, (\rho_i)} = \{(A_{0, b}, U) \in V : b \in B_{I, (\rho_i)}\}\).
+Note that for any \(b \in B_{I, (\rho_i)}\) we have \(p_{i_1} > \cdots > p_{i_r} > p_{i_{r + 1}}\), and also \(q_{i_0} > q_{i_1} > \cdots > q_{i_r}\).
+\par Let \(U_{I, (\rho_i)} := \{(A_{0, b}, U) \in V : b \in B_{I, (\rho_i)}\}\).
+The idea here is to show that blah relation holds between U and B.
 
 \begin{lemma}\label{bs_union}
     \(\mathbb{C}^m = \bigcup_{I, (\rho_i)} B_{I, (\rho_i)}\), where \(I\) ranges over all subsets of \(\{1, ..., k\}\), and \((\rho_i)\) ranges over all maps \(I \to \mathbb{N}_{>0}\) satisfying the conditions (1),(2),(3),(4).
@@ -744,20 +746,16 @@ Let \(U_{I, (\rho_i)} = \{(A_{0, b}, U) \in V : b \in B_{I, (\rho_i)}\}\).
 
 \subsection{A study of \(B_{I, (\rho_i)}\)}
 Fix any \(I\) and \((\rho_i)\) satisfying the conditions (1)--(4).
-Define \(\{i_1 < \cdots < i_r\} := I\).
-Note that for any \(b \in B_{I, (\rho_i)}\) we have \(p_{i_1} > \cdots > p_{i_r} > p_{i_{r + 1}}\), and also \(q_{i_0} > q_{i_1} > \cdots > q_{i_r}\).
+As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \(p_{i_{r + 1}} := 0\).
 
-\begin{lemma}\label{bs_fact}
-    \begin{itemize}
-        \item 
-    \end{itemize}
-\end{lemma}
-To see why this choice makes some sort of sense, look at the shape \(\mu\) of the Jordan basis of the previous subsection.
 \par First, we provide an alternative characterization of \(B_{I, (\rho_i)}\).
+Let \(B_{I, (\rho_i)}'\) be the set of \(b \in \mathbb{C}^m\) satisfying the following conditions.
+\begin{itemize}
+    \item For all \(k \in \{1, ..., r\}\), \(p_i = \rho_i\).
+    \item For \(i \notin I\), \(p_i \leq \min(p_{i_k}, \lambda_i - q_{i_k})\), where \(k := \min\{k \in \{1, ..., r\} : q_{i_{k - 1}} + p_{i_k} > \lambda_i\}\).
+\end{itemize}
 \begin{lemma}\label{alternative_bs}
-    \(B_{I, (\rho_i)} = B_{I, (\rho_i)}'\), where
-    \[B_{I, (\rho_i)}' := \{b \in \mathbb{C}^m : \forall i \in I. \; p_i \leq \rho_i \land \forall i \notin I. \; p_i = \min(p_{i_k}, \lambda_i - q_{i_k}), \]
-    \[\textrm{ where } k = \min\{k \in \{1, ..., r\} : q_{i_{k - 1}} + p_{i_k} > \lambda_i\}\}.\]
+    \(B_{I, (\rho_i)} = B_{I, (\rho_i)}'\).
 \end{lemma}
 \begin{proof}
     First we show that \(B_{I, (\rho_i)} \subseteq B_{I, (\rho_i)}'\).
