@@ -706,14 +706,14 @@ When it is clear enough from context, we will just write \(p_i\) and \(q_i\) ins
 \par For any \(I \subseteq \{1, ..., k\}\) and any values \((\rho_i)_{i \in I}\) %such that (1) \(\rho_i \leq \lambda_i\), (2) \(\rho_i\) is decreasing with \(i\), and (3) \(\lambda_i - \rho_i\) is decreasing with \(i\)
 , define 
 \[B_{I, (\rho_i)} := \{b \in \mathbb{C}^m : \]
-\[\{(p_i, q_i) : i \in I\} = \{(p_i, q_i) : n > q_i \land p_i = \max_{j : q_j = q_i} p_j > \max_{j : q_j < q_i} p_j \} \] 
-\[\land \forall i \in I. \; p_i = \rho_i \}.\]
+\[\forall i \in I. \; p_i = \rho_i \land \forall i \notin I. \exists i' \in I. \; q_{i'} \leq q_i \land p_{i'} \geq p_i\}\]
 Then let \(U_{I, (\rho_i)} = \{(A_{0, b}, U) \in V : b \in B_{I, (\rho_i)}\}\).
 \begin{lemma}\label{bs_union}
     \(\mathbb{C}^m = \bigcup_{I, (\rho_i)} B_{I, (\rho_i)}\), where \(I\) ranges over all subsets of \(\{1, ..., k\}\), and \((\rho_i)\) ranges over all maps \(I \to \mathbb{N}_{>0}\) such that \(\rho_i\) and \(\lambda_i - \rho_i\) are both decreasing with \(i\).
 \end{lemma}
 \begin{proof}
-    Let \(b \in \mathbb{C}^m\).
+    TODO: redo this proof, now that I changed the definition of \(B_{I, (\rho_i)}\).
+    \par Let \(b \in \mathbb{C}^m\).
     Let \(I' = \{(p_i, q_i) : p_i = n > q_i \land \max_{j : q_j = q_i} p_j > \max_{j : q_j < q_i} p_j\}\).
     Then let \(I = \{\max\{i : (p_i, q_i) = (p, q)\} : (p, q) \in I'\}\).
     Choosing the maximal \(i\) is an arbitrary choice; we just have to pick one.
