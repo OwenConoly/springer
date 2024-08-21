@@ -103,7 +103,7 @@ We call this the \emph{Springer resolution}.
 For \(n \in \mathcal{N}\), we call \(\pi^{-1}(n)\) the \emph{Springer fiber at \(n\)}.
 
 \subsection{Springer fibers in \(\gl_m\)}
-Now we let \(\mathcal{N}\) be the set of nilpotent elements in \(\gl_m\), and \(\mathcal{B}\) the variety of Borel subalgebras of \(\gl_m\).
+Now we let \(\mathcal{N}_m\) be the set of nilpotent elements in \(\gl_m\), and \(\mathcal{B}_m\) the variety of Borel subalgebras of \(\gl_m\).
 Let \(H \subseteq \gl_m\) be the subalgebra of upper triangular matrices.
 The variety of Borel subalgebras of \(\gl_m\) is \(\mathcal{B} = \{gHg^{-1} : g \in \GL_m\}\).
 Thus, the Springer fiber at \(X \in \mathcal{N}\) is 
@@ -764,7 +764,12 @@ Let \(B_{I, (\rho_i)}'\) be the set of \(b \in \mathbb{C}^m\) satisfying the fol
     First we show that \(B_{I, (\rho_i)} \subseteq B_{I, (\rho_i)}'\).
     Let \(b \in B_{I, (\rho_i)}\).
     It is clear that \(\forall i \in I. \; p_i = \rho_i\).
-    So, let \(i \notin I\), and let \(S = \{k : q_{i_{k - 1}} + p_{i_k} > \lambda_i\}\), and let \(k = \min S\).
+    Now, I claim that for every \(s \in \{0, ..., r\}\), either 
+    So, let \(i \notin I\), and let \(S = \{k : q_{i_{k - 1}} + p_{i_k} > \lambda_i\}\).
+    We have two cases: either \(S\) is empty, or not.
+    \par If \(S\) is empty
+
+    and let \(k = \min S\).
     We need to show that \(p_i \leq \min(p_{i_k}, \lambda_i - q_{i_k})\).
     That is, need to show that \(\)
     \par Let \(l \in \{0, ..., r\}\), and suppose \(q_i < q_{i_l}\).
