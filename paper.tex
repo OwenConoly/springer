@@ -747,6 +747,8 @@ The idea here is to show that blah relation holds between U and B.
 \subsection{A study of \(B_{I, (\rho_i)}\)}
 Fix any \(I\) and \((\rho_i)\) satisfying the conditions (1)--(4).
 As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \(p_{i_{r + 1}} := 0\).
+(Should have different case for \(k = 0\)).
+% Now, we also set \(q_{i_{-1}} := 0\), and \(p_{i_0} := \infty\) (just a symbol which is bigger than any integer).
 
 \par First, we provide an alternative characterization of \(B_{I, (\rho_i)}\).
 Let \(B_{I, (\rho_i)}'\) be the set of \(b \in \mathbb{C}^m\) satisfying the following conditions.
@@ -763,6 +765,9 @@ Let \(B_{I, (\rho_i)}'\) be the set of \(b \in \mathbb{C}^m\) satisfying the fol
     It is clear that \(\forall i \in I. \; p_i = \rho_i\).
     So, let \(i \notin I\), and let \(k = \min\{k : q_{i_{k - 1}} + p_{i_k} > \lambda_i\}\).
     We need to show that \(p_i \leq \min(p_{i_k}, \lambda_i - q_{i_k})\).
+    That is, need to show that \(\)
+    \par Let \(l \in \{0, ..., r\}\), and suppose \(q_i > q_{i_l}\).
+    Then, since \(\max_{j : q_j > q_{i_l}} p_j = p_{i_{l + 1}}\), we have \(p_i \leq p_{i_{l + 1}}\).
     
 \end{proof}
 
