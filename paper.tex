@@ -789,11 +789,14 @@ Let \(B_{I, (\rho_i)}'\) be the set of \(b \in \mathbb{C}^m\) satisfying the fol
     \par Let \(k \in \{0, ..., r\}\).
     I need to show that \(p_{i_{k + 1}} = \max_{j : q_j < q_{i_k}} p_j\).
     It suffices to show that for every \(i \in I\), either \(p_i \leq p_{i_{k + 1}}\) or \(q_i \geq q_{i_k}\).
-    Agh.  continue here.
+    First suppose \(k + 1 \in S_i\).
+    Then \(p_i \leq p_{i_{k + 1}}\), by definition of \(S_i\)... (not directly, but basically).
+    Now suppose \(k + 1 \notin S_i\).
+    Then \(q_i \geq ... (something) ... \geq q_{i_k}\).
 \end{proof}
 
 \begin{corollary}\label{bs_iso}
-    \[B_{I, (\rho_i)} \cong \prod_{i \in I} \mathbb{C}^{blah} \times \prod_{i \notin I}\]
+    \[B_{I, (\rho_i)} \cong \prod_{k = 1}^r \mathbb{C}^{\rho_{i_k}} \times \prod_{i \geq q_{i_0}} \mathbb{C}^{\lambda_i - n} \times \prod_{k = 0}^r \prod_{}\mathbb{C}^{}\]
 \end{corollary}
 
 \subsection{A study of \(U_{I, (\rho_i)}\)}
