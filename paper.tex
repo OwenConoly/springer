@@ -794,61 +794,7 @@ As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \
     \end{itemize}
 \end{corollary}
 \begin{proof}
-    
-    We begin by noting that the \(B_{I, (\rho_i)}\) is exactly the set of \(b \in \mathbb{C}^m\) satisfying the following conditions:
-    \begin{itemize}
-        \item For \(i \in I\), \(p_i = \rho_i\).
-        \item For \(i \notin I\), for all \(k \in \{0, ..., r\}\), either \(q_i \geq q_{i_k}\), or else both \(q_i < q_{i_k}\) and \(p_i \leq p_{i_{k + 1}}\).
-    \end{itemize}
-    First we show that \(B_{I, (\rho_i)} \subseteq B_{I, (\rho_i)}'\).
-    Let \(b \in B_{I, (\rho_i)}\).
-    Clearly \(\forall i \in I. \; p_i = \rho_i\).
-    Now, let \(i \notin I\).
-    \begin{itemize}
-        \item First suppose \(\lambda_i \geq q_{i_0} + p_{i_1}\).
-        We cannot have both \(q_i < q_{i_0}\) and \(p_i \leq p_{i_1}\), as this would imply \(\lambda_i = p_i + q_i < p_{i_1} + q_{i_0}\).
-        So, we must have \(q_i \geq q_{i_0}\).
-        \item 
-
-    \end{itemize}
-    \par Clearly \(b \in B_{I, (\rho_i)}\) iff for all \(k \in \{0, ..., r\}\) and all \(i \notin I\), either \(p_i \leq p_{i_{k + 1}}\) or \(q_i \geq q_{i_k}\).
-    Let \(i \notin I\).
-    As in the definition of \(B_{I, (\rho_i)}'\), we break into three cases.
-    \begin{itemize}
-        \item First suppose \(\lambda_i \geq q_{i_0} + p_{i_1}\).
-        If \(q_i < q_{i_0}\), this would entail \(p_i \leq \max_{j : q_j < q_{i_0}} = p_{i_1}\).
-    But then \(\lambda_i = p_i + q_i < q_{i_0} + p_{i_1}\), contradicting that \(1 \notin S\).
-    Hence \(q_i \geq q_{i_0}\), and therefore \(p_i \leq \lambda_i - q_{i_0}\).
-    \end{itemize}
-    First we show that \(B_{I, (\rho_i)} \subseteq B_{I, (\rho_i)}'\).
-    Let \(b \in B_{I, (\rho_i)}\).
-    It is clear that \(\forall i \in I. \; p_i = \rho_i\).
-    \par First suppose \(S = \emptyset\).
-    Then if we had \(q_i < q_{i_0}\), 
-    \par Now suppose \(r + 1 \in S\).
-    Then \(q_{i_r} = q_{i_r} + p_{i_{r + 1}} > \lambda_i\).
-    Then certainly \(q_i < q_{i_r}\), and therefore \(p_i \leq \max_{j : q_j < q_{i_r}} p_j = p_{i_{r + 1}}\).
-    \par If we are in neither of those cases, let \(k = \max S\).
-    We have \(q_{i_k} + p_{i_{k + 1}} \leq \lambda_i\).
-    Suppose we had \(q_i < q_{i_k}\).
-    Then \(p_i \leq \max_{j : q_j < q_{i_k}} p_j = p_{i_{k + 1}}\).
-    But then \(p_i + q_i < q_{i_k} + p_{i_{k + 1}} \leq \lambda_i\), which contradicts that \(p_i + q_i = \lambda_i\).
-    Thus \(q_i \geq q_{i_k}\).
-    Now, we have two cases: either \(q_i \geq q_{i_{k - 1}}\), or \(q_i < q_{i_{k - 1}}\).
-    In the second case, we see that \(p_i \leq p_{i_k}\).
-    In the first, recall we also have \(q_{i_{k - 1}} + p_{i_k} > \lambda_i = p_i + q_i\) (since \(k \in S\)), so \(p_{i_k} > p_i\).
-    So, in any case, we have \(q_i \geq q_{i_k}\) and \(p_i \leq p_{i_k}\); or, in other words, \(p_i \leq \min(p_{i_k}, \lambda_i - q_{i_k})\).
-    \par Hence \(b \in B'_{I, (\rho_i)}\), and we see that \(B_{I, (\rho_i)} \subseteq B'_{I, (\rho_i)}\).
-    Now we show the opposite inclusion.
-    Let \(b \in B_{I, (\rho_i)}\).
-    Again it is clear that \(\forall i \in I. \; p_i = \rho_i\).
-    \par Let \(k \in \{0, ..., r\}\).
-    I need to show that \(p_{i_{k + 1}} = \max_{j : q_j < q_{i_k}} p_j\).
-    It suffices to show that for every \(i \in I\), either \(p_i \leq p_{i_{k + 1}}\) or \(q_i \geq q_{i_k}\).
-    First suppose \(k + 1 \in S_i\).
-    Then \(p_i \leq p_{i_{k + 1}}\), by definition of \(S_i\)... (not directly, but basically).
-    Now suppose \(k + 1 \notin S_i\).
-    Then \(q_i \geq ... (something) ... \geq q_{i_k}\).
+    Both \(q_{i_k}\) and \(p_{i_k}\) are decreasing as \(k\) increases, so this follows directly from \cref{alternative_bs_one}.
 \end{proof}
 
 \begin{corollary}\label{bs_iso}
