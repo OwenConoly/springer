@@ -795,11 +795,26 @@ As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \
 \end{corollary}
 \begin{proof}
     Both \(q_{i_k}\) and \(p_{i_k}\) are decreasing as \(k\) increases, so this follows directly from \cref{alternative_bs_one}.
+    (Note that \(p_i \leq \lambda_i - q_{i_k}\) iff \(q_{i_k} \leq q_i\).)
 \end{proof}
 
 \begin{corollary}\label{bs_iso}
-    \[B_{I, (\rho_i)} \cong \prod_{k = 1}^r \mathbb{C}^{\rho_{i_k}} \times \prod_{i \geq q_{i_0}} \mathbb{C}^{\lambda_i - n} \times \prod_{k = 0}^r \prod_{}\mathbb{C}^{}\]
+    \[B_{I, (\rho_i)} \cong \prod_{k = 1}^r (\mathbb{C}^{\rho_{i_k} - 1} \times (\mathbb{C} \setminus \{0\})) \times \prod_{i : \lambda_i \geq q_{i_0} + p_{i_1}} \mathbb{C}^{\lambda_i - q_{i_0}} \times \prod_{k = 0}^r \prod_{\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}}\mathbb{C}^{\min(p_{i_k}, \lambda_i - q_{i_k})}\]
 \end{corollary}
+\begin{proof}
+    Here I use the notation \(x \times y = (x, y)\), and so on.
+    The isomorphism sends \(b \in B_{I, (\rho_i)}\) to 
+    \[\prod_{k = 1}^{r}(b_{i_k1},..., b_{i_k\rho_{i_k}}) \times \prod_{i : \lambda_i \geq q_{i_0} + p_{i_1}} (b_{i1}, ..., b_{i, \lambda_i - q_{i_0}}) \times\]
+    \[\prod_{k = 0}^r \prod_{\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} (b_{i1}, ..., b_{i,\min(p_{i_k}, \lambda_i - q_{i_k})}).\]
+    \cref{alternative_bs_two} tells us that this is an isomorphism.
+\end{proof}
+
+\begin{corollary}\label{bs_dim}
+    \[\dim B_{I, (\rho_i)} = \sum_{i : \lambda_i \geq q_{i_0} + \rho_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 0}^r \sum_{\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} \min(p_{i_k}, \lambda_i - q_{i_k}).\]
+\end{corollary}
+\begin{proof}
+    Immediate from \cref{bs_iso}.
+\end{proof}
 
 \subsection{A study of \(U_{I, (\rho_i)}\)}
 Fix any \(I\) and \((\rho_i)\) satisfying the conditions of Lemma 8.1.
