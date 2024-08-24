@@ -895,8 +895,6 @@ Let \(s\) be the function taking integer lists to lists which sorts the input in
 \end{lemma}
 \begin{proof}
     Let \(L = [q_{i_0}, \lambda_1, ..., \lambda_k]\).
-    First we compute
-    \[\gamma(L) - \gamma(s(L)) = \sum_{i : \lambda_i \geq q_{i_0}} (\lambda_i - q_{i_0}).\]
     Note that \(\mu = [..., q_{i_0} + p_{i_1}, ..., q_{i_1} + p_{i_2}, ..., ..., q_{i_r} + p_{i_{r + 1}}, ...]\).
     Let \(L'\) be the result of taking \(\mu\) and, for each \(x\), replacing one occurence of \(q_{i_x} + p_{i_{x + 1}}\) by \(q_{i_x} + p_{i_x}\); that is,
     \(L' = [..., q_{i_0}, ..., q_{i_1} + p_{i_1}, ..., q_{i_2} + p_{i_2}, ..., q_{i_r} + p_{i_r}]\).
@@ -904,21 +902,21 @@ Let \(s\) be the function taking integer lists to lists which sorts the input in
     So,
     \[\gamma(L') - \gamma(\mu) = \sum_{k = 1}^r p_{i_{k + 1}} (1 + \#\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}) = \]
     \[\sum_{k = 1}^r p_{i_k} \cdot \#\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}.\]
-    Now we consider how to get from \(L'\) to \(s(L')\).
-    Sorting \(L'\) just requires shifting each \(q_{i_x} + p_{i_x}\) to the left by \(\#\{i \notin I : q_{i_x} + p_{i_x} > \lambda_i \geq q_{i_x} + p_{i_{x + 1}}\}\) slots.
+    Now we consider how to get from \(L'\) to \(L\).
+    First we shift \(q_{i_0}\) to the left by \(\#\{i \notin I : \lambda_i \geq q_{i_0} + p_{i_1}\}\) slots.
+    Then we leave \(q_{i_0}\) in place and sort the rest of the list.
+    This entails shifting each \(q_{i_x} + p_{i_x}\) to the left by \(\#\{i \notin I : q_{i_x} + p_{i_x} > \lambda_i \geq q_{i_x} + p_{i_{x + 1}}\}\) slots.
     Shifting \(q_{i_x} + p_{i_x}\) to the left one slot, by swapping it with \(\lambda_i\), changes the value of \(\gamma\) by \(\lambda_i - (q_{i_x} + p_{i_x})\).
     To go from \(L'\) to \(s(L')\), we can just make these swaps repeatedly.  
     So,
-    \[\gamma(s(L')) - \gamma(L') = \]
+    \[\gamma(L) - \gamma(L') = \]
     \[\sum_{i \notin I : q_{i_0} + p_{i_1} > \lambda_i \geq q_{i_0}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^s \sum_{\{i \notin I : q_{i_k} + p_{i_{k + 1}} > \lambda_i \geq q_{i_k} + p_{i_k}\}} (\lambda_i - (q_{i_k} + p_{i_k})).\]
     TODO: the thing above would be cleaner if \(p_{i_0} := 0\).
     \par Now,
     \begin{align*}
         \gamma(L) - \gamma(\mu) & = \\
-        [\gamma(L) - \gamma(s(L))] + [\gamma(s(L')) - \gamma(L')] + [\gamma(L') - \gamma(\mu)] & = \\
-        something
-    \end{align*}
-    
+        [\gamma(L) - \gamma(L')] + [\gamma(L') - \gamma(\mu)] & = \\
+    \end{align*}    
 \end{proof}
 
 \begin{lemma}
