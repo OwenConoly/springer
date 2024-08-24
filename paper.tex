@@ -886,12 +886,22 @@ Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find
 
 Let \(\mu(I, (\rho_i))\) be the shape of the Jordan basis given in the previous lemma.
 Let \(X_\mu\) be the Springer fiber at \(J(\mu)\), and let \((X_{\mu, \alpha})_{\alpha \in \mathrm{SYT}(\mu)}\) be the irreducible components.
+\par Given a zero-indexed list \(L = [L_0, ..., L_{l - 1}]\), we define \(\gamma(L) = \sum_i i L_i\).
+We will be interested in this thing because the dimension of \(X_\mu\) is \(\gamma([\mu_1, ..., \mu_l])\).
+Let \(s\) be the function taking integer lists to lists which sorts the input in nonincreasing order.
 
 \begin{lemma}
-    For each \(\alpha\), \(\dim X_{\mu, \alpha}\) is blah.
+    \(\gamma([\mu_1, ..., \mu_l]) = \gamma([0, \lambda_1, ..., \lambda_k]) - something\).
 \end{lemma}
 \begin{proof}
-    CONTINUE HERE
+    Let \(L = [q_{i_0}, \lambda_1, ..., \lambda_k]\).
+    First we compute
+    \[\gamma(L) - \gamma(s(L)) = \sum_{i : \lambda_i \geq q_{i_0}} (\lambda_i - q_{i_0}).\]
+    Now, we have \(s(L) = [..., q_{i_0}, ..., q_{i_1} + p_{i_1}, ..., q_{i_2} + p_{i_2}, ..., q_{i_r} + p_{i_r}, ...]\).
+    Let \(L' = [..., q_{i_0} + p_{i_1}, ..., q_{i_1} + p_{i_2}, ..., q_{i_2} + p_{i_3}, ..., q_{i_r} + p_{i_{r + 1}}]\).
+    We compute 
+    \[\gamma(s(L)) - \gamma()\]
+    yep and so on
 \end{proof}
 
 \begin{lemma}
