@@ -292,6 +292,116 @@ where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) in the case \(i \n
     Restricting \(A\) to \(\langle e_{i_0j}\rangle_{j \textrm{ arbitrary}}\) gives a Jordan block, and then applying \cref{normalization_helper_two} gives the desired result.
 \end{proof}
 
+\subsection{A determinant}
+\begin{lemma}
+    Let \(X \in \gl_m\), and let 
+    \[Y = \begin{pmatrix}
+        y_{11} & y_{12} & y_{13} & \cdots & y_{1,n-1} & y_{1n} \\
+        d_1 & y_{22} & y_{23} & \cdots & y_{2,n-1} & y_{2n} \\
+            & d_2   & y_{33} & \cdots & y_{3,n-1} & y_{3n} \\
+            & & \ddots & \cdots & \vdots  & \vdots \\
+            & & & d_{n - 2} & y_{n-1,n-1} & y_{n - 1,n}\\
+            & & & & d_{n - 1} & y_{nn}
+    \end{pmatrix} \in \gl_n.\]
+    For any \(a, b \in \mathbb{C}^m\),
+    \[\det 
+    \begin{pNiceArray}{ccc|ccc}
+        & & & & & \vert \\
+        & X & & & & b    \\
+        & & & & & \vert \\
+       \hline
+       \text{---} & a & \text{---} &  \\
+       & & & & Y & \\
+       & & &  \\
+       \end{pNiceArray} = \]
+       \[\det X \det Y + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
+            & & & \vert \\
+            & X & & b     \\
+            & & & \vert \\
+            \hline 
+        \text{---} & a & \text{---} & 0
+       \end{pNiceArray}\]
+\end{lemma}
+\begin{proof}
+    By induction on \(n\).
+    In the case \(n = 1\), expanding along the last row (taking the usual interpretation of the empty product) gives the desired result.
+    \par Now suppose \(n > 1\).
+    Expanding along the last row, we get 
+    \[d_{n - 1} \det \begin{pNiceArray}{ccc|ccc}
+        & & & & & \vert \\
+        & X & & & & b    \\
+        & & & & & \vert \\
+       \hline
+       \text{---} & a & \text{---} &  \\
+       & & & & Y_{n,n-1} & \\
+       & & &  \\
+       \end{pNiceArray} -
+    y_{nn} \det \begin{pNiceArray}{ccc|ccc}
+        & & & & & \\
+        & X & & & &   \\
+        & & & & & \\
+       \hline
+       \text{---} & a & \text{---} &  \\
+       & & & & Y_{n,n} & \\
+       & & &  \\
+       \end{pNiceArray}.\]
+    Using our inductive hypothesis for the first determiniant, and using that \(\det \begin{pNiceArray}{c|c}
+        A_{11} & 0 \\
+        A_{21} & A_{22}
+    \end{pNiceArray} = \det A_{11} \det A_{22}\) for the second, the expression becomes
+    \[d_{n - 1} \left(\det X \det Y_{n,n-1} + \left(\prod_{i \leq n - 2} d_i\right) \det \begin{pNiceArray}{ccc|c}
+        & & & \vert \\
+        & X & & b     \\
+        & & & \vert \\
+        \hline 
+    \text{---} & a & \text{---} & 0
+   \end{pNiceArray}\right)
+   - y_{nn} \det X \det Y_{nn} = \]
+   \[(d_{n - 1} Y_{n,n-1} - y_{nn} \det Y_{nn})\det X + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
+        & & & \vert \\
+        & X & & b     \\
+        & & & \vert \\
+        \hline 
+    \text{---} & a & \text{---} & 0
+   \end{pNiceArray} = \]
+   \[\det Y \det X + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
+        & & & \vert \\
+        & X & & b     \\
+        & & & \vert \\
+        \hline 
+    \text{---} & a & \text{---} & 0
+   \end{pNiceArray}.\]
+\end{proof}
+
+\begin{corollary}
+    If \(X\) is nilpotent, and
+    \[\begin{pNiceArray}{ccc|ccc}
+        & & & & & \vert \\
+        & X & & & & b    \\
+        & & & & & \vert \\
+       \hline
+       \text{---} & a & \text{---} &  \\
+       & & & & Y & \\
+       & & &  \\
+       \end{pNiceArray}\]
+    is nilpotent  as well, then \(Y\) is nilpotent.
+    If all the \(d_i\) are nonzero, then
+    \[\begin{pNiceArray}{ccc|c}
+        & & & \vert \\
+        & X & & b     \\
+        & & & \vert \\
+        \hline 
+    \text{---} & a & \text{---} & 0
+   \end{pNiceArray}\]
+   is nilpotent as well.
+    \begin{proof}
+        By the previous lemma, the characteristic polynomial of the big matrix is
+        \[g_X(\lambda) g_Y(\lambda) + f(\lambda),\]
+        where \(g_X(\lambda) = \lambda^m\) is the characteristic polynomial of \(X\), and \(f(\lambda)\) is some polynomial of degree at most \(m - 1\).
+    \end{proof}
+\end{corollary}
+
+
 
 \section{Finding \(\spl_2\)-triples \((E, H, F)\) in \(\gl_{m + n}\) with a particular \(E\).}
 \par Let
@@ -458,104 +568,6 @@ For \(Y \in \gl_m\), we call \(\pi_{m,n}^{-1}(Y)\) the \emph{Springer fiber at t
     And \(i + (n - i') \geq n\), so we're done.
 \end{proof}
 
-\begin{lemma}
-    Let \(X \in \gl_m\), and let 
-    \[Y = \begin{pmatrix}
-        y_{11} & y_{12} & y_{13} & \cdots & y_{1,n-1} & y_{1n} \\
-        d_1 & y_{22} & y_{23} & \cdots & y_{2,n-1} & y_{2n} \\
-            & d_2   & y_{33} & \cdots & y_{3,n-1} & y_{3n} \\
-            & & \ddots & \cdots & \vdots  & \vdots \\
-            & & & d_{n - 2} & y_{n-1,n-1} & y_{n - 1,n}\\
-            & & & & d_{n - 1} & y_{nn}
-    \end{pmatrix} \in \gl_n.\]
-    For any \(a, b \in \mathbb{C}^m\),
-    \[\det 
-    \begin{pNiceArray}{ccc|ccc}
-        & & & & & \vert \\
-        & X & & & & b    \\
-        & & & & & \vert \\
-       \hline
-       \text{---} & a & \text{---} &  \\
-       & & & & Y & \\
-       & & &  \\
-       \end{pNiceArray} = \]
-       \[\det X \det Y + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
-            & & & \vert \\
-            & X & & b     \\
-            & & & \vert \\
-            \hline 
-        \text{---} & a & \text{---} & 0
-       \end{pNiceArray}\]
-\end{lemma}
-\begin{proof}
-    By induction on \(n\).
-    In the case \(n = 1\), expanding along the last row (taking the usual interpretation of the empty product) gives the desired result.
-    \par Now suppose \(n > 1\).
-    Expanding along the last row, we get 
-    \[d_{n - 1} \det \begin{pNiceArray}{ccc|ccc}
-        & & & & & \vert \\
-        & X & & & & b    \\
-        & & & & & \vert \\
-       \hline
-       \text{---} & a & \text{---} &  \\
-       & & & & Y_{n,n-1} & \\
-       & & &  \\
-       \end{pNiceArray} -
-    y_{nn} \det \begin{pNiceArray}{ccc|ccc}
-        & & & & & \\
-        & X & & & &   \\
-        & & & & & \\
-       \hline
-       \text{---} & a & \text{---} &  \\
-       & & & & Y_{n,n} & \\
-       & & &  \\
-       \end{pNiceArray}.\]
-    Using our inductive hypothesis for the first determiniant, and using that \(\det \begin{pNiceArray}{c|c}
-        A_{11} & 0 \\
-        A_{21} & A_{22}
-    \end{pNiceArray} = \det A_{11} \det A_{22}\) for the second, the expression becomes
-    \[d_{n - 1} \left(\det X \det Y_{n,n-1} + \left(\prod_{i \leq n - 2} d_i\right) \det \begin{pNiceArray}{ccc|c}
-        & & & \vert \\
-        & X & & b     \\
-        & & & \vert \\
-        \hline 
-    \text{---} & a & \text{---} & 0
-   \end{pNiceArray}\right)
-   - y_{nn} \det X \det Y_{nn} = \]
-   \[(d_{n - 1} Y_{n,n-1} - y_{nn} \det Y_{nn})\det X + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
-        & & & \vert \\
-        & X & & b     \\
-        & & & \vert \\
-        \hline 
-    \text{---} & a & \text{---} & 0
-   \end{pNiceArray} = \]
-   \[\det Y \det X + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
-        & & & \vert \\
-        & X & & b     \\
-        & & & \vert \\
-        \hline 
-    \text{---} & a & \text{---} & 0
-   \end{pNiceArray}.\]
-\end{proof}
-
-\begin{corollary}
-    If \(X\) is nilpotent, and
-    \[\begin{pNiceArray}{ccc|ccc}
-        & & & & & \vert \\
-        & X & & & & b    \\
-        & & & & & \vert \\
-       \hline
-       \text{---} & a & \text{---} &  \\
-       & & & & Y & \\
-       & & &  \\
-       \end{pNiceArray}\]
-    is nilpotent  as well, then \(Y\) is nilpotent (TODO: and that other determinant is zero).
-    \begin{proof}
-        By the previous lemma, the characteristic polynomial of the big matrix is
-        \[g_X(\lambda) g_Y(\lambda) + f(\lambda),\]
-        where \(g_X(\lambda) = \lambda^m\) is the characteristic polynomial of \(X\), and \(f(\lambda)\) is some polynomial of degree at most \(m - 1\).
-    \end{proof}
-\end{corollary}
 \par Now, taking the previous corolloary and the first lemma together, we see that 
 \[\mathcal{S}_{m,n}' = \left\{\begin{pNiceArray}{ccc|cccc}
     & & & & & & \vert \\
