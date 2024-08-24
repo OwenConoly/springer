@@ -825,40 +825,46 @@ By finding a algebraic map taking \(b\) to a Jordan basis for \(A_{0,b}\), we wi
 Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find the irreducible components of \(U_{I, (\rho_i)}\).
 \par So, now we find a Jordan basis for \(A_{0, b}\).
 \begin{lemma}
-    Let \(P = \max_{i \in I} \rho_i\), and for \(i \in I\), let \(P_i = \max_{j \in I : j > i} \rho_j\).
     The following vectors give a Jordan basis for \(A_{0,b}\).
     (For convenience, we write \(A := A_{0,b}\) in this lemma and proof.)
     \begin{itemize}
         \item For \(i \notin I\), the chain of length \(p_i + q_i\) beginning with \(e_{i, p_i + q_i}\)
-        \item The chain of length \(n + P\) beginning with \(f_n - (A^{n + P}f_n \rightshift n + P)\)
-        \item For \(i \in I\), the chain of length \(q_i + P_i\) beginning with \(v_i - (A^{q_i + P_i} v_i \rightshift q_i + P_i)\), where \(v_i := A^{n - q_i} f_n - \sum_{l = 1}^{p_i} b_{il} e_{i,l + q_i}\)
+        \item The chain of length \(n + p_{i_1}\) beginning with \(f_n - (A^{n + p_{i_1}}f_n \rightshift n + p_{i_1})\)
+        \item For \(k \in \{1, ..., r\}\), the chain of length \(q_{i_k} + p_{i_{k + 1}}\) beginning with \(v_{i_k} - (A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}})\), where \(v_{i_k} := A^{n - q_{i_k}} f_n - \sum_{l = 1}^{p_{i_k}} b_{i_kl} e_{i,l + q_{i_k}}\)
     \end{itemize}
 \end{lemma}
 \begin{proof}
     There are three things to check: (1) the chains are no longer than their claimed lengths, (2) the claimed lengths sum to \(m + n\), and (3) the span of the chains is \(\mathbb{C}^{m + n}\).
-    \par We have defined \(P\) and \(P_i\) in terms of the \(\rho_i\) to make it clear that they only depend on \(I\) and the \(\rho_i\).
-    Now we provide more useful characterizations.
-    It is immediate from the definition of \(U_{I, (\rho_i)}\) that \(P = \max_{l : q_l < n} p_l\), and \(P_i = \max_{l : q_l < q_i} p_l\).
     \begin{proof}[Proof of (1)]
         It is obvious that a chain beginning with \(e_{i, p_i + q_i}\) has length \(p_i + q_i\).
-        \par Now consider the chain beginning with \(f_n - (A^{n + P} f_n \rightshift n + P)\).
-        Note that \(A^n f_n = b\), so \(A^{n + P} f_n = A^P b = b \leftshift P\).
-        By shifting \(b\) left \(P\) times, we zero out all the rows \(i\) where \(q_i < n\).
-        This ensures that the operation of shifting \(b \leftshift P\) right \(n + P\) times is invertible by shifting left \(n + P\) times.
+        \par Now consider the chain beginning with \(f_n - (A^{n + p_{i_1}} f_n \rightshift n + p_{i_1})\).
+        Note that \(A^n f_n = b\), so \(A^{n + p_{i_1}} f_n = A^{p_{i_1}} b = b \leftshift p_{i_1}\).
+        By shifting \(b\) left \(p_{i_1}\) times, we zero out all the rows \(i\) where \(q_i < n\).
+        This ensures that the operation of shifting \(b \leftshift p_{i_1}\) right \(n + p_{i_1}\) times is invertible by shifting left \(n + p_{i_1}\) times.
         That is,
-        \[A^{n + P} f_n = b \leftshift P = ((b \leftshift P) \rightshift n + P) \leftshift n + P = A^{n + P}(A^{n + P}f_n \rightshift n + P).\]
-        This shows that the chain has length at most \(n + P\), as desired.
-        \par Now, let \(i \in I\).
-        We have \(v_i = A^{n - q_i} f_n - \sum_{l = 1}^{p_i} b_{il} e_{i,l + q_i}\).
-        First we note that \(q_i < n\) by the definition of \(U_{I, (\rho_i)}\), so the definition of \(v_i\) makes sense.
-        We consider the chain beginning with \(v_i - (A^{q_i + P_i} v_i \rightshift q_i + P_i)\).
-        Note that \(A^{q_i} v_i\) is just \(b\) with row \(i\) zeroed out.
-        For brevity, we write \(b_i := A^{q_i} v_i\).
-        Note that \(b_i \leftshift P_i\) has rows \(l\) zeroed out, for all \(l\) with \(q_l < q_i\).
-        This ensures that shifting \(b_i \leftshift P_i\) right \(q_i + P_i\) times can be inverted by shifting left \(q_i + P_i\) times.
+        \begin{align*}
+            A^{n + p_{i_1}} f_n & = \\
+            b \leftshift p_{i_1} & = \\
+            ((b \leftshift p_{i_1}) \rightshift n + p_{i_1}) \leftshift n + p_{i_1} & = \\
+            A^{n + p_{i_1}}(A^{n + p_{i_1}}f_n \rightshift n + p_{i_1}) & .
+        \end{align*}
+        This shows that the chain has length at most \(n + p_{i_1}\), as desired.
+        \par Now, let \(k \in \{1, ..., r\}\).
+        We have \(v_{i_k} = A^{n - q_{i_k}} f_n - \sum_{l = 1}^{p_{i_k}} b_{i_kl} e_{i_k,l + q_{i_k}}\).
+        First we note that \(q_{i_k} < n\) by the definition of \(U_{I, (\rho_i)}\), so the definition of \(v_{i_k}\) makes sense.
+        We consider the chain beginning with \(v_{i_k} - (A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}})\).
+        Note that \(A^{q_{i_k}} v_{i_k}\) is just \(b\) with row \(i_k\) zeroed out.
+        For brevity, we write \(b_{i_k} := A^{q_{i_k}} v_{i_k}\).
+        Note that \(b_{i_k} \leftshift p_{i_{k + 1}}\) has rows \(l\) zeroed out, for all \(l\) with \(q_l < q_{i_k}\).
+        This ensures that shifting \(b_{i_k} \leftshift p_{i_{k + 1}}\) right \(q_{i_k} + p_{i_{k + 1}}\) times can be inverted by shifting left \(q_{i_k} + p_{i_{k + 1}}\) times.
         That is,
-        \[A^{q_i + P_i} v_i = b_i \leftshift P_i = ((b_i \leftshift P_i) \rightshift q_i + P_i) \leftshift q_i + P_i = A^{q_i + P_i}(A^{q_i + P_i} v_i \rightshift q_i + P_i).\]
-        This shows that the chain has length at most \(q_i + P_i\), as desired.
+        \begin{align*}
+            A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} & = \\
+            b_{i_k} \leftshift p_{i_{k + 1}} & = \\
+            ((b_{i_k} \leftshift p_{i_{k + 1}}) \rightshift q_{i_k} + p_{i_{k + 1}}) \leftshift q_{i_k} + p_{i_{k + 1}} & = \\
+            A^{q_{i_k} + p_{i_{k + 1}}}(A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}}) & .
+        \end{align*}
+        This shows that the chain has length at most \(q_{i_k} + p_{i_{k + 1}}\), as desired.
     \end{proof}
     \begin{proof}[Proof of (2)]
         The sum of the lengths is
