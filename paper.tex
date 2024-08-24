@@ -691,7 +691,7 @@ We conclude that \(U_{wr} \cong U_{wr}'\); so to find the irreducible components
 To clear the context, which is rather cluttered by now, and to avoid writing primes everywhere, we move to a new section.
 
 \section{Finding the irreducible components of \(U_0\)}
-\subsection{Introduction}
+\subsection{Setup}
 Let \(X\) be nilpotent with Jordan basis \((e_{ij}')_{1 \leq i \leq k, 1 \leq j \leq \lambda_i'}\).
 Let \(V = \{(A_{a,b}, U) : \forall i. \; A_{a,b} U_{i + 1} \subseteq U\}\).
 Let
@@ -714,38 +714,26 @@ The idea here is to show that blah relation holds between U and B.
 
 \begin{lemma}\label{bs_union}
     \(\mathbb{C}^m = \bigcup_{I, (\rho_i)} B_{I, (\rho_i)}\), where \(I\) ranges over all subsets of \(\{1, ..., k\}\), and \((\rho_i)\) ranges over all maps \(I \to \mathbb{N}_{>0}\) satisfying the conditions (1),(2),(3),(4).
+    Further, none of the \(B_{I, (\rho_i)}\) is contained in the union of the others.
 \end{lemma}
 \begin{proof}
-    TODO: redo this proof, now that I changed the definition of \(B_{I, (\rho_i)}\).
-    \par Let \(b \in \mathbb{C}^m\).
-    Let \(I' = \{(p_i, q_i) : p_i = n > q_i \land \max_{j : q_j = q_i} p_j > \max_{j : q_j < q_i} p_j\}\).
-    Then let \(I = \{\max\{i : (p_i, q_i) = (p, q)\} : (p, q) \in I'\}\).
-    Choosing the maximal \(i\) is an arbitrary choice; we just have to pick one.
-    For \(i \in I\), \(\rho_i := p_i\).
-    All we need to do is show that each \(\rho_i\) is positive, and that \(\rho_i\) and \(\lambda_i - \rho_i\) are decreasing.
-    Then we get that \((A_{0,b}, U) \in U_{I, (\rho_i)}\), and we are done.
-    \par Recall that by convention the maximum of the empty set is zero.
-    So, the fact that \(p_i > \max_{j > i} p_j\) tells us that \(\rho_i = p_i\) is positive.
-    \par Let \(i, j \in I\) with \(i < j\).
-    Since \(\lambda_i \geq \lambda_j\), we have either \(p_i \geq p_j\) or \(q_i \geq q_j\).
-    Further, since \((p_i, q_i) \neq (p_j, q_j)\) (clear from definition of \(I\)), either \(p_i > p_j\) or \(q_i > q_j\).
-    And for \(i, j \in I\) we clearly have \(p_i > p_j \iff q_i > q_j\).
-    So in either case, both \(p_i > p_j\) and \(q_i > q_j\), and consequently both \(\rho_i > \rho_j\) and \(\lambda_i - \rho_i > \lambda_j - \rho_j\).
-\end{proof}
-
-\begin{lemma}
-    There are blah \(B_{I, (\rho_i)}\) with \((\rho_i)\) satisfying the constraints of \cref{bs_union}, and none is contained in the union of the others.
-\end{lemma}
-\begin{proof}
-    seems hard to count.
-    total number is product over L of (number of rows of length L) times (count where we assume there is only one row of each length).
-    
+    Let \(b \in \mathbb{C}^m\).
+    If \(\{i : q_{i_0} > q_i\}\) is the empty set, then stop.
+    Otherwise, take any \(i_1 \in \argmax_{i : q_{i_0} > q_i} p_i\), and set \(\rho_{i_1} := p_{i_1}\).
+    If \(\{i : q_{i_1} > q_i\} = \emptyset\), then stop.
+    Otherwise, take any \(i_2 \in \argmax_{i : q_{i_1} > q_i} p_i\), and set \(\rho_{i_2} := p_{i_2}\).
+    Continuing on in this way, eventually we reach a point where \(\{i : q_{i_k} > q_i\} = \emptyset\).
+    Then we set \(I = \{i_1, ..., i_k\}\).
+    Note that \(I, (\rho_i)\) satisfy conditions (1)--(4), and furthermore \(b \in B_{I, (\rho_i)}\).
+    \par Now, we show that no \(B_{I, (\rho_i)}\) is contained in the union of the others.
+    Indeed, fix \(I\) and \((\rho_i)\).
+    Take any \(b \in B_{I, (\rho_i)}\) with \(p_i = \rho_i\) for \(i \in I\) and \(p_i = 0\) for \(i \notin I\).
+    It is clear that \(b \notin B_{I', (\rho_i')}\) whenever \(I' \neq I\) or \((\rho_i') \neq (\rho_i)\).
 \end{proof}
 
 \subsection{A study of \(B_{I, (\rho_i)}\)}
 Fix any \(I\) and \((\rho_i)\) satisfying the conditions (1)--(4).
 As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \(p_{i_{r + 1}} := 0\).
-% Now, we also set \(q_{i_{-1}} := 0\), and \(p_{i_0} := \infty\) (just a symbol which is bigger than any integer).
 
 \par First, we provide an alternative characterization of \(B_{I, (\rho_i)}\).
 \begin{lemma}\label{alternative_bs_one}
@@ -897,7 +885,14 @@ Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find
 \end{proof}
 
 Let \(\mu(I, (\rho_i))\) be the shape of the Jordan basis given in the previous lemma.
-Let \(X_\mu\) be the Springer fiber at \(J(\mu)\).
+Let \(X_\mu\) be the Springer fiber at \(J(\mu)\), and let \((X_{\mu, \alpha})_{\alpha \in \mathrm{SYT}(\mu)}\) be the irreducible components.
+
+\begin{lemma}
+    For each \(\alpha\), \(\dim X_{\mu, \alpha}\) is blah.
+\end{lemma}
+\begin{proof}
+    CONTINUE HERE
+\end{proof}
 
 \begin{lemma}
     \(U_{I, (\rho_i)} \cong B_{I, (\rho_i)} \times X_\mu\).
@@ -940,14 +935,8 @@ Apply things from the previous two sections, and conclude.
 \section{A different variety}
 Define \(R = \{(X, \mathfrak{b}_1, \mathfrak{b}_2) : X \in \mathfrak{b}_1 \land u(X) \in \mathfrak{b}_2\} \subseteq \mathcal{S}_{m,n}' \times \mathcal{B}_{m + n} \times \mathcal{B}_m\).
 We can obtain a subvariety of \(R\) by requiring that \(u(X)\) is in some fixed similarity class.
-(TODO: why is this a subvariety?  Is it?  Is this even the right way of explaining the significance of the \(m^2\)?)
 We expect that each of these subvarieties is an irreducible component of dimension \(m^2\).
 We will verify these things using our prvious computations of springer fibers.
-
-\subsection{TODO}
-\begin{itemize}
-    \item Why are SOn flags what they are.
-\end{itemize}
 
 \bibliography{paper}
 \end{document}
