@@ -788,7 +788,7 @@ As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \
         \item For \(i \notin I\),
         \begin{itemize}
             \item If \(\lambda_i \geq q_{i_0} + p_{i_1}\), then \(p_i \leq \lambda_i - q_{i_0}\).
-            \item If there is \(k \in \{0, ..., r\}\) with \(q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\), then \(p_i \leq \min(p_{i_k}, \lambda_i - q_{i_k})\).
+            \item If there is \(k \in \{1, ..., r\}\) with \(q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\), then \(p_i \leq \min(p_{i_k}, \lambda_i - q_{i_k})\).
             \item If \(q_{i_r} + p_{i_{r + 1}} > \lambda_i\), then \(p_i \leq p_{i_{r + 1}}\).
         \end{itemize}
     \end{itemize}
@@ -799,18 +799,18 @@ As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \
 \end{proof}
 
 \begin{corollary}\label{bs_iso}
-    \[B_{I, (\rho_i)} \cong \prod_{k = 1}^r (\mathbb{C}^{\rho_{i_k} - 1} \times (\mathbb{C} \setminus \{0\})) \times \prod_{i : \lambda_i \geq q_{i_0} + p_{i_1}} \mathbb{C}^{\lambda_i - q_{i_0}} \times \prod_{k = 0}^r \prod_{\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}}\mathbb{C}^{\min(p_{i_k}, \lambda_i - q_{i_k})}\]
+    \[B_{I, (\rho_i)} \cong \prod_{k = 1}^r (\mathbb{C}^{\rho_{i_k} - 1} \times (\mathbb{C} \setminus \{0\})) \times \prod_{i : \lambda_i \geq q_{i_0} + p_{i_1}} \mathbb{C}^{\lambda_i - q_{i_0}} \times \prod_{k = 1}^r \prod_{\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}}\mathbb{C}^{\min(p_{i_k}, \lambda_i - q_{i_k})}\]
 \end{corollary}
 \begin{proof}
     Here I use the notation \(x \times y = (x, y)\), and so on.
     The isomorphism sends \(b \in B_{I, (\rho_i)}\) to 
     \[\prod_{k = 1}^{r}(b_{i_k1},..., b_{i_k\rho_{i_k}}) \times \prod_{i : \lambda_i \geq q_{i_0} + p_{i_1}} (b_{i1}, ..., b_{i, \lambda_i - q_{i_0}}) \times\]
-    \[\prod_{k = 0}^r \prod_{\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} (b_{i1}, ..., b_{i,\min(p_{i_k}, \lambda_i - q_{i_k})}).\]
+    \[\prod_{k = 1}^r \prod_{\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} (b_{i1}, ..., b_{i,\min(p_{i_k}, \lambda_i - q_{i_k})}).\]
     \cref{alternative_bs_two} tells us that this is an isomorphism.
 \end{proof}
 
 \begin{corollary}\label{bs_dim}
-    \[\dim B_{I, (\rho_i)} = \sum_{i : \lambda_i \geq q_{i_0} + \rho_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 0}^r \sum_{\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} \min(p_{i_k}, \lambda_i - q_{i_k}).\]
+    \[\dim B_{I, (\rho_i)} = \sum_{i : \lambda_i \geq q_{i_0} + \rho_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^r \sum_{\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} \min(p_{i_k}, \lambda_i - q_{i_k}).\]
 \end{corollary}
 \begin{proof}
     Immediate from \cref{bs_iso}.
@@ -909,7 +909,8 @@ We will be interested in this thing because the dimension of \(X_\mu\) is \(\gam
 Let \(s\) be the function taking integer lists to lists which sorts the input in nonincreasing order.
 
 \begin{lemma}
-    \(\gamma([\mu_1, ..., \mu_l]) = \gamma([0, \lambda_1, ..., \lambda_k]) - something\).
+    \[\gamma([\mu_1, ..., \mu_l]) = \gamma([0, \lambda_1, ..., \lambda_k]) - \] 
+    \[\left[\sum_{i : \lambda_i \geq q_{i_0} + \rho_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^r \sum_{\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} \min(p_{i_k}, \lambda_i - q_{i_k})\right].\]
 \end{lemma}
 \begin{proof}
     Let \(L = [q_{i_0}, \lambda_1, ..., \lambda_k]\).
@@ -918,7 +919,7 @@ Let \(s\) be the function taking integer lists to lists which sorts the input in
     \(L' = [..., q_{i_0}, ..., q_{i_1} + p_{i_1}, ..., q_{i_2} + p_{i_2}, ..., q_{i_r} + p_{i_r}]\).
     Note that we get from \(\mu\) to \(L'\) by just moving each \(p_{i_k}\) to the right by \(1 + \#\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}\) slots.
     So,
-    \[\gamma(L') - \gamma(\mu) = \sum_{k = 1}^r p_{i_{k + 1}} (1 + \#\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}) = \]
+    \[\gamma(L') - \gamma(\mu) = \sum_{k = 1}^r p_{i_k} (1 + \#\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}) = \]
     \[\sum_{k = 1}^r p_{i_k} \cdot \#\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}.\]
     Now we consider how to get from \(L'\) to \(L\).
     First we shift \(q_{i_0}\) to the left by \(\#\{i \notin I : \lambda_i \geq q_{i_0} + p_{i_1}\}\) slots.
@@ -928,16 +929,20 @@ Let \(s\) be the function taking integer lists to lists which sorts the input in
     To go from \(L'\) to \(s(L')\), we can just make these swaps repeatedly.  
     So,
     \[\gamma(L) - \gamma(L') = \]
-    \[\sum_{i \notin I : q_{i_0} + p_{i_1} > \lambda_i \geq q_{i_0}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^s \sum_{\{i \notin I : q_{i_k} + p_{i_{k + 1}} > \lambda_i \geq q_{i_k} + p_{i_k}\}} (\lambda_i - (q_{i_k} + p_{i_k})).\]
-    TODO: the thing above would be cleaner if \(p_{i_0} := 0\).
+    \[\sum_{i \notin I : \lambda_i \geq q_{i_0} + p_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^s \sum_{\{i \notin I : q_{i_k} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} (\lambda_i - (q_{i_k} + p_{i_k})).\]
     \par Now,
     \begin{align*}
         \gamma(L) - \gamma(\mu) & = \\
         [\gamma(L) - \gamma(L')] + [\gamma(L') - \gamma(\mu)] & = \\
+        \left[\sum_{i : \lambda_i \geq q_{i_0} + p_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^s \sum_{\{i : q_{i_k} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} (\lambda_i - (q_{i_k} + p_{i_k}))\right] & + \\
+        \left[\sum_{k = 1}^s \sum_{\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} p_{i_k}\right] & = \\
+        \sum_{i : \lambda_i \geq q_{i_0} + p_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^s \sum_{\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_k}\}} p_{i_k} & + \\
+        \sum_{k = 1}^s \sum_{i : q_{i_k} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}} (\lambda_i - q_{i_k}) & = \\
+        \sum_{i : \lambda_i \geq q_{i_0} + p_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^s \sum_{\{i : q_{i_{k - 1} + p_{i_k}} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} \min(p_{i_k}, \lambda_i - q_{i_k}) & .
     \end{align*}    
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{u_i_rho_iso}
     \(U_{I, (\rho_i)} \cong B_{I, (\rho_i)} \times X_\mu\).
 \end{lemma}
 \begin{proof}
@@ -948,6 +953,16 @@ Let \(s\) be the function taking integer lists to lists which sorts the input in
     \[(b, U) \mapsto (P_b J(\mu) P_b^{-1}, P_b U),\]
     with inverse
     \[(A_{0,b}, U) \mapsto (b, P_b^{-1} U).\]
+\end{proof}
+
+\begin{corollary}\label{u_i_rho_irred_and_dim}
+    The 
+    \(U_{I, (\rho_i)}\) is irreducible, and its dimension is \(\gamma([0, \lambda_1, ..., \lambda_k])\).
+\end{corollary}
+\begin{proof}
+    Irreducibility follows from \cref{u_i_rho_iso}, since \(B_{I, (\rho_i)}\) is irreducible (by \cref{bs_iso}), as is \(X_\mu\).
+    To get the dimension, we add the dimension of \(B_{I, (\rho_i)}\) to the dimension of \(X_\mu\).
+    The dimension of \(X_\mu\) is 
 \end{proof}
 
 \subsection{Conclusion}
@@ -983,4 +998,3 @@ We will verify these things using our prvious computations of springer fibers.
 
 \bibliography{paper}
 \end{document}
- 
