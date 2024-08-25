@@ -77,6 +77,23 @@
 We will review the definition of a Springer fiber and define, for a nilpotent \(Y \in \gl_m\), the Springer fiber at the \(n\)-Slodowy slice at \(Y\).
 For every \(n\) and every nilpotent \(Y \in \gl_m\), we will find the irreducible components of the Springer fiber at the \(n\)-Slodowy slice at \(Y\).
 Finally, we will use our results about Springer fibers at \(n\)-Slodowy slices to find the irreducible components of some other variety (which probably needs a name), and show that they all have the same dimension.
+\par Let \(\mathfrak{g} = \gl_m \times \gl_{m + n}\), with \(n > 0\).
+The nilpotent cone in \(\mathfrak{g}\) is \(\mathcal{N} = \mathcal{N}_m \times \mathcal{N}_{m + n}\), where \(\mathcal{N}_m\) and \(\mathcal{N}_{m + n}\) are the nilpotent cones in \(\gl_m\) and \(\gl_{m + n}\) respectively.
+Let \(\mathcal{B}_m\) and \(\mathcal{B}_{m + n}\) be the varieties of Borel subalgebras of \(\gl_m\) and \(\gl_n\) respectively.
+The variety of Borel subalgebras of \(\mathcal{N}\) is \(\mathcal{B} = \mathcal{B}_m \times \mathcal{B}_{m + n}\).
+Let
+\[\widetilde{\mathcal{N}} := \{(\mathfrak{b}, n) \in \mathcal{B} \times \mathcal{N} : n \in \mathfrak{b}\} = \]
+\[\{(\mathfrak{b}_m, \mathfrak{b}_{m + n}, n_m, n_{m + n}) \in \mathcal{B}_m \times \mathcal{B}_{m + n} \times \mathcal{N}_m \times \mathcal{N}_{m + n} : n_m \in \mathfrak{b}_m, n_{m + n} \in \mathfrak{b}_{m + n}\}.\]
+We have a map \(\widetilde{\mathcal{N}} \to \mathcal{N} \hookrightarrow \mathfrak{g}\) given by the Springer resolution.
+\par Let \((e, h, f)\) be the principal \(\spl_2\)-triple in \(\gl_n\).
+We have an embedding \(\gl_n \hookrightarrow \gl_m \times \gl_n \hookrightarrow \gl_{m + n}\).
+Let \((E, H, F)\) be the \(\spl_2\)-triple in \(\gl_{m + n}\) which is the image of \((e, h, f)\) via this embedding.
+Let \(S\) be the Slodowy slice \(F + \mathfrak{z}_{\gl_m}(E)\).
+We have a map \(\gl_{m + n} \to \gl_m\) given by coordinate projection.
+Restricting to \(S\), we obtain \(f_1 : S \to \gl_m\).
+(It turns out that this map is surjective.)
+Then, we obtain \(p_1 : S \to \mathfrak{g}\) by \(x \mapsto (x, f_1(x))\).
+Taking the map \(p_1 : S \to \mathfrak{g}\) and the Springer resolution \(\widetilde{\mathcal{N}} \to \mathfrak{g}\), we obtain a fibred product \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
 
 \section{Preliminary Definitions and Facts}
 \subsection{Conventions and Notations}
@@ -280,7 +297,7 @@ where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) in the case \(i \n
         \item \(e_n' := e_n - \frac{f(e_{j_1})}{f(e_{j_0})} e_{n - (j_1 - j_0)}\)
         \item For \(j < n\), \(e_j' := J_n^{n - j} e_n'\)
     \end{itemize}
-    It is straightforward to check that \(j_0 = \min\{j : f(e_j) \neq 0\}\), and that \(S((e_j')_j) \leq S((e_j)_j) - 1\).
+    It is straightforward to check that \(j_0 = \min\{j : f(e_j') \neq 0\}\), and that \(S((e_j')_j) \leq S((e_j)_j) - 1\).
     By our inductive hypothesis, we are done.
 \end{proof}
 
@@ -905,8 +922,7 @@ Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find
 Let \(\mu(I, (\rho_i))\) be the shape of the Jordan basis given in the previous lemma.
 Let \(X_\mu\) be the Springer fiber at \(J(\mu)\), and let \((X_{\mu, \alpha})_{\alpha \in \mathrm{SYT}(\mu)}\) be the irreducible components.
 \par Given a zero-indexed list \(L = [L_0, ..., L_{l - 1}]\), we define \(\gamma(L) = \sum_i i L_i\).
-We will be interested in this thing because the dimension of \(X_\mu\) is \(\gamma([\mu_1, ..., \mu_l])\).
-Let \(s\) be the function taking integer lists to lists which sorts the input in nonincreasing order.
+We are interested in this thing because the dimension of \(X_\mu\) is \(\gamma([\mu_1, ..., \mu_l])\).
 
 \begin{lemma}
     \[\gamma([\mu_1, ..., \mu_l]) = \gamma([0, \lambda_1, ..., \lambda_k]) - \] 
@@ -926,7 +942,7 @@ Let \(s\) be the function taking integer lists to lists which sorts the input in
     Then we leave \(q_{i_0}\) in place and sort the rest of the list.
     This entails shifting each \(q_{i_x} + p_{i_x}\) to the left by \(\#\{i \notin I : q_{i_x} + p_{i_x} > \lambda_i \geq q_{i_x} + p_{i_{x + 1}}\}\) slots.
     Shifting \(q_{i_x} + p_{i_x}\) to the left one slot, by swapping it with \(\lambda_i\), changes the value of \(\gamma\) by \(\lambda_i - (q_{i_x} + p_{i_x})\).
-    To go from \(L'\) to \(s(L')\), we can just make these swaps repeatedly.  
+    To go from \(L'\) to \(L\), we can just make these swaps repeatedly.  
     So,
     \[\gamma(L) - \gamma(L') = \]
     \[\sum_{i \notin I : \lambda_i \geq q_{i_0} + p_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^s \sum_{\{i \notin I : q_{i_k} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} (\lambda_i - (q_{i_k} + p_{i_k})).\]
