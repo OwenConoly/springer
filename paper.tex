@@ -159,270 +159,6 @@ If \(\mathfrak{g}\) is semisimple, then given any nilpotent \(e \in \mathfrak{g}
 \par Given \((e, h, f)\), we define the \emph{Slodowy slice at \(e\)} as \(\mathcal{S}_e := e + \ker \ad_f\).
 By the Jacobson-Morozov theorem, we can always find a Slodowy slice at any nilpotent \(e \in \mathfrak{g}\), when \(\mathfrak{g}\) is semisimple.
 
-\section{Linear Algebra Facts}
-In this section we prove linear algebra facts that will be used later.
-They are proved in this section to avoid interrupting the flow of the remainder of the paper.
-
-\subsection{The centralizer of a nilpotent matrix}
-\begin{definition}
-    A matrix \(Y\) is \emph{Toeplitz} if it is constant along bands parallel to the main diagonal.
-    That is, \(\forall i,j,k. \; Y_{ij} = Y_{i + k, j + k}\).
-\end{definition}
-\begin{definition}
-    An \(m \times n\) matrix \(Y\) is \emph{lower-left Toeplitz} if it is Toeplitz and, in addition, we have \(y_{n - i, j - 1} = 0\) whenever \(i + j \geq \min(m,n)\).
-\end{definition}
-That is, \(Y\) is lower-left Toeplitz if it is Toeplitz, and the only nonzero entries are those with Manhattan distance less than \(\min(m,n)\) from the entry in the bottom-left corner.
-In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\) diagonal bands are zero.
-
-\begin{lemma}
-    Let \(\lambda = (\lambda_1, ..., \lambda_k)\) be a partition of \(m\).
-    The centralizer of \(J(\lambda)\) in \(\gl_m\) is the subalgebra consisting of matrices 
-    \[M = \begin{pmatrix}
-        M_{11} & \cdots & M_{1k}\\
-        \vdots &        & \vdots\\
-        M_{k1} & \cdots & M_{kk}
-    \end{pmatrix},\]
-    where each \(M_{ij}\) is a \(\lambda_i \times \lambda_j\) matrix, such that each \(M_{ij}\) is lower-left Toeplitz.
-\end{lemma}
-\begin{proof}
-    Let 
-    \[M = \begin{pmatrix}
-        M_{11} & \cdots & M_{1k}\\
-        \vdots &        & \vdots\\
-        M_{k1} & \cdots & M_{kk}
-    \end{pmatrix}.\]
-    We need to show that \(J(\lambda)M = MJ(\lambda)\) if and only if each \(M_{ij}\) is lower-left Toeplitz.
-    \par We have 
-    \[J(\lambda)M = \begin{pmatrix}
-        J_{\lambda_1}M_{11} & \cdots & J_{\lambda_1}M_{1k}\\
-        \vdots & & \vdots\\
-        J_{\lambda_k}M_{k1} & \cdots & J_{\lambda_k}M_{kk}
-    \end{pmatrix}, \textrm{ and } MJ(\lambda) = \begin{pmatrix}
-        M_{11} J_{\lambda_1} & \cdots & M_{1k} J_{\lambda_k}\\
-        \vdots & & \vdots\\
-        M_{k1} J_{\lambda_1} & \cdots & M_{kk} J_{\lambda_k}
-    \end{pmatrix}.\]
-    So, we have \(J(\lambda)M = MJ(\lambda)\) if and only if \(\forall i,j. \; J_{\lambda_i} M_{ij} = M_{ij} J_{\lambda_j}\).
-    Multiplying on the left by \(J_{\lambda_i}\) just shifts each row down by one, and multiplying on the right by \(J_{\lambda_j}\) shifts each column left by one.
-    The matrices for which left-shifting gives the same result as down-shifting are exactly the lower-left Toeplitz matrices.
-\end{proof}
-For nilpotent \(X\) in Jordan form and \(a\) in `normalized' form (i.e., with at most one nonzero element, which is a one), we will find the centralizer of \(A_{X, a, b}\) in 
-\[\{(A, I) : A \in \gl_m\} \subseteq \gl_{m + n}.\]
-Note that an element of the form \((A, I)\) commutes with \(A_{X, a, b}\) if and only if \(A\) commutes with \(X\), and \(aA = a\), and \(Ab = b\).
-So, we just have to find 
-\[\{A \in \gl_m : AX = XA, aA = a, Ab = b\}.\]
-
-It is just the set of \(A = [A_{ij}]_{ij}\), where each \(A_{ij}\) is lower-left-Toeplitz.
-\par Let \(v_{ij}\) be the leftmost column of \(A_{ij}\), so that
-\[A_{ij} = \begin{pmatrix}
-    v_{ij} \downshift 0 & \cdots & v_{ij} \downshift [\lambda_j - 1]
-\end{pmatrix}.\]
-Since \(A_{ij}\) is lower-left-Toeplitz, \(v_{ij}\) is of the form 
-\[v_{ij} = \begin{pmatrix}
-    0\\
-    v_{ij}'
-\end{pmatrix},\]
-where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) can be chosen freely.
-Now we determine which matrices of this form satisfy \(aA = a\).
-For simplicity, we will instead find the matrices \(A\) such that \(aA = 0\) (so that \(a(A + I) = a\)).
-(Note that \(I \in C_1\), and \(C_1\) is closed under addition, so this is really the same thing.)
-\par In the case that \(a = 0\), clearly every \(A\) works.
-Otherwise, let \(i_0, j_0\) be such that \(a_{i_0,j_0} = 1\).
-Now, clearly the constraint that \(aA = 0\) is just saying that the \((i_0,j_0)\)th row of \(A\) must be zero.
-That is, for each \(j\) the \(j_0\)th row of \(A_{i_0j}\) must be zero.
-This just requires that for each \(j\), we must have 
-\[v_{ij} = \begin{pmatrix}
-    0\\
-    v_{ij}'
-\end{pmatrix},\]
-where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i - j_0, \lambda_j)}\) can be chosen freely.
-So, we have now found the set 
-\[C_2 := \{A \in \gl_m : AX = XA, aA = a\}.\]
-It is the matrices of the form \(I + A\), where \(A_{ij}\) is a block matrix of size \(\lambda_i \times \lambda_j\) with 
-\[A_{ij} = T(v_{ij}) = T\begin{pmatrix}
-    0\\
-    v_{ij}'
-\end{pmatrix},\]
-where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) in the case \(i \neq i_0\) and \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i - j_0, \lambda_j)}\) if \(i = i_0\).
-
-\subsection{A `normalization' fact about Jordan bases}
-
-\begin{lemma}\label{normalization_helper_one}
-    For any finite-dimensional \(V\), nilpotent \(A : V \to V\), and linear \(f : V \to \mathbb{C}\), there is a Jordan basis \(e_{ij}\) for \(A\) such that there is at most one \(i\) such that there exists \(j\) such that \(f(e_{ij}) \neq 0\).
-\end{lemma}
-\begin{proof}
-    For any Jordan basis \((e_{ij})_{ij}\) of \(A\), define
-    \[S((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}) := \sum_i \begin{cases}-1, & \forall j. \; f (e_{ij}) = 0 \\ \lambda_i - \min\{j : f (e_{ij}) \neq 0\}, & \textrm{otherwise} \end{cases}.\]
-    We proceed by induction on the measure \(S\).
-    That is, let \((e_{ij})_{ij}\) be a Jordan basis for \(A\).
-    Our inductive hypothesis is that if there exists a Jordan basis \((e_{ij}')_{ij}\) with \(S((e_{ij}')_{ij}) < S((e_{ij})_{ij})\), then we get the desired conclusion.
-    \par Now, we have two cases.
-    In the first case, \((e_{ij})_{ij}\) already satisfies the desired property.
-    In this case we are done.
-    In the other case, there exist \(i_1, j_1, i_2, j_2\) with \(i_1 \neq i_2\), and \(f(e_{i_1j_1}) \neq 0\), and \(f(e_{i_2j_2}) \neq 0\).
-    We let \(j_1, j_2\) be minimal with this property, so that \(\forall j < j_1. \; f(e_{i_1j}) = 0\), and \(\forall j < j_2. \; f(e_{i_2j}) = 0\).
-    Wlog, we assume that \(\lambda_{i_1} - j_1 \leq \lambda_{i_2} - j_2\).
-    \par By our inductive hypothesis, all we need to do is find a Jordan basis \((e_{ij}')_{ij}\) with \(S((e_{ij}')_{ij}) < S((e_{ij})_{ij})\).
-    This is what we do.
-    Define \(e'_{ij}\) as follows.
-    \begin{itemize}
-        \item \(e_{i_1, \lambda_1}' := e_{i_1, \lambda_1} - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}\)
-        \item For \(j < \lambda_1\), \(e_{i_1, j}' := A^{\lambda_{i_1} - j} e_{i_1, \lambda_{i_1}}'\)
-        \item For \(i \neq i_1\), \(e_{ij}' := e_{ij}\).
-    \end{itemize}
-    Clearly this is a Jordan basis for \(A\).
-    Further, I claim that \(S((e'_{ij})_{ij})  < S((e_{ij})_{ij})\).
-    It suffices to show that \(\forall j \leq j_1. \; f (e_{i_1,j}) = 0\).
-    We have 
-    \[f (e_{i_1,j}') = f\left(A^{\lambda_{i_1} - j}\left(e_{i_1, \lambda_1} - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}\right)\right) =\]
-    \[f\left(e_{i_1, j} - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})} e_{i_2, j_2 + (j - j_1)}\right) = f(e_{i_1, j}) - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})} f(e_{i_2, j_2 + (j - j_1)}).\]
-    Clearly (by design), this expression is zero when \(j = j_1\).
-    And for \(j < j_1\), we have \(f(e_{i_1, j}) = f(e_{i_2, j_2 + (j - j_1)}) = 0\), so it is zero then as well.
-    Hence the measure \(S\) of this new basis is smaller, as desired.
-\end{proof}
-
-\begin{lemma}\label{normalization_helper_two}
-    For any \(n\) and linear \(f : \mathbb{C}^n \to \mathbb{C}\), there is a Jordan basis \(e_j\) for \(J_n\) such that there is at most one \(j\) with \(f(e_j) \neq 0\).
-\end{lemma}
-\begin{proof}
-    Let \(e_j\) be a Jordan basis for \(J_n\).
-    If \(\{j : f(e_j) \neq 0\}\) is the empty set, we are done.
-    Otherwise, let \(j_0 = \min\{j : f(e_j) \neq 0\}\).
-    For any Jordan basis \(f_j\) with \(j_0 = \min\{j : f(e_j) \neq 0\}\), define 
-    \[S((f_j)_j) := \begin{cases}
-        -1, & \{j > j_0 : f(e_j) \neq 0\} = \emptyset \\
-        n - \min\{j > j_0 : f(e_j) \neq 0\}, & \textrm{otherwise}
-    \end{cases}.\]
-    We proceed by induction on \(S\).
-    That is, let \((e_j)_j\) be a Jordan basis for \(J_n\) with \(j_0 = \min\{j : f(e_j) \neq 0\}\).
-    Our inductive hypothesis is that if there exists a Jordan basis \((e_j')_j\) with \(j_0 = \min\{j : f(e_j') \neq 0\}\) and \(S((e_j')_j) < S((e_j)_j)\), then the conclusion holds.
-    \par We have two cases: either \((e_j)_j\) satisfies the desired property, or not.
-    If not, then let \(j_1 = \min\{j > j_0 : f(e_j) \neq 0\}\), and define a new Jordan basis \(e_j'\) as follows.
-    \begin{itemize}
-        \item \(e_n' := e_n - \frac{f(e_{j_1})}{f(e_{j_0})} e_{n - (j_1 - j_0)}\)
-        \item For \(j < n\), \(e_j' := J_n^{n - j} e_n'\)
-    \end{itemize}
-    It is straightforward to check that \(j_0 = \min\{j : f(e_j') \neq 0\}\), and that \(S((e_j')_j) \leq S((e_j)_j) - 1\).
-    By our inductive hypothesis, we are done.
-\end{proof}
-
-\begin{theorem}\label{normalization}
-    For any finite-dimensional \(V\), nilpotent \(A : V \to V\), and linear \(f : V \to \mathbb{C}\), there is a Jordan basis \(e_{ij}\) for \(A\) such that there is at most one pair \((i, j)\) with \(f(e_{ij}) \neq 0\).
-\end{theorem}
-\begin{proof}
-    \cref{normalization_helper_one} provides a Jordan basis \(e_{ij}\) such that for all \(i \neq i_0\) and all \(j\), we have \(f(e_{ij}) = 0\).
-    Restricting \(A\) to \(\langle e_{i_0j}\rangle_{j \textrm{ arbitrary}}\) gives a Jordan block, and then applying \cref{normalization_helper_two} gives the desired result.
-\end{proof}
-
-\subsection{A determinant}
-\begin{lemma}
-    Let \(X \in \gl_m\), and let 
-    \[Y = \begin{pmatrix}
-        y_{11} & y_{12} & y_{13} & \cdots & y_{1,n-1} & y_{1n} \\
-        d_1 & y_{22} & y_{23} & \cdots & y_{2,n-1} & y_{2n} \\
-            & d_2   & y_{33} & \cdots & y_{3,n-1} & y_{3n} \\
-            & & \ddots & \cdots & \vdots  & \vdots \\
-            & & & d_{n - 2} & y_{n-1,n-1} & y_{n - 1,n}\\
-            & & & & d_{n - 1} & y_{nn}
-    \end{pmatrix} \in \gl_n.\]
-    For any \(a, b \in \mathbb{C}^m\),
-    \[\det 
-    \begin{pNiceArray}{ccc|ccc}
-        & & & & & \vert \\
-        & X & & & & b    \\
-        & & & & & \vert \\
-       \hline
-       \text{---} & a & \text{---} &  \\
-       & & & & Y & \\
-       & & &  \\
-       \end{pNiceArray} = \]
-       \[\det X \det Y + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
-            & & & \vert \\
-            & X & & b     \\
-            & & & \vert \\
-            \hline 
-        \text{---} & a & \text{---} & 0
-       \end{pNiceArray}\]
-\end{lemma}
-\begin{proof}
-    By induction on \(n\).
-    In the case \(n = 1\), expanding along the last row (taking the usual interpretation of the empty product) gives the desired result.
-    \par Now suppose \(n > 1\).
-    Expanding along the last row, we get 
-    \[d_{n - 1} \det \begin{pNiceArray}{ccc|ccc}
-        & & & & & \vert \\
-        & X & & & & b    \\
-        & & & & & \vert \\
-       \hline
-       \text{---} & a & \text{---} &  \\
-       & & & & Y_{n,n-1} & \\
-       & & &  \\
-       \end{pNiceArray} -
-    y_{nn} \det \begin{pNiceArray}{ccc|ccc}
-        & & & & & \\
-        & X & & & &   \\
-        & & & & & \\
-       \hline
-       \text{---} & a & \text{---} &  \\
-       & & & & Y_{n,n} & \\
-       & & &  \\
-       \end{pNiceArray}.\]
-    Using our inductive hypothesis for the first determiniant, and using that \(\det \begin{pNiceArray}{c|c}
-        A_{11} & 0 \\
-        A_{21} & A_{22}
-    \end{pNiceArray} = \det A_{11} \det A_{22}\) for the second, the expression becomes
-    \[d_{n - 1} \left(\det X \det Y_{n,n-1} + \left(\prod_{i \leq n - 2} d_i\right) \det \begin{pNiceArray}{ccc|c}
-        & & & \vert \\
-        & X & & b     \\
-        & & & \vert \\
-        \hline 
-    \text{---} & a & \text{---} & 0
-   \end{pNiceArray}\right)
-   - y_{nn} \det X \det Y_{nn} = \]
-   \[(d_{n - 1} Y_{n,n-1} - y_{nn} \det Y_{nn})\det X + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
-        & & & \vert \\
-        & X & & b     \\
-        & & & \vert \\
-        \hline 
-    \text{---} & a & \text{---} & 0
-   \end{pNiceArray} = \]
-   \[\det Y \det X + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
-        & & & \vert \\
-        & X & & b     \\
-        & & & \vert \\
-        \hline 
-    \text{---} & a & \text{---} & 0
-   \end{pNiceArray}.\]
-\end{proof}
-
-\begin{corollary}
-    If \(X\) is nilpotent, and
-    \[\begin{pNiceArray}{ccc|ccc}
-        & & & & & \vert \\
-        & X & & & & b    \\
-        & & & & & \vert \\
-       \hline
-       \text{---} & a & \text{---} &  \\
-       & & & & Y & \\
-       & & &  \\
-       \end{pNiceArray}\]
-    is nilpotent  as well, then \(Y\) is nilpotent.
-    If all the \(d_i\) are nonzero, then
-    \[\begin{pNiceArray}{ccc|c}
-        & & & \vert \\
-        & X & & b     \\
-        & & & \vert \\
-        \hline 
-    \text{---} & a & \text{---} & 0
-   \end{pNiceArray}\]
-   is nilpotent as well.
-    \begin{proof}
-        By the previous lemma, the characteristic polynomial of the big matrix is
-        \[g_X(\lambda) g_Y(\lambda) + f(\lambda),\]
-        where \(g_X(\lambda) = \lambda^m\) is the characteristic polynomial of \(X\), and \(f(\lambda)\) is some polynomial of degree at most \(m - 1\).
-    \end{proof}
-\end{corollary}
-
 \section{Principal \(\spl_2\)-triple in \(\gl_n\)}
 The unique nilpotent regular element of \(\gl_n\) (up to similarity) is \(J_n\).
 In this section we use this to find that there is a unique principal \(\spl_2\)-triple in \(\gl_n\).
@@ -1014,6 +750,270 @@ Define \(R = \{(X, \mathfrak{b}_1, \mathfrak{b}_2) : X \in \mathfrak{b}_1 \land 
 We can obtain a subvariety of \(R\) by requiring that \(u(X)\) is in some fixed similarity class.
 We expect that each of these subvarieties is an irreducible component of dimension \(m^2\).
 We will verify these things using our prvious computations of springer fibers.
+
+\section{Linear Algebra Facts}
+In this section we prove linear algebra facts that were used in the paper.
+They are confined to this section to avoid interrupting the flow of the paper.
+
+\subsection{The centralizer of a nilpotent matrix}
+\begin{definition}
+    A matrix \(Y\) is \emph{Toeplitz} if it is constant along bands parallel to the main diagonal.
+    That is, \(\forall i,j,k. \; Y_{ij} = Y_{i + k, j + k}\).
+\end{definition}
+\begin{definition}
+    An \(m \times n\) matrix \(Y\) is \emph{lower-left Toeplitz} if it is Toeplitz and, in addition, we have \(y_{n - i, j - 1} = 0\) whenever \(i + j \geq \min(m,n)\).
+\end{definition}
+That is, \(Y\) is lower-left Toeplitz if it is Toeplitz, and the only nonzero entries are those with Manhattan distance less than \(\min(m,n)\) from the entry in the bottom-left corner.
+In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\) diagonal bands are zero.
+
+\begin{lemma}
+    Let \(\lambda = (\lambda_1, ..., \lambda_k)\) be a partition of \(m\).
+    The centralizer of \(J(\lambda)\) in \(\gl_m\) is the subalgebra consisting of matrices 
+    \[M = \begin{pmatrix}
+        M_{11} & \cdots & M_{1k}\\
+        \vdots &        & \vdots\\
+        M_{k1} & \cdots & M_{kk}
+    \end{pmatrix},\]
+    where each \(M_{ij}\) is a \(\lambda_i \times \lambda_j\) matrix, such that each \(M_{ij}\) is lower-left Toeplitz.
+\end{lemma}
+\begin{proof}
+    Let 
+    \[M = \begin{pmatrix}
+        M_{11} & \cdots & M_{1k}\\
+        \vdots &        & \vdots\\
+        M_{k1} & \cdots & M_{kk}
+    \end{pmatrix}.\]
+    We need to show that \(J(\lambda)M = MJ(\lambda)\) if and only if each \(M_{ij}\) is lower-left Toeplitz.
+    \par We have 
+    \[J(\lambda)M = \begin{pmatrix}
+        J_{\lambda_1}M_{11} & \cdots & J_{\lambda_1}M_{1k}\\
+        \vdots & & \vdots\\
+        J_{\lambda_k}M_{k1} & \cdots & J_{\lambda_k}M_{kk}
+    \end{pmatrix}, \textrm{ and } MJ(\lambda) = \begin{pmatrix}
+        M_{11} J_{\lambda_1} & \cdots & M_{1k} J_{\lambda_k}\\
+        \vdots & & \vdots\\
+        M_{k1} J_{\lambda_1} & \cdots & M_{kk} J_{\lambda_k}
+    \end{pmatrix}.\]
+    So, we have \(J(\lambda)M = MJ(\lambda)\) if and only if \(\forall i,j. \; J_{\lambda_i} M_{ij} = M_{ij} J_{\lambda_j}\).
+    Multiplying on the left by \(J_{\lambda_i}\) just shifts each row down by one, and multiplying on the right by \(J_{\lambda_j}\) shifts each column left by one.
+    The matrices for which left-shifting gives the same result as down-shifting are exactly the lower-left Toeplitz matrices.
+\end{proof}
+For nilpotent \(X\) in Jordan form and \(a\) in `normalized' form (i.e., with at most one nonzero element, which is a one), we will find the centralizer of \(A_{X, a, b}\) in 
+\[\{(A, I) : A \in \gl_m\} \subseteq \gl_{m + n}.\]
+Note that an element of the form \((A, I)\) commutes with \(A_{X, a, b}\) if and only if \(A\) commutes with \(X\), and \(aA = a\), and \(Ab = b\).
+So, we just have to find 
+\[\{A \in \gl_m : AX = XA, aA = a, Ab = b\}.\]
+
+It is just the set of \(A = [A_{ij}]_{ij}\), where each \(A_{ij}\) is lower-left-Toeplitz.
+\par Let \(v_{ij}\) be the leftmost column of \(A_{ij}\), so that
+\[A_{ij} = \begin{pmatrix}
+    v_{ij} \downshift 0 & \cdots & v_{ij} \downshift [\lambda_j - 1]
+\end{pmatrix}.\]
+Since \(A_{ij}\) is lower-left-Toeplitz, \(v_{ij}\) is of the form 
+\[v_{ij} = \begin{pmatrix}
+    0\\
+    v_{ij}'
+\end{pmatrix},\]
+where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) can be chosen freely.
+Now we determine which matrices of this form satisfy \(aA = a\).
+For simplicity, we will instead find the matrices \(A\) such that \(aA = 0\) (so that \(a(A + I) = a\)).
+(Note that \(I \in C_1\), and \(C_1\) is closed under addition, so this is really the same thing.)
+\par In the case that \(a = 0\), clearly every \(A\) works.
+Otherwise, let \(i_0, j_0\) be such that \(a_{i_0,j_0} = 1\).
+Now, clearly the constraint that \(aA = 0\) is just saying that the \((i_0,j_0)\)th row of \(A\) must be zero.
+That is, for each \(j\) the \(j_0\)th row of \(A_{i_0j}\) must be zero.
+This just requires that for each \(j\), we must have 
+\[v_{ij} = \begin{pmatrix}
+    0\\
+    v_{ij}'
+\end{pmatrix},\]
+where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i - j_0, \lambda_j)}\) can be chosen freely.
+So, we have now found the set 
+\[C_2 := \{A \in \gl_m : AX = XA, aA = a\}.\]
+It is the matrices of the form \(I + A\), where \(A_{ij}\) is a block matrix of size \(\lambda_i \times \lambda_j\) with 
+\[A_{ij} = T(v_{ij}) = T\begin{pmatrix}
+    0\\
+    v_{ij}'
+\end{pmatrix},\]
+where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) in the case \(i \neq i_0\) and \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i - j_0, \lambda_j)}\) if \(i = i_0\).
+
+\subsection{A `normalization' fact about Jordan bases}
+
+\begin{lemma}\label{normalization_helper_one}
+    For any finite-dimensional \(V\), nilpotent \(A : V \to V\), and linear \(f : V \to \mathbb{C}\), there is a Jordan basis \(e_{ij}\) for \(A\) such that there is at most one \(i\) such that there exists \(j\) such that \(f(e_{ij}) \neq 0\).
+\end{lemma}
+\begin{proof}
+    For any Jordan basis \((e_{ij})_{ij}\) of \(A\), define
+    \[S((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}) := \sum_i \begin{cases}-1, & \forall j. \; f (e_{ij}) = 0 \\ \lambda_i - \min\{j : f (e_{ij}) \neq 0\}, & \textrm{otherwise} \end{cases}.\]
+    We proceed by induction on the measure \(S\).
+    That is, let \((e_{ij})_{ij}\) be a Jordan basis for \(A\).
+    Our inductive hypothesis is that if there exists a Jordan basis \((e_{ij}')_{ij}\) with \(S((e_{ij}')_{ij}) < S((e_{ij})_{ij})\), then we get the desired conclusion.
+    \par Now, we have two cases.
+    In the first case, \((e_{ij})_{ij}\) already satisfies the desired property.
+    In this case we are done.
+    In the other case, there exist \(i_1, j_1, i_2, j_2\) with \(i_1 \neq i_2\), and \(f(e_{i_1j_1}) \neq 0\), and \(f(e_{i_2j_2}) \neq 0\).
+    We let \(j_1, j_2\) be minimal with this property, so that \(\forall j < j_1. \; f(e_{i_1j}) = 0\), and \(\forall j < j_2. \; f(e_{i_2j}) = 0\).
+    Wlog, we assume that \(\lambda_{i_1} - j_1 \leq \lambda_{i_2} - j_2\).
+    \par By our inductive hypothesis, all we need to do is find a Jordan basis \((e_{ij}')_{ij}\) with \(S((e_{ij}')_{ij}) < S((e_{ij})_{ij})\).
+    This is what we do.
+    Define \(e'_{ij}\) as follows.
+    \begin{itemize}
+        \item \(e_{i_1, \lambda_1}' := e_{i_1, \lambda_1} - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}\)
+        \item For \(j < \lambda_1\), \(e_{i_1, j}' := A^{\lambda_{i_1} - j} e_{i_1, \lambda_{i_1}}'\)
+        \item For \(i \neq i_1\), \(e_{ij}' := e_{ij}\).
+    \end{itemize}
+    Clearly this is a Jordan basis for \(A\).
+    Further, I claim that \(S((e'_{ij})_{ij})  < S((e_{ij})_{ij})\).
+    It suffices to show that \(\forall j \leq j_1. \; f (e_{i_1,j}) = 0\).
+    We have 
+    \[f (e_{i_1,j}') = f\left(A^{\lambda_{i_1} - j}\left(e_{i_1, \lambda_1} - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}\right)\right) =\]
+    \[f\left(e_{i_1, j} - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})} e_{i_2, j_2 + (j - j_1)}\right) = f(e_{i_1, j}) - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})} f(e_{i_2, j_2 + (j - j_1)}).\]
+    Clearly (by design), this expression is zero when \(j = j_1\).
+    And for \(j < j_1\), we have \(f(e_{i_1, j}) = f(e_{i_2, j_2 + (j - j_1)}) = 0\), so it is zero then as well.
+    Hence the measure \(S\) of this new basis is smaller, as desired.
+\end{proof}
+
+\begin{lemma}\label{normalization_helper_two}
+    For any \(n\) and linear \(f : \mathbb{C}^n \to \mathbb{C}\), there is a Jordan basis \(e_j\) for \(J_n\) such that there is at most one \(j\) with \(f(e_j) \neq 0\).
+\end{lemma}
+\begin{proof}
+    Let \(e_j\) be a Jordan basis for \(J_n\).
+    If \(\{j : f(e_j) \neq 0\}\) is the empty set, we are done.
+    Otherwise, let \(j_0 = \min\{j : f(e_j) \neq 0\}\).
+    For any Jordan basis \(f_j\) with \(j_0 = \min\{j : f(e_j) \neq 0\}\), define 
+    \[S((f_j)_j) := \begin{cases}
+        -1, & \{j > j_0 : f(e_j) \neq 0\} = \emptyset \\
+        n - \min\{j > j_0 : f(e_j) \neq 0\}, & \textrm{otherwise}
+    \end{cases}.\]
+    We proceed by induction on \(S\).
+    That is, let \((e_j)_j\) be a Jordan basis for \(J_n\) with \(j_0 = \min\{j : f(e_j) \neq 0\}\).
+    Our inductive hypothesis is that if there exists a Jordan basis \((e_j')_j\) with \(j_0 = \min\{j : f(e_j') \neq 0\}\) and \(S((e_j')_j) < S((e_j)_j)\), then the conclusion holds.
+    \par We have two cases: either \((e_j)_j\) satisfies the desired property, or not.
+    If not, then let \(j_1 = \min\{j > j_0 : f(e_j) \neq 0\}\), and define a new Jordan basis \(e_j'\) as follows.
+    \begin{itemize}
+        \item \(e_n' := e_n - \frac{f(e_{j_1})}{f(e_{j_0})} e_{n - (j_1 - j_0)}\)
+        \item For \(j < n\), \(e_j' := J_n^{n - j} e_n'\)
+    \end{itemize}
+    It is straightforward to check that \(j_0 = \min\{j : f(e_j') \neq 0\}\), and that \(S((e_j')_j) \leq S((e_j)_j) - 1\).
+    By our inductive hypothesis, we are done.
+\end{proof}
+
+\begin{theorem}\label{normalization}
+    For any finite-dimensional \(V\), nilpotent \(A : V \to V\), and linear \(f : V \to \mathbb{C}\), there is a Jordan basis \(e_{ij}\) for \(A\) such that there is at most one pair \((i, j)\) with \(f(e_{ij}) \neq 0\).
+\end{theorem}
+\begin{proof}
+    \cref{normalization_helper_one} provides a Jordan basis \(e_{ij}\) such that for all \(i \neq i_0\) and all \(j\), we have \(f(e_{ij}) = 0\).
+    Restricting \(A\) to \(\langle e_{i_0j}\rangle_{j \textrm{ arbitrary}}\) gives a Jordan block, and then applying \cref{normalization_helper_two} gives the desired result.
+\end{proof}
+
+\subsection{A determinant}
+\begin{lemma}
+    Let \(X \in \gl_m\), and let 
+    \[Y = \begin{pmatrix}
+        y_{11} & y_{12} & y_{13} & \cdots & y_{1,n-1} & y_{1n} \\
+        d_1 & y_{22} & y_{23} & \cdots & y_{2,n-1} & y_{2n} \\
+            & d_2   & y_{33} & \cdots & y_{3,n-1} & y_{3n} \\
+            & & \ddots & \cdots & \vdots  & \vdots \\
+            & & & d_{n - 2} & y_{n-1,n-1} & y_{n - 1,n}\\
+            & & & & d_{n - 1} & y_{nn}
+    \end{pmatrix} \in \gl_n.\]
+    For any \(a, b \in \mathbb{C}^m\),
+    \[\det 
+    \begin{pNiceArray}{ccc|ccc}
+        & & & & & \vert \\
+        & X & & & & b    \\
+        & & & & & \vert \\
+       \hline
+       \text{---} & a & \text{---} &  \\
+       & & & & Y & \\
+       & & &  \\
+       \end{pNiceArray} = \]
+       \[\det X \det Y + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
+            & & & \vert \\
+            & X & & b     \\
+            & & & \vert \\
+            \hline 
+        \text{---} & a & \text{---} & 0
+       \end{pNiceArray}\]
+\end{lemma}
+\begin{proof}
+    By induction on \(n\).
+    In the case \(n = 1\), expanding along the last row (taking the usual interpretation of the empty product) gives the desired result.
+    \par Now suppose \(n > 1\).
+    Expanding along the last row, we get 
+    \[d_{n - 1} \det \begin{pNiceArray}{ccc|ccc}
+        & & & & & \vert \\
+        & X & & & & b    \\
+        & & & & & \vert \\
+       \hline
+       \text{---} & a & \text{---} &  \\
+       & & & & Y_{n,n-1} & \\
+       & & &  \\
+       \end{pNiceArray} -
+    y_{nn} \det \begin{pNiceArray}{ccc|ccc}
+        & & & & & \\
+        & X & & & &   \\
+        & & & & & \\
+       \hline
+       \text{---} & a & \text{---} &  \\
+       & & & & Y_{n,n} & \\
+       & & &  \\
+       \end{pNiceArray}.\]
+    Using our inductive hypothesis for the first determiniant, and using that \(\det \begin{pNiceArray}{c|c}
+        A_{11} & 0 \\
+        A_{21} & A_{22}
+    \end{pNiceArray} = \det A_{11} \det A_{22}\) for the second, the expression becomes
+    \[d_{n - 1} \left(\det X \det Y_{n,n-1} + \left(\prod_{i \leq n - 2} d_i\right) \det \begin{pNiceArray}{ccc|c}
+        & & & \vert \\
+        & X & & b     \\
+        & & & \vert \\
+        \hline 
+    \text{---} & a & \text{---} & 0
+   \end{pNiceArray}\right)
+   - y_{nn} \det X \det Y_{nn} = \]
+   \[(d_{n - 1} Y_{n,n-1} - y_{nn} \det Y_{nn})\det X + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
+        & & & \vert \\
+        & X & & b     \\
+        & & & \vert \\
+        \hline 
+    \text{---} & a & \text{---} & 0
+   \end{pNiceArray} = \]
+   \[\det Y \det X + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
+        & & & \vert \\
+        & X & & b     \\
+        & & & \vert \\
+        \hline 
+    \text{---} & a & \text{---} & 0
+   \end{pNiceArray}.\]
+\end{proof}
+
+\begin{corollary}
+    If \(X\) is nilpotent, and
+    \[\begin{pNiceArray}{ccc|ccc}
+        & & & & & \vert \\
+        & X & & & & b    \\
+        & & & & & \vert \\
+       \hline
+       \text{---} & a & \text{---} &  \\
+       & & & & Y & \\
+       & & &  \\
+       \end{pNiceArray}\]
+    is nilpotent  as well, then \(Y\) is nilpotent.
+    If all the \(d_i\) are nonzero, then
+    \[\begin{pNiceArray}{ccc|c}
+        & & & \vert \\
+        & X & & b     \\
+        & & & \vert \\
+        \hline 
+    \text{---} & a & \text{---} & 0
+   \end{pNiceArray}\]
+   is nilpotent as well.
+    \begin{proof}
+        By the previous lemma, the characteristic polynomial of the big matrix is
+        \[g_X(\lambda) g_Y(\lambda) + f(\lambda),\]
+        where \(g_X(\lambda) = \lambda^m\) is the characteristic polynomial of \(X\), and \(f(\lambda)\) is some polynomial of degree at most \(m - 1\).
+    \end{proof}
+\end{corollary}
 
 \bibliography{paper}
 \end{document}
