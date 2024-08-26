@@ -472,78 +472,78 @@ Now, we can use our expression for \(f\) in terms of \(h\) to obtain
 \end{pmatrix}.\]
 \end{proof}
 
-\section{Finding \(\spl_2\)-triples \((E, H, F)\) in \(\gl_{m + n}\) with a particular \(E\).}
-TODO: I am unsure why this section is interesting or what to say about it.
-Should I delete it?
-For now I will ignore it and try to make the paper flow nicely without it.
+% \section{Finding \(\spl_2\)-triples \((E, H, F)\) in \(\gl_{m + n}\) with a particular \(E\).}
+% TODO: I am unsure why this section is interesting or what to say about it.
+% Should I delete it?
+% For now I will ignore it and try to make the paper flow nicely without it.
 
-Let \(E = \begin{pmatrix}0 & 0 \\ 0 & e\end{pmatrix} \in \gl_{m + n}\).
-We will show that there is exactly one \(\spl_2\)-triple \((E, H, F)\), and we will find what it looks like.
-% First we solve the case \(m = 0\) (so \(E = e\)), and then we use this to solve the case of arbitrary \(m\).
+% Let \(E = \begin{pmatrix}0 & 0 \\ 0 & e\end{pmatrix} \in \gl_{m + n}\).
+% We will show that there is exactly one \(\spl_2\)-triple \((E, H, F)\), and we will find what it looks like.
+% % First we solve the case \(m = 0\) (so \(E = e\)), and then we use this to solve the case of arbitrary \(m\).
 
-\begin{lemma}\label{sl2_triple}
-    There is exactly one way to choose \(H, F \in \gl_{m + n}\) so that \((E, H, F)\) is an \(\spl_2\)-triple.
-\end{lemma}
-\begin{proof}
-Suppose we have \(H, F\) so that \((E, H, F)\) is an \(\spl_2\)-triple.
-Writing \(F =: \begin{pmatrix}
-    F_{11} & F_{12} \\
-    F_{21} & f
-\end{pmatrix}\), and similarly for \(H\), we have
-\[2E = [H, E] = \begin{pmatrix}
-    0 & H_{12}e \\
-    0 & he
-\end{pmatrix} - \begin{pmatrix}
-    0 & 0 \\
-    e H_{21} & eh
-\end{pmatrix},\]
-\[H = [E, F] = \begin{pmatrix}
-    0 & 0 \\
-    e F_{21} & ef
-\end{pmatrix} - \begin{pmatrix}
-    0 & F_{12}e \\
-    0 & fe
-\end{pmatrix}.\]
-From these we observe that \((e, h, f)\) must also be an \(\spl_2\)-triple, so \(h, f\) must be as in \cref{simple_sl2_triple}.
-We also see that \(H_{11} = 0\).
-Recalling that left multiplication by \(e\) is a down-shift, and right multiplication is a left-shift, we see that \(H_{12}\) is all zeroes except for the leftmost column, and \(H_{21}\) is all zeroes except for the bottom row.
-% Then \(F_{12}\) must be all zeros except for the two leftmost columns, and \(F_{21}\) must be all zeroes except for the bottom two rows.
-Then our final constraint is that 
-\[-2F = [H, F] = \]
-\[\begin{pmatrix}
-    H_{12} F_{21} & H_{12} F_{22} \\
-    H_{21} F_{11} + H_{22} F_{21} & H_{21} F_{12} + H_{22} F_{22}
-\end{pmatrix} - \begin{pmatrix}
-    F_{12} H_{21} & F_{11} H_{12} + F_{12} H_{22} \\
-    F_{22} H_{21} & F_{21} H_{12} + F_{22} H_{22}
-\end{pmatrix}.\]
-Now \(H_{12} = F_{12}e\), and \(H_{21} = eF_{21}\), from the equation \(H = [E, F]\).
-Substituting in the equation above then,
-\[-2F = \begin{pmatrix}
-    F_{12} e F_{21} & F_{12}e f \\
-    eF_{21} F_{11} + h F_{21} & eF_{21} F_{12} + hf
-\end{pmatrix} - \begin{pmatrix}
-    F_{12} e F_{21} & F_{11} F_{12}e + F_{12} h \\
-    f eF_{21} & F_{21} F_{12}e + fh
-\end{pmatrix} =\]
-\[\begin{pmatrix}
-    0 & F_{12}(fe + h) \\
-    eF_{21} F_{11} + h F_{21} & eF_{21} F_{12} + hf
-\end{pmatrix} - \begin{pmatrix}
-    0 & F_{11} F_{12}e + F_{12} h \\
-    (ef - h)F_{21} & F_{21} F_{12}e + fh
-\end{pmatrix} =\]
-\[\begin{pmatrix}
-    0 & F_{12}fe \\
-    eF_{21} F_{11} & eF_{21} F_{12} + hf
-\end{pmatrix} - \begin{pmatrix}
-    0 & F_{11} F_{12}e \\
-    ef F_{21} & F_{21} F_{12}e + fh
-\end{pmatrix}.\]
-Now we see that \(F_{11} = 0\), and consequently that \(F_{12} = F_{21} = 0\) as well.
-This shows that \(H_{12} = H_{21} = 0\).
-We conclude that \(H\) and \(F\) just have \(h\) and \(f\) in their bottom-right corners, respectively.
-\end{proof}
+% \begin{lemma}\label{sl2_triple}
+%     There is exactly one way to choose \(H, F \in \gl_{m + n}\) so that \((E, H, F)\) is an \(\spl_2\)-triple.
+% \end{lemma}
+% \begin{proof}
+% Suppose we have \(H, F\) so that \((E, H, F)\) is an \(\spl_2\)-triple.
+% Writing \(F =: \begin{pmatrix}
+%     F_{11} & F_{12} \\
+%     F_{21} & f
+% \end{pmatrix}\), and similarly for \(H\), we have
+% \[2E = [H, E] = \begin{pmatrix}
+%     0 & H_{12}e \\
+%     0 & he
+% \end{pmatrix} - \begin{pmatrix}
+%     0 & 0 \\
+%     e H_{21} & eh
+% \end{pmatrix},\]
+% \[H = [E, F] = \begin{pmatrix}
+%     0 & 0 \\
+%     e F_{21} & ef
+% \end{pmatrix} - \begin{pmatrix}
+%     0 & F_{12}e \\
+%     0 & fe
+% \end{pmatrix}.\]
+% From these we observe that \((e, h, f)\) must also be an \(\spl_2\)-triple, so \(h, f\) must be as in \cref{simple_sl2_triple}.
+% We also see that \(H_{11} = 0\).
+% Recalling that left multiplication by \(e\) is a down-shift, and right multiplication is a left-shift, we see that \(H_{12}\) is all zeroes except for the leftmost column, and \(H_{21}\) is all zeroes except for the bottom row.
+% % Then \(F_{12}\) must be all zeros except for the two leftmost columns, and \(F_{21}\) must be all zeroes except for the bottom two rows.
+% Then our final constraint is that 
+% \[-2F = [H, F] = \]
+% \[\begin{pmatrix}
+%     H_{12} F_{21} & H_{12} F_{22} \\
+%     H_{21} F_{11} + H_{22} F_{21} & H_{21} F_{12} + H_{22} F_{22}
+% \end{pmatrix} - \begin{pmatrix}
+%     F_{12} H_{21} & F_{11} H_{12} + F_{12} H_{22} \\
+%     F_{22} H_{21} & F_{21} H_{12} + F_{22} H_{22}
+% \end{pmatrix}.\]
+% Now \(H_{12} = F_{12}e\), and \(H_{21} = eF_{21}\), from the equation \(H = [E, F]\).
+% Substituting in the equation above then,
+% \[-2F = \begin{pmatrix}
+%     F_{12} e F_{21} & F_{12}e f \\
+%     eF_{21} F_{11} + h F_{21} & eF_{21} F_{12} + hf
+% \end{pmatrix} - \begin{pmatrix}
+%     F_{12} e F_{21} & F_{11} F_{12}e + F_{12} h \\
+%     f eF_{21} & F_{21} F_{12}e + fh
+% \end{pmatrix} =\]
+% \[\begin{pmatrix}
+%     0 & F_{12}(fe + h) \\
+%     eF_{21} F_{11} + h F_{21} & eF_{21} F_{12} + hf
+% \end{pmatrix} - \begin{pmatrix}
+%     0 & F_{11} F_{12}e + F_{12} h \\
+%     (ef - h)F_{21} & F_{21} F_{12}e + fh
+% \end{pmatrix} =\]
+% \[\begin{pmatrix}
+%     0 & F_{12}fe \\
+%     eF_{21} F_{11} & eF_{21} F_{12} + hf
+% \end{pmatrix} - \begin{pmatrix}
+%     0 & F_{11} F_{12}e \\
+%     ef F_{21} & F_{21} F_{12}e + fh
+% \end{pmatrix}.\]
+% Now we see that \(F_{11} = 0\), and consequently that \(F_{12} = F_{21} = 0\) as well.
+% This shows that \(H_{12} = H_{21} = 0\).
+% We conclude that \(H\) and \(F\) just have \(h\) and \(f\) in their bottom-right corners, respectively.
+% \end{proof}
 
 \section{Finding the Slodowy slices with the same \(E\)}
 First we find \(\ker \ad_f\).
