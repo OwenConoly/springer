@@ -327,20 +327,22 @@ Embedding this into \(\gl_{m + n}\) as described previously, we obtain
     The condition \(Z_{12}f = 0\) means that all but the last column of \(Z_{12}\) must be zero, and the condition \(0 = fZ_{21}\) means that all but the first row of \(Z_{21}\) must be zero.
     And the condition \(Z_{22}f = fZ_{22}\) means that \(Z_{22} \in \mathfrak{z}_{\gl_{m + n}}(f)\).
 \end{proof}
-These lemmas provide an explicit characterization of the Slodowy slice \(E + \mathfrak{z}_{\gl_{m + n}}(F)\).
+These lemmas provide an explicit characterization of the Slodowy slice \(S = E + \mathfrak{z}_{\gl_{m + n}}(F)\).
 
-\subsection{Finding \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}
-Let \(\mathcal{N}_m \subseteq \gl_m\) be the nilpotent elements.
-Let \(\mathcal{S}_{m,n}'\) be the set of \(X \in \mathcal{S}_{m,n}\) such that both \(X\) and \(u(X)\) are nilpotent.
-Let \(\widetilde{\mathcal{N}}_{m,n} = \{(\mathfrak{b}, X) : X \in \mathfrak{b}\} \subseteq \mathcal{B}_{m + n} \times \mathcal{S}_{m,n}'\).
-Define \(\pi_{m,n} : \widetilde{\mathcal{N}}_{m,n} \to \mathcal{N}_m\) by \((\mathfrak{b}, X) \mapsto X_{11}\).
-For \(Y \in \gl_m\), we call \(\pi_{m,n}^{-1}(Y)\) the \emph{Springer fiber at the \(n\)-Slodowy slice at \(Y\)}.
+\subsection{A description of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}
+Recall that we have the map \(S \to \mathfrak{g}\) given by \(Z \mapsto (p(Z), Z)\), where \(p : \gl_{m + n} \to \gl_m\) is the coordinate projection.
+Then we have the Springer resolution \(\widetilde{\mathcal{N}} \to \mathfrak{g}\).
+And from these two maps we define the fibered product \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
+\par To obtain an explicit description of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\), we will find the set of \(Z \in S\) such that there exists \(x \in \widetilde{\mathcal{N}}\) with \((Z, x) \in S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
+As the image of the Springer resolution is \(\mathcal{N} = \mathcal{N}_m \times \mathcal{N}_{m + n}\), this amounts to finding the set \(S' = \{Z \in S : p(Z) \in \mathcal{N}_m, Z \in \mathcal{N}_{m + n}\}\).
+\par 
 
 \begin{lemma}
-    Let \(J\) be a jordan block with zeroes along the diagonal, and let \(A\) be upper triangular and nonzero.
-    Then \(J + A\) is not nilpotent.
+    Let \(A \in \gl_n\) be upper triangular.
+    Then \(J_n + A\) is nilpotent if and only if \(A = 0\).
 \end{lemma}
 \begin{proof}
+    Let \(e_1, ..., e_n\) be the standard basis, with \(J_n e_i = e_{i + 1}\).
     It is straightforward to show by induction that if \(v_i = 0\) for \(i < j\), and \(v_j \neq 0\), then \(((J + A)^k v_j)_{j + k} = v_j\).
     Let \(i\) be such that \(Ae_i \neq 0\).
     Then \((J + A)^{i - 1} e_1\) has nonzero \(e_i\)-component.
