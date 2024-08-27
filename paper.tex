@@ -335,24 +335,8 @@ Then we have the Springer resolution \(\widetilde{\mathcal{N}} \to \mathfrak{g}\
 And from these two maps we define the fibered product \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
 \par To obtain an explicit description of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\), we will find the set of \(Z \in S\) such that there exists \(x \in \widetilde{\mathcal{N}}\) with \((Z, x) \in S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
 As the image of the Springer resolution is \(\mathcal{N} = \mathcal{N}_m \times \mathcal{N}_{m + n}\), this amounts to finding the set \(S' = \{Z \in S : p(Z) \in \mathcal{N}_m, Z \in \mathcal{N}_{m + n}\}\).
-\par 
-
-\begin{lemma}
-    Let \(X \in \gl_n\) be upper triangular.
-    Then \(J_n + X\) is nilpotent if and only if \(X = 0\).
-\end{lemma}
-\begin{proof}
-    Clearly if \(X = 0\), then \(J_n + X\) is nilpotent.
-    Inversely, suppose \(X \neq 0\).
-    Let \(e_1, ..., e_n\) be the standard basis, with \(J_n e_i = e_{i + 1}\).
-    Let \(i_1 = \max\{i : Xe_i \neq 0\}\).
-    As \(X\) is upper triangular, we have \(X e_{i_1} = v + ae_{i_2}\), with \(a \in \mathbb{C}\setminus\{0\}\), \(i_2 \leq i_1\), and \(v \in \langle e_1, ..., e_{i_1 - 1}\rangle\).
-    \par Now, \((J_n + X)^{i_1} e_1 = e_{i_1 + 1} + v + ae_{i_2}\).
-    Then, \((J_n + X)^{i_1 + (n - i_1)} e_1 = 0 + (J_n + X)^{n - i_1} (v + ae_{i_2})\).
-    Clearly \((J_n + X)^{n - i_1} (v + ae_{i_2}) = v' + ae_{i_2 + n - i_1}\), with \(v' \in \langle e_1, ..., e_{i_2 + n - i_1 - 1} \rangle\).
-    Now, since \(i_2 \leq i_1\), we have \(i_2 + n - i_1 \leq n\), and therefore \((J_n + X)^n e_1 \neq 0\).
-    It follows that \(J_n + X\) is not nilpotent.
-\end{proof}
+\par TODO: continue here!
+cite nilpotency lemmas.
 
 \par Now, taking the previous corolloary and the first lemma together, we see that 
 \[\mathcal{S}_{m,n}' = \left\{\begin{pNiceArray}{ccc|cccc}
@@ -936,7 +920,24 @@ where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) in the case \(i \n
     Restricting \(A\) to \(\langle e_{i_0j}\rangle_{j \textrm{ arbitrary}}\) gives a Jordan block, and then applying \cref{normalization_helper_two} gives the desired result.
 \end{proof}
 
-\subsection{A determinant}
+\subsection{Nilpotency Lemmas}
+\begin{lemma}
+    Let \(X \in \gl_n\) be upper triangular.
+    Then \(J_n + X\) is nilpotent if and only if \(X = 0\).
+\end{lemma}
+\begin{proof}
+    Clearly if \(X = 0\), then \(J_n + X\) is nilpotent.
+    Inversely, suppose \(X \neq 0\).
+    Let \(e_1, ..., e_n\) be the standard basis, with \(J_n e_i = e_{i + 1}\).
+    Let \(i_1 = \max\{i : Xe_i \neq 0\}\).
+    As \(X\) is upper triangular, we have \(X e_{i_1} = v + ae_{i_2}\), with \(a \in \mathbb{C}\setminus\{0\}\), \(i_2 \leq i_1\), and \(v \in \langle e_1, ..., e_{i_1 - 1}\rangle\).
+    \par Now, \((J_n + X)^{i_1} e_1 = e_{i_1 + 1} + v + ae_{i_2}\).
+    Then, \((J_n + X)^{i_1 + (n - i_1)} e_1 = 0 + (J_n + X)^{n - i_1} (v + ae_{i_2})\).
+    Clearly \((J_n + X)^{n - i_1} (v + ae_{i_2}) = v' + ae_{i_2 + n - i_1}\), with \(v' \in \langle e_1, ..., e_{i_2 + n - i_1 - 1} \rangle\).
+    Now, since \(i_2 \leq i_1\), we have \(i_2 + n - i_1 \leq n\), and therefore \((J_n + X)^n e_1 \neq 0\).
+    It follows that \(J_n + X\) is not nilpotent.
+\end{proof}
+
 \begin{lemma}
     Let \(X \in \gl_m\), and let 
     \[Y = \begin{pmatrix}
@@ -1029,15 +1030,16 @@ where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) in the case \(i \n
        & & &  \\
        \end{pNiceArray}\]
     is nilpotent  as well, then \(Y\) is nilpotent.
-    If all the \(d_i\) are nonzero, then
-    \[\begin{pNiceArray}{ccc|c}
-        & & & \vert \\
-        & X & & b     \\
-        & & & \vert \\
-        \hline 
-    \text{---} & a & \text{---} & 0
-   \end{pNiceArray}\]
-   is nilpotent as well.
+%     If all the \(d_i\) are nonzero, then
+%     \[\begin{pNiceArray}{ccc|c}
+%         & & & \vert \\
+%         & X & & b     \\
+%         & & & \vert \\
+%         \hline 
+%     \text{---} & a & \text{---} & 0
+%    \end{pNiceArray}\]
+%    is nilpotent as well.
+% ^That is false.  I want to say something about its characteristic polynomial.  not sure that I care enough to take the space though.
     \begin{proof}
         By the previous lemma, the characteristic polynomial of the big matrix is
         \[g_X(\lambda) g_Y(\lambda) + f(\lambda),\]
