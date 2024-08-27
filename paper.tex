@@ -375,7 +375,7 @@ We could use \cref{block_determinant} to find a necessary and sufficient conditi
     \end{align*}
 \end{corollary}
 We have a map \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}_m\) given by \((A_{X, a, b}, \mathfrak{b}) \mapsto X\).
-We define the \emph{\(n\)-Slodowy-slice Springer fiber} at \(X \in \mathcal{N}\) to be the fiber \(\pi^{-1}(X)\).
+We define the \emph{\(n\)-Slodowy-slice Springer fiber} at \(X \in \mathcal{N}_m\) to be the fiber \(\pi^{-1}(X)\).
 Because \(\mathcal{B} = \mathcal{B}_m \times \mathcal{B}_{m + n}\),  
 \[\pi^{-1}(X) \cong \{(A_{X, a, b}, \mathfrak{b}_{m + n}) : A_{X, a, b} \in \mathfrak{b}_{m + n} \cap \mathcal{N}_{m + n}\} \times \{\mathfrak{b}_m : X \in \mathfrak{b}_m\}.\]
 The right factor of the product is simply the usual Springer fiber at \(X\).
@@ -385,24 +385,44 @@ Using our correspondence between Springer fibers in \(\mathcal{B}_{m + n}\) and 
 In the next few sections, we will find the irreducible components of \(\mathcal{P}_X\).
 Then we will use this, along with the result about the usual Springer fiber at \(X\), to find the irreducible components of \(\pi^{-1}(X)\) and then of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
 
-\section{Strategy and setup for finding the irreducible components of a Springer fiber at a Slodowy slice}
-\par Fix any \(X \in \mathcal{N}\).
-As we have fixed \(X\), we now write \(A_{a, b} := A_{X, a, b}\).
-Let \((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}\) be a Jordan basis for \(X\).
-For convenience we define \(e_{i0} := 0\); now we may express the fact that \((e_{ij})\) is a Jordan basis by writing \(\forall i. Xe_{ij} = e_{i,j - 1}\).
-\par In this section we find the irreducible components of
-\[\pi^{-1}(X) \cong V := \{(A_{a, b}, U) : \forall i. \; A_{a, b} U_{i + 1} \subseteq U_i\}.\]
+\section{Strategy for finding components of \(\mathcal{P}_{J(\lambda)}\)}
+\par Let \(X = J(\lambda) \in \gl_m\), where \(\lambda = (\lambda_1, ..., \lambda_k)\).
+In this section we write \(\mathcal{P} := \mathcal{P}_{J(\lambda)}\) and \(A_{a, b} := A_{J(\lambda), a, b}\).
+Let \((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}\) be the standard basis for \(\mathbb{C}^m\).
+For convenience we write \(e_{ij} := 0\) for \(j < 1\); now we may express the fact that \((e_{ij})\) is a Jordan basis by writing \(\forall i. Xe_{ij} = e_{i,j - 1}\).
+\par In this section we begin finding the irreducible components of
+\[\mathcal{P} = \{(A_{a, b}, (V_i)) : \forall i. \; A_{a, b} V_{i + 1} \subseteq V_i\}.\]
 \par For \(1 \leq w \leq k\) and \(0 \leq r \leq \lambda_w\) (note that we allow \(r = 0\)), define 
-\[V_{w,r} := \{(A_{a, b}, U) \in V : \exists P \in \GL_{m}. \; \exists b'. \; (P^{-1}, I_n) A_{a, b} (P, I_n) = A_{e_{wr}, b'} \}.\]
+\[\mathcal{P}_{w,r} := \{(A_{a, b}, V) \in \mathcal{P} : \exists P \in \GL_{m}. \; \exists b'. \; (P^{-1}, I_n) A_{a, b} (P, I_n) = A_{e_{wr}, b'} \}.\]
 
 \begin{lemma}
-    \(V = \bigcup_{1 \leq w \leq k, 0 \leq r \leq \lambda_{w}} V_{w,r}\).
-    Further, \(V_{w_1r_1} = V_{w_2r_2}\) exactly when either \(r_1 = r_2 = 0\), or \(\lambda_{w_1} = \lambda_{w_2} \land r_1 = r_2\).
-    When \(V_{w_1r_1} \neq V_{w_2r_2}\), we have \(V_{w_1r_1} \cap V_{w_2r_2} = \emptyset\).
+    \(\mathcal{P} = \bigcup_{1 \leq w \leq k, 0 \leq r \leq \lambda_{w}} \mathcal{P}_{wr}\).
 \end{lemma}
 \begin{proof}
-    TODO
+    Let \((A_{a, b}, (V_i)) \in \mathcal{P}\).
+    Define \(f : \mathbb{C}^m \to \mathbb{C}\) by \(f(e_{ij}) = a_{ij}\).
+    Since \(A_{a, b}\) is nilpotent, \cref{normalization} says that there is a change of basis \(P\) such that \(P^{-1}XP = X\), and for all but one pair \((i, j)\) we have \(f(Pe_{ij}) = 0\).
+    Since \(P^{-1}XP = X\), it is easy to see (writing out the matrix multiplication, if necessary) that there are \(a',b'\) such that \((P^{-1}, I_n)A_{a,b}(P, I_n) = A_{a',b'}\).
+    \par Now,
+    \begin{align*}
+        P^{-1}XPe_{ij} + f(Pe_{ij}) f_n & = \\
+        (P^{-1}, I_n)A_{a,b}(P, I_n)(e_{ij}, 0) & = \\
+        A_{a'b'} (e_{ij},0) & = \\
+        Xe_{ij} + a'_{ij} f_n & .
+    \end{align*}
+    Thus we see that \(a'_{ij} = 0\) for all pairs \((i,j)\) except one; or in other words, \(A_{a'b'}\) is of the form \(A_{e_{wr}b'}\).
 \end{proof}
+\begin{lemma}
+    \(\mathcal{P}_{w_1r_1} = \mathcal{P}_{w_2r_2}\) exactly when either \(r_1 = r_2 = 0\), or \((\lambda_{w_1}, r_1) = (\lambda_{w_2}, r_2)\).
+    When \(\mathcal{P}_{w_1r_1} \neq \mathcal{P}_{w_2r_2}\), we have \(\mathcal{P}_{w_1r_1} \cap \mathcal{P}_{w_2r_2} = \emptyset\). 
+\end{lemma}
+\begin{proof}
+    Now, if \(r_1 = r_2 = 0\), we have \(e_{wr_1} = e_{wr_2} = 0\), so clearly \(\mathcal{P}_{wr_1} = \mathcal{P}_{wr_2}\).
+    And if \((\lambda_{w_1}, r_1) = (\lambda_{w_2}, r_2)\), then clearly any matrix of the form \(A_{e_{w_1r_1}b'}\) can be transformed to a matrix of the form \(A_{e_{w_2r_2}b'}\) by making the change of basis that swaps \(e_{w_1j}\) with \(e_{w_2j}\).
+    Inversely, suppose
+
+\end{proof}
+
 Now, fix any \(w\) and \(r\).
 We will find the irreducible components of \(V_{w,r}\).
 These will all happen to be equidimensional (with dimensions independent of \(w\) and \(r\)), so their closures in \(V\) will be the irreducible components of \(V\).
