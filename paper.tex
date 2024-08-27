@@ -401,16 +401,9 @@ For convenience we write \(e_{ij} := 0\) for \(j < 1\); now we may express the f
 \begin{proof}
     Let \((A_{a, b}, (V_i)) \in \mathcal{P}\).
     Define \(f : \mathbb{C}^m \to \mathbb{C}\) by \(f(e_{ij}) = a_{ij}\).
-    Since \(A_{a, b}\) is nilpotent, \cref{normalization} says that there is a change of basis \(P\) such that \(P^{-1}XP = X\), and for all but one pair \((i, j)\) we have \(f(Pe_{ij}) = 0\).
-    Since \(P^{-1}XP = X\), it is easy to see (writing out the matrix multiplication, if necessary) that there are \(a',b'\) such that \((P^{-1}, I_n)A_{a,b}(P, I_n) = A_{a',b'}\).
-    \par Now,
-    \begin{align*}
-        P^{-1}XPe_{ij} + f(Pe_{ij}) f_n & = \\
-        (P^{-1}, I_n)A_{a,b}(P, I_n)(e_{ij}, 0) & = \\
-        A_{a'b'} (e_{ij},0) & = \\
-        Xe_{ij} + a'_{ij} f_n & .
-    \end{align*}
-    Thus we see that \(a'_{ij} = 0\) for all pairs \((i,j)\) except one; or in other words, \(A_{a'b'}\) is of the form \(A_{e_{wr}b'}\).
+    We take the coordinate-free view of \(A_{a,b}\) as the linear transformation \(T\) that sends \(e_{ij}\) to \(e_{i,j - 1} + f(e_{ij})\), sends \(f_{i + 1}\) to \(f_i\), and sends \(f_1\) to \((b, 0)\).
+    Since \(X\) is nilpotent, \cref{normalization} says that there is a change of basis \(P\) such that \(Pe_{ij}\) forms a Jordan basis for \(X\), and for all but one pair \((i, j)\) we have \(f(Pe_{ij}) = 0\).
+    \par Because \(Pe_{ij}\) is a Jordan basis, \(A_{a',b'}\) of \(T\) in this new basis has the same upper-left corner \(X\); and since \(f(Pe_{ij}) = 0\) for all but one pair \((i,j)\), we have \(a'_{ij} = 0\) for all but one pair \((i,j)\).
 \end{proof}
 \begin{lemma}
     \(\mathcal{P}_{w_1r_1} = \mathcal{P}_{w_2r_2}\) exactly when either \(r_1 = r_2 = 0\), or \((\lambda_{w_1}, r_1) = (\lambda_{w_2}, r_2)\).
@@ -419,8 +412,11 @@ For convenience we write \(e_{ij} := 0\) for \(j < 1\); now we may express the f
 \begin{proof}
     Now, if \(r_1 = r_2 = 0\), we have \(e_{wr_1} = e_{wr_2} = 0\), so clearly \(\mathcal{P}_{wr_1} = \mathcal{P}_{wr_2}\).
     And if \((\lambda_{w_1}, r_1) = (\lambda_{w_2}, r_2)\), then clearly any matrix of the form \(A_{e_{w_1r_1}b'}\) can be transformed to a matrix of the form \(A_{e_{w_2r_2}b'}\) by making the change of basis that swaps \(e_{w_1j}\) with \(e_{w_2j}\).
-    Inversely, suppose
+    Conversely, suppose \(\mathcal{P}_{w_1r_1} = \mathcal{P}_{w_2r_2}\).
+    Then there is \(P\) such that \((P^{-1},I_n) A_{e_{w_1r_1},b} (P, I_n) = A_{e_{w_2r_2}, b'}\).
 
+    Then, either there is \(k\) such that (for any \(b_1',b_2'\)) \(A_{e_{w_1r_1}b_1'}^k \)
+    \par The second observation, that the nonequal sets are disjoint, just follows from the fact that (this restricted form of) similarity is an equivalence relation.
 \end{proof}
 
 Now, fix any \(w\) and \(r\).
