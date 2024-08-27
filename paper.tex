@@ -367,6 +367,23 @@ As the image of the Springer resolution is \(\mathcal{N} = \mathcal{N}_m \times 
 \end{proof}
 This is not a fully explicit characterization of \(S'\), since we don't say which choices of \(X\) and \(a, b \in \mathbb{C}^m\) lead to \(A_{X, a, b}\) being nilpotent.
 We could use \cref{block_determinant} to find a necessary and sufficient condition on \(X, a, b\); however, the description above of \(S'\) will be good enough for our purposes.
+\begin{corollary}
+    \begin{align*}
+        S \times_\mathfrak{g} \widetilde{\mathcal{N}} & = \\
+        \{((X, A_{X, a, b}), ((X, A_{X, a, b}), \mathfrak{b})) : \mathfrak{b} \in \mathcal{B}, (X, A_{X, a, b}) \in \mathcal{N} \cap \mathfrak{b}\} & \cong \\
+        \{(A_{X, a, b}, \mathfrak{b}) : \mathfrak{b} \in \mathcal{B}, (X, A_{X, a, b}) \in \mathfrak{b} \cap \mathcal{N}\} & .
+    \end{align*}
+\end{corollary}
+We have a map \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}_m\) given by \((A_{X, a, b}, \mathfrak{b}) \mapsto X\).
+We define the \emph{\(n\)-Slodowy-slice Springer fiber} at \(X \in \mathcal{N}\) to be the fiber \(\pi^{-1}(X)\).
+Because \(\mathcal{B} = \mathcal{B}_m \times \mathcal{B}_{m + n}\),  
+\[\pi^{-1}(X) \cong \{(A_{X, a, b}, \mathfrak{b}_{m + n}) : A_{X, a, b} \in \mathfrak{b}_{m + n} \cap \mathcal{N}_{m + n}\} \times \{\mathfrak{b}_m : X \in \mathfrak{b}_m\}.\]
+The right factor of the product is simply the usual Springer fiber at \(X\).
+\par Let 
+\[\mathcal{P}_X = \{(A_{X, a, b}, (V_i)) : \forall i. \; A_{X, a, b} V_i \subseteq V_{i - 1}\}.\]
+Using our correspondence between Springer fibers in \(\mathcal{B}_{m + n}\) and flags of \(\mathbb{C}^{m + n}\), we see that \(\mathcal{P}_X\) is isomorphic to the left factor of \(\pi^{-1}(X)\).
+In the next few sections, we will find the irreducible components of \(\mathcal{P}_X\).
+Then we will use this, along with the result about the usual Springer fiber at \(X\), to find the irreducible components of \(\pi^{-1}(X)\) and then of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
 
 \section{Simplifying the definition of a Springer fiber at a Slodowy slice}
 \par Let \(\mathcal{N}_m \subseteq \gl_m(\mathbb{C})\) be the subset consisting of nilpotent elements.
