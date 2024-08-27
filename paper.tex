@@ -385,29 +385,6 @@ Using our correspondence between Springer fibers in \(\mathcal{B}_{m + n}\) and 
 In the next few sections, we will find the irreducible components of \(\mathcal{P}_X\).
 Then we will use this, along with the result about the usual Springer fiber at \(X\), to find the irreducible components of \(\pi^{-1}(X)\) and then of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
 
-\section{Simplifying the definition of a Springer fiber at a Slodowy slice}
-\par Let \(\mathcal{N}_m \subseteq \gl_m(\mathbb{C})\) be the subset consisting of nilpotent elements.
-For \(X \in \mathcal{N}_m\) and \(a, b \in \mathbb{C}^m\), let
-\[A_{X, a, b} = \begin{pNiceArray}{ccc|ccccc}
- & & & & & & & \vert \\
- & X & & & & & & b    \\
- & & & & & & & \vert \\
-\hline
-\text{---} & a & \text{---} & 0 \\
-& & & 1 & 0 \\
-& & &  & 1 & \ddots \\
-& & &  &   & \ddots & 0 \\
-& & &  &   &  & 1 & 0
-\end{pNiceArray} \in \mathfrak{gl}_{m + n}(\mathbb{C}).\]
-By the definition given in the previous section, we have 
-\[\widetilde{\mathcal{N}}_{m, n} = \{(\mathfrak{b}, X) : X \in \mathfrak{b}\} \subseteq \mathcal{B}_{m + n} \times \mathcal{S}_{m,n}',\]
-and the Springer fiber at the \(n\)-Slodowy slice at a nilpotent \(X \in \gl_m\) is
-\[\pi_{m,n}^{-1}(X) = \{(\mathfrak{b}, A_{X, a, b}) : A_{X, a, b} \in \mathfrak{b}, A_{X, a, b} \in \mathcal{S}_{m, n}'\} \] 
-\[= \{(\mathfrak{b}, A_{X, a, b}) : A_{X, a, b} \in \mathfrak{b}, A_{X, a, b} \textrm{nilpotent}\}\]
-\[\cong \{(\mathfrak{b}, a, b) : A_{X, a, b} \in \mathfrak{b}, A_{X, a, b} \textrm{ nilpotent}\}.\]
-\par Using our correspondence between \(\mathcal{B}_{m + n}\) and complete flags of \(\mathbb{C}^{m + n}\), we obtain 
-\[\pi_{m,n}^{-1}(X) \cong \{(V, a, b) : \forall i. \; A_{X, a, b} V_i \subseteq V_{i - 1}\}.\]
-
 \section{Strategy and setup for finding the irreducible components of a Springer fiber at a Slodowy slice}
 \par Fix any \(X \in \mathcal{N}\).
 As we have fixed \(X\), we now write \(A_{a, b} := A_{X, a, b}\).
