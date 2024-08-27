@@ -338,17 +338,20 @@ As the image of the Springer resolution is \(\mathcal{N} = \mathcal{N}_m \times 
 \par 
 
 \begin{lemma}
-    Let \(A \in \gl_n\) be upper triangular.
-    Then \(J_n + A\) is nilpotent if and only if \(A = 0\).
+    Let \(X \in \gl_n\) be upper triangular.
+    Then \(J_n + X\) is nilpotent if and only if \(X = 0\).
 \end{lemma}
 \begin{proof}
+    Clearly if \(X = 0\), then \(J_n + X\) is nilpotent.
+    Inversely, suppose \(X \neq 0\).
     Let \(e_1, ..., e_n\) be the standard basis, with \(J_n e_i = e_{i + 1}\).
-    It is straightforward to show by induction that if \(v_i = 0\) for \(i < j\), and \(v_j \neq 0\), then \(((J + A)^k v_j)_{j + k} = v_j\).
-    Let \(i\) be such that \(Ae_i \neq 0\).
-    Then \((J + A)^{i - 1} e_1\) has nonzero \(e_i\)-component.
-    Then \((J + A)^i e_1\) has some nonzero \(e_{i'}\)-component for some \(i' \leq i\).
-    Then \((J + A)^{i + (n - i')} e_1\) has some nonzero \(e_n\)-component.
-    And \(i + (n - i') \geq n\), so we're done.
+    Let \(i_1 = \max\{i : Xe_i \neq 0\}\).
+    As \(X\) is upper triangular, we have \(X e_{i_1} = v + ae_{i_2}\), with \(a \in \mathbb{C}\setminus\{0\}\), \(i_2 \leq i_1\), and \(v \in \langle e_1, ..., e_{i_1 - 1}\rangle\).
+    \par Now, \((J_n + X)^{i_1} e_1 = e_{i_1 + 1} + v + ae_{i_2}\).
+    Then, \((J_n + X)^{i_1 + (n - i_1)} e_1 = 0 + (J_n + X)^{n - i_1} (v + ae_{i_2})\).
+    Clearly \((J_n + X)^{n - i_1} (v + ae_{i_2}) = v' + ae_{i_2 + n - i_1}\), with \(v' \in \langle e_1, ..., e_{i_2 + n - i_1 - 1} \rangle\).
+    Now, since \(i_2 \leq i_1\), we have \(i_2 + n - i_1 \leq n\), and therefore \((J_n + X)^n e_1 \neq 0\).
+    It follows that \(J_n + X\) is not nilpotent.
 \end{proof}
 
 \par Now, taking the previous corolloary and the first lemma together, we see that 
