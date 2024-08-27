@@ -317,7 +317,7 @@ Embedding this into \(\gl_{m + n}\) as described previously, we obtain
        \text{---} & a & \text{---} &  \\
         &  & &  & Y  \\
         & & & & & 
-       \end{pNiceArray} : X \in \gl_m; Y \in \mathfrak{z}_{\gl_n}; a,b \in \mathbb{C}^m \right\}.\]
+       \end{pNiceArray} : X \in \gl_m; Y \in \mathfrak{z}_{\gl_n}(f); a,b \in \mathbb{C}^m \right\}.\]
 \end{lemma}
 \begin{proof}
     Let \(Z = \begin{pmatrix}Z_{11} & Z_{12}\\Z_{21} & Z_{22}\end{pmatrix} \in \mathfrak{z}_{m + n}(F)\).
@@ -327,19 +327,28 @@ Embedding this into \(\gl_{m + n}\) as described previously, we obtain
     The condition \(Z_{12}f = 0\) means that all but the last column of \(Z_{12}\) must be zero, and the condition \(0 = fZ_{21}\) means that all but the first row of \(Z_{21}\) must be zero.
     And the condition \(Z_{22}f = fZ_{22}\) means that \(Z_{22} \in \mathfrak{z}_{\gl_{m + n}}(f)\).
 \end{proof}
+
 These lemmas provide an explicit characterization of the Slodowy slice \(S = E + \mathfrak{z}_{\gl_{m + n}}(F)\).
+\begin{corollary}\label{slodowy_slice}
+    \[S = \left\{\begin{pNiceArray}{ccc|ccc}
+        & & & & & \vert \\
+        & X & & & & b    \\
+        & & & & & \vert \\
+       \hline
+       \text{---} & a & \text{---} &  \\
+        & & &  & e + Y\\
+        &  & &  &   
+       \end{pNiceArray} : a, b \in \mathbb{C}^m, X \in \gl_m, Y \in \mathfrak{z}_{\gl_n}(f)\right\}.\]
+\end{corollary}
 
 \subsection{A description of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}
 Recall that we have the map \(S \to \mathfrak{g}\) given by \(Z \mapsto (p(Z), Z)\), where \(p : \gl_{m + n} \to \gl_m\) is the coordinate projection.
-Then we have the Springer resolution \(\widetilde{\mathcal{N}} \to \mathfrak{g}\).
+We also have the Springer resolution \(\widetilde{\mathcal{N}} \to \mathfrak{g}\).
 And from these two maps we define the fibered product \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
-\par To obtain an explicit description of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\), we will find the set of \(Z \in S\) such that there exists \(x \in \widetilde{\mathcal{N}}\) with \((Z, x) \in S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
-As the image of the Springer resolution is \(\mathcal{N} = \mathcal{N}_m \times \mathcal{N}_{m + n}\), this amounts to finding the set \(S' = \{Z \in S : p(Z) \in \mathcal{N}_m, Z \in \mathcal{N}_{m + n}\}\).
-\par TODO: continue here!
-cite nilpotency lemmas.
-
-\par Now, taking the previous corolloary and the first lemma together, we see that 
-\[\mathcal{S}_{m,n}' = \left\{\begin{pNiceArray}{ccc|cccc}
+\par To obtain an explicit description of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\), we will begin by finding the image of the projection \(S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to S\).
+As the image of the Springer resolution is \(\mathcal{N} = \mathcal{N}_m \times \mathcal{N}_{m + n}\), the image of the projection \(S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to S\) is simply \(S' = \{Z \in S : p(Z) \in \mathcal{N}_m, Z \in \mathcal{N}_{m + n}\}\).
+\begin{lemma}
+    \[S' = \left\{A_{X, a, b} := \begin{pNiceArray}{ccc|cccc}
     & & & & & & \vert \\
     & X & & & & & b    \\
     & & & & & & \vert \\
@@ -348,9 +357,16 @@ cite nilpotency lemmas.
     & & & 1 & 0  & \\
     &  & & & \ddots & \ddots  \\
     & & & & & 1 & 0
-   \end{pNiceArray} : a, b \in \mathbb{C}^m, X \in \gl_m \textrm{ is nilpotent}\right\}.\]
-
-
+   \end{pNiceArray} \in \mathcal{N}_{m + n}: a, b \in \mathbb{C}^m, X \in \mathcal{N}_m\right\}.\]
+\end{lemma}
+\begin{proof}
+    As every element of \(\mathfrak{z}_{\gl_n}(f)\) is upper triangular, \cref{bottom_right_nilp} tells us that if a matrix of the form given in \cref{slodowy_slice} is nilpotent, and the upper-left block \(X\) is nilpotent as well, then \(e + Y\) must be nilpotent.
+    Then, again using that every element \(Y \in \mathfrak{z}_{\gl_n}(f)\) is upper triangular, \cref{upper_triangle_zero} tells us that if \(e + Y\) is nilpotent, then \(Y = 0\).
+    \par Hence every element of \(S'\) must simply have \(e\) in its bottom-right block.
+    We see that every element of \(S'\) is of the desired form.
+\end{proof}
+This is not a fully explicit characterization of \(S'\), since we don't say which choices of \(X\) and \(a, b \in \mathbb{C}^m\) lead to \(A_{X, a, b}\) being nilpotent.
+We could use \cref{block_determinant} to find a necessary and sufficient condition on \(X, a, b\); however, the description above of \(S'\) will be good enough for our purposes.
 
 \section{Simplifying the definition of a Springer fiber at a Slodowy slice}
 \par Let \(\mathcal{N}_m \subseteq \gl_m(\mathbb{C})\) be the subset consisting of nilpotent elements.
@@ -921,7 +937,7 @@ where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) in the case \(i \n
 \end{proof}
 
 \subsection{Nilpotency Lemmas}
-\begin{lemma}
+\begin{lemma}\label{upper_triangle_zero}
     Let \(X \in \gl_n\) be upper triangular.
     Then \(J_n + X\) is nilpotent if and only if \(X = 0\).
 \end{lemma}
@@ -938,7 +954,7 @@ where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) in the case \(i \n
     It follows that \(J_n + X\) is not nilpotent.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{block_determinant}
     Let \(X \in \gl_m\), and let 
     \[Y = \begin{pmatrix}
         y_{11} & y_{12} & y_{13} & \cdots & y_{1,n-1} & y_{1n} \\
@@ -1018,7 +1034,7 @@ where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) in the case \(i \n
    \end{pNiceArray}.\]
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\label{bottom_right_nilp}
     If \(X\) is nilpotent, and
     \[\begin{pNiceArray}{ccc|ccc}
         & & & & & \vert \\
