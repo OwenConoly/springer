@@ -681,33 +681,32 @@ We also write, somewhat abusively, \(b \in \mathbb{C}^{m + n}\) to refer to the 
         Consequently, \((A^{n + p_{i_1}} f_n \rightshift n + p_{i_1}) \in \langle e_{ij} \rangle_{i,j : q_i \geq n} \subseteq W\).
         Because \(f_n - (A^{n + p_{i_1}} f_n \rightshift n + p_{i_1}) \in W\), this implies that \(f_n \in W\).
         \par Because \(AW \subseteq W\) (obvious, since \(W\) is a span of chains), the fact that \(f_n \in W\) implies that \(f_i \in W\) for each \(i\), and also \(b \leftshift l \in W\) for each \(l \geq 0\).
-        \par CONTINUE HERE.
-        Now we are left with showing that \(\langle e_{ij} \rangle_{i,j : q_i < n} \subseteq W\).
+        \par Now we are left with showing that \(\langle e_{ij} \rangle_{i,j : q_i < n} \subseteq W\).
+        It suffices to show that \(e_{i, \lambda_i} \in W\) for each \(i\) with \(q_i < n\).
         This is obvious for \(i \notin I\).
-        So, we just need to show that \(e_{i_kj}\)
-        For \(i \in I\), we do it inductively.
-        Fix \(i \in I\), and suppose we have already shown that for all \(i' \in I\) with \(q_{i'} > q_i\), we have \(\langle e_{ij} \rangle_{j \textrm{ arbitrary}} \subseteq W\).
-        We will show that \(\langle e_{ij} \rangle_{j \textrm{ arbitrary}} \subseteq W\).
-        \par To see this, we consider the chain beginning with \(v_i - (A^{q_i + P_i} v_i \rightshift q_i + P_i)\).
-        (Recall \(v_i = A^{n - q_i} f_n - \sum_{l = 1}^{p_i} b_{il} e_{i,l + q_i}\).)
-        Because \(AW \subseteq W\), and \(b_{i,p_i} \neq 0\) (by definition of \(p_i\)), it suffices to show that \(\sum_{l = 1}^{p_i} b_{il} e_{i,k + q_i} \in W\).
-        As explained in the proof of (1), we have \(A^{q_i + P_i} v_i \in \langle e_{lj} \rangle_{q_l \geq q_i}\).
-        And since \(A^{q_i + P_i} v_i\) has row \(i\) zeroed out, in fact \(A^{q_i + P_i} v_i \in \langle e_{lj} \rangle_{l : l \neq i \land q_l \geq q_i}\).
+        So, we just need to show that \(e_{i_k\lambda_{i_k}} \in W\) for each \(k \in \{1, ..., r\}\).
+        We do this inductively; fix \(k\), and suppose we have already shown that \(e_{i_{k'}, \lambda_{i_{k'}}} \in W\) for \(k' < k\).
+        We will show that \(e_{i_k, \lambda_{i_k}} \in W\).
+        \par To see this, consider the chain beginning with \(v_{i_k} - (A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}})\).
+        (Recall \(v_{i_k} = A^{n - q_{i_k}} f_n - \sum_{l = 1}^{p_{i_k}} b_{i_kl} e_{i_k,l + q_{i_k}}\).)
+        Since \(b_{i_k,p_{i_k}} \neq 0\) (by definition of \(p_{i_k}\)), it suffices to show that \(\sum_{l = 1}^{p_{i_k}} b_{i_kl} e_{i_k,l + q_{i_k}} \in W\).
+        As explained in the proof of (1), we have \(A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \in \langle e_{lj} \rangle_{q_l \geq q_{i_k}}\).
+        And since \(A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k}\) has row \(i_k\) zeroed out, in fact \(A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \in \langle e_{lj} \rangle_{l : l \neq i_k \land q_l \geq q_{i_k}}\).
         Hence, \(A^{q_i + P_i} v_i \rightshift q_i + P_i \in \langle e_{lj} \rangle_{l : l \neq i \land q_l \geq q_i}\).
-        By our inductive hypothesis, \(\langle e_{lj} \rangle_{l : l \neq i \land q_l \geq q_i} \subseteq W\), and consequently \(A^{q_i + P_i} v_i \rightshift q_i + P_i \in W\).
-        Since we know \(v_i - (A^{q_i + P_i} v_i \rightshift q_i + P_i) \in W\), this implies that \(v_i \in W\).
-        Because \(A^{n - q_i} f_n \in W\), this then implies that \(\sum_{l = 1}^{p_i} b_{il} e_{i,l + q_i} \in W\), as desired.
+        By our inductive hypothesis, \(\langle e_{lj} \rangle_{l : l \neq i_k \land q_l \geq q_{i_k}} \subseteq W\), and consequently \(A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}} \in W\).
+        Since we know \(v_{i_k} - (A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}}) \in W\), this implies that \(v_{i_k} \in W\).
+        Because \(A^{n - q_{i_k}} f_n \in W\), this then implies that \(\sum_{l = 1}^{p_{i_k}} b_{i_kl} e_{i_k,l + q_{i_k}} \in W\), as desired.
     \end{proof}
     We proved (1), (2), (3), so we are done.
 \end{proof}
 
-Let \(\mu(I, (\rho_i))\) be the shape of the Jordan basis given in the previous lemma.
+Let \(\mu(I, (\rho_i))\) be the shape of the Jordan basis given in the lemma.
 Let \(X_\mu\) be the Springer fiber at \(J(\mu)\), and let \((X_{\mu, \alpha})_{\alpha \in \mathrm{SYT}(\mu)}\) be the irreducible components.
 \par Given a zero-indexed list \(L = [L_0, ..., L_{l - 1}]\), we define \(\gamma(L) = \sum_i i L_i\).
-We are interested in this thing because the dimension of \(X_\mu\) is \(\gamma([\mu_1, ..., \mu_l])\).
+We are interested in this thing because for any \(\alpha\), the dimension of \(X_{\mu, \alpha}\) is \(\gamma([\mu_1, ..., \mu_{k + 1}])\).
 
 \begin{lemma}
-    \[\gamma([\mu_1, ..., \mu_l]) = \gamma([0, \lambda_1, ..., \lambda_k]) - \] 
+    \[\gamma([\mu_1, ..., \mu_{k + 1}]) = \gamma([0, \lambda_1, ..., \lambda_k]) - \] 
     \[\left[\sum_{i : \lambda_i \geq q_{i_0} + \rho_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^r \sum_{\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} \min(p_{i_k}, \lambda_i - q_{i_k})\right].\]
 \end{lemma}
 \begin{proof}
@@ -801,7 +800,7 @@ Maybe there is a similar correspondence, between elements of \(S \times_\mathfra
 \par Separately, this paper could use a nice introductory section where we motivate the study of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
 
 \section{Linear Algebra Facts}
-In this section we prove linear algebra facts that were used in the paper.
+In this section we prove linear algebra facts that were used earlier.
 They are confined to this section to avoid interrupting the flow of the paper.
 
 \subsection{The centralizer of a nilpotent matrix}
