@@ -517,8 +517,6 @@ Then, we define \(B_{I, (\rho_i)}\) as the set of \(b \in \mathbb{C}^m\) satisfy
     \item For all \(k \in \{0, ..., r\}\), \(p_{i_{k + 1}} = \max_{i : q_i < q_{i_k}} p_i\).
 \end{itemize}
 Note that for any \(b \in B_{I, (\rho_i)}\) we have \(p_{i_1} > \cdots > p_{i_r} > p_{i_{r + 1}}\), and also \(q_{i_0} > q_{i_1} > \cdots > q_{i_r}\).
-\par Let \(\mathcal{Q}_{I, (\rho_i)} := \{(A_{0, b}, (V_i)) \in \mathcal{Q} : b \in B_{I, (\rho_i)}\}\).
-We will show that the \(\mathcal{Q}_{I, (\rho_i)}\)'s are the irreducible components of \(\mathcal{Q}\).
 
 \begin{lemma}\label{bs_union}
     \(\mathbb{C}^m = \bigcup_{I, (\rho_i)} B_{I, (\rho_i)}\), where \(I\) ranges over all subsets of \(\{1, ..., k\}\), and \((\rho_i)\) ranges over all maps \(I \to \mathbb{N}_{>0}\) satisfying the conditions (1),(2),(3),(4).
@@ -538,9 +536,12 @@ We will show that the \(\mathcal{Q}_{I, (\rho_i)}\)'s are the irreducible compon
     Take any \(b \in B_{I, (\rho_i)}\) with \(p_i = \rho_i\) for \(i \in I\) and \(p_i = 0\) for \(i \notin I\).
     It is clear that \(b \notin B_{I', (\rho_i')}\) whenever \(I' \neq I\) or \((\rho_i') \neq (\rho_i)\).
 \end{proof}
+\par Let \(\mathcal{Q}_{I, (\rho_i)} := \{(A_{0, b}, (V_i)) \in \mathcal{Q} : b \in B_{I, (\rho_i)}\}\).
+We will show that \(\mathcal{Q}_{I, (\rho_i)} \cong B_{I, (\rho_i)} \times (\textrm{some springer fiber})\).
+Then we will use the result about the irreducible components of a Springer fiber to find the irreducible components of \(\mathcal{Q}_{I, (\rho_i)}\), and the closures of these will be the irreducible components of \(\mathcal{Q}\).
 
 \subsection{Study of \(B_{I, (\rho_i)}\)}
-Fix any \(I\) and \((\rho_i)\) satisfying the conditions (1)--(4).
+Fix any \(I\) and \((\rho_i)\) satisfying the conditions (1)--(4) of \cref{bs_union}.
 As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \(p_{i_{r + 1}} := 0\).
 
 \par First, we provide an alternative characterization of \(B_{I, (\rho_i)}\).
@@ -595,14 +596,17 @@ As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \
 \end{proof}
 
 \begin{corollary}\label{bs_iso}
-    \[B_{I, (\rho_i)} \cong \prod_{k = 1}^r (\mathbb{C}^{\rho_{i_k} - 1} \times (\mathbb{C} \setminus \{0\})) \times \prod_{i : \lambda_i \geq q_{i_0} + p_{i_1}} \mathbb{C}^{\lambda_i - q_{i_0}} \times \prod_{k = 1}^r \prod_{\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}}\mathbb{C}^{\min(p_{i_k}, \lambda_i - q_{i_k})}\]
+    \begin{align*}
+        B_{I, (\rho_i)} \cong & \prod_{k = 1}^r (\mathbb{C}^{\rho_{i_k} - 1} \times (\mathbb{C} \setminus \{0\})) \times \prod_{i : \lambda_i \geq q_{i_0} + p_{i_1}} \mathbb{C}^{\lambda_i - q_{i_0}} \times \\
+        & \prod_{k = 1}^r \prod_{\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}}\mathbb{C}^{\min(p_{i_k}, \lambda_i - q_{i_k})}.
+    \end{align*}
 \end{corollary}
 \begin{proof}
     Here I use the notation \(x \times y = (x, y)\), and so on.
     The isomorphism sends \(b \in B_{I, (\rho_i)}\) to 
     \[\prod_{k = 1}^{r}(b_{i_k1},..., b_{i_k\rho_{i_k}}) \times \prod_{i : \lambda_i \geq q_{i_0} + p_{i_1}} (b_{i1}, ..., b_{i, \lambda_i - q_{i_0}}) \times\]
     \[\prod_{k = 1}^r \prod_{\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} (b_{i1}, ..., b_{i,\min(p_{i_k}, \lambda_i - q_{i_k})}).\]
-    \cref{alternative_bs_two} tells us that this is an isomorphism.
+    \cref{alternative_bs_two} says that this is an isomorphism.
 \end{proof}
 
 \begin{corollary}\label{bs_dim}
@@ -612,14 +616,15 @@ As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \
     Immediate from \cref{bs_iso}.
 \end{proof}
 
-\subsection{A study of \(U_{I, (\rho_i)}\)}
-Fix any \(I\) and \((\rho_i)\) satisfying the conditions of Lemma 8.1.
-We will find the irreducible components of \(U_{I, (\rho_i)}\), and show that their closures are in fact irreducible components of \(U_0\).
-\par I claim that \(A_{0,b}\) has the same shape for every \((A_{0, b}, U) \in U_{I, (\rho_i)}\).
-Call this shape \(\mu\).
-By finding a algebraic map taking \(b\) to a Jordan basis for \(A_{0,b}\), we will put \(U_{I, (\rho_i)}\) in isomorphism with the product (choice of \(b\)) \(\times\) (Springer fiber at \(J(\mu)\)).
-Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find the irreducible components of \(U_{I, (\rho_i)}\).
+\subsection{Study of \(\mathcal{Q}_{I, (\rho_i)}\)}
+Fix any \(I\) and \((\rho_i)\) satisfying the conditions (1)--(4) of \cref{bs_union}.
+In this subsection we find the irreducible components of \(\mathcal{Q}_{I, (\rho_i)}\).
+\par I claim that there is some \(\mu(I, (\rho_i))\) such that every \((A_{0, b}, U) \in \mathcal{Q}_{I, (\rho_i)}\) is similar to \(J(\mu)\).
+By finding a algebraic map taking \(b \in B_{I, (\rho_i)}\) to a Jordan basis for \(A_{0,b}\), we will put \(\mathcal{Q}_{I, (\rho_i)}\) in isomorphism with the product \(B_{I, (\rho_i)} \times (Springer fiber at J(\mu))\).
+Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find the irreducible components of \(\mathcal{Q}_{I, (\rho_i)}\).
 \par So, now we find a Jordan basis for \(A_{0, b}\).
+As before, we write \(\{i_1, ..., i_r\} := I\), and \(q_{i_0} := n\), and \(p_{i_{r + 1}} := 0\).
+We also write, somewhat abusively, \(b \in \mathbb{C}^{m + n}\) to refer to the vector \((b, 0) \in \mathbb{C}^{m + n}\).
 \begin{lemma}
     The following vectors give a Jordan basis for \(A_{0,b}\).
     (For convenience, we write \(A := A_{0,b}\) in this lemma and proof.)
@@ -647,7 +652,7 @@ Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find
         This shows that the chain has length at most \(n + p_{i_1}\), as desired.
         \par Now, let \(k \in \{1, ..., r\}\).
         We have \(v_{i_k} = A^{n - q_{i_k}} f_n - \sum_{l = 1}^{p_{i_k}} b_{i_kl} e_{i_k,l + q_{i_k}}\).
-        First we note that \(q_{i_k} < n\) by the definition of \(U_{I, (\rho_i)}\), so the definition of \(v_{i_k}\) makes sense.
+        First we note that \(q_{i_k} < n\) by the definition of \(\mathcal{Q}_{I, (\rho_i)}\), so the definition of \(v_{i_k}\) makes sense.
         We consider the chain beginning with \(v_{i_k} - (A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}})\).
         Note that \(A^{q_{i_k}} v_{i_k}\) is just \(b\) with row \(i_k\) zeroed out.
         For brevity, we write \(b_{i_k} := A^{q_{i_k}} v_{i_k}\).
@@ -664,24 +669,22 @@ Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find
     \end{proof}
     \begin{proof}[Proof of (2)]
         The sum of the lengths is
-        \[\sum_{i \notin I} (p_i + q_i) + (n + P) + \sum_{i \in I} (q_i + P_i).\]
-        Writing \(I = \{i_1 < \cdots < i_{|I|}\}\), we note that \(P = p_{i_1}\), that \(P_{i_{|I|}} = 0\), and that for \(l < |I|\) we have \(P_{i_l} = p_{i_{l + 1}}\).
-        Thus, the sum above is 
-        \[\sum_{i \notin I} (p_i + q_i) + (n + p_{i_1}) + \sum_{l = 1}^{|I|} (q_{i_l} + p_{i_{l + 1}}) = \]
-        \[\sum_{i \notin I} (p_i + q_i) + n + \sum_{l = 1}^{|I|} (q_{i_l} + p_{i_l}) = n + \sum_i (q_i + p_i) = m + n.\]
+        \[\sum_{i \notin I} (p_i + q_i) + \sum_{k = 0}^r (q_{i_k} + p_{i_{k + 1}}) = \sum_i (q_i + p_i) = m + n.\]
     \end{proof}
     \begin{proof}[Proof of (3)]
         Let \(W\) be the span of the chains listed.
         We need to show that \(W = \mathbb{C}^{m + n}\).
         Because every \(i \in I\) satisfies \(q_i < n\), clearly \(\langle e_{ij}\rangle_{i,j : q_i \geq n} \subseteq W\).
         \par I claim that \(f_n \in W\) as well.
-        To see this, we consider the chain beginning with \(f_n - (A^{n + P} f_n \rightshift n + P)\).
-        As explained in the proof of (1), we have \(A^{n + P} f_n \in \langle e_{ij}\rangle_{i,j : q_i \geq n}\).
-        Consequently, \((A^{n + P} f_n \rightshift n + P) \in \langle e_{ij} \rangle_{i,j : q_i \geq n} \subseteq W\).
-        Because \(f_n - (A^{n + P} f_n \rightshift n + P) \in W\), this implies that \(f_n \in W\).
-        \par Because \(AW \subseteq W\) (obvious, since \(W\) is the span of chains), the fact that \(f_n \in W\) implies that \(f_i \in W\) for each \(i\), and also \(b \leftshift l \in W\) for each \(l \geq 0\).
-        \par Now we are left with showing that \(\langle e_{ij} \rangle_{i,j : q_i < n} \subseteq W\).
+        To see this, we consider the chain beginning with \(f_n - (A^{n + p_{i_1}} f_n \rightshift n + p_{i_1})\).
+        As explained in the proof of (1), we have \(A^{n + p_{i_1}} f_n \in \langle e_{ij}\rangle_{i,j : q_i \geq n}\).
+        Consequently, \((A^{n + p_{i_1}} f_n \rightshift n + p_{i_1}) \in \langle e_{ij} \rangle_{i,j : q_i \geq n} \subseteq W\).
+        Because \(f_n - (A^{n + p_{i_1}} f_n \rightshift n + p_{i_1}) \in W\), this implies that \(f_n \in W\).
+        \par Because \(AW \subseteq W\) (obvious, since \(W\) is a span of chains), the fact that \(f_n \in W\) implies that \(f_i \in W\) for each \(i\), and also \(b \leftshift l \in W\) for each \(l \geq 0\).
+        \par CONTINUE HERE.
+        Now we are left with showing that \(\langle e_{ij} \rangle_{i,j : q_i < n} \subseteq W\).
         This is obvious for \(i \notin I\).
+        So, we just need to show that \(e_{i_kj}\)
         For \(i \in I\), we do it inductively.
         Fix \(i \in I\), and suppose we have already shown that for all \(i' \in I\) with \(q_{i'} > q_i\), we have \(\langle e_{ij} \rangle_{j \textrm{ arbitrary}} \subseteq W\).
         We will show that \(\langle e_{ij} \rangle_{j \textrm{ arbitrary}} \subseteq W\).
@@ -738,13 +741,13 @@ We are interested in this thing because the dimension of \(X_\mu\) is \(\gamma([
 \end{proof}
 
 \begin{lemma}\label{u_i_rho_iso}
-    \(U_{I, (\rho_i)} \cong B_{I, (\rho_i)} \times X_\mu\).
+    \(\mathcal{Q}_{I, (\rho_i)} \cong B_{I, (\rho_i)} \times X_\mu\).
 \end{lemma}
 \begin{proof}
     For \(b \in B_{I, (\rho_i)}\), let \(P_b\) be the change-of-basis matrix, with columns given by the Jordan basis of the previous lemma, so that \(J(\mu) = P_b^{-1} A_{0,b} P_b\).
     From looking at the Jordan basis of the previous lemma (the basis can be expressed in terms of \(A, \lambda, e_{ij}, f_i, I, \rho_i, b\)), it is clear that the map \(P : B_{I, (\rho_i)} \to \GL_{m + n}\), given by \(b \mapsto P_b\), is algebraic.
     \par Now, we remark that the Springer fiber at \(A_{0,b}\) is simply \(\{P_b U : U \in X_\mu\}\).
-    This gives us the isomorphism \(B_{I, (\rho_i)} \times X_\mu \to U_{I, (\rho_i)}\).
+    This gives us the isomorphism \(B_{I, (\rho_i)} \times X_\mu \to \mathcal{Q}_{I, (\rho_i)}\).
     \[(b, U) \mapsto (P_b J(\mu) P_b^{-1}, P_b U),\]
     with inverse
     \[(A_{0,b}, U) \mapsto (b, P_b^{-1} U).\]
@@ -752,7 +755,7 @@ We are interested in this thing because the dimension of \(X_\mu\) is \(\gamma([
 
 \begin{corollary}\label{u_i_rho_irred_and_dim}
     The 
-    \(U_{I, (\rho_i)}\) is irreducible, and its dimension is \(\gamma([0, \lambda_1, ..., \lambda_k])\).
+    \(\mathcal{Q}_{I, (\rho_i)}\) is irreducible, and its dimension is \(\gamma([0, \lambda_1, ..., \lambda_k])\).
 \end{corollary}
 \begin{proof}
     Irreducibility follows from \cref{u_i_rho_iso}, since \(B_{I, (\rho_i)}\) is irreducible (by \cref{bs_iso}), as is \(X_\mu\).
@@ -764,7 +767,7 @@ We are interested in this thing because the dimension of \(X_\mu\) is \(\gamma([
 At last we have reached the base of our recursive procedure, and we begin to propagate upwards.
 We write \((X_{\mu, \alpha})_\alpha\) to denote the irreducible components of \(X_\mu\).
 \begin{lemma}
-    The irreducible components of \(U_{I, (\rho_i)}\) are exactly the subvarieties 
+    The irreducible components of \(\mathcal{Q}_{I, (\rho_i)}\) are exactly the subvarieties 
     \[U_{I, (\rho_i), \alpha} := \{(P_b J(\mu) P_b^{-1}, P_b U) : b \in B_{I, (\rho_i)}, U \in X_{\mu, \alpha}\}.\]
     These are distinct.  
     There are blah of them, and each has dimension blah.
