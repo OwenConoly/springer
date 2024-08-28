@@ -705,7 +705,7 @@ Let \(X_\mu\) be the Springer fiber at \(J(\mu)\), and let \((X_{\mu, \alpha})_{
 \par Given a zero-indexed list \(L = [L_0, ..., L_{l - 1}]\), we define \(\gamma(L) = \sum_i i L_i\).
 We are interested in this thing because for any \(\alpha\), the dimension of \(X_{\mu, \alpha}\) is \(\gamma([\mu_1, ..., \mu_{k + 1}])\).
 
-\begin{lemma}
+\begin{lemma}\label{springer_fiber_dim}
     \[\gamma([\mu_1, ..., \mu_{k + 1}]) = \gamma([0, \lambda_1, ..., \lambda_k]) - \] 
     \[\left[\sum_{i : \lambda_i \geq q_{i_0} + \rho_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^r \sum_{\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} \min(p_{i_k}, \lambda_i - q_{i_k})\right].\]
 \end{lemma}
@@ -746,45 +746,35 @@ We are interested in this thing because for any \(\alpha\), the dimension of \(X
 \end{lemma}
 \begin{proof}
     For \(b \in B_{I, (\rho_i)}\), let \(P_b\) be the change-of-basis matrix, with columns given by the Jordan basis of the previous lemma, so that \(J(\mu) = P_b^{-1} A_{0,b} P_b\).
-    From looking at the Jordan basis of the previous lemma (the basis can be expressed in terms of \(A, \lambda, e_{ij}, f_i, I, \rho_i, b\)), it is clear that the map \(P : B_{I, (\rho_i)} \to \GL_{m + n}\), given by \(b \mapsto P_b\), is algebraic.
-    \par Now, we remark that the Springer fiber at \(A_{0,b}\) is simply \(\{P_b U : U \in X_\mu\}\).
-    This gives us the isomorphism \(B_{I, (\rho_i)} \times X_\mu \to \mathcal{Q}_{I, (\rho_i)}\).
-    \[(b, U) \mapsto (P_b J(\mu) P_b^{-1}, P_b U),\]
+    From looking at the Jordan basis, it is clear that the map \(P : B_{I, (\rho_i)} \to \GL_{m + n}\), given by \(b \mapsto P_b\), is algebraic.
+    \par Now, we remark that the Springer fiber at \(A_{0,b}\) is simply \(\{P_b (V_i) : (V_i) \in X_\mu\}\).
+    This gives the isomorphism \(B_{I, (\rho_i)} \times X_\mu \to \mathcal{Q}_{I, (\rho_i)}\) defined by
+    \[(b, (V_i)) \mapsto (P_b J(\mu) P_b^{-1}, P_b (V_i)),\]
     with inverse
-    \[(A_{0,b}, U) \mapsto (b, P_b^{-1} U).\]
+    \[(A_{0,b}, (V_i)) \mapsto (b, P_b^{-1} (V_i)).\]
 \end{proof}
 
 \begin{corollary}\label{u_i_rho_irred_and_dim}
-    The 
-    \(\mathcal{Q}_{I, (\rho_i)}\) is irreducible, and its dimension is \(\gamma([0, \lambda_1, ..., \lambda_k])\).
+    For \(\alpha \in \mathrm{SYT}(\mu)\), let \(\mathcal{Q}_{I, (\rho_i), \alpha}\) be the subvariety of \(\mathcal{Q}_{I, (\rho_i)}\) which corresponds to \(B_{I, (\rho_i)} \times X_{\mu, \alpha}\) via the isomorphism of \cref{u_i_rho_iso}.
+    The subvarieties \((\mathcal{Q}_{I, (\rho_i), \alpha})_{\alpha \in \mathrm{SYT}(\mu)}\) are the irreducible components of \(\mathcal{Q}_{I, (\rho_i)}\).
+    Each has dimension \(\gamma([0, \lambda_1, ..., \lambda_k])\).
 \end{corollary}
 \begin{proof}
-    Irreducibility follows from \cref{u_i_rho_iso}, since \(B_{I, (\rho_i)}\) is irreducible (by \cref{bs_iso}), as is \(X_\mu\).
-    To get the dimension, we add the dimension of \(B_{I, (\rho_i)}\) to the dimension of \(X_\mu\).
-    The dimension of \(X_\mu\) is 
+    We know that \(B_{I, (\rho_i)}\) is irreducible by \cref{bs_iso}.
+    Then, the fact that the \(B_{I, (\rho_i)} \times X_{\mu, \alpha}\) are the irreducible components of \(B_{I, (\rho_i)} \times X_\mu\) just follows from the fact that the \(X_{\mu, \alpha}\) are the irreducible components of \(X_\mu\).
+    \par To get the dimension, we add the dimension of \(B_{I, (\rho_i)}\) to the dimension of \(X_{\mu, \alpha}\).
+    We get the dimension of \(B_{I, (\rho_i)}\) from \cref{bs_dim}, and we get the dimension of \(X_{\mu, \alpha}\) from \cref{springer_fiber_dim}.
+    Adding them together, things cancel out and we get \(\gamma([0, \lambda_1, ..., \lambda_k])\).
 \end{proof}
 
 \subsection{Conclusion}
-At last we have reached the base of our recursive procedure, and we begin to propagate upwards.
-We write \((X_{\mu, \alpha})_\alpha\) to denote the irreducible components of \(X_\mu\).
-\begin{lemma}
-    The irreducible components of \(\mathcal{Q}_{I, (\rho_i)}\) are exactly the subvarieties 
-    \[U_{I, (\rho_i), \alpha} := \{(P_b J(\mu) P_b^{-1}, P_b U) : b \in B_{I, (\rho_i)}, U \in X_{\mu, \alpha}\}.\]
-    These are distinct.  
-    There are blah of them, and each has dimension blah.
-\end{lemma}
+\begin{theorem}
+    The irreducible components of \(\mathcal{Q}\) are the closures of the subvarieties \(\mathcal{Q}_{I, (\rho_i), \alpha}\), as we let \(I, (\rho_i)\) range over all possibilities satisfying the conditions (1)--(4) of \cref{bs_union}, and we let \(\alpha \in \mathrm{SYT}(\mu(I, (\rho_i)))\).
+\end{theorem}
 \begin{proof}
-    We know from \cref{bs_iso} that \(B_{I, (\rho_i)}\) is irreducible.
-    So, the components of \(B_{I, (\rho_i)} \times X_\mu\) are obviously \(B_{I, (\rho_i)} \times X_{\mu, \alpha}\).
-    Their dimensions are blah, and there are... of them.
-    taking image under the isomorphism gives the desired result.
+    We see from \cref{u_i_rho_irred_and_dim} that the \(\mathcal{Q}_{I, (\rho_i), \alpha}\) are irreducible and equidimensional.
+    Then \cref{bs_union} tells us that their union is \(\mathcal{Q}\), and in addition that none is contained in the union of the others.
 \end{proof}
-
-\begin{lemma}
-    The irreducible components of \(U_0\) are exactly the \(U_{I, (\rho_i), \alpha}\).
-    They are distinct.
-    There are blah of them, each of dimension blah.
-\end{lemma}
 
 \section{The components of \(\mathcal{P}_{J(\lambda)}\)}
 Apply things from the previous two sections, and conclude.
