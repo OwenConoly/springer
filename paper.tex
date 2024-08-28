@@ -436,7 +436,7 @@ So, by restriction of \(G\) to \(G_{wr}\) and \(\mathcal{P}_{wr}\) to \(\mathcal
 \[(x, P) \mapsto P \cdot x.\]
 Then, letting \(G_{wr}\) act on \(G\) by \(g \cdot h := hg^{-1}\), we obtain an action of \(G_{wr}\) on \(\mathcal{Q}_{wr} \times G\).
 
-\begin{lemma}
+\begin{lemma}\label{principal_bundle}
     The map \(\varphi\) is a principal \(G_{wr}\)-bundle.
 \end{lemma}
 \begin{proof}
@@ -791,16 +791,56 @@ where \(X' = J(\lambda')\), and \(\lambda' = (\lambda_1, ..., \lambda_w - r, ...
 \par Let \((\mathcal{Q}'_{I, (\rho_i), \alpha})_{I, (\rho_i), \alpha}\) be the irreducible components of \(\mathcal{Q}'\) give by \cref{Q_comps}.
 Write \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) to denote the irreducible component of \(\mathcal{Q}_{wr}\) corresponding to \(\mathcal{Q}'_{I, (\rho_i), \alpha}\) via the isomorphism \(\mathcal{Q}_{wr} \cong \mathcal{Q}'\) of \cref{a_zero}.
 
-\begin{corollary}
+\begin{theorem}
     The irreducible components of \(\mathcal{Q}_{wr}\) are exactly the subvarieties \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\).
     Each has dimension \(\sum_{ij} \min(\lambda_i', \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_k)\).
-\end{corollary}
+\end{theorem}
 \begin{proof}
     From the foregoing discussion, it is clear that they are indeed the irreducible components.
     To calculate the dimension, we refer to \cref{u_i_rho_irred_and_dim}, which says the dimension is \(\gamma([0, \lambda_1', ..., \lambda_k'])\).
 \end{proof}
 
-\par In section 5 we defined the subvarieties \(\mathcal{P}_{wr} \subseteq \mathcal{P}\) and the principal \(G_{wr}\)-bundle \(\varphi_{wr} : \mathcal{Q}_{wr} \times G \to \mathcal{P}_{wr}\).
+\subsection{The varieties \(G_{wr}\) and \(G\)}
+Fix \(w,r\).
+Recall from section 5 the groups \(G = \{P \in \GL_m : P^{-1}XP = X\}\) and \(G_{wr} = \{A \in G : e_{wr} A = e_{wr}\}\).
+\begin{lemma}\label{g_irred_dim}
+    \(G\) is irreducible and has dimension \(\sum_{ij} \min(\lambda_i, \lambda_j)\).
+\end{lemma}
+\begin{proof}
+    The closure of \(G\) in \(\gl_m\) is \(\mathfrak{z}_{\gl_m}(X)\).
+    \cref{nilpotent_centralizer} says that \(\mathfrak{z}_{\gl_m}(X)\) is isomorphic to \(\mathbb{C}^{\sum_{ij} \min(\lambda_i, \lambda_j)}\).
+\end{proof}
+
+\begin{lemma}\label{gwr_irred_dim}
+    \(G_{wr}\) is irreducible and has dimension \(\sum_{ij} \min(\lambda_i', \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_k)\).
+\end{lemma}
+\begin{proof}
+    The closure of \(G_{wr}\) in \(\gl_m\) is \(V = \{Y \in \mathfrak{z}_{\gl_m}(Y) : e_{wr} Y = e_{wr}\}\).
+    Lemma TODO says that \(V\) is isomorphic to \(\mathbb{C}^{\sum_{ij} \min(\lambda_i', \lambda_j')}\).
+\end{proof}
+
+\subsection{The components of \(\mathcal{P}_{wr}\)}
+Recall from section 5 the subvarieties \(\mathcal{P}_{wr} \subseteq \mathcal{P}\).
+From \cref{principal_bundle} we have the principal \(G_{wr}\)-bundle \(\varphi_{wr} : \mathcal{Q}_{wr} \times G \to \mathcal{P}_{wr}\).
+% \par Together, \cref{g_irred_dim} and \cref{gwr_irred_dim} tell us that the irreducible components of \(\mathcal{Q}_{wr} \times G\) are the subvarieties \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G\).
+
+\begin{theorem}\label{pwr_comps}
+    The irreducible components of \(\mathcal{P}_{wr}\) are the closures of the images \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G)\).
+    Some irreduble components of \(\mathcal{P}_{wr}\) are double-counted; we have equality iff there's a bijection \(i \leftrightarrow i'\) with \(\rho_i = \rho'_{i'}\) and \(\lambda_i = \lambda_{i'}\).
+    When there is no equality, none is in the union of the others.
+    Each has dimension blah.
+\end{theorem}
+\begin{proof}
+    TODO: fix statement and proof here.
+    Together, \cref{Q_comps} and \cref{g_irred_dim} tell us that \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) is irreducible, and therefore its image is irreducible.
+    They are equidimensional, as we will verify in a moment.
+    So, to verify that their closures are the irreducible components of \(\mathcal{P}_{wr}\), we need only check that none is contained in the union of the others.
+\end{proof}
+
+\subsection{The components of \(\mathcal{P}\)}
+\begin{corollary}
+    They are just the components of the \(\mathcal{P}_{wr}\)'s.
+\end{corollary}
 
 \section{The components of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}
 Define \(R = \{(X, \mathfrak{b}_1, \mathfrak{b}_2) : X \in \mathfrak{b}_1 \land u(X) \in \mathfrak{b}_2\} \subseteq \mathcal{S}_{m,n}' \times \mathcal{B}_{m + n} \times \mathcal{B}_m\).
@@ -829,7 +869,7 @@ They are confined to this section to avoid interrupting the flow of the paper.
 That is, \(Y\) is lower-left Toeplitz if it is Toeplitz, and the only nonzero entries are those with Manhattan distance less than \(\min(m,n)\) from the entry in the bottom-left corner.
 In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\) diagonal bands are zero.
 
-\begin{lemma}
+\begin{lemma}\label{nilpotent_centralizer}
     Let \(\lambda = (\lambda_1, ..., \lambda_k)\) be a partition of \(m\).
     The centralizer of \(J(\lambda)\) in \(\gl_m\) is the subalgebra consisting of matrices 
     \[M = \begin{pmatrix}
