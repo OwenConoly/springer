@@ -186,7 +186,7 @@ Then we can use it to show that \(f_{i,i + 1} = f_{i + 1, i + 2} + h_{i + 1, i +
 From the first equation we find that
 \[-h_{1,1} = f_{1, 2} = f_{n - 1, n} + \sum_{i = 1}^{n - 1} h_{ii} = \sum_{i = 1}^{n} h_{ii} \implies\]
 \[\sum_i h_{ii} = 0.\]
-Remark: this is just the statement that \(h \in \spl_n\); in other words, we will see that every choice of \(\spl_2\)-triple in \(\gl_{m + n}\) is also an \(\spl_2\)-triple in \(\spl_{m + n}\).
+(That is, \(h \in \spl_n\).)
 This shows that \(h_{11} = n - 1, h_{22} = n - 3, ..., h_{nn} = 1 - n\).
 So we have determined \(h\); it is 
 \[h = \begin{pmatrix}
@@ -472,8 +472,9 @@ So, we will change basis to make \(r = 0\).
 Let \(m' = m - r\), and \(n' = n + r\).
 Let \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_k)\).
 Let \(X' = J(\lambda)\).
-Let \(\mathcal{Q}' = \{(A_{X', 0, b}, (V_i)) : \forall i. \; A_{X', 0, b} V_{i + 1} \subseteq V_i\}\).
-\begin{lemma}
+(TODO: explain that \(A'\) is like \(A\), but with \(m',n'\) taking the place of \(m,n\).)
+Let \(\mathcal{Q}' = \{(A'_{X', 0, b}, (V_i)) : \forall i. \; A_{X', 0, b} V_{i + 1} \subseteq V_i\}\).
+\begin{lemma}\label{a_zero}
     \(\mathcal{Q}_{wr} \cong \mathcal{Q}'\)
 \end{lemma}
 \begin{proof}
@@ -768,7 +769,7 @@ We are interested in this thing because for any \(\alpha\), the dimension of \(X
 \end{proof}
 
 \subsection{Conclusion}
-\begin{theorem}
+\begin{theorem}\label{Q_comps}
     The irreducible components of \(\mathcal{Q}\) are the closures of the subvarieties \(\mathcal{Q}_{I, (\rho_i), \alpha}\), as we let \(I, (\rho_i)\) range over all possibilities satisfying the conditions (1)--(4) of \cref{bs_union}, and we let \(\alpha \in \mathrm{SYT}(\mu(I, (\rho_i)))\).
 \end{theorem}
 \begin{proof}
@@ -777,7 +778,29 @@ We are interested in this thing because for any \(\alpha\), the dimension of \(X
 \end{proof}
 
 \section{The components of \(\mathcal{P}_{J(\lambda)}\)}
-Apply things from the previous two sections, and conclude.
+As in section 5, we write \(X = J(\lambda) \in \gl_m\), where \(\lambda = (\lambda_1, ..., \lambda_k)\).
+We write \(\mathcal{P} := \mathcal{P}_{J(\lambda)}\), and \(A_{a,b} := A_{J(\lambda), a, b}\).
+And as before, \((e_{ij})_{ij}\) and \((f_j)_j\) form the standard basis for \(\mathbb{C}^{m + n}\).
+\subsection{The components of \(\mathcal{Q}_{wr}\)}
+Recall from section 5 the varieties
+\[\mathcal{Q}_{wr} = \{(A_{e_{wr}, b}, (V_i)) \in \mathcal{P}\}.\]
+Fix any \(w,r\).
+\cref{a_zero} tells us that 
+\[\mathcal{Q}_{wr} \cong \mathcal{Q}' := \{(A'_{X', 0, b}, (V_i)) : \forall i. \; A'_{X', 0, b} V_{i + 1} \subseteq V_i\},\]
+where \(X' = J(\lambda')\), and \(\lambda' = (\lambda_1, ..., \lambda_w - r, ..., \lambda_k)\), and \(m' = m - r\), and \(n' = n + r\).
+\par Let \((\mathcal{Q}'_{I, (\rho_i), \alpha})_{I, (\rho_i), \alpha}\) be the irreducible components of \(\mathcal{Q}'\) give by \cref{Q_comps}.
+Write \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) to denote the irreducible component of \(\mathcal{Q}_{wr}\) corresponding to \(\mathcal{Q}'_{I, (\rho_i), \alpha}\) via the isomorphism \(\mathcal{Q}_{wr} \cong \mathcal{Q}'\) of \cref{a_zero}.
+
+\begin{corollary}
+    The irreducible components of \(\mathcal{Q}_{wr}\) are exactly the subvarieties \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\).
+    Each has dimension \(\sum_{ij} \min(\lambda_i', \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_k)\).
+\end{corollary}
+\begin{proof}
+    From the foregoing discussion, it is clear that they are indeed the irreducible components.
+    To calculate the dimension, we refer to \cref{u_i_rho_irred_and_dim}, which says the dimension is \(\gamma([0, \lambda_1', ..., \lambda_k'])\).
+\end{proof}
+
+\par In section 5 we defined the subvarieties \(\mathcal{P}_{wr} \subseteq \mathcal{P}\) and the principal \(G_{wr}\)-bundle \(\varphi_{wr} : \mathcal{Q}_{wr} \times G \to \mathcal{P}_{wr}\).
 
 \section{The components of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}
 Define \(R = \{(X, \mathfrak{b}_1, \mathfrak{b}_2) : X \in \mathfrak{b}_1 \land u(X) \in \mathfrak{b}_2\} \subseteq \mathcal{S}_{m,n}' \times \mathcal{B}_{m + n} \times \mathcal{B}_m\).
