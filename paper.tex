@@ -901,23 +901,12 @@ In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\
     Multiplying on the left by \(J_{\lambda_i}\) just shifts each row down by one, and multiplying on the right by \(J_{\lambda_j}\) shifts each column left by one.
     The matrices for which left-shifting gives the same result as down-shifting are exactly the lower-left Toeplitz matrices.
 \end{proof}
-For nilpotent \(X\) in Jordan form and \(a\) in `normalized' form (i.e., with at most one nonzero element, which is a one), we will find the centralizer of \(A_{X, a, b}\) in 
-\[\{(A, I) : A \in \gl_m\} \subseteq \gl_{m + n}.\]
-Note that an element of the form \((A, I)\) commutes with \(A_{X, a, b}\) if and only if \(A\) commutes with \(X\), and \(aA = a\), and \(Ab = b\).
-So, we just have to find 
-\[\{A \in \gl_m : AX = XA, aA = a, Ab = b\}.\]
 
-It is just the set of \(A = [A_{ij}]_{ij}\), where each \(A_{ij}\) is lower-left-Toeplitz.
-\par Let \(v_{ij}\) be the leftmost column of \(A_{ij}\), so that
-\[A_{ij} = \begin{pmatrix}
-    v_{ij} \downshift 0 & \cdots & v_{ij} \downshift [\lambda_j - 1]
-\end{pmatrix}.\]
-Since \(A_{ij}\) is lower-left-Toeplitz, \(v_{ij}\) is of the form 
-\[v_{ij} = \begin{pmatrix}
-    0\\
-    v_{ij}'
-\end{pmatrix},\]
-where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) can be chosen freely.
+\begin{lemma}
+    Let \(\lambda = (\lambda_1, ..., \lambda_k)\) be a partition of \(m\).
+    Let \(w \in \{1, ..., k\}\) and \(r \in \{1, ..., \lambda_w\}\).
+    The set of \(M \in \mathfrak{z}_{\gl_m}(J(\lambda))\) such that \(aM = a\) 
+\end{lemma}
 Now we determine which matrices of this form satisfy \(aA = a\).
 For simplicity, we will instead find the matrices \(A\) such that \(aA = 0\) (so that \(a(A + I) = a\)).
 (Note that \(I \in C_1\), and \(C_1\) is closed under addition, so this is really the same thing.)
