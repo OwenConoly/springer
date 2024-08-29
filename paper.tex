@@ -815,7 +815,15 @@ Recall from section 5 the groups \(G = \{P \in \GL_m : P^{-1}XP = X\}\) and \(G_
     \(G_{wr}\) is irreducible and has dimension \(\sum_{ij} \min(\lambda_i', \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_k)\).
 \end{lemma}
 \begin{proof}
-    The closure of \(G_{wr}\) in \(\gl_m\) is \(V = \{Y \in \mathfrak{z}_{\gl_m}(Y) : e_{wr} Y = e_{wr}\}\).
+    The closure of \(G_{wr}\) in \(\gl_m\) is \(V = \{Y \in \mathfrak{z}_{\gl_m}(X) : e_{wr} Y = e_{wr}\}\).
+    In the case that \(r = 0\), the constraint that \(e_{wr}Y = e_{wr}\) is no constraint at all, so we have \(G_{wr} = G\), and the result follows from \cref{g_irred_dim}.
+    \par In the case that \(r > 0\), we appeal to \cref{nilpotent_centralizer}, which tells us exactly what \(\mathfrak{z}_{\gl_m}(X)\) looks like.
+    Note that \(V = \{Y + I : Y \in \mathfrak{z}_{\gl_m}(X), e_{wr}Y = 0\}\).
+    The constraint \(e_{wr}Y = 0\) is just saying that a certain row of \(Y\) must be all zeroes.
+    Looking at the form of \(\mathfrak{z}_{\gl_m}(X)\), we see that requiring this row equal to zero for \(M \in \mathfrak{z}_{\gl_m}(X)\) is just the statement that \(M_{wr}\) is of the form
+    \[\]
+
+    From looking at the form of \(\mathfrak{z}_{\gl_m}(X)\) given in \cref{nilpotent_centralizer}, it is clear that 
     Lemma TODO says that \(V\) is isomorphic to \(\mathbb{C}^{\sum_{ij} \min(\lambda_i', \lambda_j')}\).
 \end{proof}
 
@@ -905,7 +913,8 @@ In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\
 \begin{lemma}
     Let \(\lambda = (\lambda_1, ..., \lambda_k)\) be a partition of \(m\).
     Let \(w \in \{1, ..., k\}\) and \(r \in \{1, ..., \lambda_w\}\).
-    The set of \(M \in \mathfrak{z}_{\gl_m}(J(\lambda))\) such that \(aM = a\) 
+    Let \(i = [\sum_{j < w} \lambda_j] + (r - 1)\).
+    The set of \(M \in \mathfrak{z}_{\gl_m}(J(\lambda))\) such that \(\mathbbm{1}_iM = \mathbbm{1}_i\) is  
 \end{lemma}
 Now we determine which matrices of this form satisfy \(aA = a\).
 For simplicity, we will instead find the matrices \(A\) such that \(aA = 0\) (so that \(a(A + I) = a\)).
