@@ -59,6 +59,7 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
 
 \bibliographystyle{plain}
 \usepackage{nicematrix}
@@ -779,8 +780,8 @@ We are interested in this thing because for any \(\alpha\), the dimension of \(X
     The irreducible components of \(\mathcal{Q}\) are the closures of the subvarieties \(\mathcal{Q}_{I, (\rho_i), \alpha}\), as we let \(I, (\rho_i)\) range over all possibilities satisfying the conditions (1)--(4) of \cref{bs_union}, and we let \(\alpha \in \mathrm{SYT}(\mu(I, (\rho_i)))\).
 \end{theorem}
 \begin{proof}
-    We see from \cref{u_i_rho_irred_and_dim} that the \(\mathcal{Q}_{I, (\rho_i), \alpha}\) are irreducible and equidimensional.
-    Then \cref{bs_union} tells us that their union is \(\mathcal{Q}\), and in addition that none is contained in the union of the others.
+    By \cref{u_i_rho_irred_and_dim}, the \(\mathcal{Q}_{I, (\rho_i), \alpha}\) are irreducible and equidimensional.
+    Then \cref{bs_union} says that their union is \(\mathcal{Q}\), and in addition that none is contained in the union of the others.
 \end{proof}
 
 \section{The components of \texorpdfstring{\(\mathcal{P}_{J(\lambda)}\)}{P\_\{J(\textbackslash lambda)\}}}
@@ -797,7 +798,7 @@ where \(X' = J(\lambda')\), and \(\lambda' = (\lambda_1, ..., \lambda_w - r, ...
 \par Let \((\mathcal{Q}'_{I, (\rho_i), \alpha})_{I, (\rho_i), \alpha}\) be the irreducible components of \(\mathcal{Q}'\) give by \cref{Q_comps}.
 Write \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) to denote the irreducible component of \(\mathcal{Q}_{wr}\) corresponding to \(\mathcal{Q}'_{I, (\rho_i), \alpha}\) via the isomorphism \(\mathcal{Q}_{wr} \cong \mathcal{Q}'\) of \cref{a_zero}.
 
-\begin{theorem}
+\begin{theorem}\label{qwr_comps}
     The irreducible components of \(\mathcal{Q}_{wr}\) are exactly the subvarieties \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\).
     Each has dimension \(\sum_{ij} \min(\lambda_i', \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_k)\).
 \end{theorem}
@@ -835,16 +836,23 @@ From \cref{principal_bundle} we have the principal \(G_{wr}\)-bundle \(\varphi_{
 % \par Together, \cref{g_irred_dim} and \cref{gwr_irred_dim} tell us that the irreducible components of \(\mathcal{Q}_{wr} \times G\) are the subvarieties \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G\).
 
 \begin{theorem}\label{pwr_comps}
-    The irreducible components of \(\mathcal{P}_{wr}\) are the closures of the images \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G)\).
-    Some irreduble components of \(\mathcal{P}_{wr}\) are double-counted; we have equality iff there's a bijection \(i \leftrightarrow i'\) with \(\rho_i = \rho'_{i'}\) and \(\lambda_i = \lambda_{i'}\).
-    When there is no equality, none is in the union of the others.
-    Each has dimension blah.
+    Every irreducible component of \(\mathcal{P}_{wr}\) is the closure of some subvariety of the form \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G)\), and the closure of each subvariety of this form is an irreducible component.
+    Each has dimension \(\sum_{ij} \min(\lambda_i, \lambda_j)\).
 \end{theorem}
+\begin{remark}
+    \cref{pwr_comps} does not say ``the irreducible components of \(\mathcal{P}_{wr}\) are the closures of the subvarieties \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G)\)'', as that would seem to suggest some claim about distinctness.
+    Some more-careful analysis is required to determine which ones are distinct.
+\end{remark}
 \begin{proof}
-    TODO: fix statement and proof here.
-    Together, \cref{Q_comps} and \cref{g_irred_dim} tell us that \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) is irreducible, and therefore its image is irreducible.
-    They are equidimensional, as we will verify in a moment.
-    So, to verify that their closures are the irreducible components of \(\mathcal{P}_{wr}\), we need only check that none is contained in the union of the others.
+    Together, \cref{Q_comps} and \cref{g_irred_dim} tell us that the \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) are irreducible, and their union is \(\mathcal{Q}_{wr}\).
+    Hence their images are irreducible, and the surjectivity of \(\varphi_{wr}\) implies that their union of their images is \(\mathcal{P}_{wr}\).
+    \par Now, to verify that each image is an irreducible component, we need only verify that they are equidimensional.
+    Indeed, since \(\varphi_{wr}\) is a principal \(G_{wr}\)-bundle by \cref{principal_bundle}, we infer that the dimension of \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G)\) is \(\dim \mathcal{Q}_{w,r,I,(\rho_i),\alpha} + \dim G - \dim G_{wr}\).
+    We calculated these dimensions in \cref{qwr_comps}, \cref{g_irred_dim}, \cref{gwr_irred_dim}.
+    We see that \(\dim \mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) cancels with \(\dim G_{wr}\), and we are left with \(\dim G = \sum_{ij} \min(\lambda_i, \lambda_j)\).
+    \par TODO: can we conclude the difference-of-dimensions thing when the preimage isn't closed under action by \(G_{wr}\)?
+    Surely not... so this is all wrong.
+    I need to find out what happens when you let \(G_{wr}\) act on \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\).
 \end{proof}
 
 \subsection{The components of \texorpdfstring{\(\mathcal{P}\)}{P}}
