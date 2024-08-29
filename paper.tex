@@ -51,6 +51,7 @@
 \newcommand{\dd}{\mathrm{d}}
 \newcommand{\comment}{}
 
+\usepackage{hyperref}
 \usepackage[capitalize,nameinlink,noabbrev]{cleveref} % to emulate \autoref style
 
 
@@ -58,9 +59,6 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{corollary}[theorem]{Corollary}
-% \newcommand{\theoremautorefname}{Theorem}
-\newcommand{\lemmaautorefname}{Lemma}
-\newcommand{\definitionautorefname}{Definition}
 
 \bibliographystyle{plain}
 \usepackage{nicematrix}
@@ -135,7 +133,7 @@ Let \(\pi : \widetilde{\mathcal{N}} \to \mathcal{N}\) be the projection onto the
 We call this the \emph{Springer resolution}.
 For \(n \in \mathcal{N}\), we call \(\pi^{-1}(n)\) the \emph{Springer fiber at \(n\)}.
 
-\subsection{Springer fibers in \(\gl_m\)}
+\subsection{Springer fibers in \texorpdfstring{\(\gl_m\)}{gl\_m}}
 Now we let \(\mathcal{N}_m\) be the set of nilpotent elements in \(\gl_m\), and \(\mathcal{B}_m\) the variety of Borel subalgebras of \(\gl_m\).
 Let \(H \subseteq \gl_m\) be the subalgebra of upper triangular matrices.
 The variety of Borel subalgebras of \(\gl_m\) is \(\mathcal{B} = \{gHg^{-1} : g \in \GL_m\}\).
@@ -172,7 +170,7 @@ If \(\mathfrak{g}\) is semisimple, then given any nilpotent \(e \in \mathfrak{g}
 \par Given \((e, h, f)\), we define the \emph{Slodowy slice at \(e\)} as \(\mathcal{S}_e := e + \ker \ad_f\).
 By the Jacobson-Morozov theorem, we can always find a Slodowy slice at any nilpotent \(e \in \mathfrak{g}\), when \(\mathfrak{g}\) is semisimple.
 
-\section{Principal \(\spl_2\)-triple in \(\gl_n\)}
+\section{Principal \texorpdfstring{\(\spl_2\)}{sl\_2}-triple in \texorpdfstring{\(\gl_n\)}{gl\_n}}
 The unique nilpotent regular element of \(\gl_n\) (up to similarity) is \(J_n\).
 In this section we use this to find that there is a unique principal \(\spl_2\)-triple in \(\gl_n\).
 Write \(e = J_n\).
@@ -294,8 +292,8 @@ Now, we can use our expression for \(f\) in terms of \(h\) to obtain
 % We conclude that \(H\) and \(F\) just have \(h\) and \(f\) in their bottom-right corners, respectively.
 % \end{proof}
 
-\section{Finding \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}
-\subsection{Finding the Slodowy slice \(S\)}
+\section{Finding \texorpdfstring{\(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}{S x\_g N}}
+\subsection{Finding the Slodowy slice \texorpdfstring{\(S\)}{S}}
 In the previous section we computed the principal \(\spl_2\)-triple \((e, h, f)\) in \(\gl_n\).
 Embedding this into \(\gl_{m + n}\) as described previously, we obtain
 \[(E, H, F) = \left(\begin{pmatrix}0 & 0 \\0 & e\end{pmatrix}, \begin{pmatrix}0 & 0 \\0 & h\end{pmatrix}, \begin{pmatrix}0 & 0 \\0 & f\end{pmatrix}\right).\]
@@ -349,7 +347,7 @@ These lemmas provide an explicit characterization of the Slodowy slice \(S = E +
        \end{pNiceArray} : a, b \in \mathbb{C}^m, X \in \gl_m, Y \in \mathfrak{z}_{\gl_n}(f)\right\}.\]
 \end{corollary}
 
-\subsection{A description of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}
+\subsection{A description of \texorpdfstring{\(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}{S x\_g N}}
 Recall that we have the map \(S \to \mathfrak{g}\) given by \(Z \mapsto (p(Z), Z)\), where \(p : \gl_{m + n} \to \gl_m\) is the coordinate projection.
 We also have the Springer resolution \(\widetilde{\mathcal{N}} \to \mathfrak{g}\).
 And from these two maps we define the fibered product \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
@@ -393,7 +391,7 @@ Using our correspondence between Springer fibers in \(\mathcal{B}_{m + n}\) and 
 In the next few sections, we will find the irreducible components of \(\mathcal{P}_X\).
 Then we will use this, along with the result about the usual Springer fiber at \(X\), to find the irreducible components of \(\pi^{-1}(X)\) and then of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
 
-\section{Strategy for finding components of \(\mathcal{P}_{J(\lambda)}\)}
+\section{Strategy for finding components of \texorpdfstring{\(\mathcal{P}_{J(\lambda)}\)}{P\_\{J(\textbackslash lambda)\}}}
 \par Let \(X = J(\lambda) \in \gl_m\), where \(\lambda = (\lambda_1, ..., \lambda_k)\).
 In this section we write \(\mathcal{P} := \mathcal{P}_{J(\lambda)}\) and \(A_{a, b} := A_{J(\lambda), a, b}\).
 Let \((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}\) be the standard basis for \(\mathbb{C}^m\).
@@ -507,7 +505,7 @@ Let \(\mathcal{Q}' = \{(A'_{X', 0, b}, (V_i)) : \forall i. \; A_{X', 0, b} V_{i 
 In the next section we will find the irreducible components of \(\mathcal{Q}'\).
 To avoid death by primes, we will refer to it as \(\mathcal{Q}\), and refer to \(m',n'\) as \(m,n\), and so on, throughout the next section.
 
-\section{The components of \(\mathcal{Q}\)}
+\section{The components of \texorpdfstring{\(\mathcal{Q}\)}{Q}}
 \subsection{Setup}
 Let \(X = J(\lambda) \in \gl_m\).
 Let \((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}\) be the standard (Jordan) basis for \(\mathbb{C}^m\).
@@ -549,7 +547,7 @@ Note that for any \(b \in B_{I, (\rho_i)}\) we have \(p_{i_1} > \cdots > p_{i_r}
 We will show that \(\mathcal{Q}_{I, (\rho_i)} \cong B_{I, (\rho_i)} \times (\textrm{some springer fiber})\).
 Then we will use the result about the irreducible components of a Springer fiber to find the irreducible components of \(\mathcal{Q}_{I, (\rho_i)}\), and the closures of these will be the irreducible components of \(\mathcal{Q}\).
 
-\subsection{Study of \(B_{I, (\rho_i)}\)}
+\subsection{Study of \texorpdfstring{\(B_{I, (\rho_i)}\)}{B\_\{I, (p\_i)\}}}
 Fix any \(I\) and \((\rho_i)\) satisfying the conditions (1)--(4) of \cref{bs_union}.
 As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \(p_{i_{r + 1}} := 0\).
 
@@ -625,7 +623,7 @@ As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \
     Immediate from \cref{bs_iso}.
 \end{proof}
 
-\subsection{Study of \(\mathcal{Q}_{I, (\rho_i)}\)}
+\subsection{Study of \texorpdfstring{\(\mathcal{Q}_{I, (\rho_i)}\)}{Q\_\{I, (p\_i)\}}}
 Fix any \(I\) and \((\rho_i)\) satisfying the conditions (1)--(4) of \cref{bs_union}.
 In this subsection we find the irreducible components of \(\mathcal{Q}_{I, (\rho_i)}\).
 \par I claim that there is some \(\mu(I, (\rho_i))\) such that every \((A_{0, b}, U) \in \mathcal{Q}_{I, (\rho_i)}\) is similar to \(J(\mu)\).
@@ -785,11 +783,11 @@ We are interested in this thing because for any \(\alpha\), the dimension of \(X
     Then \cref{bs_union} tells us that their union is \(\mathcal{Q}\), and in addition that none is contained in the union of the others.
 \end{proof}
 
-\section{The components of \(\mathcal{P}_{J(\lambda)}\)}
+\section{The components of \texorpdfstring{\(\mathcal{P}_{J(\lambda)}\)}{P\_\{J(\textbackslash lambda)\}}}
 As in section 5, we write \(X = J(\lambda) \in \gl_m\), where \(\lambda = (\lambda_1, ..., \lambda_k)\).
 We write \(\mathcal{P} := \mathcal{P}_{J(\lambda)}\), and \(A_{a,b} := A_{J(\lambda), a, b}\).
 And as before, \((e_{ij})_{ij}\) and \((f_j)_j\) form the standard basis for \(\mathbb{C}^{m + n}\).
-\subsection{The components of \(\mathcal{Q}_{wr}\)}
+\subsection{The components of \texorpdfstring{\(\mathcal{Q}_{wr}\)}{Q\_\{wr\}}}
 Recall from section 5 the varieties
 \[\mathcal{Q}_{wr} = \{(A_{e_{wr}, b}, (V_i)) \in \mathcal{P}\}.\]
 Fix any \(w,r\).
@@ -808,7 +806,7 @@ Write \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) to denote the irreducible componen
     To calculate the dimension, we refer to \cref{u_i_rho_irred_and_dim}, which says the dimension is \(\gamma([0, \lambda_1', ..., \lambda_k'])\).
 \end{proof}
 
-\subsection{The varieties \(G_{wr}\) and \(G\)}
+\subsection{The varieties \texorpdfstring{\(G_{wr}\)}{G\_\{wr\}} and \texorpdfstring{\(G\)}{G}}
 Fix \(w,r\).
 Recall from section 5 the groups \(G = \{P \in \GL_m : P^{-1}XP = X\}\) and \(G_{wr} = \{A \in G : e_{wr} A = e_{wr}\}\).
 \begin{lemma}\label{g_irred_dim}
@@ -831,7 +829,7 @@ Recall from section 5 the groups \(G = \{P \in \GL_m : P^{-1}XP = X\}\) and \(G_
     Hence \(V \cong \mathbb{C}^{\sum_{ij}\min(\lambda_i', \lambda_j')}\).
 \end{proof}
 
-\subsection{The components of \(\mathcal{P}_{wr}\)}
+\subsection{The components of \texorpdfstring{\(\mathcal{P}_{wr}\)}{P\_\{wr\}}}
 Recall from section 5 the subvarieties \(\mathcal{P}_{wr} \subseteq \mathcal{P}\).
 From \cref{principal_bundle} we have the principal \(G_{wr}\)-bundle \(\varphi_{wr} : \mathcal{Q}_{wr} \times G \to \mathcal{P}_{wr}\).
 % \par Together, \cref{g_irred_dim} and \cref{gwr_irred_dim} tell us that the irreducible components of \(\mathcal{Q}_{wr} \times G\) are the subvarieties \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G\).
@@ -849,12 +847,12 @@ From \cref{principal_bundle} we have the principal \(G_{wr}\)-bundle \(\varphi_{
     So, to verify that their closures are the irreducible components of \(\mathcal{P}_{wr}\), we need only check that none is contained in the union of the others.
 \end{proof}
 
-\subsection{The components of \(\mathcal{P}\)}
+\subsection{The components of \texorpdfstring{\(\mathcal{P}\)}{P}}
 \begin{corollary}
     They are just the components of the \(\mathcal{P}_{wr}\)'s.
 \end{corollary}
 
-\section{The components of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}
+\section{The components of \texorpdfstring{\(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}{S x\_g N}}
 Define \(R = \{(X, \mathfrak{b}_1, \mathfrak{b}_2) : X \in \mathfrak{b}_1 \land u(X) \in \mathfrak{b}_2\} \subseteq \mathcal{S}_{m,n}' \times \mathcal{B}_{m + n} \times \mathcal{B}_m\).
 We can obtain a subvariety of \(R\) by requiring that \(u(X)\) is in some fixed similarity class.
 We expect that each of these subvarieties is an irreducible component of dimension \(m^2\).
