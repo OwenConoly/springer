@@ -847,12 +847,18 @@ From \cref{principal_bundle} we have the principal \(G_{wr}\)-bundle \(\varphi_{
     Together, \cref{Q_comps} and \cref{g_irred_dim} tell us that the \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) are irreducible, and their union is \(\mathcal{Q}_{wr}\).
     Hence their images are irreducible, and the surjectivity of \(\varphi_{wr}\) implies that their union of their images is \(\mathcal{P}_{wr}\).
     \par Now, to verify that each image is an irreducible component, we need only verify that they are equidimensional.
-    Indeed, since \(\varphi_{wr}\) is a principal \(G_{wr}\)-bundle by \cref{principal_bundle}, we infer that the dimension of \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G)\) is \(\dim \mathcal{Q}_{w,r,I,(\rho_i),\alpha} + \dim G - \dim G_{wr}\).
-    We calculated these dimensions in \cref{qwr_comps}, \cref{g_irred_dim}, \cref{gwr_irred_dim}.
-    We see that \(\dim \mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) cancels with \(\dim G_{wr}\), and we are left with \(\dim G = \sum_{ij} \min(\lambda_i, \lambda_j)\).
-    \par TODO: can we conclude the difference-of-dimensions thing when the preimage isn't closed under action by \(G_{wr}\)?
-    Surely not... so this is all wrong.
-    I need to find out what happens when you let \(G_{wr}\) act on \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\).
+    We use the result of \cref{principal_bundle}, namely that \(\varphi_{wr}\) is a principal \(G_{wr}\)-bundle.
+    \par Let \(V_{w,r,I,(\rho_i),\alpha}\) be the closure of \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G\) in \(\mathcal{Q}_{wr} \times G\) under action by \(G_{wr}\).
+    Clearly \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G) = \varphi_{wr}(V_{w,r,I,(\rho_i),\alpha})\).
+    So, we have only to compute the dimension of \(\varphi(V_{w,r,I,(\rho_i),\alpha})\).
+    \par This is easy, because \(\varphi_{wr}\) (and, consequently, the restriction of \(\varphi_{wr}\) to \(V_{w,r,I,(\rho_i),\alpha}\)) is a principal \(G_{wr}\)-bundle, and principal bundles play nicely with dimensions.
+    That is, we can conclude that 
+    \[\dim \varphi_{wr}(V_{w,r,I,(\rho_i),\alpha}) = \dim V_{w,r,I,(\rho_i),\alpha} - \dim G_{wr}.\]
+    Since \(\dim (\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G) = \dim (\mathcal{Q}_{wr} \times G)\) by \cref{qwr_comps}, we know that \(\dim V_{w,r,I,(\rho_i),\alpha} = \dim (\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G) = \dim \mathcal{Q}_{w,r,I,(\rho_i),\alpha} + \dim G\).
+    By the equation above then, we get 
+    \[\dim \varphi_{wr}(V_{w,r,I,(\rho_i),\alpha}) = \dim \mathcal{Q}_{w,r,I,(\rho_i),\alpha} + \dim G - \dim G_{wr}.\]
+    We already calculated those dimensions in \cref{qwr_comps}, \cref{g_irred_dim}, and \cref{gwr_irred_dim} respectively.
+    Referring to those, we see that \(\dim \mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) cancels with \(\dim G_{wr}\), and we are left with \(\dim G = \sum_{ij} \min(\lambda_i, \lambda_j)\).
 \end{proof}
 
 \subsection{The components of \texorpdfstring{\(\mathcal{P}\)}{P}}
