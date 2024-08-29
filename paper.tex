@@ -817,9 +817,9 @@ Recall from section 5 the groups \(G = \{P \in \GL_m : P^{-1}XP = X\}\) and \(G_
 \begin{proof}
     The closure of \(G_{wr}\) in \(\gl_m\) is \(V = \{Y \in \mathfrak{z}_{\gl_m}(X) : e_{wr} Y = e_{wr}\}\).
     In the case that \(r = 0\), the constraint that \(e_{wr}Y = e_{wr}\) is no constraint at all, so we have \(G_{wr} = G\), and the result follows from \cref{g_irred_dim}.
-    \par In the case that \(r > 0\), we appeal to \cref{nilpotent_centralizer}, which tells us exactly what \(\mathfrak{z}_{\gl_m}(X)\) looks like.
-    Note that \(V = \{Y + I : Y \in \mathfrak{z}_{\gl_m}(X), e_{wr}Y = 0\}\).
+    \par In the case that \(r > 0\), we observe that \(V = \{Y + I : Y \in \mathfrak{z}_{\gl_m}(X), e_{wr}Y = 0\}\).
     The constraint \(e_{wr}Y = 0\) is just saying that a certain row of \(Y\) must be all zeroes.
+    Looking at \cref{nilpotent_centralizer_row_zero}
     Looking at the form of \(\mathfrak{z}_{\gl_m}(X)\), we see that requiring this row equal to zero for \(M \in \mathfrak{z}_{\gl_m}(X)\) is just the statement that \(M_{wr}\) is of the form
     \[\]
 
@@ -910,36 +910,29 @@ In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\
     The matrices for which left-shifting gives the same result as down-shifting are exactly the lower-left Toeplitz matrices.
 \end{proof}
 
-\begin{lemma}
+\begin{corollary}\label{nilpotent_centralizer_row_zero}
     Let \(\lambda = (\lambda_1, ..., \lambda_k)\) be a partition of \(m\).
     Let \(w \in \{1, ..., k\}\) and \(r \in \{1, ..., \lambda_w\}\).
-    Let \(i = [\sum_{j < w} \lambda_j] + (r - 1)\).
-    The set of \(M \in \mathfrak{z}_{\gl_m}(J(\lambda))\) such that \(\mathbbm{1}_iM = \mathbbm{1}_i\) is  
-\end{lemma}
-Now we determine which matrices of this form satisfy \(aA = a\).
-For simplicity, we will instead find the matrices \(A\) such that \(aA = 0\) (so that \(a(A + I) = a\)).
-(Note that \(I \in C_1\), and \(C_1\) is closed under addition, so this is really the same thing.)
-\par In the case that \(a = 0\), clearly every \(A\) works.
-Otherwise, let \(i_0, j_0\) be such that \(a_{i_0,j_0} = 1\).
-Now, clearly the constraint that \(aA = 0\) is just saying that the \((i_0,j_0)\)th row of \(A\) must be zero.
-That is, for each \(j\) the \(j_0\)th row of \(A_{i_0j}\) must be zero.
-This just requires that for each \(j\), we must have 
-\[v_{ij} = \begin{pmatrix}
-    0\\
-    v_{ij}'
-\end{pmatrix},\]
-where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i - j_0, \lambda_j)}\) can be chosen freely.
-So, we have now found the set 
-\[C_2 := \{A \in \gl_m : AX = XA, aA = a\}.\]
-It is the matrices of the form \(I + A\), where \(A_{ij}\) is a block matrix of size \(\lambda_i \times \lambda_j\) with 
-\[A_{ij} = T(v_{ij}) = T\begin{pmatrix}
-    0\\
-    v_{ij}'
-\end{pmatrix},\]
-where \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i, \lambda_j)}\) in the case \(i \neq i_0\) and \(v_{ij}' \in \mathbb{C}^{\min(\lambda_i - j_0, \lambda_j)}\) if \(i = i_0\).
+    Let \(i = [\sum_{j < w} \lambda_j] + r\).
+    The set of \(M \in \mathfrak{z}_{\gl_m}(J(\lambda))\) such that the \(i\)th row of \(M\) is equal to zero is the set of matrices
+    \[M = \begin{pmatrix}
+        M_{11} & \cdots & M_{1k} \\
+        \vdots & & \vdots\\
+        M_{k1} & \cdots & M_{kk}
+    \end{pmatrix},\]
+    where each \(M_{ij}\) is a \(\lambda_i \times \lambda_j\) matrix, such that:
+    \begin{itemize}
+        \item For \(i \neq w\), \(M_{ij}\) is lower-left Toeplitz
+        \item Each \(M_{wj}\) is of the form
+        \[M_{wj} = \begin{pmatrix}
+            0\\
+            M_{wj}'
+        \end{pmatrix},\]
+        where \(M_{wj}'\) is a \((\lambda_w - r) \times \lambda_j\) lower-left Toeplitz matrix.
+    \end{itemize}
+\end{corollary}
 
 \subsection{A `normalization' fact about Jordan bases}
-
 \begin{lemma}\label{normalization_helper_one}
     For any finite-dimensional \(V\), nilpotent \(A : V \to V\), and linear \(f : V \to \mathbb{C}\), there is a Jordan basis \(e_{ij}\) for \(A\) such that there is at most one \(i\) such that there exists \(j\) such that \(f(e_{ij}) \neq 0\).
 \end{lemma}
