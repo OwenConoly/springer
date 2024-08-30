@@ -53,7 +53,7 @@
 
 \usepackage{hyperref}
 \usepackage[capitalize,nameinlink,noabbrev]{cleveref} % to emulate \autoref style
-
+% \usepackage{fullpage}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -68,17 +68,22 @@
 UROP+ Final Paper, Summer 2024\\
 Owen Conoly\\
 Mentor: Haoshuo Fu\\
-Project Suggested by: TODO: also Haoshuo?
+Project Suggested by: Haoshuo Fu
 }
 \date{}
-\title{Title}
+\title{Irreducible Components and Dimension of the Springer Fiber of a Hook-Type Slodowy Slice}
 
+% email to andre when done
 \begin{document}
 
 \maketitle
 \begin{abstract}
-    
+    with more words than symbols, what is springer fiber of hook-type slodowy slice.
+    we show that its irreducible components have the same dimensions.
+    and use this to study another variety.
 \end{abstract}
+
+\tableofcontents
 
 \section{Introduction}
 Let \(\mathfrak{g} = \gl_m \times \gl_{m + n}\), with \(n > 0\).
@@ -103,6 +108,18 @@ Taking the map \(p_1 : S \to \mathfrak{g}\) and the Springer resolution \(\widet
 As a step towards studying \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\), we consider the map \(S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \gl_m\) given by taking the map to \(\mathfrak{g}\) and then projecting to \(\gl_m\).
 The main section of this paper will study the fibers of this map.
 Given \(X \in \mathcal{N}_m \subseteq \gl_m\), we call the fiber at \(X\) the \emph{\(n\)-Slodowy-slice Springer fiber at \(X\)}.
+\par Before talking about future work, say what is the main result of the paper.
+
+\subsection{Future Work}
+\par irreducble components have module structure of group algebra of Sn.
+has applications to representation theory.
+write about this here.
+The paper (TODO: cite) describes a bijection between the Steinberg variety (which is blah) and pairs of standard Young tableaux (each having shape blah).
+The variety \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) looks something like the Steinberg variety.
+Maybe there is a similar correspondence, between elements of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) and pairs of standard Young tableaux: one having the shape of the Jordan form of \(X\), one having the shape of the Jordan form of \(A_{X, a, b}\).
+
+
+\subsection{Overview}
 \par Section 2 reviews some preliminary material.
 Section 3 finds the unique (up to similarity) principal \(\spl_2\)-triple in \(\gl_n\).
 Section 4 embeds this \(\spl_2\)-triple into \(\gl_{m + n}\) as described above.
@@ -145,7 +162,8 @@ Now we let \(\mathcal{N}_m\) be the set of nilpotent elements in \(\gl_m\), and 
 Let \(H \subseteq \gl_m\) be the subalgebra of upper triangular matrices.
 The variety of Borel subalgebras of \(\gl_m\) is \(\mathcal{B} = \{gHg^{-1} : g \in \GL_m\}\).
 Thus, the Springer fiber at \(X \in \mathcal{N}\) is 
-\[S_X = \{gHg^{-1} : X \in gHg^{-1}\}.\]
+\[\mathcal{F}_X = \{gHg^{-1} : X \in gHg^{-1}\}.\]
+% ^ use that notation everywhere for springer fiber
 \begin{definition}
     A \emph{flag} \((V_i)\) of \(\mathbb{C}^m\) is a sequence of subspaces
     \[0 = V_0 \subseteq V_1 \subseteq \cdots \subseteq V_m = \mathbb{C}^m,\]
@@ -945,11 +963,8 @@ These are described by \cref{springer_fiber_comps}.
     The dimension of \(C_{\lambda, \beta}\) comes from \cref{pwr_comps}; the dimension of \(\GL_m\) is obvious; and the dimension of \(K\) comes from \cref{nilpotent_centralizer}.
 \end{proof}
 
-\section{Future work}
-The paper (TODO: cite) describes a bijection between the Steinberg variety (which is blah) and pairs of standard Young tableaux (each having shape blah).
-The variety \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) looks something like the Steinberg variety.
-Maybe there is a similar correspondence, between elements of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) and pairs of standard Young tableaux: one having the shape of the Jordan form of \(X\), one having the shape of the Jordan form of \(A_{X, a, b}\).
-\par Separately, this paper would benefit from an introductory section where we motivate the study of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
+% \section{Future work}
+% \par Separately, this paper would benefit from an introductory section where we motivate the study of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
 
 \section{Linear Algebra Facts}
 In this section we prove linear algebra facts that were used earlier.
