@@ -888,15 +888,22 @@ We defined \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}
     Each irreducible component of \(\pi^{-1}(J(\lambda))\) has dimension \(\sum_{ij} \min(\lambda_i, \lambda_j)\).
 \end{theorem}
 \begin{proof}
-    The isomorphism sends \((A_{X,a,b}, (U_i), (V_i))\) to \(((A_{X, a, b}, U_i), (V_i))\).
+    The isomorphism sends \((A_{X,a,b}, (U_i), (V_i))\) to \(((A_{X, a, b}, (U_i)), (V_i))\).
     The irreducible components of \(\mathcal{P}_{J(\lambda)}\) are given by \cref{p_comps}.
     Those of \(X_\lambda\) are given by \cref{usual_springer_fiber}.
     Adding the dimensions gives 
     \[\sum_{i \leq j} \min(\lambda_i, \lambda_j) + \sum_{i < j} \min(\lambda_i, \lambda_j) = \sum_{ij} \min(\lambda_i, \lambda_j).\]
 \end{proof}
 
+Let \(\lambda\) be any partition of \(m\).
+Let \(\GL_m \times \{I_n\}\) act on \(\pi^{-1}(J(\lambda))\) by conjugation; that is,
+\[(P, I_n) \cdot (A_{X, a, b}, (U_i), (V_i)) := ((P,I_n)A_{X,a,b}P^{-1},(P,I_n)^{-1}(U_i), (P,I_n)(V_i)).\]
+
+Similarly to the \(\varphi_{wr}\)'s, define \(\phi_\lambda : \pi^{-1}(J(\lambda)) \times (\GL_m \times \{I_n\}) \to S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) by \(\phi_\lambda(x, g) = g \cdot x\).
 \begin{theorem}
-    Components of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) are blah.
+    The irreducible components of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) are indexed by partitions \(\lambda\) of \(m\).
+    For each irreducible component
+    closures of the images \(\varphi_\lambda\)
 \end{theorem}
 \begin{proof}
     TODO.
