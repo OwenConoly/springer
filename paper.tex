@@ -410,6 +410,7 @@ For convenience we write \(e_{ij} := 0\) for \(j < 1\); now we may express the f
     \(\mathcal{P} = \bigcup_{1 \leq w \leq k, 0 \leq r \leq \lambda_{w}} \mathcal{P}_{wr}\).
 \end{lemma}
 \begin{proof}
+    TODO: clean up.
     Let \((A_{a, b}, (V_i)) \in \mathcal{P}\).
     Define \(f : \mathbb{C}^m \to \mathbb{C}\) by \(f(e_{ij}) = a_{ij}\).
     We take the coordinate-free view of \(A_{a,b}\) as the linear transformation \(T\) that sends \(e_{ij}\) to \(e_{i,j - 1} + f(e_{ij})\), sends \(f_{i + 1}\) to \(f_i\), and sends \(f_1\) to \((b, 0)\).
@@ -421,6 +422,7 @@ For convenience we write \(e_{ij} := 0\) for \(j < 1\); now we may express the f
     When \(\mathcal{P}_{w_1r_1} \neq \mathcal{P}_{w_2r_2}\), we have \(\mathcal{P}_{w_1r_1} \cap \mathcal{P}_{w_2r_2} = \emptyset\). 
 \end{lemma}
 \begin{proof}
+    TODO: fix.
     Now, if \(r_1 = r_2 = 0\), we have \(e_{wr_1} = e_{wr_2} = 0\), so clearly \(\mathcal{P}_{wr_1} = \mathcal{P}_{wr_2}\).
     And if \((\lambda_{w_1}, r_1) = (\lambda_{w_2}, r_2)\), then clearly any matrix of the form \(A_{e_{w_1r_1}b'}\) can be transformed to a matrix of the form \(A_{e_{w_2r_2}b'}\) by making the change of basis that swaps \(e_{w_1j}\) with \(e_{w_2j}\).
     Conversely, suppose \(\mathcal{P}_{w_1r_1} = \mathcal{P}_{w_2r_2}\).
@@ -505,9 +507,9 @@ Let \(\mathcal{Q}' = \{(A'_{X', 0, b}, (V_i)) : \forall i. \; A_{X', 0, b} V_{i 
     %     \item For \(j = 1, ..., r\), \(e_{wj} \mapsto f'_{n + j}\).
     %     \item For \(j = 1, ..., n\), \(f_j \mapsto f'_j - e_{w,\lambda_w - n + r}\)
     % \end{itemize}
-    Observe that conjugation by \(Q_{wr}\) maps \(\mathcal{Q}_{wr}\) to \(\mathcal{Q}'\), and conjugation by \(Q_{wr}^{-1}\) maps \(\mathcal{Q}'\) to \(\mathcal{Q}_{wr}\).
+    Change of basis by \(Q_{wr}\) maps \(\mathcal{Q}_{wr}\) to \(\mathcal{Q}'\), and conjugation by \(Q_{wr}^{-1}\) maps \(\mathcal{Q}'\) to \(\mathcal{Q}_{wr}\).
 \end{proof}
-In the next section we will find the irreducible components of \(\mathcal{Q}'\).
+The next section finds the irreducible components of \(\mathcal{Q}'\).
 To avoid death by primes, we will refer to it as \(\mathcal{Q}\), and refer to \(m',n'\) as \(m,n\), and so on, throughout the next section.
 
 \section{The components of \texorpdfstring{\(\mathcal{Q}\)}{Q}}
@@ -901,17 +903,37 @@ We defined \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}
 
 Let \(\lambda\) be any partition of \(m\).
 Let \(\GL_m \times \{I_n\}\) act on \(\pi^{-1}(J(\lambda))\) by conjugation; that is,
-\[(P, I_n) \cdot (A_{X, a, b}, (U_i), (V_i)) := ((P,I_n)A_{X,a,b}P^{-1},(P,I_n)^{-1}(U_i), (P,I_n)(V_i)).\]
+\[(P, I_n) \cdot (A_{X, a, b}, (U_i), (V_i)) := \]
+\[((P,I_n)A_{X,a,b}(P,I_n)^{-1},(P,I_n)(U_i), (P,I_n)(V_i)).\]
+Let 
+\[K = \{(g, I_n) \in \GL_m \times \{I_n\} : gXg^{-1} = X\}.\]
 
-Similarly to the \(\varphi_{wr}\)'s, define \(\phi_\lambda : \pi^{-1}(J(\lambda)) \times (\GL_m \times \{I_n\}) \to S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) by \(\phi_\lambda(x, g) = g \cdot x\).
+Define \(\phi_\lambda : \pi^{-1}(J(\lambda)) \times (\GL_m \times \{I_n\}) \to S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) by \(\phi_\lambda(x, g) = g \cdot x\).
+
+\begin{lemma}\label{principal_bundle_two}
+    For each partition \(\lambda\) of \(m\), the map \(\phi_\lambda\) is a principal \(K\)-bundle.
+\end{lemma}
+\begin{proof}
+    Analogous to \cref{principal_bundle}.
+\end{proof}
+
+Let \((C_{\lambda, \beta})_\beta\) be the irreducible components of \(\pi^{-1}(J(\lambda))\).
+These are described by \cref{springer_fiber_comps}.
+
 \begin{theorem}
-    The irreducible components of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) are indexed by partitions \(\lambda\) of \(m\).
-    For each irreducible component
-    closures of the images \(\varphi_\lambda\)
+    Every irreducible component of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) is the closure of some subvariety of the form \(\phi_\lambda(C_{\lambda,\beta} \times (\GL_m \times \{I_n\}))\), and the closure of each subvariety of this form is an irreducible component.
+    Each has dimension \(m^2\).
 \end{theorem}
 \begin{proof}
-    TODO.
-    Conjugating \(\pi^{-1}(J(\lambda))\) by \(\GL_m \times \{I_n\}\) gives \(m^2 - \sum_{ij} \min(\lambda_i,\lambda_j)\) extra dimensions.
+    This is analogous to \cref{pwr_comps}; the only difference is the dimension calculation.
+    This time, we have 
+    \begin{align*}
+        \dim \phi_\lambda(C_{\lambda, \beta} \times (\GL_m \times \{I_n\})) & = \\
+        \dim C_{\lambda,\beta} + \dim \GL_m - \dim K & = \\
+        \sum_{ij} \min(\lambda_i, \lambda_j) + m^2 - \sum_{ij} \min(\lambda_i, \lambda_j) & = \\
+        m^2 & .
+    \end{align*}
+    The dimension of \(C_{\lambda, \beta}\) comes from \cref{pwr_comps}; the dimension of \(\GL_m\) is obvious; and the dimension of \(K\) comes from \cref{nilpotent_centralizer}.
 \end{proof}
 
 \section{Future work}
