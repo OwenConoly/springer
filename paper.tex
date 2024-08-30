@@ -158,7 +158,7 @@ Thus, we may write the Springer fiber at \(X \in \mathcal{N}\) in terms of flags
 \begin{theorem}\label{usual_springer_fiber}
     (Needs citation!)
     The irreducible components of the Springer fiber at \(J(\mu)\) are in bijection with the standard Young tableaus of shape \(\mu\).
-    Further, the irreducible components are equidimensional, of dimension \(\sum_{i \neq j} \min(\mu_i, \mu_j) = \sum_i (i - 1) \mu_i\).
+    Further, the irreducible components are equidimensional, of dimension \(\sum_{i < j} \min(\mu_i, \mu_j) = \sum_i (i - 1) \mu_i\).
 \end{theorem}
 
 \subsection{Slodowy Slices}
@@ -799,8 +799,8 @@ where \(X' = J(\lambda')\), and \(\lambda' = (\lambda_1, ..., \lambda_w - r, ...
 Write \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) to denote the irreducible component of \(\mathcal{Q}_{wr}\) corresponding to \(\mathcal{Q}'_{I, (\rho_i), \alpha}\) via the isomorphism \(\mathcal{Q}_{wr} \cong \mathcal{Q}'\) of \cref{a_zero}.
 
 \begin{theorem}\label{qwr_comps}
-    The irreducible components of \(\mathcal{Q}_{wr}\) are exactly the subvarieties \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\).
-    Each has dimension \(\sum_{ij} \min(\lambda_i', \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_k)\).
+    The irreducible components of \(\mathcal{Q}_{wr}\) are the subvarieties \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\).
+    Each has dimension \(\sum_{i \leq j} \min(\lambda_i', \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_k)\).
 \end{theorem}
 \begin{proof}
     From the foregoing discussion, it is clear that they are indeed the irreducible components.
@@ -820,6 +820,7 @@ Recall from section 5 the groups \(G = \{P \in \GL_m : P^{-1}XP = X\}\) and \(G_
 
 \begin{lemma}\label{gwr_irred_dim}
     \(G_{wr}\) is irreducible and has dimension \(\sum_{ij} \min(\lambda_i', \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_k)\).
+    TODO: this is wrong. fix.
 \end{lemma}
 \begin{proof}
     The closure of \(G_{wr}\) in \(\gl_m\) is \(V = \{Y \in \mathfrak{z}_{\gl_m}(X) : e_{wr} Y = e_{wr}\}\).
@@ -838,6 +839,7 @@ From \cref{principal_bundle} we have the principal \(G_{wr}\)-bundle \(\varphi_{
 \begin{theorem}\label{pwr_comps}
     Every irreducible component of \(\mathcal{P}_{wr}\) is the closure of some subvariety of the form \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G)\), and the closure of each subvariety of this form is an irreducible component.
     Each has dimension \(\sum_{ij} \min(\lambda_i, \lambda_j)\).
+    TODO: error propagated here from \cref{gwr_irred_dim}. fix.
 \end{theorem}
 \begin{remark}
     \cref{pwr_comps} does not say ``the irreducible components of \(\mathcal{P}_{wr}\) are the closures of the subvarieties \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G)\)'', as that would seem to suggest some claim about distinctness.
@@ -865,6 +867,7 @@ From \cref{principal_bundle} we have the principal \(G_{wr}\)-bundle \(\varphi_{
 \begin{corollary}\label{p_comps}
     Every irreducible component of \(\mathcal{P}\) is the closure of some subvariety of the form \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G)\), and the closure of each subvariety of this form is an irreducible component.
     Each has dimension \(\sum_{ij} \min(\lambda_i, \lambda_j)\).
+    TODO: error propagated here from \cref{pwr_comps}. fix.
 \end{corollary}
 \begin{proof}
     Follows directly from \cref{pwr_comps}.
@@ -877,6 +880,7 @@ We defined \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}
 \begin{theorem}\label{springer_fiber_comps}
     \(\pi^{-1}(J(\lambda)) \cong \mathcal{P}_{J(\lambda)} \times X_\lambda\).
     Each irreducible component of \(\pi^{-1}(J(\lambda))\) has dimension \(\sum_{ij} \min(\lambda_i, \lambda_j) + \sum_{i \neq j} \min(\lambda_i, \lambda_j)\).
+    TODO: error propagated here from \cref{p_comps}.
 \end{theorem}
 \begin{proof}
     The isomorphism sends \((A_{X,a,b}, (U_i), (V_i))\) to \(((A_{X, a, b}, U_i), (V_i))\).
@@ -884,7 +888,13 @@ We defined \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}
     Those of \(X_\lambda\) are given by \cref{usual_springer_fiber}.
     Adding the dimensions gives the claimed result.
 \end{proof}
-Conjugating \(\pi^{-1}(J(\lambda))\) by \(\GL_m \times \{I_n\}\) gives \(m^2 - \sum_{ij} \min(\lambda_i,\lambda_j)\) extra dimensions.
+
+\begin{theorem}
+    Components of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) are blah.
+\end{theorem}
+\begin{proof}
+    Conjugating \(\pi^{-1}(J(\lambda))\) by \(\GL_m \times \{I_n\}\) gives \(m^2 - \sum_{ij} \min(\lambda_i,\lambda_j)\) extra dimensions.
+\end{proof}
 
 \section{Future work}
 The paper (TODO: cite) describes a correspondence between Steinberg variety and pairs of young tableaux.  
