@@ -128,6 +128,8 @@ Given a partition \(\lambda = (\lambda_1, ..., \lambda_k)\), we write \(J(\lambd
     & \ddots \\
     & & J_{\lambda_k}
 \end{pmatrix}.\]
+A partition is always indexed in nonincreasing order, even if it is defined differently.
+For example, if \(\mu = (4, 6, 3)\), then \(\mu_1 = 6, \mu_2 = 4, \mu_3 = 3\).
 
 \subsection{Springer fibers}
 Let \(\mathfrak{g}\) be a Lie algebra.
@@ -406,30 +408,43 @@ For convenience we write \(e_{ij} := 0\) for \(j < 1\); now we may express the f
 \par For \(1 \leq w \leq k\) and \(0 \leq r \leq \lambda_w\) (note that we allow \(r = 0\)), define 
 \[\mathcal{P}_{w,r} := \{(A_{a, b}, V) \in \mathcal{P} : \exists P \in \GL_{m}. \; \exists b'. \; (P^{-1}, I_n) A_{a, b} (P, I_n) = A_{e_{wr}, b'} \}.\]
 
-\begin{lemma}
+\begin{lemma}\label{pwr_union}
     \(\mathcal{P} = \bigcup_{1 \leq w \leq k, 0 \leq r \leq \lambda_{w}} \mathcal{P}_{wr}\).
 \end{lemma}
 \begin{proof}
-    TODO: clean up.
-    Let \((A_{a, b}, (V_i)) \in \mathcal{P}\).
-    Define \(f : \mathbb{C}^m \to \mathbb{C}\) by \(f(e_{ij}) = a_{ij}\).
-    We take the coordinate-free view of \(A_{a,b}\) as the linear transformation \(T\) that sends \(e_{ij}\) to \(e_{i,j - 1} + f(e_{ij})\), sends \(f_{i + 1}\) to \(f_i\), and sends \(f_1\) to \((b, 0)\).
-    Since \(X\) is nilpotent, \cref{normalization} says that there is a change of basis \(P\) such that \(Pe_{ij}\) forms a Jordan basis for \(X\), and for all but one pair \((i, j)\) we have \(f(Pe_{ij}) = 0\).
-    \par Because \(Pe_{ij}\) is a Jordan basis, \(A_{a',b'}\) of \(T\) in this new basis has the same upper-left corner \(X\); and since \(f(Pe_{ij}) = 0\) for all but one pair \((i,j)\), we have \(a'_{ij} = 0\) for all but one pair \((i,j)\).
+    For any \(a \in \mathbb{C}^m\), define \(f_a : \mathbb{C}^{m + n} \to \mathbb{C}\) by \(e_{ij} \mapsto a_{ij}\) and \(f_i \mapsto 0\).
+    For this proof we take the coordinate-free view of \(A_{a,b}\) as the linear transformation \(\mathbb{C}^{m + n} \to \mathbb{C}^{m + n}\) that sends \(e_{ij}\) to \(e_{i,j-1} + f_a(e_{ij}) f_n\), sends \(f_{i + 1}\) to \(f_i\), and sends \(f_1\) to \((b, 0)\).
+    \par Let \((A_{a, b}, (V_i)) \in \mathcal{P}\).
+    Since \(X\) is nilpotent, \cref{normalization} says that there is a change of basis \(P : \mathbb{C}^m \to \mathbb{C}^m\) such that \(Pe_{ij}\) forms a Jordan basis for \(X\), and for all but one pair \((i, j)\) we have \(f(Pe_{ij}) = 0\).
+    \par Now let \(Q = (P^{-1}, I_n)A_{a,b}(P, I_n)\).
+    Since \(Pe_{ij}\) is a Jordan basis, we have \(Q = A_{a',b'}\) for some \(a',b' \in \mathbb{C}^m\).
+    All that is left is to show that \(a'\) is of the form \(e_{wr}\) for some \(w\) and \(r\).
+    Indeed, this results from the fact that \(f_{a'}(e_{ij}) = f_a(Pe_{ij}) = 0\) for all but one pair \((i,j)\).
 \end{proof}
 \begin{lemma}
     \(\mathcal{P}_{w_1r_1} = \mathcal{P}_{w_2r_2}\) exactly when either \(r_1 = r_2 = 0\), or \((\lambda_{w_1}, r_1) = (\lambda_{w_2}, r_2)\).
+\end{lemma}
+\begin{proof}
+    If \(r_1 = r_2 = 0\), we have \(e_{wr_1} = e_{wr_2} = 0\), so clearly \(\mathcal{P}_{wr_1} = \mathcal{P}_{wr_2}\).
+    And if \((\lambda_{w_1}, r_1) = (\lambda_{w_2}, r_2)\), then clearly any matrix of the form \(A_{e_{w_1r_1}b'}\) can be transformed to a matrix of the form \(A_{e_{w_2r_2}b'}\) by making the change of basis that swaps \(e_{w_1j}\) with \(e_{w_2j}\).
+    \par Conversely, suppose \(\mathcal{P}_{w_1r_1} = \mathcal{P}_{w_2r_2}\).
+    Let \(k \geq 0\) be minimal so that \(A_{e_{w_1r_1},0} f_1 \neq 0\).
+    Obviously \(k = r_1\).
+    Since \(A_{e_{w_1r_1},0}\) and \(A_{e_{w_2r_2},0}\) differ only by a change of basis of \(\mathbb{C}^m\), the same reasoning shows that \(k = r_2\).
+    Hence \(r_1 = r_2\).
+    Now, if \(r_1 = 0\), we are done.
+    \par Otherwise, we have \(r_1 > 0\).
+    Let \(k' \geq 0\) be maximal so that \(\exists v \in \mathbb{C}^m. \; A_{e_{w_1r_1},0}^{k'} v = A_{e_{w_1r_1},0} f_1\).
+    Obviously \(k' = \lambda_{w_1} - r_1\).
+    Clearly \(k'\) is independent of \(\mathbb{C}^m\)-basis, so we see that \(\lambda_{w_1} - r_1 = k' = \lambda_{w_2} - r_2\).
+\end{proof}
+
+\begin{lemma}
     When \(\mathcal{P}_{w_1r_1} \neq \mathcal{P}_{w_2r_2}\), we have \(\mathcal{P}_{w_1r_1} \cap \mathcal{P}_{w_2r_2} = \emptyset\). 
 \end{lemma}
 \begin{proof}
-    TODO: fix.
-    Now, if \(r_1 = r_2 = 0\), we have \(e_{wr_1} = e_{wr_2} = 0\), so clearly \(\mathcal{P}_{wr_1} = \mathcal{P}_{wr_2}\).
-    And if \((\lambda_{w_1}, r_1) = (\lambda_{w_2}, r_2)\), then clearly any matrix of the form \(A_{e_{w_1r_1}b'}\) can be transformed to a matrix of the form \(A_{e_{w_2r_2}b'}\) by making the change of basis that swaps \(e_{w_1j}\) with \(e_{w_2j}\).
-    Conversely, suppose \(\mathcal{P}_{w_1r_1} = \mathcal{P}_{w_2r_2}\).
-    Then there is \(P\) such that \((P^{-1},I_n) A_{e_{w_1r_1},b} (P, I_n) = A_{e_{w_2r_2}, b'}\).
-
-    Then, either there is \(k\) such that (for any \(b_1',b_2'\)) \(A_{e_{w_1r_1}b_1'}^k \)
-    \par The second observation, that the nonequal sets are disjoint, just follows from the fact that (this restricted form of) similarity is an equivalence relation.
+    It suffices to remark that \(\{(x,y) : \exists w,r. \; x,y \in \mathcal{P}_{wr}\}\) is an equivalence relation.
+    Reflexivity is the statement of \cref{pwr_union}, and associativity and transitivity are obvious from the definition of \(\mathcal{P}_{wr}\).
 \end{proof}
 
 Now, fix any \(w\) and \(r\).
