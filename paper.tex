@@ -837,8 +837,7 @@ From \cref{principal_bundle} we have the principal \(G_{wr}\)-bundle \(\varphi_{
 
 \begin{theorem}\label{pwr_comps}
     Every irreducible component of \(\mathcal{P}_{wr}\) is the closure of some subvariety of the form \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G)\), and the closure of each subvariety of this form is an irreducible component.
-    Each has dimension \(\sum_{ij} \min(\lambda_i, \lambda_j)\).
-    TODO: error propagated here from \cref{gwr_irred_dim}. fix.
+    Each has dimension \(\sum_{i \leq j} \min(\lambda_i, \lambda_j)\).
 \end{theorem}
 \begin{remark}
     \cref{pwr_comps} does not say ``the irreducible components of \(\mathcal{P}_{wr}\) are the closures of the subvarieties \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G)\)'', as that would seem to suggest some claim about distinctness.
@@ -860,17 +859,21 @@ From \cref{principal_bundle} we have the principal \(G_{wr}\)-bundle \(\varphi_{
     \[\dim \varphi_{wr}(V_{w,r,I,(\rho_i),\alpha}) = \dim \mathcal{Q}_{w,r,I,(\rho_i),\alpha} + \dim G - \dim G_{wr}.\]
     We already calculated those dimensions in \cref{qwr_comps}, \cref{g_irred_dim}, and \cref{gwr_irred_dim} respectively.
     Referring to those, we get 
-    \[\sum_{i \leq j} \min(\lambda_i', \lambda_j') + \sum_{ij} \min(\lambda_i, \lambda_j) - \sum_{ij} \min(\lambda_i, \lambda_j').\]
-    Now, \(\sum_{i \leq j} \min(\lambda_i', \lambda_j') + r \#\{i : \lambda_i \geq= \sum_{i \leq j} \min(\lambda_i, \lambda_j)\)
-    something something cancels out.
-    see that \(\dim \mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) cancels with \(\dim G_{wr}\), and we are left with \(\dim G = \sum_{ij} \min(\lambda_i, \lambda_j)\).
+    \begin{equation}\label{the_equation}
+        \dim \varphi_{wr}(V_{w,r,I,(\rho_i),\alpha}) = \sum_{i \leq j} \min(\lambda_i', \lambda_j') + \sum_{ij} \min(\lambda_i, \lambda_j) - \sum_{ij} \min(\lambda_i, \lambda_j').
+    \end{equation}
+    Now,
+    \[\sum_{i \leq j} \min(\lambda_i', \lambda_j') = \sum_{i \leq j} \min(\lambda_i, \lambda_j) - \sum_j \min(\lambda_w, \lambda_j) + \sum_j \min(\lambda_w - r, \lambda_j),\]
+    and
+    \[\sum_{ij} \min(\lambda_i, \lambda_j') = \sum_{ij} \min(\lambda_i, \lambda_j) - \sum_i \min(\lambda_i, \lambda_w) + \sum_i \min(\lambda_i, \lambda_w - r).\]
+    Substituting these into the RHS of \cref{the_equation}, things cancel out, and we get
+    \[\sum_{i \leq j} \min(\lambda_i, \lambda_j) + \sum_{ij} \min(\lambda_i, \lambda_j) - \sum_{ij} \min(\lambda_i, \lambda_j) = \sum_{i \leq j} \min(\lambda_i, \lambda_j).\]
 \end{proof}
 
 \subsection{The components of \texorpdfstring{\(\mathcal{P}\)}{P}}
 \begin{corollary}\label{p_comps}
     Every irreducible component of \(\mathcal{P}\) is the closure of some subvariety of the form \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G)\), and the closure of each subvariety of this form is an irreducible component.
-    Each has dimension \(\sum_{ij} \min(\lambda_i, \lambda_j)\).
-    TODO: error propagated here from \cref{pwr_comps}. fix.
+    Each has dimension \(\sum_{i \leq j} \min(\lambda_i, \lambda_j)\).
 \end{corollary}
 \begin{proof}
     Follows directly from \cref{pwr_comps}.
@@ -882,20 +885,21 @@ Recall from \cref{sn_iso} that
 We defined \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}_m\) by \((A_{X,a,b}, (U_i), (V_i)) \mapsto X\), and called \(\pi^{-1}(X)\) the \(n\)-Slodowy-slice Springer fiber at \(X\).
 \begin{theorem}\label{springer_fiber_comps}
     \(\pi^{-1}(J(\lambda)) \cong \mathcal{P}_{J(\lambda)} \times X_\lambda\).
-    Each irreducible component of \(\pi^{-1}(J(\lambda))\) has dimension \(\sum_{ij} \min(\lambda_i, \lambda_j) + \sum_{i \neq j} \min(\lambda_i, \lambda_j)\).
-    TODO: error propagated here from \cref{p_comps}.
+    Each irreducible component of \(\pi^{-1}(J(\lambda))\) has dimension \(\sum_{ij} \min(\lambda_i, \lambda_j)\).
 \end{theorem}
 \begin{proof}
     The isomorphism sends \((A_{X,a,b}, (U_i), (V_i))\) to \(((A_{X, a, b}, U_i), (V_i))\).
     The irreducible components of \(\mathcal{P}_{J(\lambda)}\) are given by \cref{p_comps}.
     Those of \(X_\lambda\) are given by \cref{usual_springer_fiber}.
-    Adding the dimensions gives the claimed result.
+    Adding the dimensions gives 
+    \[\sum_{i \leq j} \min(\lambda_i, \lambda_j) + \sum_{i < j} \min(\lambda_i, \lambda_j) = \sum_{ij} \min(\lambda_i, \lambda_j).\]
 \end{proof}
 
 \begin{theorem}
     Components of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) are blah.
 \end{theorem}
 \begin{proof}
+    TODO.
     Conjugating \(\pi^{-1}(J(\lambda))\) by \(\GL_m \times \{I_n\}\) gives \(m^2 - \sum_{ij} \min(\lambda_i,\lambda_j)\) extra dimensions.
 \end{proof}
 
@@ -907,7 +911,7 @@ Maybe there is a similar correspondence, between elements of \(S \times_\mathfra
 
 \section{Linear Algebra Facts}
 In this section we prove linear algebra facts that were used earlier.
-They are confined to this section to avoid interrupting the flow of the paper.
+They are confined to this section to avoid interrupting the rest of the paper.
 
 \subsection{The centralizer of a nilpotent matrix}
 \begin{definition}
