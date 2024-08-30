@@ -170,7 +170,7 @@ Thus, we may write the Springer fiber at \(X \in \mathcal{N}\) in terms of flags
 A basis for \(\spl_2\) is
 \[e' := \begin{pmatrix}0 & 1 \\ 0 & 0 \\\end{pmatrix}, h' := \begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix}, f' := \begin{pmatrix}0 & 0 \\1 & 0\end{pmatrix}.\]
 Given a Lie algebra \(\mathfrak{g}\), and a homomorphism \(\phi : \spl_2 \to \mathfrak{g}\) sending \((e', h', f')\) to \((e, h, f)\), we say that \((e, h, f)\) is an \emph{\(\spl_2\)-triple}.
-Observe that \(e, f\) must be nilpotent, and \(h\) must be Cartan (TODO: what?)
+% Observe that \(e, f\) must be nilpotent, and \(h\) must be Cartan (TODO: what?)
 If \(\mathfrak{g}\) is semisimple, then given any nilpotent \(e \in \mathfrak{g}\), the Jacobson-Morozov theorem \cite[3.7.1]{ehf} says that there exist \(h, f \in \mathfrak{g}\) such that \((e, h, f)\) is an \(\spl_2\)-triple.
 \par Given \((e, h, f)\), we define the \emph{Slodowy slice at \(e\)} as \(\mathcal{S}_e := e + \ker \ad_f\).
 By the Jacobson-Morozov theorem, we can always find a Slodowy slice at any nilpotent \(e \in \mathfrak{g}\), when \(\mathfrak{g}\) is semisimple.
@@ -334,7 +334,7 @@ Embedding this into \(\gl_{m + n}\) as described previously, we obtain
     Let \(Z = \begin{pmatrix}Z_{11} & Z_{12}\\Z_{21} & Z_{22}\end{pmatrix} \in \mathfrak{z}_{m + n}(F)\).
     We have 
     \[\begin{pmatrix}0 & Z_{12}f\\0 & Z_{22} f\end{pmatrix} =  ZF = FZ = \begin{pmatrix}0 & 0\\fZ_{21} & fZ_{22}\end{pmatrix}.\]
-    We see that there is no restriction on \(Z_{11}\).
+    There is no restriction on \(Z_{11}\).
     The condition \(Z_{12}f = 0\) means that all but the last column of \(Z_{12}\) must be zero, and the condition \(0 = fZ_{21}\) means that all but the first row of \(Z_{21}\) must be zero.
     And the condition \(Z_{22}f = fZ_{22}\) means that \(Z_{22} \in \mathfrak{z}_{\gl_{m + n}}(f)\).
 \end{proof}
@@ -374,7 +374,7 @@ As the image of the Springer resolution is \(\mathcal{N} = \mathcal{N}_m \times 
     As every element of \(\mathfrak{z}_{\gl_n}(f)\) is upper triangular, \cref{bottom_right_nilp} tells us that if a matrix of the form given in \cref{slodowy_slice} is nilpotent, and the upper-left block \(X\) is nilpotent as well, then \(e + Y\) must be nilpotent.
     Then, again using that every element \(Y \in \mathfrak{z}_{\gl_n}(f)\) is upper triangular, \cref{upper_triangle_zero} tells us that if \(e + Y\) is nilpotent, then \(Y = 0\).
     \par Hence every element of \(S'\) must simply have \(e\) in its bottom-right block.
-    We see that every element of \(S'\) is of the desired form.
+    So, every element of \(S'\) is of the desired form.
 \end{proof}
 This is not a fully explicit characterization of \(S'\), since we don't say which choices of \(X\) and \(a, b \in \mathbb{C}^m\) lead to \(A_{X, a, b}\) being nilpotent.
 We could use \cref{block_determinant} to find a necessary and sufficient condition on \(X, a, b\); however, the description above of \(S'\) will be good enough for our purposes.
@@ -470,13 +470,7 @@ Then, letting \(G_{wr}\) act on \(G\) by \(g \cdot h := hg^{-1}\), we obtain an 
         \{(Q \cdot (P_y \cdot y), P_y^{-1} Q^{-1}) : Q \in G_{wr}\} & = \\
         \{Q \cdot (P_y \cdot y, P_y^{-1}) : Q \in G_{wr}\} & .
     \end{align*}
-        We see that the fibers are exactly the \(G_{wr}\)-orbits; or in other words, \(G_{wr}\) acts transitively on the fibers, as desired.
-    % Because \(X\) and \(G\) are irreducible, \(X \times G\) is irreducible, and therefore \(\varphi(X \times G)\) is, as well.
-    % Let \(X_1, ..., X_k\) be the irreducible components of \(\mathcal{Q}_{wr}\).
-    % It is clear that \(V_{mr} = \bigcup_i \overline{\varphi(X_i \times G)}\).
-    % And if we take \(x \in X_i \setminus \bigcup_{j \neq i} X_j\), it is clear (since \(G\) acts faithfully on itself) that \(\varphi(x, I_m)\)
-    % All that remains is to show that \(X_i \notin \bigcup_{j \neq i} \overline{\varphi(X_i \times G)}\).
-    % Indeed, 
+    Thus the fibers are exactly the \(G_{wr}\)-orbits; or in other words, \(G_{wr}\) acts transitively on the fibers, as desired.
 \end{proof}
 Our strategy is to find the irreducible components \(X \subseteq \mathcal{Q}_{wr}\), and we will then argue that the irreducible components of \(\mathcal{P}_{wr}\) are of the form \(\varphi(X \times G)\).
 So, we will now find the irreducible components of \(\mathcal{Q}_{wr}\).
@@ -752,7 +746,7 @@ We are interested in this thing because for any \(\alpha\), the dimension of \(X
         \sum_{k = 1}^s \sum_{i : q_{i_k} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}} (\lambda_i - q_{i_k}) & = \\
         \sum_{i : \lambda_i \geq q_{i_0} + p_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^s \sum_{\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} \min(p_{i_k}, \lambda_i - q_{i_k}) & .
     \end{align*}
-    Observing that \(\gamma(L) = \gamma([0, \lambda_1, ..., \lambda_k])\), the equation above gives the desired result.
+    Since \(\gamma(L) = \gamma([0, \lambda_1, ..., \lambda_k])\), the equation above implies the desired result.
 \end{proof}
 
 \begin{lemma}\label{u_i_rho_iso}
@@ -940,7 +934,7 @@ These are described by \cref{springer_fiber_comps}.
 The paper (TODO: cite) describes a bijection between the Steinberg variety (which is blah) and pairs of standard Young tableaux (each having shape blah).
 The variety \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) looks something like the Steinberg variety.
 Maybe there is a similar correspondence, between elements of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) and pairs of standard Young tableaux: one having the shape of the Jordan form of \(X\), one having the shape of the Jordan form of \(A_{X, a, b}\).
-\par Separately, this paper could use a nice introductory section where we motivate the study of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
+\par Separately, this paper would benefit from an introductory section where we motivate the study of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
 
 \section{Linear Algebra Facts}
 In this section we prove linear algebra facts that were used earlier.
