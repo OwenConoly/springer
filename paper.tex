@@ -610,7 +610,7 @@ As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \
     \end{align*}
 \end{corollary}
 \begin{proof}
-    Here I use the notation \(x \times y = (x, y)\), and so on.
+    Here we use the notation \(x \times y = (x, y)\), and so on.
     The isomorphism sends \(b \in B_{I, (\rho_i)}\) to 
     \[\prod_{k = 1}^{r}(b_{i_k1},..., b_{i_k\rho_{i_k}}) \times \prod_{i : \lambda_i \geq q_{i_0} + p_{i_1}} (b_{i1}, ..., b_{i, \lambda_i - q_{i_0}}) \times\]
     \[\prod_{k = 1}^r \prod_{\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} (b_{i1}, ..., b_{i,\min(p_{i_k}, \lambda_i - q_{i_k})}).\]
@@ -627,7 +627,7 @@ As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \
 \subsection{Study of \texorpdfstring{\(\mathcal{Q}_{I, (\rho_i)}\)}{Q\_\{I, (p\_i)\}}}
 Fix any \(I\) and \((\rho_i)\) satisfying the conditions (1)--(4) of \cref{bs_union}.
 In this subsection we find the irreducible components of \(\mathcal{Q}_{I, (\rho_i)}\).
-\par I claim that there is some \(\mu(I, (\rho_i))\) such that every \((A_{0, b}, U) \in \mathcal{Q}_{I, (\rho_i)}\) is similar to \(J(\mu)\).
+\par We claim that there is some \(\mu(I, (\rho_i))\) such that every \((A_{0, b}, U) \in \mathcal{Q}_{I, (\rho_i)}\) is similar to \(J(\mu)\).
 By finding a algebraic map taking \(b \in B_{I, (\rho_i)}\) to a Jordan basis for \(A_{0,b}\), we will put \(\mathcal{Q}_{I, (\rho_i)}\) in isomorphism with the product \(B_{I, (\rho_i)} \times (Springer fiber at J(\mu))\).
 Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find the irreducible components of \(\mathcal{Q}_{I, (\rho_i)}\).
 \par So, now we find a Jordan basis for \(A_{0, b}\).
@@ -683,8 +683,8 @@ We also write, somewhat abusively, \(b \in \mathbb{C}^{m + n}\) to refer to the 
         Let \(W\) be the span of the chains listed.
         We need to show that \(W = \mathbb{C}^{m + n}\).
         Because every \(i \in I\) satisfies \(q_i < n\), clearly \(\langle e_{ij}\rangle_{i,j : q_i \geq n} \subseteq W\).
-        \par I claim that \(f_n \in W\) as well.
-        To see this, we consider the chain beginning with \(f_n - (A^{n + p_{i_1}} f_n \rightshift n + p_{i_1})\).
+        \par We claim that \(f_n \in W\) as well.
+        To see this, consider the chain beginning with \(f_n - (A^{n + p_{i_1}} f_n \rightshift n + p_{i_1})\).
         As explained in the proof of (1), we have \(A^{n + p_{i_1}} f_n \in \langle e_{ij}\rangle_{i,j : q_i \geq n}\).
         Consequently, \((A^{n + p_{i_1}} f_n \rightshift n + p_{i_1}) \in \langle e_{ij} \rangle_{i,j : q_i \geq n} \subseteq W\).
         Because \(f_n - (A^{n + p_{i_1}} f_n \rightshift n + p_{i_1}) \in W\), this implies that \(f_n \in W\).
@@ -1031,7 +1031,7 @@ In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\
         \item For \(i \neq i_1\), \(e_{ij}' := e_{ij}\).
     \end{itemize}
     Clearly this is a Jordan basis for \(A\).
-    Further, I claim that \(S((e'_{ij})_{ij})  < S((e_{ij})_{ij})\).
+    Further, we claim that \(S((e'_{ij})_{ij})  < S((e_{ij})_{ij})\).
     It suffices to show that \(\forall j \leq j_1. \; f (e_{i_1,j}) = 0\).
     We have 
     \[f (e_{i_1,j}') = f\left(A^{\lambda_{i_1} - j}\left(e_{i_1, \lambda_1} - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}\right)\right) =\]
