@@ -819,8 +819,7 @@ Recall from section 5 the groups \(G = \{P \in \GL_m : P^{-1}XP = X\}\) and \(G_
 \end{proof}
 
 \begin{lemma}\label{gwr_irred_dim}
-    \(G_{wr}\) is irreducible and has dimension \(\sum_{ij} \min(\lambda_i', \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_k)\).
-    TODO: this is wrong. fix.
+    \(G_{wr}\) is irreducible and has dimension \(\sum_{ij} \min(\lambda_i, \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_k)\).
 \end{lemma}
 \begin{proof}
     The closure of \(G_{wr}\) in \(\gl_m\) is \(V = \{Y \in \mathfrak{z}_{\gl_m}(X) : e_{wr} Y = e_{wr}\}\).
@@ -860,7 +859,11 @@ From \cref{principal_bundle} we have the principal \(G_{wr}\)-bundle \(\varphi_{
     By the equation above then, we get 
     \[\dim \varphi_{wr}(V_{w,r,I,(\rho_i),\alpha}) = \dim \mathcal{Q}_{w,r,I,(\rho_i),\alpha} + \dim G - \dim G_{wr}.\]
     We already calculated those dimensions in \cref{qwr_comps}, \cref{g_irred_dim}, and \cref{gwr_irred_dim} respectively.
-    Referring to those, we see that \(\dim \mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) cancels with \(\dim G_{wr}\), and we are left with \(\dim G = \sum_{ij} \min(\lambda_i, \lambda_j)\).
+    Referring to those, we get 
+    \[\sum_{i \leq j} \min(\lambda_i', \lambda_j') + \sum_{ij} \min(\lambda_i, \lambda_j) - \sum_{ij} \min(\lambda_i, \lambda_j').\]
+    Now, \(\sum_{i \leq j} \min(\lambda_i', \lambda_j') + r \#\{i : \lambda_i \geq= \sum_{i \leq j} \min(\lambda_i, \lambda_j)\)
+    something something cancels out.
+    see that \(\dim \mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) cancels with \(\dim G_{wr}\), and we are left with \(\dim G = \sum_{ij} \min(\lambda_i, \lambda_j)\).
 \end{proof}
 
 \subsection{The components of \texorpdfstring{\(\mathcal{P}\)}{P}}
