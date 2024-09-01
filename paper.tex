@@ -153,7 +153,7 @@ Finally, section 10 proves some linear algebra lemmas that were used in the pape
 TODO.  UROP+ program and Haoshuo.
 MIT (provided funding)?
 
-\section{Preliminary Definitions and Facts}
+\section{Preliminary Definitions and Facts}\label{prelim}
 \subsection{Conventions and Notations}
 We write \(\GL_m, \spl_m\) to denote \(\GL_m(\mathbb{C}), \spl_m(\mathbb{C})\), and so on.
 By \(J_m\) we refer to the nilpotent \(m \times m\) Jordan block (which, by convention, has ones \emph{below} the diagonal).
@@ -213,7 +213,7 @@ If \(\mathfrak{g}\) is semisimple, then given any nilpotent \(e \in \mathfrak{g}
 \par Given \((e, h, f)\), we define the \emph{Slodowy slice at \(e\)} as \(\mathcal{S}_e := e + \ker \ad_f\).
 By the Jacobson-Morozov theorem, we can always find a Slodowy slice at any nilpotent \(e \in \mathfrak{g}\), when \(\mathfrak{g}\) is semisimple.
 
-\section{Principal \texorpdfstring{\(\spl_2\)}{sl\_2}-triple in \texorpdfstring{\(\gl_n\)}{gl\_n}}
+\section{Principal \texorpdfstring{\(\spl_2\)}{sl\_2}-triple in \texorpdfstring{\(\gl_n\)}{gl\_n}}\label{prelim}
 The unique nilpotent regular element of \(\gl_n\) (up to similarity) is \(J_n\).
 In this section we use this to find that there is a unique principal \(\spl_2\)-triple in \(\gl_n\).
 Write \(e = J_n\).
@@ -262,80 +262,7 @@ Now, we can use our expression for \(f\) in terms of \(h\) to obtain
 \end{pmatrix}.\]
 \end{proof}
 
-% \section{Finding \(\spl_2\)-triples \((E, H, F)\) in \(\gl_{m + n}\) with a particular \(E\).}
-% TODO: I am unsure why this section is interesting or what to say about it.
-% Should I delete it?
-% For now I will ignore it and try to make the paper flow nicely without it.
-
-% Let \(E = \begin{pmatrix}0 & 0 \\ 0 & e\end{pmatrix} \in \gl_{m + n}\).
-% We will show that there is exactly one \(\spl_2\)-triple \((E, H, F)\), and we will find what it looks like.
-% % First we solve the case \(m = 0\) (so \(E = e\)), and then we use this to solve the case of arbitrary \(m\).
-
-% \begin{lemma}\label{sl2_triple}
-%     There is exactly one way to choose \(H, F \in \gl_{m + n}\) so that \((E, H, F)\) is an \(\spl_2\)-triple.
-% \end{lemma}
-% \begin{proof}
-% Suppose we have \(H, F\) so that \((E, H, F)\) is an \(\spl_2\)-triple.
-% Writing \(F =: \begin{pmatrix}
-%     F_{11} & F_{12} \\
-%     F_{21} & f
-% \end{pmatrix}\), and similarly for \(H\), we have
-% \[2E = [H, E] = \begin{pmatrix}
-%     0 & H_{12}e \\
-%     0 & he
-% \end{pmatrix} - \begin{pmatrix}
-%     0 & 0 \\
-%     e H_{21} & eh
-% \end{pmatrix},\]
-% \[H = [E, F] = \begin{pmatrix}
-%     0 & 0 \\
-%     e F_{21} & ef
-% \end{pmatrix} - \begin{pmatrix}
-%     0 & F_{12}e \\
-%     0 & fe
-% \end{pmatrix}.\]
-% From these we observe that \((e, h, f)\) must also be an \(\spl_2\)-triple, so \(h, f\) must be as in \cref{simple_sl2_triple}.
-% We also see that \(H_{11} = 0\).
-% Recalling that left multiplication by \(e\) is a down-shift, and right multiplication is a left-shift, we see that \(H_{12}\) is all zeroes except for the leftmost column, and \(H_{21}\) is all zeroes except for the bottom row.
-% % Then \(F_{12}\) must be all zeros except for the two leftmost columns, and \(F_{21}\) must be all zeroes except for the bottom two rows.
-% Then our final constraint is that 
-% \[-2F = [H, F] = \]
-% \[\begin{pmatrix}
-%     H_{12} F_{21} & H_{12} F_{22} \\
-%     H_{21} F_{11} + H_{22} F_{21} & H_{21} F_{12} + H_{22} F_{22}
-% \end{pmatrix} - \begin{pmatrix}
-%     F_{12} H_{21} & F_{11} H_{12} + F_{12} H_{22} \\
-%     F_{22} H_{21} & F_{21} H_{12} + F_{22} H_{22}
-% \end{pmatrix}.\]
-% Now \(H_{12} = F_{12}e\), and \(H_{21} = eF_{21}\), from the equation \(H = [E, F]\).
-% Substituting in the equation above then,
-% \[-2F = \begin{pmatrix}
-%     F_{12} e F_{21} & F_{12}e f \\
-%     eF_{21} F_{11} + h F_{21} & eF_{21} F_{12} + hf
-% \end{pmatrix} - \begin{pmatrix}
-%     F_{12} e F_{21} & F_{11} F_{12}e + F_{12} h \\
-%     f eF_{21} & F_{21} F_{12}e + fh
-% \end{pmatrix} =\]
-% \[\begin{pmatrix}
-%     0 & F_{12}(fe + h) \\
-%     eF_{21} F_{11} + h F_{21} & eF_{21} F_{12} + hf
-% \end{pmatrix} - \begin{pmatrix}
-%     0 & F_{11} F_{12}e + F_{12} h \\
-%     (ef - h)F_{21} & F_{21} F_{12}e + fh
-% \end{pmatrix} =\]
-% \[\begin{pmatrix}
-%     0 & F_{12}fe \\
-%     eF_{21} F_{11} & eF_{21} F_{12} + hf
-% \end{pmatrix} - \begin{pmatrix}
-%     0 & F_{11} F_{12}e \\
-%     ef F_{21} & F_{21} F_{12}e + fh
-% \end{pmatrix}.\]
-% Now we see that \(F_{11} = 0\), and consequently that \(F_{12} = F_{21} = 0\) as well.
-% This shows that \(H_{12} = H_{21} = 0\).
-% We conclude that \(H\) and \(F\) just have \(h\) and \(f\) in their bottom-right corners, respectively.
-% \end{proof}
-
-\section{Finding \texorpdfstring{\(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}{S x\_g N}}
+\section{Finding \texorpdfstring{\(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}{S x\_g N}}\label{find_sxn}
 \subsection{Finding the Slodowy slice \texorpdfstring{\(S\)}{S}}
 In the previous section we computed the principal \(\spl_2\)-triple \((e, h, f)\) in \(\gl_n\).
 Embedding this into \(\gl_{m + n}\) as described previously, we obtain
@@ -434,7 +361,7 @@ Using our correspondence between Springer fibers in \(\mathcal{B}_{m + n}\) and 
 In the next few sections, we will find the irreducible components of \(\mathcal{P}_X\).
 Then we will use this, along with the result about the usual Springer fiber at \(X\), to find the irreducible components of \(\pi^{-1}(X)\) and then of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
 
-\section{Strategy for finding components of \texorpdfstring{\(\mathcal{P}_{J(\lambda)}\)}{P\_\{J(\textbackslash lambda)\}}}
+\section{Strategy for finding components of \texorpdfstring{\(\mathcal{P}_{J(\lambda)}\)}{P\_\{J(\textbackslash lambda)\}}}\label{p_comp_strat}
 \par Let \(X = J(\lambda) \in \gl_m\), where \(\lambda = (\lambda_1, ..., \lambda_k)\).
 In this section we write \(\mathcal{P} := \mathcal{P}_{J(\lambda)}\) and \(A_{a, b} := A_{J(\lambda), a, b}\).
 Let \((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}\) be the standard basis for \(\mathbb{C}^m\).
@@ -557,7 +484,7 @@ Let \(\mathcal{Q}' = \{(A'_{X', 0, b}, (V_i)) : \forall i. \; A_{X', 0, b} V_{i 
 The next section finds the irreducible components of \(\mathcal{Q}'\).
 To avoid death by primes, we will refer to it as \(\mathcal{Q}\), and refer to \(m',n'\) as \(m,n\), and so on, throughout the next section.
 
-\section{The components of \texorpdfstring{\(\mathcal{Q}\)}{Q}}
+\section{The components of \texorpdfstring{\(\mathcal{Q}\)}{Q}}\label{q_comp}
 \subsection{Setup}
 Let \(X = J(\lambda) \in \gl_m\).
 Let \((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}\) be the standard (Jordan) basis for \(\mathbb{C}^m\).
@@ -835,7 +762,7 @@ We are interested in this thing because for any \(\alpha\), the dimension of \(X
     Then \cref{bs_union} says that their union is \(\mathcal{Q}\), and in addition that none is contained in the union of the others.
 \end{proof}
 
-\section{The components of \texorpdfstring{\(\mathcal{P}_{J(\lambda)}\)}{P\_\{J(\textbackslash lambda)\}}}
+\section{The components of \texorpdfstring{\(\mathcal{P}_{J(\lambda)}\)}{P\_\{J(\textbackslash lambda)\}}}\label{p_comp}
 As in section 5, we write \(X = J(\lambda) \in \gl_m\), where \(\lambda = (\lambda_1, ..., \lambda_k)\).
 We write \(\mathcal{P} := \mathcal{P}_{J(\lambda)}\), and \(A_{a,b} := A_{J(\lambda), a, b}\).
 And as before, \((e_{ij})_{ij}\) and \((f_j)_j\) form the standard basis for \(\mathbb{C}^{m + n}\).
@@ -930,7 +857,7 @@ From \cref{principal_bundle} we have the principal \(G_{wr}\)-bundle \(\varphi_{
     Follows directly from \cref{pwr_comps}.
 \end{proof}
 
-\section{The components of \texorpdfstring{\(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}{S x\_g N}}
+\section{The components of \texorpdfstring{\(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}{S x\_g N}}\label{sxn_comps}
 Recall from \cref{sn_iso} that 
 \[S \times_\mathfrak{g} \widetilde{\mathcal{N}} \cong \{(A_{X,a,b}, (U_i), (V_i)) : \forall i. \; XU_{i + 1} \subseteq U_i; \forall i. \; A_{X,a,b} V_{i + 1} \subseteq V_i\}.\]
 We defined \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}_m\) by \((A_{X,a,b}, (U_i), (V_i)) \mapsto X\), and called \(\pi^{-1}(X)\) the \(n\)-Slodowy-slice Springer fiber at \(X\).
@@ -981,10 +908,7 @@ These are described by \cref{springer_fiber_comps}.
     The dimension of \(C_{\lambda, \beta}\) comes from \cref{pwr_comps}; the dimension of \(\GL_m\) is obvious; and the dimension of \(K\) comes from \cref{nilpotent_centralizer}.
 \end{proof}
 
-% \section{Future work}
-% \par Separately, this paper would benefit from an introductory section where we motivate the study of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
-
-\section{Linear Algebra Facts}
+\section{Linear Algebra Facts}\label{linalg}
 In this section we prove linear algebra facts that were used earlier.
 They are confined to this section to avoid interrupting the rest of the paper.
 
