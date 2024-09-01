@@ -97,17 +97,16 @@ Project Suggested by: Haoshuo Fu
 Let \(m \geq 0, n \geq 1\), and define \(\mathfrak{g} = \gl_m \times \gl_{m + n}\).
 Let \(\mathcal{N}\) be the nilpotent cone in \(\mathfrak{g}\), and let \(\widetilde{\mathcal{N}} \to \mathcal{N}\) be the Springer resolution.
 \par Let \((e, h, f)\) be a principal \(\spl_2\)-triple in \(\gl_n\).
-We have an embedding \(\gl_n \hookrightarrow \gl_m \times \gl_n \hookrightarrow \gl_{m + n}\).
-Let \((E, H, F)\) be the \(\spl_2\)-triple in \(\gl_{m + n}\) which is the image of \((e, h, f)\) via this embedding.
-Let \(S\) be the Slodowy slice \(E + \mathfrak{z}_{\gl_m}(F)\).
+Let \((E, H, F)\) be the \(\spl_2\)-triple in \(\gl_{m + n}\) which is the image of \((e, h, f)\) via the embedding \(\gl_n \hookrightarrow \gl_m \times \gl_n \hookrightarrow \gl_{m + n}\).
+Let \(S\) be the Slodowy slice \(E + \mathfrak{z}_{\gl_{m + n}}(F)\).
 We have a map \(\gl_{m + n} \to \gl_m\) given by coordinate projection.
 Restricting to \(S\), we obtain a projection \(p' : S \to \gl_m\).
 (It turns out that \(p'\) is surjective.)
-Then, we obtain \(p : S \to \mathfrak{g}\) by \(x \mapsto (x, p'(x))\).
+Then, define \(p : S \to \mathfrak{g}\) by \(x \mapsto (p'(x), x)\).
 Taking the map \(p : S \to \mathfrak{g}\) and the Springer resolution \(\widetilde{\mathcal{N}} \to \mathfrak{g}\), we obtain a fibred product \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
-The variety \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) is also discussed in \cite{sxn}[3]
+The variety \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) is also discussed in \cite{sxn}[3].
 \par In this paper we study \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
-As a step towards studying \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\), we consider the map \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}_m\) given by taking the map to \(\mathfrak{g}\) and then projecting to \(\gl_m\).
+As a step towards studying \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\), we let \(\mathcal{N}_m\) be the nilpotent cone in \(\gl_m\), and we consider the map \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}_m\) given by taking the map to \(\mathfrak{g}\) and then projecting to \(\gl_m\).
 Given \(X \in \mathcal{N}_m\), we call \(\pi^{-1}(X)\) the \emph{\(n\)-Slodowy-slice Springer fiber at \(X\)}.
 \par The main result of this paper is a classification of the irreducible components of an \(n\)-Slodowy-slice Springer fiber.
 Then we use this result to determine the irreducible components of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
@@ -115,21 +114,24 @@ Then we use this result to determine the irreducible components of \(S \times_\m
 \subsection{Future Work}
 We describe a possible extension of the result of this paper, as well as an application to representation theory.
 \par The \emph{Steinberg variety} of a Lie algebra \(\mathfrak{h}\) is \(\St_\mathfrak{h} = \widetilde{\mathcal{N}}_\mathfrak{h} \times_\mathfrak{h} \widetilde{\mathcal{N}}_\mathfrak{h}\), where the map \(\widetilde{\mathcal{N}}_\mathfrak{h} \to \mathfrak{h}\) is the Springer resolution.
-There is a bijective correspondence between the Weyl group of \(\gl_m\) and irreducible components of \(\St_\mathfrak{\gl_m}\)(see \cite{ehf}[3.6] for details).
-\par There is a nice bijection between \(\St_{\gl_m}\) and the set \(T_m = \{(t_1, t_2) : \lambda \vdash m; t_1, t_2 \in \mathrm{SYT}(\lambda)\}\).
-(Note that \(\mathrm{SYT}(\lambda)\) denotes the set of standard Young tableaux of shape \(\lambda\).)
-One way to obtain such a bijection is as follows.
-First take the aforementioned correspondence between \(\St_{\gl_m}\) and the Weyl group \(S_m\) of \(\gl_m\).
+There is a bijective correspondence between the Weyl group of \(\gl_m\) and the set \(\Irr(\St_{\gl_m})\) of irreducible components of \(\St_\mathfrak{\gl_m}\)(see \cite{ehf}[3.6] for details).
+The Weyl group of \(\gl_m\) is the symmetric group \(S_m\).
+\par There is a bijection between the set of irreducible components of \(\St_{\gl_m}\)---which we denote by \(\Irr(\St_{\gl_m})\)---and the set
+\[T_m = \{(t_1, t_2) : \lambda \vdash m; t_1, t_2 \in \mathrm{SYT}(\lambda)\}.\]
+(We write \(\mathrm{SYT}(\lambda)\) to denote the set of standard Young tableaux of shape \(\lambda\).)
+One way to obtain the bijection is as follows.
+First take the aforementioned correspondence between \(\St_{\gl_m}\) and the Weyl group \(S_m\).
 Then take the Robinson-Schensted-Knuth (RSK) correspondence, which gives a bijection between \(S_m\) and \(T_m\).
+Putting these together, we get a correspondence \(\St_{\gl_m} \leftrightarrow T_m\).
 A more direct and illuminating explanation of the correspondence \(\St_{\gl_m} \leftrightarrow T_m\) is given by the geometric RSK correspondence, as described in \cite{geomRSK}.
-\par An element of \(\St_{\gl_m}\) is a triple \((X, \mathfrak{b}_1, \mathfrak{b}_2)\), where \(\mathfrak{b}_1\) and \(\mathfrak{b}_2\) are elements of the Springer fiber at \(X\).
-When the Jordan form of \(X\) has shape \(\lambda\), the correspondence sends this triple to a pair \((t_1, t_2)\), where both are of shape \(\lambda\).
-\par Somewhat similarly, we will show that an element of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) is a subset of the set of tuples \((X, Y, \mathfrak{b}_1, \mathfrak{b}_2)\), where \(X \in \mathcal{N}_m, Y \in \mathcal{N}_{m + n}\), and \(\mathfrak{b}_1, \mathfrak{b}_2\) are elements of the Springer fiber at \(X, Y\) respectively.
-For any given relation \(R \subseteq \{\lambda : \lambda \vdash m\} \times \{\mu : \mu \vdash (m + n)\}\), we can define 
+\par An element of \(\St_{\gl_m}\) is a triple \((X, \mathfrak{b}_1, \mathfrak{b}_2)\), where \(X \in \mathcal{N}_m\), and \(\mathfrak{b}_1, \mathfrak{b}_2\) are elements of the Springer fiber at \(X\).
+When the Jordan form of \(X\) has shape \(\lambda\), the geometric RSK correspondence sends this triple to a pair \((t_1, t_2)\), where both are of shape \(\lambda\).
+\par Somewhat similarly, we will show that \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) is a subset of the set of tuples \((X, Y, \mathfrak{b}_1, \mathfrak{b}_2)\), where \(X \in \mathcal{N}_m, Y \in \mathcal{N}_{m + n}\), and \(\mathfrak{b}_1\) (resp. \(\mathfrak{b}_2\)) is an element of the Springer fiber at \(X\) (resp. \(Y\)).
+\par For any given relation \(R \subseteq \{\lambda : \lambda \vdash m\} \times \{\mu : \mu \vdash (m + n)\}\), we can define 
 \[T_{m,n} = \{(t_1, t_2) : \lambda \vdash m; \mu \vdash (m + n); t_1 \in \mathrm{SYT}(\lambda); t_2 \in \mathrm{SYT}(\mu); R(\lambda, \mu)\}.\]
 We conjecture that, for some appropriate choice of the relation \(R\), there is a correspondence, analogous to \(\St_{\gl_m} \leftrightarrow T_m\), between \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) and \(T_{m,n}\).
-An extension of this project would determine the details of this correspondence.
-\par Given an irreducible component \(C \in \Irr(\St_{\gl_m})\), we can first map it to the corresponding \((t_1, t_2) \in T_m\), and then obtain an element of \(\End(\mathbb{C}[\mathrm{SYT}(\lambda)])\) by taking the map which sends \(t_1 \mapsto t_2\) and \(t' \mapsto 0\) for \(t' \in \mathrm{SYT}(\lambda) \setminus \{t_1\}\).
+A natural extension of this project would explore this correspondence.
+\par Given an element of \(\Irr(\St_{\gl_m})\), we can first map it to the corresponding \((t_1, t_2) \in T_m\), and then obtain an element of \(\End(\mathbb{C}[\mathrm{SYT}(\lambda)])\) by taking the map which sends \(t_1 \mapsto t_2\) and \(t' \mapsto 0\) for \(t' \in \mathrm{SYT}(\lambda) \setminus \{t_1\}\).
 In this way, we obtain a \(\mathbb{C}\)-algebra isomorphism
 \[\mathbb{C}[\Irr(\St_{\mathfrak{\gl_m}})] \cong \bigoplus_{\lambda \vdash m} \End(\mathbb{C}[\mathrm{SYT}(\lambda))).\]
 This is an instance of the fact that for any finite group \(G\), we have \(\mathbb{C}[G] \cong \bigoplus_{V \in \irrrep(G)} \End(V)\).
@@ -150,7 +152,7 @@ We compute the Slodowy slice and end up with a nice description of \(S \times_\m
 Finally, \cref{linalg} proves some linear algebra lemmas that were used in the paper.
 
 \subsection{Acknowledgments}
-Thank you to Haoshuo Fu for suggesting the fun project, guiding me through it, and helping me to learn many things, both by talking to me about them and by suggesting things to read.
+Thank you to Haoshuo Fu for suggesting the fun project, guiding me through it, and helping me learn many things, both by talking to me about them and by suggesting things to read.
 Thank you also to the organizers of the MIT math department's UROP+ program, and to MIT for providing funding.
 
 \section{Preliminary Definitions and Facts}\label{prelim}
