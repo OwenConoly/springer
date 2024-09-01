@@ -43,6 +43,10 @@
 \DeclareMathOperator{\gl}{\mathfrak{gl}}
 \DeclareMathOperator{\spl}{\mathfrak{sl}}
 \DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\irrrep}{IrrRep}
+\DeclareMathOperator{\Irr}{Irr}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\St}{St}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
 \newcommand{\opp}{\mathrm{opp}}
@@ -111,12 +115,37 @@ Given \(X \in \mathcal{N}_m \subseteq \gl_m\), we call the fiber at \(X\) the \e
 \par Before talking about future work, say what is the main result of the paper.
 
 \subsection{Future Work}
-\par irreducble components have module structure of group algebra of Sn.
-has applications to representation theory.
-write about this here.
-The paper (TODO: cite) describes a bijection between the Steinberg variety (which is blah) and pairs of standard Young tableaux (each having shape blah).
-The variety \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) looks something like the Steinberg variety.
-Maybe there is a similar correspondence, between elements of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) and pairs of standard Young tableaux: one having the shape of the Jordan form of \(X\), one having the shape of the Jordan form of \(A_{X, a, b}\).
+We describe a possible extension to this work and an application to representation theory.
+\par The \emph{Steinberg variety} of a Lie algebra \(\mathfrak{h}\) is \(\St_\mathfrak{h} = \widetilde{\mathcal{N}}_\mathfrak{h} \times_\mathfrak{h} \widetilde{\mathcal{N}}_\mathfrak{h}\), where the map \(\widetilde{\mathcal{N}}_\mathfrak{h} \to \mathfrak{h}\) is the Springer resolution.
+For nice (TODO: how nice?) \(\mathfrak{h}\), there is a correspondence between the Weyl group of \(\mathfrak{h}\) and irreducible components of \(\St_\mathfrak{h}\)\cite{zhiweiyun}[1.5.10].
+\par There is a nice bijection between \(\St_{\gl_m}\) and the set \(T_m = \{(t_1, t_2) : \lambda \vdash m; t_1, t_2 \in \mathrm{SYT}(\lambda)\}\).
+(Note that \(\mathrm{SYT}(\lambda)\) denotes the set of standard Young tableaux of shape \(\lambda\).)
+One way to obtain this bijection is as follows.
+First take the aforementioned correspondence between \(\St_{\gl_m}\) and the Weyl group of \(\gl_m\)---the Weyl group of \(\gl_m\) is the symmetric group \(S_m\).
+Then take the Robinson-Schensted-Knuth correspondence, which is a bijection between \(S_m\) and \(T_m\).
+More details about the the correspondence \(\St_{\gl_m} \leftrightarrow T_m\) can be found in \cite{wolff}.
+\par An element of \(\St_{\gl_m}\) consists of a triple \((X, \mathfrak{b}_1, \mathfrak{b}_2)\), where \(\mathfrak{b}_1\) and \(\mathfrak{b}_2\) are elements of the Springer fiber at \(X\).
+When the Jordan form of \(X\) has shape \(\lambda\), the correspondence sends this triple to a pair \((t_1, t_2)\), where both are of shape \(\lambda\).
+\par Somewhat similarly, we will show that an element of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) consists of a tuple \((X, Y, \mathfrak{b}_1, \mathfrak{b}_2)\), where \(X \in \mathcal{N}_m, Y \in \mathcal{N}_{m + n}\), and \(\mathfrak{b}_1, \mathfrak{b}_2\) are elements of the Springer fiber at \(X, Y\) respectively.
+(Some nontrivial relation will hold between \(X\) and \(Y\), but we ignore that for now.)
+For any given relation \(R \subseteq \{\lambda : \lambda \vdash m\} \times \{\mu : \mu \vdash (m + n)\}\), we can define 
+\[T_{m,n} = \{(t_1, t_2) : \lambda \vdash m; \mu \vdash (m + n); t_1 \in \mathrm{SYT}(\lambda); t_2 \in \mathrm{SYT}(\mu); R(\lambda, \mu)\}.\]
+We conjecture that there is a correspondence, analogous to \(\St_{\gl_m} \leftrightarrow T_m\), between \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) and \(T_{m,n}\) (for some appropriate choice of the relation \(R\)).
+An extension of this project would determine the details of this correspondence.
+\par Given \(C \in \Irr(\St_{\gl_m})\), we can first map it to the corresponding \((t_1, t_2) \in T_m\), and then obtain an element of \(\End(\mathbb{C}[\mathrm{SYT}(\lambda)])\) by taking the map which sends \(t_1 \mapsto t_2\) and \(t' \mapsto 0\) for \(t' \in \mathrm{SYT}(\lambda) \setminus \{t_1\}\).
+In this way, we obtain a \(\mathbb{C}\)-algebra isomorphism
+\[\mathbb{C}[\Irr(\widetilde{\mathcal{N}} \times_\mathfrak{g} \widetilde{\mathcal{N}})] \cong \bigoplus_{\lambda \vdash m} \End(\mathbb{C}[\mathrm{SYT}(\lambda))).\]
+This is an instance of the fact that for any finite group \(G\), we have \(\mathbb{C}[G] \cong \bigoplus_{V \in \irrrep(G)} \End(\mathbb{C}[\mathrm{SYT}(\lambda)])\).
+\par If we found a correspondence \(S \times_\mathfrak{g} \widetilde{\mathcal{N}} \leftrightarrow T_{m,n}\), this could give an analogous isomorphism 
+\[\mathbb{C}[\Irr(S \times_\mathfrak{g} \widetilde{\mathcal{N}})] \cong \bigoplus_{(\lambda, \mu) \in R} \Hom(\mathbb{C}[\mathrm{SYT}(\lambda)], \mathbb{C}[\mathrm{SYT}(\mu)]),\]
+which would be an isomorphism of \(\mathbb{C}[S_m]\)- or \(\mathbb{C}[S_{m + n}]\)-modules instead of \(\mathbb{C}\)-algebras.
+(To give the RHS the structure of a \(\mathbb{C}[S_m]\)-module, we just view \(\mathbb{C}[\mathrm{SYT}(\lambda)]\) as a representation of \(S_m\) in the standard way.)
+% \par irreducble components have module structure of group algebra of Sn.
+% has applications to representation theory.
+% write about this here.
+% The paper (TODO: cite) describes a bijection between the Steinberg variety (which is blah) and pairs of standard Young tableaux (each having shape blah).
+% The variety \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) looks something like the Steinberg variety.
+% Maybe there is a similar correspondence, between elements of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) and pairs of standard Young tableaux: one having the shape of the Jordan form of \(X\), one having the shape of the Jordan form of \(A_{X, a, b}\).
 
 
 \subsection{Overview}
