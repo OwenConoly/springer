@@ -138,20 +138,19 @@ which would be an isomorphism of \(\mathbb{C}[S_m]\)- or \(\mathbb{C}[S_{m + n}]
 (To give the RHS the structure of a \(\mathbb{C}[S_m]\)-module, we just view \(\mathbb{C}[\mathrm{SYT}(\lambda)]\) as a representation of \(S_m\) in the standard way.)
 
 \subsection{Overview}
-\par Section 2 reviews some preliminary material.
-Section 3 finds the unique (up to similarity) principal \(\spl_2\)-triple in \(\gl_n\).
-Section 4 embeds this \(\spl_2\)-triple into \(\gl_{m + n}\) as described above.
+\par \cref{prelim} reviews some preliminary material.
+\cref{principal_sl2} finds the unique (up to similarity) principal \(\spl_2\)-triple in \(\gl_n\).
+\cref{find_sxn} embeds this \(\spl_2\)-triple into \(\gl_{m + n}\) as described above.
 We compute the Slodowy slice and end up with a nice description of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
-\par Section 5 discusses how to reduce the problem of finding the irreducible components of an \(n\)-Slodowy-slice Springer fiber at \(X \in \mathcal{N}_m\) to an easier problem.
-Section 6 solves the easier problem.
-Section 7 finds the irreducible components of an \(n\)-Slodowy-slice Springer fiber.
-Section 8 applies the results of section 7 to find the irreducible components of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
-Section 9 discusses an interesting direction for future work.
-Finally, section 10 proves some linear algebra lemmas that were used in the paper.
+\par \cref{p_comp_strat} discusses how to reduce the problem of finding the irreducible components of an \(n\)-Slodowy-slice Springer fiber at \(X \in \mathcal{N}_m\) to an easier problem.
+\cref{q_comp} solves the easier problem.
+\cref{p_comp} finds the irreducible components of an \(n\)-Slodowy-slice Springer fiber.
+\cref{sxn_comps} applies the results of section 7 to find the irreducible components of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
+Finally, \cref{linalg} proves some linear algebra lemmas that were used in the paper.
 
-\subsection{Acknowledgment}
-TODO.  UROP+ program and Haoshuo.
-MIT (provided funding)?
+\subsection{Acknowledgments}
+Thank you to Haoshuo Fu for suggesting the fun project, guiding me through it, and helping me to learn many things, both by talking to me about them and by suggesting things to read.
+Thank you also to the organizers of the MIT math department's UROP+ program, and to MIT for providing funding.
 
 \section{Preliminary Definitions and Facts}\label{prelim}
 \subsection{Conventions and Notations}
@@ -213,7 +212,7 @@ If \(\mathfrak{g}\) is semisimple, then given any nilpotent \(e \in \mathfrak{g}
 \par Given \((e, h, f)\), we define the \emph{Slodowy slice at \(e\)} as \(\mathcal{S}_e := e + \ker \ad_f\).
 By the Jacobson-Morozov theorem, we can always find a Slodowy slice at any nilpotent \(e \in \mathfrak{g}\), when \(\mathfrak{g}\) is semisimple.
 
-\section{Principal \texorpdfstring{\(\spl_2\)}{sl\_2}-triple in \texorpdfstring{\(\gl_n\)}{gl\_n}}\label{prelim}
+\section{Principal \texorpdfstring{\(\spl_2\)}{sl\_2}-triple in \texorpdfstring{\(\gl_n\)}{gl\_n}}\label{principal_sl2}
 The unique nilpotent regular element of \(\gl_n\) (up to similarity) is \(J_n\).
 In this section we use this to find that there is a unique principal \(\spl_2\)-triple in \(\gl_n\).
 Write \(e = J_n\).
