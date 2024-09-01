@@ -275,17 +275,17 @@ Embedding this into \(\gl_{m + n}\) as described previously, we obtain
 \[(E, H, F) = \left(\begin{pmatrix}0 & 0 \\0 & e\end{pmatrix}, \begin{pmatrix}0 & 0 \\0 & h\end{pmatrix}, \begin{pmatrix}0 & 0 \\0 & f\end{pmatrix}\right).\]
 
 \begin{lemma}\label{small_centralizer}
-    \(\mathfrak{z}_{\gl_n}(f)\) is the set of upper-triangular \(X \in \gl_n\) such that for all \(i,j\),
+    \(\mathfrak{z}_{\gl_n}(f)\) is the set of upper-triangular \(X \in \gl_n\) such that for all \(i,j \in \{1,...,n-1\}\),
     \[X_{i + 1,j + 1} = \frac{j(n - j)}{i(n - i)} X_{ij}.\]
 \end{lemma}
 \begin{proof}
     Let \(X \in \mathfrak{z}_{\gl_n}(f)\).
     Looking at the definition of \(f\) from the previous section (and zero-padding the matrices), we see that \((fX)_{ij} = i (n - i) X_{i + 1,j}\), and \((Xf)_{ij} = (j - 1)(n - (j - 1)) X_{i, j - 1}\).
-    So,
-    \[\forall i, j \in \{1, ..., n\}. \; i(n - i)X_{i + 1,j} = (j - 1)(n - (j - 1))X_{i, j - 1}.\]
-    Taking \(j = 1\), the condition above tells us that \(\forall i \geq 2. \; X_{i, 1} = 0\).
-    Taking \(j > 1\) and \(i < n\), we obtain that
-    \[\forall i, j \in \{1, ..., n - 1\}. \; X_{i + 1, j + 1} = \frac{j(n - j)}{i(n - i)} X_{ij}.\]
+    So, for any \(i, j \in \{1,...,n\}\),
+    \[i(n - i)X_{i + 1,j} = (j - 1)(n - (j - 1))X_{i, j - 1}.\]
+    Taking \(j = 1\), the condition above tells us that for all \(i \geq 2\) we have \(X_{i, 1} = 0\).
+    Taking \(j > 1\) and \(i < n\), we get that for all \(i,j \in \{1,...,n-1\}\),
+    \[X_{i + 1, j + 1} = \frac{j(n - j)}{i(n - i)} X_{ij}.\]
     So, every \(X \in \mathfrak{z}_{\gl_n}(f)\) is upper triangular and satisfies the condition above.
     Conversely, it is clear that for such \(X\) we have \(fX = Xf\).
 \end{proof}
@@ -307,10 +307,10 @@ Embedding this into \(\gl_{m + n}\) as described previously, we obtain
     \[\begin{pmatrix}0 & Z_{12}f\\0 & Z_{22} f\end{pmatrix} =  ZF = FZ = \begin{pmatrix}0 & 0\\fZ_{21} & fZ_{22}\end{pmatrix}.\]
     There is no restriction on \(Z_{11}\).
     The condition \(Z_{12}f = 0\) means that all but the last column of \(Z_{12}\) must be zero, and the condition \(0 = fZ_{21}\) means that all but the first row of \(Z_{21}\) must be zero.
-    And the condition \(Z_{22}f = fZ_{22}\) means that \(Z_{22} \in \mathfrak{z}_{\gl_{m + n}}(f)\).
+    Finally, the condition \(Z_{22}f = fZ_{22}\) means that \(Z_{22} \in \mathfrak{z}_{\gl_n}(f)\).
 \end{proof}
 
-These lemmas provide an explicit characterization of the Slodowy slice \(S = E + \mathfrak{z}_{\gl_{m + n}}(F)\).
+Taken together, the previous lemmas provide a nice characterization of the Slodowy slice \(S = E + \mathfrak{z}_{\gl_{m + n}}(F)\).
 \begin{corollary}\label{slodowy_slice}
     \[S = \left\{\begin{pNiceArray}{ccc|ccc}
         & & & & & \vert \\
