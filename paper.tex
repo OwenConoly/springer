@@ -324,48 +324,47 @@ Taken together, the previous lemmas provide a nice characterization of the Slodo
 \end{corollary}
 
 \subsection{A description of \texorpdfstring{\(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}{S x\_g N}}
-Recall that we have the map \(S \to \mathfrak{g}\) given by \(Z \mapsto (p(Z), Z)\), where \(p : \gl_{m + n} \to \gl_m\) is the coordinate projection.
+Recall the map \(S \to \mathfrak{g}\) given by \(Z \mapsto (p'(Z), Z)\), where \(p' : \gl_{m + n} \to \gl_m\) is coordinate projection taking a matrix to its upper-left corner.
 We also have the Springer resolution \(\widetilde{\mathcal{N}} \to \mathfrak{g}\).
-From these two maps we define the fibered product \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
-\par To obtain an explicit description of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\), we will begin by finding the image of the projection \(S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to S\).
-As the image of the Springer resolution is \(\mathcal{N} = \mathcal{N}_m \times \mathcal{N}_{m + n}\), the image of the projection \(S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to S\) is simply \(S' = \{Z \in S : p(Z) \in \mathcal{N}_m, Z \in \mathcal{N}_{m + n}\}\).
+From these two maps we define the fibred product \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
+\par To obtain an explicit description of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\), we begin by finding the image of the projection \(S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to S\).
+As the image of the Springer resolution is \(\mathcal{N} = \mathcal{N}_m \times \mathcal{N}_{m + n}\), the image of the projection \(S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to S\) is simply \(S' := \{Z \in S : p'(Z) \in \mathcal{N}_m, Z \in \mathcal{N}_{m + n}\}\).
 \begin{lemma}
-    \[S' = \left\{A_{X, a, b} := \begin{pNiceArray}{ccc|cccc}
-    & & & & & & \vert \\
-    & X & & & & & b    \\
-    & & & & & & \vert \\
+    \[S' = \left\{A_{X, a, b} := \begin{pNiceArray}{ccc|ccc}
+    & & & & & \vert \\
+    & X & & & & b    \\
+    & & & & & \vert \\
    \hline
-   \text{---} & a & \text{---} & 0 \\
-    & & & 1 & 0  & \\
-    &  & & & \ddots & \ddots  \\
-    & & & & & 1 & 0
+   \text{---} & a & \text{---} \\
+    & & & & e & \\
+    & & &  & 
    \end{pNiceArray} \in \mathcal{N}_{m + n}: a, b \in \mathbb{C}^m, X \in \mathcal{N}_m\right\}.\]
 \end{lemma}
 \begin{proof}
-    As every element of \(\mathfrak{z}_{\gl_n}(f)\) is upper triangular, \cref{bottom_right_nilp} tells us that if a matrix of the form given in \cref{slodowy_slice} is nilpotent, and the upper-left block \(X\) is nilpotent as well, then \(e + Y\) must be nilpotent.
-    Then, again using that every element \(Y \in \mathfrak{z}_{\gl_n}(f)\) is upper triangular, \cref{upper_triangle_zero} tells us that if \(e + Y\) is nilpotent, then \(Y = 0\).
-    \par Hence every element of \(S'\) must simply have \(e\) in its bottom-right block.
+    Since every element of \(\mathfrak{z}_{\gl_n}(f)\) is upper triangular by \cref{small_centralizer}, \cref{bottom_right_nilp} says that if a matrix \(Z \in S\) of the form given in \cref{slodowy_slice} is nilpotent, and the upper-left block \(p'(Z) = X\) is nilpotent as well, then \(e + Y\) must be nilpotent.
+    Finally, \cref{upper_triangle_zero} says that if \(e + Y\) is nilpotent for \(Y \in \mathfrak{z}_{\gl_n}(f)\), then \(Y = 0\).
+    \par Thus every element of \(S'\) must simply have \(e\) in its bottom-right block.
     So, every element of \(S'\) is of the desired form.
 \end{proof}
 This is not a fully explicit characterization of \(S'\), since we don't say which choices of \(X\) and \(a, b \in \mathbb{C}^m\) lead to \(A_{X, a, b}\) being nilpotent.
-We could use \cref{block_determinant} to find a necessary and sufficient condition on \(X, a, b\); however, the description above of \(S'\) will be good enough for our purposes.
+We could use \cref{block_determinant} to find a necessary and sufficient condition on \(X, a, b\); however, the above description of \(S'\) will be good enough for our purposes.
 \begin{corollary}\label{sn_iso}
     \begin{align*}
         S \times_\mathfrak{g} \widetilde{\mathcal{N}} & = \\
-        \{((X, A_{X, a, b}), ((X, A_{X, a, b}), \mathfrak{b})) : \mathfrak{b} \in \mathcal{B}, (X, A_{X, a, b}) \in \mathcal{N} \cap \mathfrak{b}\} & \cong \\
-        \{(A_{X, a, b}, \mathfrak{b}) : \mathfrak{b} \in \mathcal{B}, (X, A_{X, a, b}) \in \mathfrak{b} \cap \mathcal{N}\} & .
+        \{((X, A_{X, a, b}), ((X, A_{X, a, b}), \mathfrak{b})) \in S \times \widetilde{\mathcal{N}}\} & \cong \\
+        \{(A_{X, a, b}, \mathfrak{b}) : X \in \gl_m; a,b \in \mathbb{C}; \mathfrak{b} \in \mathcal{B}; (X, A_{X, a, b}) \in \mathfrak{b} \cap \mathcal{N}\} & .
     \end{align*}
 \end{corollary}
-We have a map \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}_m\) given by \((A_{X, a, b}, \mathfrak{b}) \mapsto X\).
+Define \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}_m\) by \((A_{X, a, b}, \mathfrak{b}) \mapsto X\).
 We define the \emph{\(n\)-Slodowy-slice Springer fiber} at \(X \in \mathcal{N}_m\) to be the fiber \(\pi^{-1}(X)\).
 Because \(\mathcal{B} = \mathcal{B}_m \times \mathcal{B}_{m + n}\),  
-\[\pi^{-1}(X) \cong \{(A_{X, a, b}, \mathfrak{b}_{m + n}) : A_{X, a, b} \in \mathfrak{b}_{m + n} \cap \mathcal{N}_{m + n}\} \times \{\mathfrak{b}_m : X \in \mathfrak{b}_m\}.\]
-The right factor of the product is simply the usual Springer fiber at \(X\).
+\[\pi^{-1}(X) \cong \{(A_{X, a, b}, \mathfrak{b}_{m + n}) : a,b \in \mathbb{C}; A_{X, a, b} \in \mathfrak{b}_{m + n} \cap \mathcal{N}_{m + n}\} \times \{\mathfrak{b}_m : X \in \mathfrak{b}_m\}.\]
+The right factor of the product is simply the usual Springer fiber \(\mathcal{F}_X\).
 \par Let 
-\[\mathcal{P}_X = \{(A_{X, a, b}, (V_i)) : \forall i. \; A_{X, a, b} V_i \subseteq V_{i - 1}\}.\]
-Using our correspondence between Springer fibers in \(\mathcal{B}_{m + n}\) and flags of \(\mathbb{C}^{m + n}\), we see that \(\mathcal{P}_X\) is isomorphic to the left factor of \(\pi^{-1}(X)\).
-In the next few sections, we will find the irreducible components of \(\mathcal{P}_X\).
-Then we will use this, along with the result about the usual Springer fiber at \(X\), to find the irreducible components of \(\pi^{-1}(X)\) and then of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
+\[\mathcal{P}_X = \{(A_{X, a, b}, V_\bullet) : \forall i. \; A_{X, a, b} V_i \subseteq V_{i - 1}\}.\]
+By the correspondence between Springer fibers in \(\mathcal{B}_{m + n}\) and flags of \(\mathbb{C}^{m + n}\), the variety \(\mathcal{P}_X\) is isomorphic to the left factor of \(\pi^{-1}(X)\).
+\par In the next few sections, we will find the irreducible components of \(\mathcal{P}_X\).
+Then we will use this result, along with the result about the usual Springer fiber \(\mathcal{F}_X\), to find the irreducible components of \(\pi^{-1}(X)\) and then of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
 
 \section{Strategy for finding components of \texorpdfstring{\(\mathcal{P}_{J(\lambda)}\)}{P\_\{J(\textbackslash lambda)\}}}\label{p_comp_strat}
 \par Let \(X = J(\lambda) \in \gl_m\), where \(\lambda = (\lambda_1, ..., \lambda_k)\).
