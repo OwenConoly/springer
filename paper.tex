@@ -352,13 +352,13 @@ We could use \cref{block_determinant} to find a necessary and sufficient conditi
     \begin{align*}
         S \times_\mathfrak{g} \widetilde{\mathcal{N}} & = \\
         \{((X, A_{X, a, b}), ((X, A_{X, a, b}), \mathfrak{b})) \in S \times \widetilde{\mathcal{N}}\} & \cong \\
-        \{(A_{X, a, b}, \mathfrak{b}) : X \in \gl_m; a,b \in \mathbb{C}; \mathfrak{b} \in \mathcal{B}; (X, A_{X, a, b}) \in \mathfrak{b} \cap \mathcal{N}\} & .
+        \{(A_{X, a, b}, \mathfrak{b}) : X \in \gl_m; a,b \in \mathbb{C}^m; \mathfrak{b} \in \mathcal{B}; (X, A_{X, a, b}) \in \mathfrak{b} \cap \mathcal{N}\} & .
     \end{align*}
 \end{corollary}
 Define \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}_m\) by \((A_{X, a, b}, \mathfrak{b}) \mapsto X\).
 We define the \emph{\(n\)-Slodowy-slice Springer fiber} at \(X \in \mathcal{N}_m\) to be the fiber \(\pi^{-1}(X)\).
 Because \(\mathcal{B} = \mathcal{B}_m \times \mathcal{B}_{m + n}\),  
-\[\pi^{-1}(X) \cong \{(A_{X, a, b}, \mathfrak{b}_{m + n}) : a,b \in \mathbb{C}; A_{X, a, b} \in \mathfrak{b}_{m + n} \cap \mathcal{N}_{m + n}\} \times \{\mathfrak{b}_m : X \in \mathfrak{b}_m\}.\]
+\[\pi^{-1}(X) \cong \{(A_{X, a, b}, \mathfrak{b}_{m + n}) : a,b \in \mathbb{C}^m; A_{X, a, b} \in \mathfrak{b}_{m + n} \cap \mathcal{N}_{m + n}\} \times \{\mathfrak{b}_m : X \in \mathfrak{b}_m\}.\]
 The right factor of the product is simply the usual Springer fiber \(\mathcal{F}_X\).
 \par Let 
 \[\mathcal{P}_X = \{(A_{X, a, b}, V_\bullet) : \forall i. \; A_{X, a, b} V_i \subseteq V_{i - 1}\}.\]
@@ -367,44 +367,43 @@ By the correspondence between Springer fibers in \(\mathcal{B}_{m + n}\) and fla
 Then we will use this result, along with the result about the usual Springer fiber \(\mathcal{F}_X\), to find the irreducible components of \(\pi^{-1}(X)\) and then of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
 
 \section{Strategy for finding components of \texorpdfstring{\(\mathcal{P}_{J(\lambda)}\)}{P\_\{J(\textbackslash lambda)\}}}\label{p_comp_strat}
-\par Let \(X = J(\lambda) \in \gl_m\), where \(\lambda = (\lambda_1, ..., \lambda_k)\).
-In this section we write \(\mathcal{P} := \mathcal{P}_{J(\lambda)}\) and \(A_{a, b} := A_{J(\lambda), a, b}\).
+\par Let \(X = J(\lambda) \in \gl_m\), where \(\lambda = (\lambda_1, ..., \lambda_\ell)\).
+In this section we write \(\mathcal{P} := \mathcal{P}_X\) and \(A_{a, b} := A_{X, a, b}\).
 Let \((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}\) be the standard basis for \(\mathbb{C}^m\).
-For convenience we write \(e_{ij} := 0\) for \(j < 1\); now we may express the fact that \((e_{ij})\) is a Jordan basis by writing \(\forall i. Xe_{ij} = e_{i,j - 1}\).
+Let \((f_j)_{1 \leq j \leq k}\) be the standard basis for \(\mathbb{C}^n\).
+We index the bases such that \(Xe_{ij} = e_{i,j - 1}\), and \(J_n f_j = f_{j - 1}\).
 \par In this section we begin finding the irreducible components of
-\[\mathcal{P} = \{(A_{a, b}, (V_i)) : \forall i. \; A_{a, b} V_{i + 1} \subseteq V_i\}.\]
-\par For \(1 \leq w \leq k\) and \(0 \leq r \leq \lambda_w\) (note that we allow \(r = 0\)), define 
-\[\mathcal{P}_{w,r} := \{(A_{a, b}, V) \in \mathcal{P} : \exists P \in \GL_{m}. \; \exists b'. \; (P^{-1}, I_n) A_{a, b} (P, I_n) = A_{e_{wr}, b'} \}.\]
+\[\mathcal{P} = \{(A_{a, b}, V_\bullet) : \forall i. \; A_{a, b} V_{i + 1} \subseteq V_i\}.\]
+\par For \(1 \leq w \leq \ell\) and \(0 \leq r \leq \lambda_w\) (note that we allow \(r = 0\); recall \(e_{i0} = 0\)), define \(\mathcal{P}_{w,r}\) as the set of \((A_{a,b}, V_\bullet) \in \mathcal{P}\) such that there exist \(P \in \GL_m\) and \(b' \in \mathbb{C}^n\) such that \((P^{-1}, I_n) A_{a, b} (P, I_n) = A_{e_{wr}, b'}\).
 
 \begin{lemma}\label{pwr_union}
     \(\mathcal{P} = \bigcup_{1 \leq w \leq k, 0 \leq r \leq \lambda_{w}} \mathcal{P}_{wr}\).
 \end{lemma}
 \begin{proof}
-    For any \(a \in \mathbb{C}^m\), define \(f_a : \mathbb{C}^{m + n} \to \mathbb{C}\) by \(e_{ij} \mapsto a_{ij}\) and \(f_i \mapsto 0\).
-    For this proof we take the coordinate-free view of \(A_{a,b}\) as the linear transformation \(\mathbb{C}^{m + n} \to \mathbb{C}^{m + n}\) that sends \(e_{ij}\) to \(e_{i,j-1} + f_a(e_{ij}) f_n\), sends \(f_{i + 1}\) to \(f_i\), and sends \(f_1\) to \((b, 0)\).
-    \par Let \((A_{a, b}, (V_i)) \in \mathcal{P}\).
-    Since \(X\) is nilpotent, \cref{normalization} says that there is a change of basis \(P : \mathbb{C}^m \to \mathbb{C}^m\) such that \(Pe_{ij}\) forms a Jordan basis for \(X\), and for all but one pair \((i, j)\) we have \(f(Pe_{ij}) = 0\).
-    \par Now let \(Q = (P^{-1}, I_n)A_{a,b}(P, I_n)\).
-    Since \(Pe_{ij}\) is a Jordan basis, we have \(Q = A_{a',b'}\) for some \(a',b' \in \mathbb{C}^m\).
+    For any \(a \in \mathbb{C}^m\), define the linear map \(\phi_a : \mathbb{C}^{m + n} \to \mathbb{C}\) by \(e_{ij} \mapsto a_{ij}\) and \(f_j \mapsto 0\).
+    Note that \(A_{a,b}\) is the unique linear map \(\mathbb{C}^{m + n} \to \mathbb{C}^{m + n}\) that sends \(e_{ij}\) to \(e_{i,j-1} + \phi_a(e_{ij}) f_n\), sends \(f_{i + 1}\) to \(f_i\), and sends \(f_1\) to \((b, 0)\).
+    \par Let \((A_{a, b}, V_\bullet) \in \mathcal{P}\).
+    Since \(X\) is nilpotent, \cref{normalization} says that there is a change of basis \(P : \mathbb{C}^m \to \mathbb{C}^m\) such that the vectors \(Pe_{ij}\) form a Jordan basis for \(X\), and for all but one pair \((i, j)\) we have \(\phi_a(Pe_{ij}) = 0\).
+    \par Since \((Pe_{ij})_{ij}\) is a Jordan basis, we have \((P^{-1}, I_n) A_{a,b}(P, I_n)\) for some \(a',b' \in \mathbb{C}^m\).
     All that is left is to show that \(a'\) is of the form \(e_{wr}\) for some \(w\) and \(r\).
-    Indeed, this results from the fact that \(f_{a'}(e_{ij}) = f_a(Pe_{ij}) = 0\) for all but one pair \((i,j)\).
+    Indeed, this results from the fact that \(\phi_{a'}(e_{ij}) = \phi_a(Pe_{ij}) = 0\) for all but one pair \((i,j)\).
 \end{proof}
 \begin{lemma}
     \(\mathcal{P}_{w_1r_1} = \mathcal{P}_{w_2r_2}\) exactly when either \(r_1 = r_2 = 0\), or \((\lambda_{w_1}, r_1) = (\lambda_{w_2}, r_2)\).
 \end{lemma}
 \begin{proof}
-    If \(r_1 = r_2 = 0\), we have \(e_{wr_1} = e_{wr_2} = 0\), so clearly \(\mathcal{P}_{wr_1} = \mathcal{P}_{wr_2}\).
-    And if \((\lambda_{w_1}, r_1) = (\lambda_{w_2}, r_2)\), then clearly any matrix of the form \(A_{e_{w_1r_1}b'}\) can be transformed to a matrix of the form \(A_{e_{w_2r_2}b'}\) by making the change of basis that swaps \(e_{w_1j}\) with \(e_{w_2j}\).
+    If \(r_1 = r_2 = 0\), we have \(e_{wr_1} = e_{wr_2} = 0\), so by definition, \(\mathcal{P}_{wr_1} = \mathcal{P}_{wr_2}\).
+    And if \((\lambda_{w_1}, r_1) = (\lambda_{w_2}, r_2)\), then any matrix of the form \(A_{e_{w_1r_1}b'}\) can be transformed to a matrix of the form \(A_{e_{w_2r_2}b'}\) by making the change of basis that swaps \(e_{w_1j}\) with \(e_{w_2j}\).
     \par Conversely, suppose \(\mathcal{P}_{w_1r_1} = \mathcal{P}_{w_2r_2}\).
     Let \(k \geq 0\) be minimal so that \(A_{e_{w_1r_1},0} f_1 \neq 0\).
     Obviously \(k = r_1\).
-    Since \(A_{e_{w_1r_1},0}\) and \(A_{e_{w_2r_2},0}\) differ only by a change of basis of \(\mathbb{C}^m\), the same reasoning shows that \(k = r_2\).
+    Since (by hypothesis) \(A_{e_{w_1r_1},0}\) and \(A_{e_{w_2r_2},0}\) differ only by a change of basis of \(\mathbb{C}^m\), the same reasoning shows that \(k = r_2\).
     Hence \(r_1 = r_2\).
     Now, if \(r_1 = 0\), we are done.
-    \par Otherwise, we have \(r_1 > 0\).
-    Let \(k' \geq 0\) be maximal so that \(\exists v \in \mathbb{C}^m. \; A_{e_{w_1r_1},0}^{k'} v = A_{e_{w_1r_1},0} f_1\).
+    \par Otherwise, \(r_1 > 0\).
+    Let \(k' \geq 0\) be maximal such that \(\exists v \in \mathbb{C}^m. \; A_{e_{w_1r_1},0}^{k'} v = A_{e_{w_1r_1},0} f_1\).
     Obviously \(k' = \lambda_{w_1} - r_1\).
-    Clearly \(k'\) is independent of \(\mathbb{C}^m\)-basis, so we see that \(\lambda_{w_1} - r_1 = k' = \lambda_{w_2} - r_2\).
+    Clearly \(k'\) is independent of \(\mathbb{C}^m\)-basis, so \(\lambda_{w_1} - r_1 = k' = \lambda_{w_2} - r_2\).
 \end{proof}
 
 \begin{lemma}
@@ -412,25 +411,25 @@ For convenience we write \(e_{ij} := 0\) for \(j < 1\); now we may express the f
 \end{lemma}
 \begin{proof}
     It suffices to remark that \(\{(x,y) : \exists w,r. \; x,y \in \mathcal{P}_{wr}\}\) is an equivalence relation.
-    Reflexivity is the statement of \cref{pwr_union}, and associativity and transitivity are obvious from the definition of \(\mathcal{P}_{wr}\).
+    Reflexivity is the statement of \cref{pwr_union}, and symmetry and transitivity are obvious from the definition of \(\mathcal{P}_{wr}\).
 \end{proof}
 
 Now, fix any \(w\) and \(r\).
 We will find the irreducible components of \(\mathcal{P}_{w,r}\).
-These will all happen to be equidimensional (with dimensions independent of \(w\) and \(r\)), so their closures in \(\mathcal{P}\) will be the irreducible components of \(\mathcal{P}\).
+These will all happen to be equidimensional (with dimensions independent of \(w\) and \(r\)), so their closures in \(\mathcal{P}\) will be irreducible components of \(\mathcal{P}\).
 \par Let 
-\[G := \{P \in \GL_m : P^{-1} X P = X\},\]
+\[G = \{P \in \GL_m : P X P^{-1} = X\},\]
 and
 \[G_{wr} = \{A \in G : e_{wr}A = e_{wr}\}.\]
-\par Now, define 
-\[\mathcal{Q}_{wr} = \{(A_{e_{wr}, b}, (V_i)) \in \mathcal{P}_{wr}\}.\]
+Also, define 
+\[\mathcal{Q}_{wr} = \{(A_{e_{wr}, b}, V_\bullet) \in \mathcal{P}_{wr}\}.\]
 Let \(G\) act on \(\mathcal{P}_{wr}\) by
-\[P \cdot (A_{e_{wr},b}, (V_i)) := ((P, I_n) A_{e_{wr}, b} (P, I_n)^{-1}, (P, I_n)(V_i)) = (A_{e_{wr} P^{-1}, Pb}, (P, I_n) (V_i)).\]
+\[P \cdot (A_{a,b}, V_\bullet) := ((P, I_n) A_{a, b} (P, I_n)^{-1}, (P, I_n)V_\bullet) = (A_{a P^{-1}, Pb}, (P, I_n) V_\bullet).\]
 Note that for any \(x \in \mathcal{Q}_{wr}\), we have \(G_{wr} = \{g \in G : g \cdot x \in \mathcal{Q}_{wr}\}\).
 So, by restriction of \(G\) to \(G_{wr}\) and \(\mathcal{P}_{wr}\) to \(\mathcal{Q}_{wr}\), we obtain an action of \(G_{wr}\) on \(\mathcal{Q}_{wr}\).
 \par Consider the map \(\varphi : \mathcal{Q}_{wr} \times G \to \mathcal{P}_{wr}\) defined by
 \[(x, P) \mapsto P \cdot x.\]
-Then, letting \(G_{wr}\) act on \(G\) by \(g \cdot h := hg^{-1}\), we obtain an action of \(G_{wr}\) on \(\mathcal{Q}_{wr} \times G\).
+Letting \(G_{wr}\) act on \(G\) by \(g \cdot h := hg^{-1}\), we obtain an action of \(G_{wr}\) on \(\mathcal{Q}_{wr} \times G\).
 
 \begin{lemma}\label{principal_bundle}
     The map \(\varphi\) is a principal \(G_{wr}\)-bundle.
@@ -438,44 +437,53 @@ Then, letting \(G_{wr}\) act on \(G\) by \(g \cdot h := hg^{-1}\), we obtain an 
 \begin{proof}
     We need to show that \(G_{wr}\) acts freely and transitively on the fibers of \(\varphi\).
     It is obvious that \(G_{wr}\) acts freely on \(\mathcal{Q}_{wr} \times G\); it is enough to note that it acts freely on \(G\).
+    Now we check that it acts transitively.
     \par Let \(y \in \mathcal{P}_{wr}\).
     By definition of \(\mathcal{P}_{wr}\), there is \(P_y \in G\) with \(P_y \cdot y \in \mathcal{Q}_{wr}\).
-    We have
     \begin{align*}
         \varphi^{-1}(y) = \{(x, P) : P \cdot x = y \} & = \\
         \{(P^{-1} y, P) : P^{-1} y \in \mathcal{Q}_{wr} \} & = \\
         \{((P^{-1}P_y^{-1}) \cdot (P_y \cdot y), P) : (P^{-1} P_y^{-1}) \cdot (P_y \cdot y) \in \mathcal{Q}_{wr}\} & .
     \end{align*}
-    Using that \(G_{wr} = \{g \in G : g \cdot (P_y \cdot y) = P_y \cdot y\}\), the expression above becomes
+    Since \(G_{wr} = \{g \in G : g \cdot (P_y \cdot y) \in \mathcal{Q}_{wr}\}\), the expression above becomes
     \[\{((P^{-1}P_y^{-1}) \cdot (P_y \cdot y), P) : (P^{-1} P_y^{-1}) \in G_{wr}\}.\]
-    Setting \(Q := P^{-1} P_y^{-1}\), so that \(P = P_y^{-1} Q^{-1}\), the above becomes
+    Setting \(Q := P^{-1} P_y^{-1}\), and observing that \(P = P_y^{-1} Q^{-1}\), the above becomes
     \begin{align*}
         \{(Q \cdot (P_y \cdot y), P_y^{-1} Q^{-1}) : Q \in G_{wr}\} & = \\
         \{Q \cdot (P_y \cdot y, P_y^{-1}) : Q \in G_{wr}\} & .
     \end{align*}
     Thus the fibers are exactly the \(G_{wr}\)-orbits; or in other words, \(G_{wr}\) acts transitively on the fibers, as desired.
 \end{proof}
-Our strategy is to find the irreducible components \(X \subseteq \mathcal{Q}_{wr}\), and we will then argue that the irreducible components of \(\mathcal{P}_{wr}\) are of the form \(\varphi(X \times G)\).
-So, we will now find the irreducible components of \(\mathcal{Q}_{wr}\).
-\par Actually \(\mathcal{Q}_{wr}\) might be unnecessarily difficult to think about; it is easiest in the case \(r = 0\).
+We will find the irreducible components \(X \subseteq \mathcal{Q}_{wr}\), and we then argue that the irreducible components of \(\mathcal{P}_{wr}\) are of the form \(\varphi(X \times G)\).
+So, next we find the irreducible components of \(\mathcal{Q}_{wr}\).
+\par Actually, \(\mathcal{Q}_{wr}\) is unnecessarily difficult to think about; it is easiest in the case \(r = 0\).
 So, we will change basis to make \(r = 0\).
 Let \(m' = m - r\), and \(n' = n + r\).
-Let \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_k)\).
-Let \(X' = J(\lambda)\).
-(TODO: explain that \(A'\) is like \(A\), but with \(m',n'\) taking the place of \(m,n\).)
-Let \(\mathcal{Q}' = \{(A'_{X', 0, b}, (V_i)) : \forall i. \; A_{X', 0, b} V_{i + 1} \subseteq V_i\}\).
+TODO: should not be \(\lambda_w - r\); should be \(r - 1\); fixup other things (incl. proof!) accordingly.
+Let \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_\ell)\).
+Let \(X' = J(\lambda')\).
+Let \(\mathcal{Q}' = \{(A'_{X', 0, b}, V_\bullet) : \forall i. \; A'_{X', 0, b} V_{i + 1} \subseteq V_i\}\), where
+\[A'_{X',a,b} := \begin{pNiceArray}{ccc|ccc}
+    & & & & & \vert \\
+    & X' & & & & b    \\
+    & & & & & \vert \\
+   \hline
+   \text{---} & a & \text{---} \\
+    & & & & J_{n'} & \\
+    & & &  & 
+   \end{pNiceArray} \in \gl_{m' + n'}\]
 \begin{lemma}\label{a_zero}
-    \(\mathcal{Q}_{wr} \cong \mathcal{Q}'\)
+    \(\mathcal{Q}_{wr} \cong \mathcal{Q}'\).
 \end{lemma}
 \begin{proof}
-    Let \(e_{ij}'\) be the standard Jordan basis for \(X'\).
-    Let \(f_1', ..., f_{n'}'\) be a basis for \(\mathbb{C}^n\), with \(A_{X', 0, b} f_{i + 1}' = f_i'\), and \(A_{X', 0, b} f_1 = (b, 0)\).
-    Set \(m' := m - r\), and \(n' := n + r\).
+    Let \((e_{ij}')_{1 \leq i \leq \ell, 1 \leq j \leq \lambda_i - \delta_{jw} r}\) be the standard Jordan basis for \(X'\).
+    (The \(\delta\) is the Kronecker \(\delta\).)
+    Let \(f_1', ..., f_{n'}'\) be a basis for \(\mathbb{C}^{n'}\) such that \(A_{X', 0, b} f_{i + 1}' = f_i'\), and \(A_{X', 0, b} f_1 = (b, 0)\).
     Define the linear map \(Q_{wr} : \mathbb{C}^{m' + n'} \to \mathbb{C}^{m + n}\) by:
     \begin{itemize}
-        \item For all \(i\), \(e_{ij}' \mapsto e_{ij}\).
-        \item For \(j = 1, ..., r\), \(f_{n + j}' \mapsto e_{w,(\lambda_w - r) + j}\).
-        \item For \(j = 1, ..., n\), \(f_j' \mapsto f_j + e_{w, (\lambda_w - r) - n + j}\).
+        \item For all \(i,j\), \(e_{ij}' \mapsto e_{ij}\).
+        \item For \(j = 1, ..., r\), \(f_{n + j}' \mapsto e_{w,\lambda_w + j}\).
+        \item For \(j = 1, ..., n'\), \(f_j' \mapsto f_j + e_{w, \lambda_w - n' + j}\).
     \end{itemize}
     % The inverse map \(Q_{wr}^{-1} : \mathbb{C}^{m + n} \to \mathbb{C}^{m' + n'}\) is
     % \begin{itemize}
@@ -484,17 +492,17 @@ Let \(\mathcal{Q}' = \{(A'_{X', 0, b}, (V_i)) : \forall i. \; A_{X', 0, b} V_{i 
     %     \item For \(j = 1, ..., r\), \(e_{wj} \mapsto f'_{n + j}\).
     %     \item For \(j = 1, ..., n\), \(f_j \mapsto f'_j - e_{w,\lambda_w - n + r}\)
     % \end{itemize}
-    Change of basis by \(Q_{wr}\) maps \(\mathcal{Q}_{wr}\) to \(\mathcal{Q}'\), and conjugation by \(Q_{wr}^{-1}\) maps \(\mathcal{Q}'\) to \(\mathcal{Q}_{wr}\).
+    Change of basis by \(Q_{wr}\) maps \(\mathcal{Q}'\) to \(\mathcal{Q}_{wr}\), and change of basis by \(Q_{wr}^{-1}\) maps \(\mathcal{Q}_{wr}\) to \(\mathcal{Q}'\).
 \end{proof}
 The next section finds the irreducible components of \(\mathcal{Q}'\).
-To avoid death by primes, we will refer to it as \(\mathcal{Q}\), and refer to \(m',n'\) as \(m,n\), and so on, throughout the next section.
+To make the notation nicer, we will refer to it as \(\mathcal{Q}\), and refer to \(m',n'\) as \(m,n\) (and so on), throughout the next section.
 
 \section{The components of \texorpdfstring{\(\mathcal{Q}\)}{Q}}\label{q_comp}
 \subsection{Setup}
 Let \(X = J(\lambda) \in \gl_m\).
 Let \((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}\) be the standard (Jordan) basis for \(\mathbb{C}^m\).
 Let
-\[\mathcal{Q} = \{(A_{0,b}, (V_i)) : \forall i. \; A_{0,b} V_{i + 1} \subseteq V_i\}.\]
+\[\mathcal{Q} = \{(A_{0,b}, V_\bullet) : \forall i. \; A_{0,b} V_{i + 1} \subseteq V_i\}.\]
 In this section we find the irreducible components of \(\mathcal{Q}\).
 \par We write \(b_{ij}\) to denote the projection of \(b \in \mathbb{C}^m\) onto \(e_{ij}\).
 For each row \(i\), let \(p_i(b) = \max\{j : b_{ij} \neq 0\}\) (the maximum of the empty set is zero).
@@ -527,7 +535,7 @@ Note that for any \(b \in B_{I, (\rho_i)}\) we have \(p_{i_1} > \cdots > p_{i_r}
     Take any \(b \in B_{I, (\rho_i)}\) with \(p_i = \rho_i\) for \(i \in I\) and \(p_i = 0\) for \(i \notin I\).
     It is clear that \(b \notin B_{I', (\rho_i')}\) whenever \(I' \neq I\) or \((\rho_i') \neq (\rho_i)\).
 \end{proof}
-\par Let \(\mathcal{Q}_{I, (\rho_i)} := \{(A_{0, b}, (V_i)) \in \mathcal{Q} : b \in B_{I, (\rho_i)}\}\).
+\par Let \(\mathcal{Q}_{I, (\rho_i)} := \{(A_{0, b}, V_\bullet) \in \mathcal{Q} : b \in B_{I, (\rho_i)}\}\).
 We will show that \(\mathcal{Q}_{I, (\rho_i)} \cong B_{I, (\rho_i)} \times (\textrm{some springer fiber})\).
 Then we will use the result about the irreducible components of a Springer fiber to find the irreducible components of \(\mathcal{Q}_{I, (\rho_i)}\), and the closures of these will be the irreducible components of \(\mathcal{Q}\).
 
@@ -738,11 +746,11 @@ We are interested in this thing because for any \(\alpha\), the dimension of \(X
 \begin{proof}
     For \(b \in B_{I, (\rho_i)}\), let \(P_b\) be the change-of-basis matrix, with columns given by the Jordan basis of the previous lemma, so that \(J(\mu) = P_b^{-1} A_{0,b} P_b\).
     From looking at the Jordan basis, it is clear that the map \(P : B_{I, (\rho_i)} \to \GL_{m + n}\), given by \(b \mapsto P_b\), is algebraic.
-    \par Now, we remark that the Springer fiber at \(A_{0,b}\) is simply \(\{P_b (V_i) : (V_i) \in X_\mu\}\).
+    \par Now, we remark that the Springer fiber at \(A_{0,b}\) is simply \(\{P_b V_\bullet : V_\bullet \in X_\mu\}\).
     This gives the isomorphism \(B_{I, (\rho_i)} \times X_\mu \to \mathcal{Q}_{I, (\rho_i)}\) defined by
-    \[(b, (V_i)) \mapsto (P_b J(\mu) P_b^{-1}, P_b (V_i)),\]
+    \[(b, V_\bullet) \mapsto (P_b J(\mu) P_b^{-1}, P_b V_\bullet),\]
     with inverse
-    \[(A_{0,b}, (V_i)) \mapsto (b, P_b^{-1} (V_i)).\]
+    \[(A_{0,b}, V_\bullet) \mapsto (b, P_b^{-1} V_\bullet).\]
 \end{proof}
 
 \begin{corollary}\label{u_i_rho_irred_and_dim}
@@ -773,10 +781,10 @@ We write \(\mathcal{P} := \mathcal{P}_{J(\lambda)}\), and \(A_{a,b} := A_{J(\lam
 And as before, \((e_{ij})_{ij}\) and \((f_j)_j\) form the standard basis for \(\mathbb{C}^{m + n}\).
 \subsection{The components of \texorpdfstring{\(\mathcal{Q}_{wr}\)}{Q\_\{wr\}}}
 Recall from section 5 the varieties
-\[\mathcal{Q}_{wr} = \{(A_{e_{wr}, b}, (V_i)) \in \mathcal{P}\}.\]
+\[\mathcal{Q}_{wr} = \{(A_{e_{wr}, b}, V_\bullet) \in \mathcal{P}\}.\]
 Fix any \(w,r\).
 \cref{a_zero} tells us that 
-\[\mathcal{Q}_{wr} \cong \mathcal{Q}' := \{(A'_{X', 0, b}, (V_i)) : \forall i. \; A'_{X', 0, b} V_{i + 1} \subseteq V_i\},\]
+\[\mathcal{Q}_{wr} \cong \mathcal{Q}' := \{(A'_{X', 0, b}, V_\bullet) : \forall i. \; A'_{X', 0, b} V_{i + 1} \subseteq V_i\},\]
 where \(X' = J(\lambda')\), and \(\lambda' = (\lambda_1, ..., \lambda_w - r, ..., \lambda_k)\), and \(m' = m - r\), and \(n' = n + r\).
 \par Let \((\mathcal{Q}'_{I, (\rho_i), \alpha})_{I, (\rho_i), \alpha}\) be the irreducible components of \(\mathcal{Q}'\) give by \cref{Q_comps}.
 Write \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) to denote the irreducible component of \(\mathcal{Q}_{wr}\) corresponding to \(\mathcal{Q}'_{I, (\rho_i), \alpha}\) via the isomorphism \(\mathcal{Q}_{wr} \cong \mathcal{Q}'\) of \cref{a_zero}.
@@ -864,14 +872,14 @@ From \cref{principal_bundle} we have the principal \(G_{wr}\)-bundle \(\varphi_{
 
 \section{The components of \texorpdfstring{\(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}{S x\_g N}}\label{sxn_comps}
 Recall from \cref{sn_iso} that 
-\[S \times_\mathfrak{g} \widetilde{\mathcal{N}} \cong \{(A_{X,a,b}, (U_i), (V_i)) : \forall i. \; XU_{i + 1} \subseteq U_i; \forall i. \; A_{X,a,b} V_{i + 1} \subseteq V_i\}.\]
-We defined \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}_m\) by \((A_{X,a,b}, (U_i), (V_i)) \mapsto X\), and called \(\pi^{-1}(X)\) the \(n\)-Slodowy-slice Springer fiber at \(X\).
+\[S \times_\mathfrak{g} \widetilde{\mathcal{N}} \cong \{(A_{X,a,b}, U_\bullet, V_\bullet) : \forall i. \; XU_{i + 1} \subseteq U_i; \forall i. \; A_{X,a,b} V_{i + 1} \subseteq V_i\}.\]
+We defined \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}_m\) by \((A_{X,a,b}, U_\bullet, V_\bullet) \mapsto X\), and called \(\pi^{-1}(X)\) the \(n\)-Slodowy-slice Springer fiber at \(X\).
 \begin{theorem}\label{springer_fiber_comps}
     \(\pi^{-1}(J(\lambda)) \cong \mathcal{P}_{J(\lambda)} \times X_\lambda\).
     Each irreducible component of \(\pi^{-1}(J(\lambda))\) has dimension \(\sum_{ij} \min(\lambda_i, \lambda_j)\).
 \end{theorem}
 \begin{proof}
-    The isomorphism sends \((A_{X,a,b}, (U_i), (V_i))\) to \(((A_{X, a, b}, (U_i)), (V_i))\).
+    The isomorphism sends \((A_{X,a,b}, U_\bullet, V_\bullet)\) to \(((A_{X, a, b}, U_\bullet), V_\bullet)\).
     The irreducible components of \(\mathcal{P}_{J(\lambda)}\) are given by \cref{p_comps}.
     Those of \(X_\lambda\) are given by \cref{usual_springer_fiber}.
     Adding the dimensions gives 
@@ -880,8 +888,8 @@ We defined \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}
 
 Let \(\lambda\) be any partition of \(m\).
 Let \(\GL_m \times \{I_n\}\) act on \(\pi^{-1}(J(\lambda))\) by conjugation; that is,
-\[(P, I_n) \cdot (A_{X, a, b}, (U_i), (V_i)) := \]
-\[((P,I_n)A_{X,a,b}(P,I_n)^{-1},(P,I_n)(U_i), (P,I_n)(V_i)).\]
+\[(P, I_n) \cdot (A_{X, a, b}, U_\bullet, V_\bullet) := \]
+\[((P,I_n)A_{X,a,b}(P,I_n)^{-1},(P,I_n)U_\bullet, (P,I_n)V_\bullet).\]
 Let 
 \[K = \{(g, I_n) \in \GL_m \times \{I_n\} : gXg^{-1} = X\}.\]
 
