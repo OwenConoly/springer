@@ -158,7 +158,8 @@ Thank you also to the organizers of the MIT math department's UROP+ program, and
 \section{Preliminary Definitions and Facts}\label{prelim}
 \subsection{Conventions and Notations}
 We write \(\GL_m, \spl_m\) to denote \(\GL_m(\mathbb{C}), \spl_m(\mathbb{C})\), and so on.
-By \(J_m\) we refer to the nilpotent \(m \times m\) Jordan block (which has ones \emph{below} the diagonal).
+The notation \(\mathfrak{z}_\mathfrak{h}(X)\) denotes the centralizer of \(X\) in the Lie algebra \(\mathfrak{h}\).
+\par By \(J_m\) we refer to the nilpotent \(m \times m\) Jordan block (which has ones \emph{below} the diagonal).
 Given a partition \(\lambda = (\lambda_1, ..., \lambda_\ell)\), we write \(J(\lambda)\) to denote the block matrix
 \[\begin{pmatrix}
     J_{\lambda_1} \\
@@ -206,12 +207,11 @@ Thus, we may write the Springer fiber at \(X\) in terms of flags, as
 \end{theorem}
 
 \subsection{Slodowy Slices}
-
 A basis for \(\spl_2\) is
 \[e' := \begin{pmatrix}0 & 1 \\ 0 & 0 \\\end{pmatrix}, h' := \begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix}, f' := \begin{pmatrix}0 & 0 \\1 & 0\end{pmatrix}.\]
 Given a Lie algebra \(\mathfrak{h}\) and a homomorphism \(\phi : \spl_2 \to \mathfrak{h}\) sending \((e', h', f')\) to \((e, h, f)\), we say that \((e, h, f)\) is an \emph{\(\spl_2\)-triple}.
 If \(\mathfrak{h}\) is semisimple, then given any nilpotent \(e \in \mathfrak{h}\), the Jacobson-Morozov theorem \cite[3.7.1]{ehf} says that there exist \(h, f \in \mathfrak{h}\) such that \((e, h, f)\) is an \(\spl_2\)-triple.
-\par Given \((e, h, f)\), we define the \emph{Slodowy slice at \(e\)} as \(S_e = e + \ker \ad_f\).
+\par Given \((e, h, f)\), we define the \emph{Slodowy slice at \(e\)} as \(S_e = e + \mathfrak{z}_\mathfrak{h}(f)\).
 By the Jacobson-Morozov theorem, if \(\mathfrak{h}\) is semisimple, then we can always find a Slodowy slice at any nilpotent \(e \in \mathfrak{h}\).
 In particular, we can find a Slodowy slice at any nilpotent \(e \in \gl_n\), since \(\spl_n \subseteq \gl_n\) is semisimple and contains every nilpotent element of \(\gl_n\).
 
@@ -269,7 +269,7 @@ Now, we can use our expression for \(f\) in terms of \(h\) to obtain
 \end{proof}
 
 \section{Finding \texorpdfstring{\(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}{S x\_g N}}\label{find_sxn}
-\subsection{Finding the Slodowy slice \texorpdfstring{\(S\)}{S}}
+\subsection{Finding the Slodowy Slice \texorpdfstring{\(S\)}{S}}
 In the previous section we computed the principal \(\spl_2\)-triple \((e, h, f)\) in \(\gl_n\).
 Embedding this into \(\gl_{m + n}\) as described previously, we obtain
 \[(E, H, F) = \left(\begin{pmatrix}0 & 0 \\0 & e\end{pmatrix}, \begin{pmatrix}0 & 0 \\0 & h\end{pmatrix}, \begin{pmatrix}0 & 0 \\0 & f\end{pmatrix}\right).\]
