@@ -218,7 +218,7 @@ In particular, we can find a Slodowy slice at any nilpotent \(e \in \gl_n\), sin
 \section{Principal \texorpdfstring{\(\spl_2\)}{sl\_2}-triples in \texorpdfstring{\(\gl_n\)}{gl\_n}}\label{principal_sl2}
 The unique nilpotent regular element of \(\gl_n\) (up to similarity) is \(J_n\).
 In this section we show that, in fact, there is a unique (up to similarity) principal \(\spl_2\)-triple in \(\gl_n\).
-Write \(e = J_n\).
+Let \(e = J_n\).
 \begin{lemma}\label{simple_sl2_triple}
     There is exactly one way to choose \(h, f \in \gl_n\) so that \((e, h, f)\) is an \(\spl_2\)-triple.
 \end{lemma}
@@ -228,39 +228,43 @@ Note that \([h', e'] = 2e'\), and \([e', f'] = h'\), and \([h', f'] = -2f'\).
 Thus \(e, h, f\) must obey the same relations.
 In particular, \(he - eh = 2e\).  
 The matrix \(eh\) is \(h\) shifted down one, and \(he\) is \(h\) shifted left one.
-% Thus, \(2e_{ij} = (he - eh)_{ij} = h_{i, j + 1} - h_{i - 1, j}\).
-We can use this to show that \(h_{ij} = 0\) when \(i \neq j\).
-Then we can use it to show that \(h_{ii} = h_{i - 1, i - 1} + 2\), so that \(h_{ii} = h_{11} + 2(i - 1)\).
-\par Similarly, from \([e, f] = h\) we get that \(h_{ij} = (ef - fe)_{ij} = f_{i - 1, j} - f_{i, j + 1}\).
-We can use this to show that \(f_{ij} = 0\) when \(j \neq i + 1\).
-Then we can use it to show that \(f_{i,i + 1} = f_{i + 1, i + 2} + h_{i + 1, i + 1}\), that \(f_{1,2} = -h_{1, 1}\), and that \(f_{n - 1, n} = h_{n,n}\).
-From the first equation we find that
-\[-h_{1,1} = f_{1, 2} = f_{n - 1, n} + \sum_{i = 1}^{n - 1} h_{ii} = \sum_{i = 1}^{n} h_{ii} \implies\]
-\[\sum_i h_{ii} = 0.\]
-(That is, \(h \in \spl_n\).)
-This shows that \(h_{11} = n - 1, h_{22} = n - 3, ..., h_{nn} = 1 - n\).
+So, \([h,e] = 2e\) implies that \(h_{ij} = 0\), except when \(i = j\) or \((i,j) = (n,1)\).
+It also implies that \(h_{ii} = h_{i - 1, i - 1} + 2\), and hence \(h_{ii} = h_{11} + 2(i - 1)\).
+\par Similarly, \(ef - fe = h\); this implies that \(f_{ij} = 0\), except when \(j = i + 1\) or \((i,j) = (n,1)\).
+Also, \(f_{i,i + 1} = f_{i + 1, i + 2} + h_{i + 1, i + 1}\), and \(f_{1,2} = -h_{1, 1}\), and \(f_{n - 1, n} = h_{n,n}\).
+Putting these equations together,
+\begin{align*}
+    h_{nn} + h_{11} & = \\
+    f_{n - 1,n} - f_{1,2} & = \\
+    \sum_{i = 1}^{n - 2} (f_{i + 1, i + 2} - f_{i,i + 1}) & = \\
+    - \sum_{i = 1}^{n - 2} h_{i + 1, i + 1} & .
+\end{align*}
+That is, \(h \in \spl_n\).
+This shows that \(h_{11} = 1 - n, h_{22} = 3 - n, ..., h_{nn} = n - 1\).
+\par Now that we have mostly determined \(h\) and \(f\), looking at \([e,f] = h\) and \([h,f] = -2f\) shows that \(h_{n,1} = f_{n,1} = 0\).
 So we have determined \(h\); it is 
 \[h = \begin{pmatrix}
-    n - 1  & \\
-    & n - 3 \\
+    1 - n  & \\
+    & 3 - n \\
     & & \ddots \\
-    & & & 3 - n \\
-    & & & & 1 - n 
+    & & & n - 3 \\
+    & & & & n - 1 
 \end{pmatrix}.\]
 Now, we can use our expression for \(f\) in terms of \(h\) to obtain
 \[f = \begin{pmatrix}
-    0 & 1 - n \\
-    & 0 & (1 - n) + (3 - n) \\
+    0 & n - 1 \\
+    & 0 & (n - 1) + (n - 3) \\
     & & \ddots & \ddots \\
-    & & & 0 & (1 - n) + \cdots + (n - 1) \\
+    & & & 0 & (n - 1) + \cdots + (3 - n) \\
     & & & & 0
 \end{pmatrix} = \]
 \[\begin{pmatrix}
-    0 & 1 (1 - n) \\
-      & 0 & 2 (2 - n) \\
-    & & 0 & (n - 2) (-2) \\
-    & & & 0 & (n - 1) (-1)\\
-    & &  & & 0
+    0 & (1) (n - 1) \\
+      & 0 & (2) (n - 2) \\
+      & & \ddots & \ddots & \\
+    & & & 0 & (-2)(n - 2) \\
+    & & & & 0 & (-1)(n - 1)\\
+    & &  & & & 0
 \end{pmatrix}.\]
 \end{proof}
 
