@@ -169,17 +169,17 @@ A partition is always indexed in nonincreasing order, even if it is written down
 For example, if \(\mu = (4, 6, 3)\), then \((\mu_1, \mu_2, \mu_3) = (6, 4, 3)\).
 \par Throughout the paper, when a nilpotent operator \(X : \mathbb{C}^m \to \mathbb{C}^m\) of shape \(\lambda = (\lambda_1, ..., \lambda_\ell) \vdash m\) is in the context, we write \((e_{ij})_{1 \leq i \leq \ell, 1 \leq j \leq \lambda_i}\) to denote a Jordan basis of \(\mathbb{C}^m\) with the property that for all \(i,j\) we have \(Xe_{ij} = e_{i,j - 1}\).
 (By convention, \(e_{ij} := 0\) for \(j < 1\), so that condition makes sense.)
-Also, we will write \(f_n, ..., f_1\) to denote the basis of \(\mathbb{C}^n\) with the property that \(J_n f_i = f_{i - 1}\).
+Also, we write \(f_n, ..., f_1\) to denote the basis of \(\mathbb{C}^n\) with the property that \(J_n f_i = f_{i - 1}\).
 
-\subsection{Springer fibers}
+\subsection{Springer Fibers}
 Let \(\mathfrak{h}\) be a Lie algebra, let \(\mathcal{N}_\mathfrak{h} \subseteq \mathfrak{h}\) be the nilpotent cone in \(\mathfrak{h}\), and let \(\mathcal{B}_\mathfrak{h}\) be the variety of Borel subalgebras of \(\mathfrak{h}\).
 Let \(\widetilde{\mathcal{N}}_\mathfrak{h} = \{(\mathfrak{b}, n) \in \mathcal{B}_\mathfrak{h} \times \mathcal{N}_\mathfrak{h} : n \in \mathfrak{b}\}\).
 Let \(\pi_\mathfrak{h} : \widetilde{\mathcal{N}}_\mathfrak{h} \to \mathcal{N}_\mathfrak{h}\) be the projection onto the second coordinate.
-We call this the \emph{Springer resolution}.
+We call \(\pi_\mathfrak{h}\) the \emph{Springer resolution}.
 For \(n \in \mathcal{N}_\mathfrak{h}\), we call \(\pi_\mathfrak{h}^{-1}(n)\) the \emph{Springer fiber at \(n\)}.
 
-\subsection{Springer fibers in \texorpdfstring{\(\gl_m\)}{gl\_m}}
-Let \(\mathcal{N}_m\) be the nilpotent cone in \(\gl_m\), and let \(\mathcal{B}_m\) the variety of Borel subalgebras of \(\gl_m\).
+\subsection{Springer Fibers in \texorpdfstring{\(\gl_m\)}{gl\_m}}
+Let \(\mathcal{N}_m\) be the nilpotent cone in \(\gl_m\), and let \(\mathcal{B}_m\) be the variety of Borel subalgebras of \(\gl_m\).
 Let \(\mathfrak{h} \subseteq \gl_m\) be the subalgebra of upper triangular matrices.
 The variety of Borel subalgebras of \(\gl_m\) is \(\mathcal{B}_m = \{g\mathfrak{h}g^{-1} : g \in \GL_m\}\).
 Thus, the Springer fiber at \(X \in \mathcal{N}_m\) is 
@@ -195,10 +195,10 @@ For \(X \in \gl_m\), we have [\(X \in \mathcal{N}_m\), and \(X\) preserves \(V_\
 The subalgebra \(\mathfrak{h}\) is exactly the subset of \(\gl_m\) which preserves \(E_\bullet\).
 So, we can think of \(\mathcal{B}_m\) as the variety of flags of \(\mathbb{C}^m\), via the correspondence 
 \[g\mathfrak{h}g^{-1} \leftrightarrow g \cdot E_\bullet.\]
-(\(\GL_m\) acts on the set of flags via \((g \cdot V_\bullet)_j = gV_j\).)
+(\(\GL_m\) acts on the set of flags via \((g \cdot V_\bullet)_j := gV_j\).)
 Note that \(X\) preserves \(g \cdot E_\bullet\) if and only if \(X \in g \mathfrak{h} g^{-1}\).
 Thus, we may write the Springer fiber at \(X\) in terms of flags, as 
-\[\mathcal{F}_X = \{g \cdot E_\bullet : X \in gHg^{-1}\} = \{V_\bullet : \forall i. \; XV_i \subseteq V_{i - 1}\}.\]
+\[\mathcal{F}_X = \{g \cdot E_\bullet : g \in \GL_m; X \in gHg^{-1}\} = \{V_\bullet : \forall i. \; XV_{i + 1} \subseteq V_i\}.\]
 
 \begin{theorem}[{\cite[2.1]{springer_fiber}}]\label{usual_springer_fiber}
     The irreducible components of the Springer fiber at \(J(\mu)\) are in bijection with the standard Young tableaus of shape \(\mu\).
@@ -211,11 +211,11 @@ A basis for \(\spl_2\) is
 \[e' := \begin{pmatrix}0 & 1 \\ 0 & 0 \\\end{pmatrix}, h' := \begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix}, f' := \begin{pmatrix}0 & 0 \\1 & 0\end{pmatrix}.\]
 Given a Lie algebra \(\mathfrak{h}\) and a homomorphism \(\phi : \spl_2 \to \mathfrak{h}\) sending \((e', h', f')\) to \((e, h, f)\), we say that \((e, h, f)\) is an \emph{\(\spl_2\)-triple}.
 If \(\mathfrak{h}\) is semisimple, then given any nilpotent \(e \in \mathfrak{h}\), the Jacobson-Morozov theorem \cite[3.7.1]{ehf} says that there exist \(h, f \in \mathfrak{h}\) such that \((e, h, f)\) is an \(\spl_2\)-triple.
-\par Given \((e, h, f)\), we define the \emph{Slodowy slice at \(e\)} as \(S_e := e + \ker \ad_f\).
-By the Jacobson-Morozov theorem, we can always find a Slodowy slice at any nilpotent \(e \in \mathfrak{h}\), whenever \(\mathfrak{h}\) is semisimple.
+\par Given \((e, h, f)\), we define the \emph{Slodowy slice at \(e\)} as \(S_e = e + \ker \ad_f\).
+By the Jacobson-Morozov theorem, if \(\mathfrak{h}\) is semisimple, then we can always find a Slodowy slice at any nilpotent \(e \in \mathfrak{h}\).
 In particular, we can find a Slodowy slice at any nilpotent \(e \in \gl_n\), since \(\spl_n \subseteq \gl_n\) is semisimple and contains every nilpotent element of \(\gl_n\).
 
-\section{Principal \texorpdfstring{\(\spl_2\)}{sl\_2}-triple in \texorpdfstring{\(\gl_n\)}{gl\_n}}\label{principal_sl2}
+\section{Principal \texorpdfstring{\(\spl_2\)}{sl\_2}-triples in \texorpdfstring{\(\gl_n\)}{gl\_n}}\label{principal_sl2}
 The unique nilpotent regular element of \(\gl_n\) (up to similarity) is \(J_n\).
 In this section we show that, in fact, there is a unique (up to similarity) principal \(\spl_2\)-triple in \(\gl_n\).
 Write \(e = J_n\).
