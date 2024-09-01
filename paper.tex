@@ -82,76 +82,60 @@ Project Suggested by: Haoshuo Fu
 
 \maketitle
 \begin{abstract}
-    Let \(e\), be a regular nilpotent element of \(\gl_n\), \(n \geq 1\).
-    We consider the Slodowy slice \(S\) at the element \((0, e) \in \gl_m \times \gl_n \subseteq \gl_{m + n}\).
-    We define the \emph{Springer fiber of S} at a nilpotent \(X \in \gl_m\) as consisting of the following data: some \(Y \in S\), along with an element of the usual Springer fiber at \((X, Y) \in \gl_m \times \gl_{m + n}\).
+    Let \(n \geq 1\), and let \(e\) be a regular nilpotent element of \(\gl_n\).
+    Let \(m \geq 0\), and consider the Slodowy slice \(S\) at the element \((0, e) \in \gl_m \times \gl_n \subseteq \gl_{m + n}\).
+    We define the \emph{Springer fiber of S} at a nilpotent \(X \in \gl_m\) as consisting of the following data: an element \(Y \in S\) which projects to \(X\) coordinate-wise, along with an element of the usual Springer fiber at \((X, Y) \in \gl_m \times \gl_{m + n}\).
     The main result of this paper is finding the (equidimensional) irreducible components of a Springer fiber of \(S\).
     To do this, we use a well-known result classifying the irreducible components of the usual Springer fiber at a nilpotent element of \(\gl_m\).
     We then use our result to find the (equidimensional) irreducible components of the variety consisting of pairs \((X, \mathcal{F})\), where \(X \in \gl_m\) is nilpotent and \(\mathcal{F}\) is an element of the Springer fiber of \(S\) at \(X\).
     We conjecture that there is a correspondence, akin to the geometric RSK correspondence, between irreducible components of this last variety and certain pairs of standard Young tableaux. 
-    and use this to study another variety.
 \end{abstract}
 
 \tableofcontents
 
 \section{Introduction}
-Let \(\mathfrak{g} = \gl_m \times \gl_{m + n}\), with \(n > 0\).
-% The nilpotent cone in \(\mathfrak{g}\) is \(\mathcal{N} = \mathcal{N}_m \times \mathcal{N}_{m + n}\), where \(\mathcal{N}_m\) and \(\mathcal{N}_{m + n}\) are the nilpotent cones in \(\gl_m\) and \(\gl_{m + n}\) respectively.
-% Let \(\mathcal{B}_m\) and \(\mathcal{B}_{m + n}\) be the varieties of Borel subalgebras of \(\gl_m\) and \(\gl_n\) respectively.
-% The variety of Borel subalgebras of \(\mathcal{N}\) is \(\mathcal{B} = \mathcal{B}_m \times \mathcal{B}_{m + n}\).
-% Let
-% \[\widetilde{\mathcal{N}} := \{(\mathfrak{b}, n) \in \mathcal{B} \times \mathcal{N} : n \in \mathfrak{b}\} = \]
-% \[\{(\mathfrak{b}_m, \mathfrak{b}_{m + n}, n_m, n_{m + n}) \in \mathcal{B}_m \times \mathcal{B}_{m + n} \times \mathcal{N}_m \times \mathcal{N}_{m + n} : n_m \in \mathfrak{b}_m, n_{m + n} \in \mathfrak{b}_{m + n}\}.\]
-Let \(\pi : \widetilde{\mathcal{N}} \to \mathcal{N} \hookrightarrow \mathfrak{g}\) be the Springer resolution.
-\par Let \((e, h, f)\) be the principal \(\spl_2\)-triple in \(\gl_n\).
+Let \(m \geq 0, n \geq 1\), and define \(\mathfrak{g} = \gl_m \times \gl_{m + n}\).
+Let \(\mathcal{N}\) be the nilpotent cone in \(\mathfrak{g}\), and let \(\widetilde{\mathcal{N}} \to \mathcal{N}\) be the Springer resolution.
+\par Let \((e, h, f)\) be a principal \(\spl_2\)-triple in \(\gl_n\).
 We have an embedding \(\gl_n \hookrightarrow \gl_m \times \gl_n \hookrightarrow \gl_{m + n}\).
 Let \((E, H, F)\) be the \(\spl_2\)-triple in \(\gl_{m + n}\) which is the image of \((e, h, f)\) via this embedding.
 Let \(S\) be the Slodowy slice \(E + \mathfrak{z}_{\gl_m}(F)\).
 We have a map \(\gl_{m + n} \to \gl_m\) given by coordinate projection.
-Restricting to \(S\), we obtain \(f_1 : S \to \gl_m\).
-(It turns out that this map is surjective.)
-Then, we obtain \(p_1 : S \to \mathfrak{g}\) by \(x \mapsto (x, f_1(x))\).
-Taking the map \(p_1 : S \to \mathfrak{g}\) and the Springer resolution \(\widetilde{\mathcal{N}} \to \mathfrak{g}\), we obtain a fibred product \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
+Restricting to \(S\), we obtain a projection \(p' : S \to \gl_m\).
+(It turns out that \(p'\) is surjective.)
+Then, we obtain \(p : S \to \mathfrak{g}\) by \(x \mapsto (x, p'(x))\).
+Taking the map \(p : S \to \mathfrak{g}\) and the Springer resolution \(\widetilde{\mathcal{N}} \to \mathfrak{g}\), we obtain a fibred product \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
 \par In this paper we study \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
-% The first few sections will be finding what it looks like (in particular, what are the elements of \(S\) which project to nilpotent elements of \(\mathfrak{g}\)), and then we will find the irreducible components of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
-As a step towards studying \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\), we consider the map \(S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \gl_m\) given by taking the map to \(\mathfrak{g}\) and then projecting to \(\gl_m\).
-The main section of this paper will study the fibers of this map.
-Given \(X \in \mathcal{N}_m \subseteq \gl_m\), we call the fiber at \(X\) the \emph{\(n\)-Slodowy-slice Springer fiber at \(X\)}.
-\par Before talking about future work, say what is the main result of the paper.
+As a step towards studying \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\), we consider the map \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}_m\) given by taking the map to \(\mathfrak{g}\) and then projecting to \(\gl_m\).
+Given \(X \in \mathcal{N}_m\), we call \(\pi^{-1}(X)\) the \emph{\(n\)-Slodowy-slice Springer fiber at \(X\)}.
+\par The main result of this paper is a classification of the irreducible components of an \(n\)-Slodowy-slice Springer fiber.
+Then we use this result to determine the irreducible components of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
 
 \subsection{Future Work}
-We describe a possible extension to this work and an application to representation theory.
+We describe a possible extension of the result of this paper, as well as an application to representation theory.
 \par The \emph{Steinberg variety} of a Lie algebra \(\mathfrak{h}\) is \(\St_\mathfrak{h} = \widetilde{\mathcal{N}}_\mathfrak{h} \times_\mathfrak{h} \widetilde{\mathcal{N}}_\mathfrak{h}\), where the map \(\widetilde{\mathcal{N}}_\mathfrak{h} \to \mathfrak{h}\) is the Springer resolution.
-For nice (TODO: how nice?) \(\mathfrak{h}\), there is a correspondence between the Weyl group of \(\mathfrak{h}\) and irreducible components of \(\St_\mathfrak{h}\)\cite{zhiweiyun}[1.5.10].
+There is a bijective correspondence between the Weyl group of \(\gl_m\) and irreducible components of \(\St_\mathfrak{\gl_m}\)(see \cite{ehf}[3.6] for details).
 \par There is a nice bijection between \(\St_{\gl_m}\) and the set \(T_m = \{(t_1, t_2) : \lambda \vdash m; t_1, t_2 \in \mathrm{SYT}(\lambda)\}\).
 (Note that \(\mathrm{SYT}(\lambda)\) denotes the set of standard Young tableaux of shape \(\lambda\).)
-One way to obtain this bijection is as follows.
-First take the aforementioned correspondence between \(\St_{\gl_m}\) and the Weyl group of \(\gl_m\)---the Weyl group of \(\gl_m\) is the symmetric group \(S_m\).
-Then take the Robinson-Schensted-Knuth correspondence, which is a bijection between \(S_m\) and \(T_m\).
-More details about the the correspondence \(\St_{\gl_m} \leftrightarrow T_m\) can be found in \cite{wolff}.
-\par An element of \(\St_{\gl_m}\) consists of a triple \((X, \mathfrak{b}_1, \mathfrak{b}_2)\), where \(\mathfrak{b}_1\) and \(\mathfrak{b}_2\) are elements of the Springer fiber at \(X\).
+One way to obtain such a bijection is as follows.
+First take the aforementioned correspondence between \(\St_{\gl_m}\) and the Weyl group \(S_m\) of \(\gl_m\).
+Then take the Robinson-Schensted-Knuth (RSK) correspondence, which gives a bijection between \(S_m\) and \(T_m\).
+A more direct and illuminating explanation of the correspondence \(\St_{\gl_m} \leftrightarrow T_m\) is given by the geometric RSK correspondence, as described in \cite{geomRSK}.
+\par An element of \(\St_{\gl_m}\) is a triple \((X, \mathfrak{b}_1, \mathfrak{b}_2)\), where \(\mathfrak{b}_1\) and \(\mathfrak{b}_2\) are elements of the Springer fiber at \(X\).
 When the Jordan form of \(X\) has shape \(\lambda\), the correspondence sends this triple to a pair \((t_1, t_2)\), where both are of shape \(\lambda\).
-\par Somewhat similarly, we will show that an element of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) consists of a tuple \((X, Y, \mathfrak{b}_1, \mathfrak{b}_2)\), where \(X \in \mathcal{N}_m, Y \in \mathcal{N}_{m + n}\), and \(\mathfrak{b}_1, \mathfrak{b}_2\) are elements of the Springer fiber at \(X, Y\) respectively.
-(Some nontrivial relation will hold between \(X\) and \(Y\), but we ignore that for now.)
+\par Somewhat similarly, we will show that an element of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) is a subset of the set of tuples \((X, Y, \mathfrak{b}_1, \mathfrak{b}_2)\), where \(X \in \mathcal{N}_m, Y \in \mathcal{N}_{m + n}\), and \(\mathfrak{b}_1, \mathfrak{b}_2\) are elements of the Springer fiber at \(X, Y\) respectively.
 For any given relation \(R \subseteq \{\lambda : \lambda \vdash m\} \times \{\mu : \mu \vdash (m + n)\}\), we can define 
 \[T_{m,n} = \{(t_1, t_2) : \lambda \vdash m; \mu \vdash (m + n); t_1 \in \mathrm{SYT}(\lambda); t_2 \in \mathrm{SYT}(\mu); R(\lambda, \mu)\}.\]
-We conjecture that there is a correspondence, analogous to \(\St_{\gl_m} \leftrightarrow T_m\), between \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) and \(T_{m,n}\) (for some appropriate choice of the relation \(R\)).
+We conjecture that, for some appropriate choice of the relation \(R\), there is a correspondence, analogous to \(\St_{\gl_m} \leftrightarrow T_m\), between \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) and \(T_{m,n}\).
 An extension of this project would determine the details of this correspondence.
-\par Given \(C \in \Irr(\St_{\gl_m})\), we can first map it to the corresponding \((t_1, t_2) \in T_m\), and then obtain an element of \(\End(\mathbb{C}[\mathrm{SYT}(\lambda)])\) by taking the map which sends \(t_1 \mapsto t_2\) and \(t' \mapsto 0\) for \(t' \in \mathrm{SYT}(\lambda) \setminus \{t_1\}\).
+\par Given an irreducible component \(C \in \Irr(\St_{\gl_m})\), we can first map it to the corresponding \((t_1, t_2) \in T_m\), and then obtain an element of \(\End(\mathbb{C}[\mathrm{SYT}(\lambda)])\) by taking the map which sends \(t_1 \mapsto t_2\) and \(t' \mapsto 0\) for \(t' \in \mathrm{SYT}(\lambda) \setminus \{t_1\}\).
 In this way, we obtain a \(\mathbb{C}\)-algebra isomorphism
-\[\mathbb{C}[\Irr(\widetilde{\mathcal{N}} \times_\mathfrak{g} \widetilde{\mathcal{N}})] \cong \bigoplus_{\lambda \vdash m} \End(\mathbb{C}[\mathrm{SYT}(\lambda))).\]
-This is an instance of the fact that for any finite group \(G\), we have \(\mathbb{C}[G] \cong \bigoplus_{V \in \irrrep(G)} \End(\mathbb{C}[\mathrm{SYT}(\lambda)])\).
-\par If we found a correspondence \(S \times_\mathfrak{g} \widetilde{\mathcal{N}} \leftrightarrow T_{m,n}\), this could give an analogous isomorphism 
+\[\mathbb{C}[\Irr(\St_{\mathfrak{\gl_m}})] \cong \bigoplus_{\lambda \vdash m} \End(\mathbb{C}[\mathrm{SYT}(\lambda))).\]
+This is an instance of the fact that for any finite group \(G\), we have \(\mathbb{C}[G] \cong \bigoplus_{V \in \irrrep(G)} \End(V)\).
+\par If we had a correspondence \(S \times_\mathfrak{g} \widetilde{\mathcal{N}} \leftrightarrow T_{m,n}\), this could give an analogous isomorphism 
 \[\mathbb{C}[\Irr(S \times_\mathfrak{g} \widetilde{\mathcal{N}})] \cong \bigoplus_{(\lambda, \mu) \in R} \Hom(\mathbb{C}[\mathrm{SYT}(\lambda)], \mathbb{C}[\mathrm{SYT}(\mu)]),\]
-which would be an isomorphism of \(\mathbb{C}[S_m]\)- or \(\mathbb{C}[S_{m + n}]\)-modules instead of \(\mathbb{C}\)-algebras.
+which would be an isomorphism of \(\mathbb{C}[S_m]\)- or \(\mathbb{C}[S_{m + n}]\)-modules rather than \(\mathbb{C}\)-algebras.
 (To give the RHS the structure of a \(\mathbb{C}[S_m]\)-module, we just view \(\mathbb{C}[\mathrm{SYT}(\lambda)]\) as a representation of \(S_m\) in the standard way.)
-% \par irreducble components have module structure of group algebra of Sn.
-% has applications to representation theory.
-% write about this here.
-% The paper (TODO: cite) describes a bijection between the Steinberg variety (which is blah) and pairs of standard Young tableaux (each having shape blah).
-% The variety \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) looks something like the Steinberg variety.
-% Maybe there is a similar correspondence, between elements of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) and pairs of standard Young tableaux: one having the shape of the Jordan form of \(X\), one having the shape of the Jordan form of \(A_{X, a, b}\).
-
 
 \subsection{Overview}
 \par Section 2 reviews some preliminary material.
