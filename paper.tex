@@ -501,16 +501,16 @@ To make the notation nicer, we will refer to it as \(\mathcal{Q}\), and refer to
 \section{The components of \texorpdfstring{\(\mathcal{Q}\)}{Q}}\label{q_comp}
 \subsection{Setup}
 Let \(X = J(\lambda) \in \gl_m\).
-Let \((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}\) be the standard (Jordan) basis for \(\mathbb{C}^m\).
+Let \((e_{ij})_{1 \leq i \leq \ell, 1 \leq j \leq \lambda_i}\) be the standard (Jordan) basis for \(\mathbb{C}^m\).
 Let
 \[\mathcal{Q} = \{(A_{0,b}, V_\bullet) : \forall i. \; A_{0,b} V_{i + 1} \subseteq V_i\}.\]
 In this section we find the irreducible components of \(\mathcal{Q}\).
 \par We write \(b_{ij}\) to denote the projection of \(b \in \mathbb{C}^m\) onto \(e_{ij}\).
-For each row \(i\), let \(p_i(b) = \max\{j : b_{ij} \neq 0\}\) (the maximum of the empty set is zero).
+For each row \(i\), let \(p_i(b) = \max\{j : b_{ij} \neq 0\}\) (by convention, the max of the empty set is zero).
 Then set \(q_i(b) = \lambda_i - p_i(b)\).
 When it is clear enough from context where the \(b\) is coming from, we will just write \(p_i\) and \(q_i\) instead of \(p_i(b)\) and \(q_i(b)\).
-\par Let \(I = \{i_1 < \cdots < i_r\} \subseteq \{1, ..., k\}\), and let \((\rho_i)_{i \in I}\) be any map \(I \to \mathbb{N}_{> 0}\) such that (1) \(\rho_i \leq \lambda_i\), (2) \(\rho_i\) is decreasing with \(i\), (3) \(\lambda_i - \rho_i\) is decreasing with \(i\), and (4) \(\rho_i < n\).
-For notational convenience (although we assign meaning to neither \(i_0\) nor \(i_{r + 1}\)), we define \(q_{i_0} := n\), and \(p_{i_{r + 1}} := 0\).
+\par Let \(I = \{i_1 < \cdots < i_r\} \subseteq \{1, ..., \ell\}\), and let \((\rho_i)_{i \in I}\) be any function \(I \to \mathbb{N}_{> 0}\) such that (1) \(\rho_i \leq \lambda_i\), (2) \(\rho_i\) is decreasing with \(i\), (3) \(\lambda_i - \rho_i\) is decreasing with \(i\), and (4) \(\rho_i < n\).
+For notational convenience---although we assign meaning to neither \(i_0\) nor \(i_{r + 1}\)---we define \(q_{i_0} := n\), and \(p_{i_{r + 1}} := 0\).
 Then, we define \(B_{I, (\rho_i)}\) as the set of \(b \in \mathbb{C}^m\) satisfying the following conditions.
 \begin{itemize}
     \item For all \(k \in \{1, ..., r\}\), \(p_i = \rho_i\).
@@ -519,7 +519,7 @@ Then, we define \(B_{I, (\rho_i)}\) as the set of \(b \in \mathbb{C}^m\) satisfy
 Note that for any \(b \in B_{I, (\rho_i)}\) we have \(p_{i_1} > \cdots > p_{i_r} > p_{i_{r + 1}}\), and also \(q_{i_0} > q_{i_1} > \cdots > q_{i_r}\).
 
 \begin{lemma}\label{bs_union}
-    \(\mathbb{C}^m = \bigcup_{I, (\rho_i)} B_{I, (\rho_i)}\), where \(I\) ranges over all subsets of \(\{1, ..., k\}\), and \((\rho_i)\) ranges over all maps \(I \to \mathbb{N}_{>0}\) satisfying the conditions (1),(2),(3),(4).
+    \(\mathbb{C}^m = \bigcup_{I, (\rho_i)} B_{I, (\rho_i)}\), where \(I\) ranges over all subsets of \(\{1, ..., \ell\}\), and \((\rho_i)\) ranges over all maps \(I \to \mathbb{N}_{>0}\) satisfying conditions (1),(2),(3),(4).
     Further, none of the \(B_{I, (\rho_i)}\) is contained in the union of the others.
 \end{lemma}
 \begin{proof}
@@ -528,17 +528,17 @@ Note that for any \(b \in B_{I, (\rho_i)}\) we have \(p_{i_1} > \cdots > p_{i_r}
     Otherwise, take any \(i_1 \in \argmax_{i : q_{i_0} > q_i} p_i\), and set \(\rho_{i_1} := p_{i_1}\).
     If \(\{i : q_{i_1} > q_i\} = \emptyset\), then stop.
     Otherwise, take any \(i_2 \in \argmax_{i : q_{i_1} > q_i} p_i\), and set \(\rho_{i_2} := p_{i_2}\).
-    Continuing on in this way, eventually we reach a \(k\) where \(\{i : q_{i_k} > q_i\} = \emptyset\).
-    Then we set \(I = \{i_1, ..., i_k\}\).
+    Continuing on in this way, eventually we reach an \(r\) where \(\{i : q_{i_r} > q_i\} = \emptyset\).
+    Then we set \(I = \{i_1, ..., i_r\}\).
     Note that \(I, (\rho_i)\) satisfy conditions (1)--(4), and furthermore \(b \in B_{I, (\rho_i)}\).
     \par Now, we check that no \(B_{I, (\rho_i)}\) is contained in the union of the others.
     Fix \(I\) and \((\rho_i)\).
     Take any \(b \in B_{I, (\rho_i)}\) with \(p_i = \rho_i\) for \(i \in I\) and \(p_i = 0\) for \(i \notin I\).
-    It is clear that \(b \notin B_{I', (\rho_i')}\) whenever \(I' \neq I\) or \((\rho_i') \neq (\rho_i)\).
+    It is clear that for any \(I'\) and \((\rho_i')\), if \(I' \neq I\) or \((\rho_i') \neq (\rho_i)\), then \(b \notin B_{I', (\rho_i')}\).
 \end{proof}
-\par Let \(\mathcal{Q}_{I, (\rho_i)} := \{(A_{0, b}, V_\bullet) \in \mathcal{Q} : b \in B_{I, (\rho_i)}\}\).
-We will show that \(\mathcal{Q}_{I, (\rho_i)} \cong B_{I, (\rho_i)} \times (\textrm{some springer fiber})\).
-Then we will use the result about the irreducible components of a Springer fiber to find the irreducible components of \(\mathcal{Q}_{I, (\rho_i)}\), and the closures of these will be the irreducible components of \(\mathcal{Q}\).
+\par Let \(\mathcal{Q}_{I, (\rho_i)} = \{(A_{0, b}, V_\bullet) \in \mathcal{Q} : b \in B_{I, (\rho_i)}\}\).
+We will show that there is some partition \(\mu\) such that \(\mathcal{Q}_{I, (\rho_i)} \cong B_{I, (\rho_i)} \times \mathcal{F}_{J(\mu)}\).
+Then we will use \cref{usual_springer_fiber} to find the irreducible components of \(\mathcal{Q}_{I, (\rho_i)}\), and the closures of these will be the irreducible components of \(\mathcal{Q}\).
 
 \subsection{Study of \texorpdfstring{\(B_{I, (\rho_i)}\)}{B\_\{I, (p\_i)\}}}
 Fix any \(I\) and \((\rho_i)\) satisfying the conditions (1)--(4) of \cref{bs_union}.
@@ -559,15 +559,15 @@ As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \
 \begin{proof}
     First we show that every element of \(B_{I, (\rho_i)}\) satisfies those conditions.
     Let \(b \in B_{I, (\rho_i)}\).
-    It is clear that \(\forall k. \; p_{i_k} = \rho_{i_k}\).
-    \par Take \(i \notin I\) and \(k \in \{0, ..., r\}\) such that \(\lambda_i > q_{i_k} + p_{i_{k + 1}}\).
+    It is clear that for each \(k\) we have \(p_{i_k} = \rho_{i_k}\).
+    \par Let \(i \notin I\) and \(k \in \{0, ..., r\}\) such that \(\lambda_i > q_{i_k} + p_{i_{k + 1}}\).
     Suppose for contradiction that \(q_i < q_{i_k}\).
     Then \(p_i \leq \max_{j : q_j < q_{i_k}} p_j = p_{i_{k + 1}}\).
     Then \(\lambda_i = p_i + q_i < q_{i_k} + p_{i_{k + 1}}\), a contradiction.
     So we must have \(q_{i_k} \leq q_i\), as desired.
-    \par Now take \(i \notin I\) and \(k \in \{1, ..., r + 1\}\) such that \(\lambda_i \leq q_{i_{k - 1}} + p_{i_k}\).
+    \par Now let \(i \notin I\) and \(k \in \{1, ..., r + 1\}\) such that \(\lambda_i \leq q_{i_{k - 1}} + p_{i_k}\).
     Suppose for contradiction that \(p_i > p_{i_k}\).
-    Then, putting this together with the first inequality, \(\lambda_i - p_i < q_{i_{k - 1}} + p_{i_k} - p_{i_k}\); that is, \(q_i < q_{i_{k - 1}}\).
+    Then, putting this together with the first inequality, we obtain \(\lambda_i - p_i < q_{i_{k - 1}} + p_{i_k} - p_{i_k}\); that is, \(q_i < q_{i_{k - 1}}\).
     Consequently, \(p_i \leq \max_{j : q_j < q_{i_{k - 1}}} p_j = p_{i_k}\), as desired.
     \par Now we have shown that every element of \(B_{I, (\rho_i)}\) satisfies the conditions of the lemma, and we proceed to the converse.
     Let \(b \in \mathbb{C}^m\) satisfy the conditions.
@@ -575,7 +575,7 @@ As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \
     We need to show that \(\max_{j : q_j < q_{i_k}} p_j = p_{i_{k + 1}}\).
     Given the conditions (1)--(4) on \(\rho_i\), it suffices to show that for each \(i \notin I\) with \(q_i < q_{i_k}\), we have \(p_i \leq p_{i_{k + 1}}\).
     Indeed, given \(i \notin I\) with \(q_i < q_{i_k}\), we cannot have \(\lambda_i > q_{i_k} + p_{i_{k + 1}}\), as that would imply (by hypothesis) that \(q_{i_k} \leq q_i\).
-    Hence \(\lambda_i \leq q_{i_{k - 1}} + p_{i_k}\), and consequently (by hypothesis) \(p_i \leq p_{i_k}\).
+    Hence \(\lambda_i \leq q_{i_k} + p_{i_{k + 1}} \leq q_{i_{k - 1}} + p_{i_k}\), and consequently (by hypothesis) \(p_i \leq p_{i_k}\).
 \end{proof}
 
 \begin{corollary}\label{alternative_bs_two}
@@ -592,7 +592,7 @@ As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \
 \end{corollary}
 \begin{proof}
     Both \(q_{i_k}\) and \(p_{i_k}\) are decreasing as \(k\) increases, so this follows directly from \cref{alternative_bs_one}.
-    (Note that \(p_i \leq \lambda_i - q_{i_k}\) iff \(q_{i_k} \leq q_i\).)
+    (Here we use that \(p_i \leq \lambda_i - q_{i_k}\) if and only if \(q_{i_k} \leq q_i\).)
 \end{proof}
 
 \begin{corollary}\label{bs_iso}
@@ -619,18 +619,21 @@ As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \
 \subsection{Study of \texorpdfstring{\(\mathcal{Q}_{I, (\rho_i)}\)}{Q\_\{I, (p\_i)\}}}
 Fix any \(I\) and \((\rho_i)\) satisfying the conditions (1)--(4) of \cref{bs_union}.
 In this subsection we find the irreducible components of \(\mathcal{Q}_{I, (\rho_i)}\).
-\par We claim that there is some \(\mu(I, (\rho_i))\) such that every \((A_{0, b}, U) \in \mathcal{Q}_{I, (\rho_i)}\) is similar to \(J(\mu)\).
-By finding a algebraic map taking \(b \in B_{I, (\rho_i)}\) to a Jordan basis for \(A_{0,b}\), we will put \(\mathcal{Q}_{I, (\rho_i)}\) in isomorphism with the product \(B_{I, (\rho_i)} \times (Springer fiber at J(\mu))\).
-Then we will use our result about the usual Springer fiber at \(J(\mu)\) to find the irreducible components of \(\mathcal{Q}_{I, (\rho_i)}\).
+\par We will find a partition \(\mu\), depending only on \(I\) and \((\rho_i)\), such that for every \(b \in B_{I, (\rho_i)}\), the matrix \(A_{0,b}\) is similar to \(J(\mu)\).
+By finding an algebraic map taking \(b \in B_{I, (\rho_i)}\) to a Jordan basis for \(A_{0,b}\), we will put \(\mathcal{Q}_{I, (\rho_i)}\) in isomorphism with the product \(B_{I, (\rho_i)} \times \mathcal{F}_{J(\mu)}\).
 \par So, now we find a Jordan basis for \(A_{0, b}\).
 As before, we write \(\{i_1, ..., i_r\} := I\), and \(q_{i_0} := n\), and \(p_{i_{r + 1}} := 0\).
-We also write, somewhat abusively, \(b \in \mathbb{C}^{m + n}\) to refer to the vector \((b, 0) \in \mathbb{C}^{m + n}\).
+We will also write, somewhat abusively, \(b \in \mathbb{C}^{m + n}\) to refer to the vector \((b, 0) \in \mathbb{C}^{m} \times \mathbb{C}^n\).
+Also, given a vector \(v\) such that \(A^k v \neq 0\) but \(A^{k + 1} v = 0\), we refer to the list of vectors \([v, A_{0,b} v, ..., A_{0,b}^k v]\) as the \emph{chain starting with \(v\)}.
+\par Given a vector \(v = \sum_{ij} v_{ij} e_{ij} \in \mathbb{C}^m\), we define the ``left shift'' operator \(v \leftshift k := \sum_{ij} v_{ij} e_{i,j - k}\).
+If (and only if) \(v \in \langle e_{ij} \rangle_{i,j: j \leq \lambda_i - k}\), then we define the ``right shift'' \(v \rightshift k := \sum_{ij} v_{ij} e_{i,j + k}\).
+
 \begin{lemma}
     The following vectors give a Jordan basis for \(A_{0,b}\).
     (For convenience, we write \(A := A_{0,b}\) in this lemma and proof.)
     \begin{itemize}
-        \item For \(i \notin I\), the chain of length \(p_i + q_i\) beginning with \(e_{i, p_i + q_i}\)
-        \item The chain of length \(n + p_{i_1}\) beginning with \(f_n - (A^{n + p_{i_1}}f_n \rightshift n + p_{i_1})\)
+        \item For \(i \notin I\), the chain of length \(\lambda_i\) beginning with \(e_{i, \lambda_i}\)
+        \item The chain of length \(q_{i_0} + p_{i_1}\) beginning with \(f_n - (A^{n + p_{i_1}}f_n \rightshift n + p_{i_1})\)
         \item For \(k \in \{1, ..., r\}\), the chain of length \(q_{i_k} + p_{i_{k + 1}}\) beginning with \(v_{i_k} - (A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}})\), where \(v_{i_k} := A^{n - q_{i_k}} f_n - \sum_{l = 1}^{p_{i_k}} b_{i_kl} e_{i,l + q_{i_k}}\)
     \end{itemize}
 \end{lemma}
