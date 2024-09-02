@@ -402,7 +402,7 @@ We index the bases such that \(Xe_{ij} = e_{i,j - 1}\), and \(J_n f_j = f_{j - 1
     Now we only need to show that \(\lambda_{w_1} = \lambda_{w_2}\).
     \par Let \(k' \geq 0\) be maximal such that there exist \(u,v \in \mathbb{C}^m\) with \(A_{e_{w_1r_1},0}^{k'} (u,0) = (v,0) + f_n\).
     Obviously \(k' = \lambda_{w_1} - r_1 + 1\).
-    Since \(k'\) is independent of \(\mathbb{C}^m\)-basis, we get \(\lambda_{w_1} - r_1 + 1 = k' = \lambda_{w_2} - r_2 + 1\), and therefore \(\lambda_{w_1} = \lambda_{w_2}\).
+    Since (like \(k\)) \(k'\) is independent of \(\mathbb{C}^m\)-basis, we get \(\lambda_{w_1} - r_1 + 1 = k' = \lambda_{w_2} - r_2 + 1\), and therefore \(\lambda_{w_1} = \lambda_{w_2}\).
 \end{proof}
 
 \begin{lemma}
@@ -456,8 +456,10 @@ Letting \(G_{wr}\) act on \(G\) by \(g \cdot h := hg^{-1}\), we obtain an action
 Next, we will find the irreducible components \(X \subseteq \mathcal{Q}_{wr}\), and we then argue that the irreducible components of \(\mathcal{P}_{wr}\) are of the form \(\varphi_{wr}(X \times G)\).
 \par Actually, \(\mathcal{Q}_{wr}\) is unnecessarily difficult to think about; it is easiest in the case \(r = 0\).
 So, we change basis to make \(r = 0\).
-Let \(m' = m - r\), and \(n' = n + r\).
-Let \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, r - 1, \lambda_{w + 1}, ..., \lambda_\ell)\).
+Let \(R(r) := \lambda_w\) if \(r = 0\), or \(r - 1\) otherwise.
+(The point is that \(R(r) = \max\{i \in \{0, ..., \lambda_w\} : \forall j \leq i. \; (e_{wr})_{wj} = 0\}\).)
+\par Let \(m' = m + R(r) - \lambda_w\) and \(n' = n + \lambda_w - R(r)\).
+Also, let \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, R(r), \lambda_{w + 1}, ..., \lambda_\ell)\).
 Let \(X' = J(\lambda')\).
 Let \(\mathcal{Q}' = \{(A'_{X', 0, b}, V_\bullet) : \forall i. \; A'_{X', 0, b} V_{i + 1} \subseteq V_i\}\), where
 \[A'_{X',a,b} := \begin{pNiceArray}{ccc|ccc}
@@ -468,19 +470,19 @@ Let \(\mathcal{Q}' = \{(A'_{X', 0, b}, V_\bullet) : \forall i. \; A'_{X', 0, b} 
    \text{---} & a & \text{---} \\
     & & & & J_{n'} & \\
     & & &  & 
-   \end{pNiceArray} \in \gl_{m' + n'}\]
+   \end{pNiceArray} \in \gl_{m' + n'}.\]
 \begin{lemma}\label{a_zero}
     \(\mathcal{Q}_{wr} \cong \mathcal{Q}'\).
 \end{lemma}
 \begin{proof}
-    Let \((e_{ij}')_{1 \leq i \leq \ell, 1 \leq j \leq \lambda_i - \delta_{jw} r}\) be the standard Jordan basis for \(X'\).
-    (The \(\delta\) is the Kronecker \(\delta\).)
+    Let \(k_i = \lambda_i\) for \(i \neq w\), and let \(k_w = R(r)\).
+    Let \((e_{ij}')_{1 \leq i \leq \ell, 1 \leq j \leq k_i}\) be the standard Jordan basis for \(X'\).
     Let \(f_1', ..., f_{n'}'\) be a basis for \(\mathbb{C}^{n'}\) such that \(A_{X', 0, b} f_{i + 1}' = f_i'\), and \(A_{X', 0, b} f_1 = (b, 0)\).
     Define the linear map \(Q_{wr} : \mathbb{C}^{m' + n'} \to \mathbb{C}^{m + n}\) by:
     \begin{itemize}
-        \item For all \(i,j\), \(e_{ij}' \mapsto e_{ij}\).
-        \item For \(j = 1, ..., r\), \(f_{n + j}' \mapsto e_{w,\lambda_w + j}\).
-        \item For \(j = 1, ..., n'\), \(f_j' \mapsto f_j + e_{w, \lambda_w - n' + j}\).
+        \item For all \(i\) and \(j\), \(e_{ij}' \mapsto e_{ij}\).
+        \item For \(j \in \{1, ..., \lambda_w - R(r)\}\), \(f_{n + j}' \mapsto e_{w, R(r) + j}\).
+        \item For \(j \in \{1, ..., n\}\), \(f_j' \mapsto f_j + e_{w, R(r) - n + j}\).
     \end{itemize}
     % The inverse map \(Q_{wr}^{-1} : \mathbb{C}^{m + n} \to \mathbb{C}^{m' + n'}\) is
     % \begin{itemize}
@@ -489,7 +491,9 @@ Let \(\mathcal{Q}' = \{(A'_{X', 0, b}, V_\bullet) : \forall i. \; A'_{X', 0, b} 
     %     \item For \(j = 1, ..., r\), \(e_{wj} \mapsto f'_{n + j}\).
     %     \item For \(j = 1, ..., n\), \(f_j \mapsto f'_j - e_{w,\lambda_w - n + r}\)
     % \end{itemize}
-    Change of basis by \(Q_{wr}\) maps \(\mathcal{Q}'\) to \(\mathcal{Q}_{wr}\), and change of basis by \(Q_{wr}^{-1}\) maps \(\mathcal{Q}_{wr}\) to \(\mathcal{Q}'\).
+    It is straightforward to check that for any \(b\) such that \(A_{X,e_{wr},b}\) is nilpotent, there exists \(b'\) such that \(Q_{wr}^{-1} A_{X,e_{wr},b} Q_{wr} = A_{X',0,b'}\).
+    Similarly, for any \(b'\), there exists \(b\) such that \(Q_{wr} A_{X',0,b'} Q_{wr}^{-1} = A_{X,e_{wr},b}\).
+    \par Thus change of basis by \(Q_{wr}\) maps \(\mathcal{Q}_{wr}\) to \(\mathcal{Q}'\), and the inverse map, change of basis by \(Q_{wr}^{-1}\), maps \(\mathcal{Q}'\) to \(\mathcal{Q}_{wr}\).
 \end{proof}
 The next section finds the irreducible components of \(\mathcal{Q}'\).
 To make the notation nicer, we will refer to it as \(\mathcal{Q}\), and refer to \(m',n'\) as \(m,n\) (and so on), throughout the next section.
