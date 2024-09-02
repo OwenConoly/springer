@@ -372,10 +372,7 @@ In this section we write \(\mathcal{P} := \mathcal{P}_X\) and \(A_{a, b} := A_{X
 Let \((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}\) be the standard basis for \(\mathbb{C}^m\).
 Let \((f_j)_{1 \leq j \leq k}\) be the standard basis for \(\mathbb{C}^n\).
 We index the bases such that \(Xe_{ij} = e_{i,j - 1}\), and \(J_n f_j = f_{j - 1}\).
-\par For \(1 \leq w \leq \ell\) and \(0 \leq r \leq \lambda_w - 1\), define \(\mathcal{P}_{w,r}\) as the set of \((A_{a,b}, V_\bullet) \in \mathcal{P}\) such that there exist \(P \in \GL_m\) and \(b' \in \mathbb{C}^m\) such that \((P^{-1}, I_n) A_{a, b} (P, I_n) = A_{e_{w,r + 1}, b'}\).
-Also, for \(1 \leq w \leq \ell\), define \(\mathcal{P}_{w,\lambda_w}\) as the set of \((A_{a,b}, V_\bullet) \in \mathcal{P}\) such that there exist \(P \in \GL_m\) and \(b' \in \mathbb{C}^m\) such that \((P^{-1}, I_n)A_{a,b}(P,I_n) = A_{0,b'}\).
-\par The point of the definition above is that \((A_{a,b}, V_\bullet) \in \mathcal{P}_{wr}\) if and only if we can change basis of \(\mathbb{C}^m\) to get from \(A_{a,b}\) to some \(A_{a',b'}\) such that (1) \(a'_{ij} = 0\) for \(i \neq w\), and (2) \(a_{wj}' = 0\) for all but (at most) one \(j\), and (3) \(r\) is the biggest number s.t. \(a_{w1}' = a_{w2}' = \cdots = a_{wr}' = 0\).
-
+\par For \(1 \leq w \leq \ell\) and \(0 \leq r \leq \lambda_w\) (note that we allow \(r = 0\); recall \(e_{i0} = 0\)), define \(\mathcal{P}_{w,r}\) as the set of \((A_{a,b}, V_\bullet) \in \mathcal{P}\) such that there exist \(P \in \GL_m\) and \(b' \in \mathbb{C}^n\) such that \((P^{-1}, I_n) A_{a, b} (P, I_n) = A_{e_{wr}, b'}\).
 
 \begin{lemma}\label{pwr_union}
     \(\mathcal{P} = \bigcup_{1 \leq w \leq k, 0 \leq r \leq \lambda_{w}} \mathcal{P}_{wr}\).
@@ -385,18 +382,18 @@ Also, for \(1 \leq w \leq \ell\), define \(\mathcal{P}_{w,\lambda_w}\) as the se
     Note that \(A_{a,b}\) is the unique linear map \(\mathbb{C}^{m + n} \to \mathbb{C}^{m + n}\) that sends \(e_{ij}\) to \(e_{i,j-1} + \phi_a(e_{ij}) f_n\), sends \(f_{i + 1}\) to \(f_i\), and sends \(f_1\) to \((b, 0)\).
     \par Let \((A_{a, b}, V_\bullet) \in \mathcal{P}\).
     Since \(X\) is nilpotent, \cref{normalization} says that there is a change of basis \(P : \mathbb{C}^m \to \mathbb{C}^m\) such that the vectors \(Pe_{ij}\) form a Jordan basis for \(X\), and for all but one pair \((i, j)\) we have \(\phi_a(Pe_{ij}) = 0\).
-    \par Since \((Pe_{ij})_{ij}\) is a Jordan basis, we have \((P^{-1}, I_n) A_{a,b}(P, I_n) = A_{a',b'}\) for some \(a',b' \in \mathbb{C}^m\).
-    All that is left is to show that \(a'_{ij} = 0\) for all but one pair \((i,j)\).
+    \par Since \((Pe_{ij})_{ij}\) is a Jordan basis, we have \((P^{-1}, I_n) A_{a,b}(P, I_n)\) for some \(a',b' \in \mathbb{C}^m\).
+    All that is left is to show that \(a'\) is of the form \(e_{wr}\) for some \(w\) and \(r\).
     Indeed, this results from the fact that \(\phi_{a'}(e_{ij}) = \phi_a(Pe_{ij}) = 0\) for all but one pair \((i,j)\).
 \end{proof}
 \begin{lemma}
-    \(\mathcal{P}_{w_1r_1} = \mathcal{P}_{w_2r_2}\) exactly when either \(\lambda_{w_1} - r_1 = \lambda_{w_2} - r_2 = 0\), or \((\lambda_{w_1}, r_1) = (\lambda_{w_2}, r_2)\).
+    \(\mathcal{P}_{w_1r_1} = \mathcal{P}_{w_2r_2}\) exactly when either \(r_1 = r_2 = 0\), or \((\lambda_{w_1}, r_1) = (\lambda_{w_2}, r_2)\).
 \end{lemma}
 \begin{proof}
-    If \(r_1 = \lambda_{w1}\) and \(r_2 = \lambda_{w_2}\), then by definition, \(\mathcal{P}_{wr_1} = \mathcal{P}_{wr_2}\).
+    If \(r_1 = r_2 = 0\), we have \(e_{wr_1} = e_{wr_2} = 0\), so by definition, \(\mathcal{P}_{wr_1} = \mathcal{P}_{wr_2}\).
     And if \((\lambda_{w_1}, r_1) = (\lambda_{w_2}, r_2)\), then any matrix of the form \(A_{e_{w_1r_1}b'}\) can be transformed to a matrix of the form \(A_{e_{w_2r_2}b'}\) by making the change of basis that swaps \(e_{w_1j}\) with \(e_{w_2j}\).
     \par Conversely, suppose \(\mathcal{P}_{w_1r_1} = \mathcal{P}_{w_2r_2}\).
-    Let \(k \geq 0\) be minimal such that there exists \(v \in \mathbb{C}^m\) with \(A_{e_{w_1r_1},0} f_1 \neq 0\).
+    Let \(k \geq 0\) be minimal so that \(A_{e_{w_1r_1},0} f_1 \neq 0\).
     Obviously \(k = r_1\).
     Since (by hypothesis) \(A_{e_{w_1r_1},0}\) and \(A_{e_{w_2r_2},0}\) differ only by a change of basis of \(\mathbb{C}^m\), the same reasoning shows that \(k = r_2\).
     Hence \(r_1 = r_2\).
