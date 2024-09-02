@@ -328,7 +328,7 @@ Recall the map \(S \to \mathfrak{g}\) given by \(Z \mapsto (p'(Z), Z)\), where \
 We also have the Springer resolution \(\widetilde{\mathcal{N}} \to \mathfrak{g}\).
 From these two maps we define the fibred product \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
 \par To obtain an explicit description of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\), we begin by finding the image of the projection \(S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to S\).
-As the image of the Springer resolution is \(\mathcal{N} = \mathcal{N}_m \times \mathcal{N}_{m + n}\), the image of the projection \(S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to S\) is simply \(S' := \{Z \in S : p'(Z) \in \mathcal{N}_m, Z \in \mathcal{N}_{m + n}\}\).
+Since the image of the Springer resolution is \(\mathcal{N} = \mathcal{N}_m \times \mathcal{N}_{m + n}\), the image of the projection \(S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to S\) is simply \(S' := \{Z \in S : p'(Z) \in \mathcal{N}_m, Z \in \mathcal{N}_{m + n}\}\).
 \begin{lemma}
     \[S' = \left\{A_{X, a, b} := \begin{pNiceArray}{ccc|ccc}
     & & & & & \vert \\
@@ -366,14 +366,12 @@ By the correspondence between Springer fibers in \(\mathcal{B}_{m + n}\) and fla
 \par In the next few sections, we will find the irreducible components of \(\mathcal{P}_X\).
 Then we will use this result, along with the result about the usual Springer fiber \(\mathcal{F}_X\), to find the irreducible components of \(\pi^{-1}(X)\) and then of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\).
 
-\section{Strategy for finding components of \texorpdfstring{\(\mathcal{P}_{J(\lambda)}\)}{P\_\{J(\textbackslash lambda)\}}}\label{p_comp_strat}
+\section{Strategy for Finding Components of \texorpdfstring{\(\mathcal{P}_{J(\lambda)}\)}{P\_\{J(\textbackslash lambda)\}}}\label{p_comp_strat}
 \par Let \(X = J(\lambda) \in \gl_m\), where \(\lambda = (\lambda_1, ..., \lambda_\ell)\).
 In this section we write \(\mathcal{P} := \mathcal{P}_X\) and \(A_{a, b} := A_{X, a, b}\).
 Let \((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}\) be the standard basis for \(\mathbb{C}^m\).
 Let \((f_j)_{1 \leq j \leq k}\) be the standard basis for \(\mathbb{C}^n\).
 We index the bases such that \(Xe_{ij} = e_{i,j - 1}\), and \(J_n f_j = f_{j - 1}\).
-\par In this section we begin finding the irreducible components of
-\[\mathcal{P} = \{(A_{a, b}, V_\bullet) : \forall i. \; A_{a, b} V_{i + 1} \subseteq V_i\}.\]
 \par For \(1 \leq w \leq \ell\) and \(0 \leq r \leq \lambda_w\) (note that we allow \(r = 0\); recall \(e_{i0} = 0\)), define \(\mathcal{P}_{w,r}\) as the set of \((A_{a,b}, V_\bullet) \in \mathcal{P}\) such that there exist \(P \in \GL_m\) and \(b' \in \mathbb{C}^n\) such that \((P^{-1}, I_n) A_{a, b} (P, I_n) = A_{e_{wr}, b'}\).
 
 \begin{lemma}\label{pwr_union}
@@ -427,21 +425,21 @@ Let \(G\) act on \(\mathcal{P}_{wr}\) by
 \[P \cdot (A_{a,b}, V_\bullet) := ((P, I_n) A_{a, b} (P, I_n)^{-1}, (P, I_n)V_\bullet) = (A_{a P^{-1}, Pb}, (P, I_n) V_\bullet).\]
 Note that for any \(x \in \mathcal{Q}_{wr}\), we have \(G_{wr} = \{g \in G : g \cdot x \in \mathcal{Q}_{wr}\}\).
 So, by restriction of \(G\) to \(G_{wr}\) and \(\mathcal{P}_{wr}\) to \(\mathcal{Q}_{wr}\), we obtain an action of \(G_{wr}\) on \(\mathcal{Q}_{wr}\).
-\par Consider the map \(\varphi : \mathcal{Q}_{wr} \times G \to \mathcal{P}_{wr}\) defined by
+\par Consider the map \(\varphi_{wr} : \mathcal{Q}_{wr} \times G \to \mathcal{P}_{wr}\) defined by
 \[(x, P) \mapsto P \cdot x.\]
 Letting \(G_{wr}\) act on \(G\) by \(g \cdot h := hg^{-1}\), we obtain an action of \(G_{wr}\) on \(\mathcal{Q}_{wr} \times G\).
 
 \begin{lemma}\label{principal_bundle}
-    The map \(\varphi\) is a principal \(G_{wr}\)-bundle.
+    The map \(\varphi_{wr}\) is a principal \(G_{wr}\)-bundle.
 \end{lemma}
 \begin{proof}
-    We need to show that \(G_{wr}\) acts freely and transitively on the fibers of \(\varphi\).
+    We need to show that \(G_{wr}\) acts freely and transitively on the fibers of \(\varphi_{wr}\).
     It is obvious that \(G_{wr}\) acts freely on \(\mathcal{Q}_{wr} \times G\); it is enough to note that it acts freely on \(G\).
     Now we check that it acts transitively.
     \par Let \(y \in \mathcal{P}_{wr}\).
     By definition of \(\mathcal{P}_{wr}\), there is \(P_y \in G\) with \(P_y \cdot y \in \mathcal{Q}_{wr}\).
     \begin{align*}
-        \varphi^{-1}(y) = \{(x, P) : P \cdot x = y \} & = \\
+        \varphi_{wr}^{-1}(y) = \{(x, P) : P \cdot x = y \} & = \\
         \{(P^{-1} y, P) : P^{-1} y \in \mathcal{Q}_{wr} \} & = \\
         \{((P^{-1}P_y^{-1}) \cdot (P_y \cdot y), P) : (P^{-1} P_y^{-1}) \cdot (P_y \cdot y) \in \mathcal{Q}_{wr}\} & .
     \end{align*}
@@ -454,13 +452,11 @@ Letting \(G_{wr}\) act on \(G\) by \(g \cdot h := hg^{-1}\), we obtain an action
     \end{align*}
     Thus the fibers are exactly the \(G_{wr}\)-orbits; or in other words, \(G_{wr}\) acts transitively on the fibers, as desired.
 \end{proof}
-We will find the irreducible components \(X \subseteq \mathcal{Q}_{wr}\), and we then argue that the irreducible components of \(\mathcal{P}_{wr}\) are of the form \(\varphi(X \times G)\).
-So, next we find the irreducible components of \(\mathcal{Q}_{wr}\).
+Next, we will find the irreducible components \(X \subseteq \mathcal{Q}_{wr}\), and we then argue that the irreducible components of \(\mathcal{P}_{wr}\) are of the form \(\varphi_{wr}(X \times G)\).
 \par Actually, \(\mathcal{Q}_{wr}\) is unnecessarily difficult to think about; it is easiest in the case \(r = 0\).
-So, we will change basis to make \(r = 0\).
+So, we change basis to make \(r = 0\).
 Let \(m' = m - r\), and \(n' = n + r\).
-TODO: should not be \(\lambda_w - r\); should be \(r - 1\); fixup other things (incl. proof!) accordingly.
-Let \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_\ell)\).
+Let \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, r - 1, \lambda_{w + 1}, ..., \lambda_\ell)\).
 Let \(X' = J(\lambda')\).
 Let \(\mathcal{Q}' = \{(A'_{X', 0, b}, V_\bullet) : \forall i. \; A'_{X', 0, b} V_{i + 1} \subseteq V_i\}\), where
 \[A'_{X',a,b} := \begin{pNiceArray}{ccc|ccc}
