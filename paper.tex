@@ -622,29 +622,30 @@ In this subsection we find the irreducible components of \(\mathcal{Q}_{I, (\rho
 \par We will find a partition \(\mu\), depending only on \(I\) and \((\rho_i)\), such that for every \(b \in B_{I, (\rho_i)}\), the matrix \(A_{0,b}\) is similar to \(J(\mu)\).
 By finding an algebraic map taking \(b \in B_{I, (\rho_i)}\) to a Jordan basis for \(A_{0,b}\), we will put \(\mathcal{Q}_{I, (\rho_i)}\) in isomorphism with the product \(B_{I, (\rho_i)} \times \mathcal{F}_{J(\mu)}\).
 \par So, now we find a Jordan basis for \(A_{0, b}\).
-As before, we write \(\{i_1, ..., i_r\} := I\), and \(q_{i_0} := n\), and \(p_{i_{r + 1}} := 0\).
+As before, we write \(\{i_1 <  \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \(p_{i_{r + 1}} := 0\).
 We will also write, somewhat abusively, \(b \in \mathbb{C}^{m + n}\) to refer to the vector \((b, 0) \in \mathbb{C}^{m} \times \mathbb{C}^n\).
-Also, given a vector \(v\) such that \(A^k v \neq 0\) but \(A^{k + 1} v = 0\), we refer to the list of vectors \([v, A_{0,b} v, ..., A_{0,b}^k v]\) as the \emph{chain starting with \(v\)}.
-\par Given a vector \(v = \sum_{ij} v_{ij} e_{ij} \in \mathbb{C}^m\), we define the ``left shift'' operator \(v \leftshift k := \sum_{ij} v_{ij} e_{i,j - k}\).
-If (and only if) \(v \in \langle e_{ij} \rangle_{i,j: j \leq \lambda_i - k}\), then we define the ``right shift'' \(v \rightshift k := \sum_{ij} v_{ij} e_{i,j + k}\).
+\par Given a vector \(v\) such that \(A^k v \neq 0\) but \(A^{k + 1} v = 0\), we refer to the list of vectors \([v, A_{0,b} v, ..., A_{0,b}^k v]\) as the \emph{chain starting with \(v\)}.
+Given a vector \(v = \sum_{ij} v_{ij} e_{ij} \in \mathbb{C}^{m + n}\), we define the left-shift operator \(v \leftshift k := \sum_{ij} v_{ij} e_{i,j - k}\).
+If (and only if) \(v \in \langle e_{ij} \rangle_{i,j: j \leq \lambda_i - k}\), then we define the right-shift operator \(v \rightshift k := \sum_{ij} v_{ij} e_{i,j + k}\).
 
 \begin{lemma}
-    The following vectors give a Jordan basis for \(A_{0,b}\).
+    For any \(b \in B_{I, (\rho_i)}\), the following vectors give a Jordan basis for \(A_{0,b}\).
     (For convenience, we write \(A := A_{0,b}\) in this lemma and proof.)
     \begin{itemize}
         \item For \(i \notin I\), the chain of length \(\lambda_i\) beginning with \(e_{i, \lambda_i}\)
         \item The chain of length \(q_{i_0} + p_{i_1}\) beginning with \(f_n - (A^{n + p_{i_1}}f_n \rightshift n + p_{i_1})\)
-        \item For \(k \in \{1, ..., r\}\), the chain of length \(q_{i_k} + p_{i_{k + 1}}\) beginning with \(v_{i_k} - (A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}})\), where \(v_{i_k} := A^{n - q_{i_k}} f_n - \sum_{l = 1}^{p_{i_k}} b_{i_kl} e_{i,l + q_{i_k}}\)
+        \item For \(k \in \{1, ..., r\}\), the chain of length \(q_{i_k} + p_{i_{k + 1}}\) beginning with \(v_{i_k} - (A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}})\), where \(v_{i_k} := A^{n - q_{i_k}} f_n - \sum_{j = 1}^{p_{i_k}} b_{i_kj} e_{i,j + q_{i_k}}\)
     \end{itemize}
 \end{lemma}
 \begin{proof}
     There are three things to check: (1) the chains are no longer than their claimed lengths, (2) the claimed lengths sum to \(m + n\), and (3) the span of the chains is \(\mathbb{C}^{m + n}\).
     \begin{proof}[Proof of (1)]
-        It is obvious that a chain beginning with \(e_{i, p_i + q_i}\) has length \(p_i + q_i\).
+        It is obvious that a chain beginning with \(e_{i, \lambda_i}\) has length \(\lambda_i\).
         \par Now consider the chain beginning with \(f_n - (A^{n + p_{i_1}} f_n \rightshift n + p_{i_1})\).
         Note that \(A^n f_n = b\), so \(A^{n + p_{i_1}} f_n = A^{p_{i_1}} b = b \leftshift p_{i_1}\).
         By shifting \(b\) left \(p_{i_1}\) times, we zero out all the rows \(i\) where \(q_i < n\).
-        This ensures that the operation of shifting \(b \leftshift p_{i_1}\) right \(n + p_{i_1}\) times is invertible by shifting left \(n + p_{i_1}\) times.
+        (More formally speaking, for all \(i\) and \(j\) such that \(q_i < n\), we have \((b \leftshift p_{i_1})_{ij} = 0\).)
+        This ensures that the operation of shifting \(b \leftshift p_{i_1}\) right \(n + p_{i_1}\) times is defined, and thus it is invertible by shifting left \(n + p_{i_1}\) times.
         That is,
         \begin{align*}
             A^{n + p_{i_1}} f_n & = \\
@@ -654,13 +655,12 @@ If (and only if) \(v \in \langle e_{ij} \rangle_{i,j: j \leq \lambda_i - k}\), t
         \end{align*}
         This shows that the chain has length at most \(n + p_{i_1}\), as desired.
         \par Now, let \(k \in \{1, ..., r\}\).
-        We have \(v_{i_k} = A^{n - q_{i_k}} f_n - \sum_{l = 1}^{p_{i_k}} b_{i_kl} e_{i_k,l + q_{i_k}}\).
-        First we note that \(q_{i_k} < n\) by the definition of \(\mathcal{Q}_{I, (\rho_i)}\), so the definition of \(v_{i_k}\) makes sense.
+        Since \(b \in B_{I, (\rho_i)}\), we have \(q_{i_k} < n\), and thus the definition of \(v_{i_k}\) makes sense---i.e., the exponent of \(A\) is nonnegative.
         We consider the chain beginning with \(v_{i_k} - (A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}})\).
         Note that \(A^{q_{i_k}} v_{i_k}\) is just \(b\) with row \(i_k\) zeroed out.
         For brevity, we write \(b_{i_k} := A^{q_{i_k}} v_{i_k}\).
-        Note that \(b_{i_k} \leftshift p_{i_{k + 1}}\) has rows \(l\) zeroed out, for all \(l\) with \(q_l < q_{i_k}\).
-        This ensures that shifting \(b_{i_k} \leftshift p_{i_{k + 1}}\) right \(q_{i_k} + p_{i_{k + 1}}\) times can be inverted by shifting left \(q_{i_k} + p_{i_{k + 1}}\) times.
+        For each \(i\) with \(q_i < q_{i_k}\), the vector \(b_{i_k} \leftshift p_{i_{k + 1}}\) has row \(i\) zeroed out.
+        This ensures that the operation of shifting \(b_{i_k} \leftshift p_{i_{k + 1}}\) right \(q_{i_k} + p_{i_{k + 1}}\) times is defined, and thus it is invertible by shifting left \(q_{i_k} + p_{i_{k + 1}}\) times.
         That is,
         \begin{align*}
             A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} & = \\
@@ -672,7 +672,7 @@ If (and only if) \(v \in \langle e_{ij} \rangle_{i,j: j \leq \lambda_i - k}\), t
     \end{proof}
     \begin{proof}[Proof of (2)]
         The sum of the lengths is
-        \[\sum_{i \notin I} (p_i + q_i) + \sum_{k = 0}^r (q_{i_k} + p_{i_{k + 1}}) = \sum_i (q_i + p_i) = m + n.\]
+        \[\sum_{i \notin I} \lambda_i + \sum_{k = 0}^r (q_{i_k} + p_{i_{k + 1}}) = n + \sum_i (q_i + p_i) = m + n.\]
     \end{proof}
     \begin{proof}[Proof of (3)]
         Let \(W\) be the span of the chains listed.
@@ -690,23 +690,21 @@ If (and only if) \(v \in \langle e_{ij} \rangle_{i,j: j \leq \lambda_i - k}\), t
         So, we just need to show that \(e_{i_k\lambda_{i_k}} \in W\) for each \(k \in \{1, ..., r\}\).
         We do this inductively; fix \(k\), and suppose we have already shown that \(e_{i_{k'}, \lambda_{i_{k'}}} \in W\) for \(k' < k\).
         We will show that \(e_{i_k, \lambda_{i_k}} \in W\).
-        \par To see this, consider the chain beginning with \(v_{i_k} - (A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}})\).
-        (Recall \(v_{i_k} = A^{n - q_{i_k}} f_n - \sum_{l = 1}^{p_{i_k}} b_{i_kl} e_{i_k,l + q_{i_k}}\).)
-        Since \(b_{i_k,p_{i_k}} \neq 0\) (by definition of \(p_{i_k}\)), it suffices to show that \(\sum_{l = 1}^{p_{i_k}} b_{i_kl} e_{i_k,l + q_{i_k}} \in W\).
-        As explained in the proof of (1), we have \(A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \in \langle e_{lj} \rangle_{q_l \geq q_{i_k}}\).
-        And since \(A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k}\) has row \(i_k\) zeroed out, in fact \(A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \in \langle e_{lj} \rangle_{l : l \neq i_k \land q_l \geq q_{i_k}}\).
-        Hence, \(A^{q_i + P_i} v_i \rightshift q_i + P_i \in \langle e_{lj} \rangle_{l : l \neq i \land q_l \geq q_i}\).
-        By our inductive hypothesis, \(\langle e_{lj} \rangle_{l : l \neq i_k \land q_l \geq q_{i_k}} \subseteq W\), and consequently \(A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}} \in W\).
-        Since we know \(v_{i_k} - (A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}}) \in W\), this implies that \(v_{i_k} \in W\).
-        Because \(A^{n - q_{i_k}} f_n \in W\), this then implies that \(\sum_{l = 1}^{p_{i_k}} b_{i_kl} e_{i_k,l + q_{i_k}} \in W\), as desired.
+        \par Since \(AW \subseteq W\), and \(b_{i_k,p_{i_k}} \neq 0\) by definition of \(p_{i_k}\), it suffices to show that \(\sum_{j = 1}^{p_{i_k}} b_{i_kj} e_{i_k,j + q_{i_k}} \in W\).
+        To see that \(\sum_j b_{i_kj}e_{i_k,j + q_{i_k}} \in W\), consider the chain beginning with \(v_{i_k} - (A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}})\).
+        As explained in the proof of (1), \(A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \in \langle e_{ij} \rangle_{i,j: q_i \geq q_{i_k}}\).
+        And since \(A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k}\) has row \(i_k\) zeroed out, in fact \(A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \in \langle e_{ij} \rangle_{i,j : i \neq i_k \land q_i \geq q_{i_k}}\).
+        Therefore, \(A^{q_i + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}} \in \langle e_{ij} \rangle_{ij : i \neq i_k \land q_i \geq q_{i_k}}\).
+        By our inductive hypothesis, \(\langle e_{ij} \rangle_{i,j : i \neq i_k \land q_i \geq q_{i_k}} \subseteq W\), and consequently \(A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}} \in W\).
+        Since we know that \(v_{i_k} - (A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}}) \in W\), this implies that \(v_{i_k} \in W\).
+        Because \(A^{n - q_{i_k}} f_n \in W\), this implies that \(\sum_j b_{i_kj} e_{i_k,j + q_{i_k}} \in W\), as desired.
     \end{proof}
-    We proved (1), (2), (3), so we are done.
 \end{proof}
 
-Let \(\mu(I, (\rho_i))\) be the shape of the Jordan basis given in the lemma.
-Let \(X_\mu\) be the Springer fiber at \(J(\mu)\), and let \((X_{\mu, \alpha})_{\alpha \in \mathrm{SYT}(\mu)}\) be the irreducible components.
-\par Given a zero-indexed list \(L = [L_0, ..., L_{l - 1}]\), we define \(\gamma(L) = \sum_i i L_i\).
-We are interested in this thing because for any \(\alpha\), the dimension of \(X_{\mu, \alpha}\) is \(\gamma([\mu_1, ..., \mu_{k + 1}])\).
+Let \(\mu = (\mu_1, ..., \mu_{\ell + 1})\) be the shape of the Jordan basis given in the lemma.
+Let \((\mathcal{F}_{\mu,\alpha})_{\alpha \in \mathrm{SYT}(\mu)}\) be the irreducible components of the Springer fiber \(\mathcal{F}_{J(\mu)}\).
+\par Given a zero-indexed list \(L = [L_0, ..., L_{l - 1}]\), define \(\gamma(L) = \sum_i i L_i\).
+We are interested in \(\gamma\) because the dimension of each \(\mathcal{F}_{\mu, \alpha}\) is \(\gamma(\mu) = \gamma([\mu_1, ..., \mu_{\ell + 1}])\).
 
 \begin{lemma}\label{springer_fiber_dim}
     \[\gamma([\mu_1, ..., \mu_{k + 1}]) = \gamma([0, \lambda_1, ..., \lambda_k]) - \] 
@@ -915,7 +913,7 @@ These are described by \cref{springer_fiber_comps}.
 \end{theorem}
 \begin{proof}
     This is analogous to \cref{pwr_comps}; the only difference is the dimension calculation.
-    This time, we have 
+    This time, 
     \begin{align*}
         \dim \phi_\lambda(C_{\lambda, \beta} \times (\GL_m \times \{I_n\})) & = \\
         \dim C_{\lambda,\beta} + \dim \GL_m - \dim K & = \\
