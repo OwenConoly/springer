@@ -509,14 +509,14 @@ In this section we find the irreducible components of \(\mathcal{Q}\).
 For each row \(i\), let \(p_i(b) = \max\{j : b_{ij} \neq 0\}\) (by convention, the max of the empty set is zero).
 Then set \(q_i(b) = \lambda_i - p_i(b)\).
 When it is clear enough from context where the \(b\) is coming from, we will just write \(p_i\) and \(q_i\) instead of \(p_i(b)\) and \(q_i(b)\).
-\par Let \(I = \{i_1 < \cdots < i_r\} \subseteq \{1, ..., \ell\}\), and let \((\rho_i)_{i \in I}\) be any function \(I \to \mathbb{N}_{> 0}\) such that (1) \(\rho_i \leq \lambda_i\), (2) \(\rho_i\) is decreasing with \(i\), (3) \(\lambda_i - \rho_i\) is decreasing with \(i\), and (4) \(\rho_i < n\).
-For notational convenience---although we assign meaning to neither \(i_0\) nor \(i_{r + 1}\)---we define \(q_{i_0} := n\), and \(p_{i_{r + 1}} := 0\).
+\par Let \(I = \{i_1 < \cdots < i_s\} \subseteq \{1, ..., \ell\}\), and let \((\rho_i)_{i \in I}\) be any function \(I \to \mathbb{N}_{> 0}\) such that (1) \(\rho_i \leq \lambda_i\), (2) \(\rho_i\) is decreasing with \(i\), (3) \(\lambda_i - \rho_i\) is decreasing with \(i\), and (4) \(\rho_i < n\).
+For notational convenience---although we assign meaning to neither \(i_0\) nor \(i_{s + 1}\)---we define \(q_{i_0} := n\), and \(p_{i_{s + 1}} := 0\).
 Then, we define \(B_{I, (\rho_i)}\) as the set of \(b \in \mathbb{C}^m\) satisfying the following conditions.
 \begin{itemize}
-    \item For all \(k \in \{1, ..., r\}\), \(p_i = \rho_i\).
-    \item For all \(k \in \{0, ..., r\}\), \(p_{i_{k + 1}} = \max_{i : q_i < q_{i_k}} p_i\).
+    \item For all \(k \in \{1, ..., s\}\), \(p_i = \rho_i\).
+    \item For all \(k \in \{0, ..., s\}\), \(p_{i_{k + 1}} = \max_{i : q_i < q_{i_k}} p_i\).
 \end{itemize}
-For any \(b \in B_{I, (\rho_i)}\) we have \(p_{i_1} > \cdots > p_{i_r} > p_{i_{r + 1}}\), and also \(q_{i_0} > q_{i_1} > \cdots > q_{i_r}\).
+For any \(b \in B_{I, (\rho_i)}\) we have \(p_{i_1} > \cdots > p_{i_s} > p_{i_{s + 1}}\), and also \(q_{i_0} > q_{i_1} > \cdots > q_{i_s}\).
 
 \begin{lemma}\label{bs_union}
     \(\mathbb{C}^m = \bigcup_{I, (\rho_i)} B_{I, (\rho_i)}\), where \(I\) ranges over all subsets of \(\{1, ..., \ell\}\), and \((\rho_i)\) ranges over all maps \(I \to \mathbb{N}_{>0}\) satisfying conditions (1),(2),(3),(4).
@@ -528,8 +528,8 @@ For any \(b \in B_{I, (\rho_i)}\) we have \(p_{i_1} > \cdots > p_{i_r} > p_{i_{r
     Otherwise, take any \(i_1 \in \argmax_{i : q_{i_0} > q_i} p_i\), and set \(\rho_{i_1} := p_{i_1}\).
     If \(\{i : q_{i_1} > q_i\} = \emptyset\), then stop.
     Otherwise, take any \(i_2 \in \argmax_{i : q_{i_1} > q_i} p_i\), and set \(\rho_{i_2} := p_{i_2}\).
-    Continuing on in this way, eventually we reach an \(r\) where \(\{i : q_{i_r} > q_i\} = \emptyset\).
-    Then we set \(I = \{i_1, ..., i_r\}\).
+    Continuing on in this way, eventually we reach an \(s\) where \(\{i : q_{i_s} > q_i\} = \emptyset\).
+    Then we set \(I = \{i_1, ..., i_s\}\).
     Note that \(I, (\rho_i)\) satisfy conditions (1)--(4), and furthermore \(b \in B_{I, (\rho_i)}\).
     \par Now, we check that no \(B_{I, (\rho_i)}\) is contained in the union of the others.
     Fix \(I\) and \((\rho_i)\).
@@ -542,17 +542,17 @@ Then we will use \cref{usual_springer_fiber} to find the irreducible components 
 
 \subsection{Study of \texorpdfstring{\(B_{I, (\rho_i)}\)}{B\_\{I, (p\_i)\}}}
 Fix any \(I\) and \((\rho_i)\) satisfying the conditions (1)--(4) of \cref{bs_union}.
-As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \(p_{i_{r + 1}} := 0\).
+As before, we write \(\{i_1 < \cdots < i_s\} := I\), and \(q_{i_0} := n\), and \(p_{i_{s + 1}} := 0\).
 
 \par First, we provide an alternative characterization of \(B_{I, (\rho_i)}\).
 \begin{lemma}\label{alternative_bs_one}
     \(B_{I, (\rho_i)}\) is the set of \(b \in \mathbb{C}^m\) satisfying the following conditions.
     \begin{itemize}
-        \item For all \(k \in \{1, ..., r\}\), \(p_{i_k} = \rho_{i_k}\).
+        \item For all \(k \in \{1, ..., s\}\), \(p_{i_k} = \rho_{i_k}\).
         \item For all \(i \notin I\),
         \begin{itemize}
-            \item For all \(k \in \{0, ..., r\}\) such that \(\lambda_i > q_{i_k} + p_{i_{k + 1}}\), we have \(q_{i_k} \leq q_i\).
-            \item For all \(k \in \{1, ..., r + 1\}\) such that \(\lambda_i \leq q_{i_{k - 1}} + p_{i_k}\), we have \(p_i \leq p_{i_k}\).
+            \item For all \(k \in \{0, ..., s\}\) such that \(\lambda_i > q_{i_k} + p_{i_{k + 1}}\), we have \(q_{i_k} \leq q_i\).
+            \item For all \(k \in \{1, ..., s + 1\}\) such that \(\lambda_i \leq q_{i_{k - 1}} + p_{i_k}\), we have \(p_i \leq p_{i_k}\).
         \end{itemize}
     \end{itemize}
 \end{lemma}
@@ -560,18 +560,18 @@ As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \
     First we show that every element of \(B_{I, (\rho_i)}\) satisfies those conditions.
     Let \(b \in B_{I, (\rho_i)}\).
     It is clear that for each \(k\) we have \(p_{i_k} = \rho_{i_k}\).
-    \par Let \(i \notin I\) and \(k \in \{0, ..., r\}\) such that \(\lambda_i > q_{i_k} + p_{i_{k + 1}}\).
+    \par Let \(i \notin I\) and \(k \in \{0, ..., s\}\) such that \(\lambda_i > q_{i_k} + p_{i_{k + 1}}\).
     Suppose for contradiction that \(q_i < q_{i_k}\).
     Then \(p_i \leq \max_{j : q_j < q_{i_k}} p_j = p_{i_{k + 1}}\).
     Then \(\lambda_i = p_i + q_i < q_{i_k} + p_{i_{k + 1}}\), a contradiction.
     So we must have \(q_{i_k} \leq q_i\), as desired.
-    \par Now let \(i \notin I\) and \(k \in \{1, ..., r + 1\}\) such that \(\lambda_i \leq q_{i_{k - 1}} + p_{i_k}\).
+    \par Now let \(i \notin I\) and \(k \in \{1, ..., s + 1\}\) such that \(\lambda_i \leq q_{i_{k - 1}} + p_{i_k}\).
     Suppose for contradiction that \(p_i > p_{i_k}\).
     Then, putting this together with the first inequality, we obtain \(\lambda_i - p_i < q_{i_{k - 1}} + p_{i_k} - p_{i_k}\); that is, \(q_i < q_{i_{k - 1}}\).
     Consequently, \(p_i \leq \max_{j : q_j < q_{i_{k - 1}}} p_j = p_{i_k}\), as desired.
     \par Now we have shown that every element of \(B_{I, (\rho_i)}\) satisfies the conditions of the lemma, and we proceed to the converse.
     Let \(b \in \mathbb{C}^m\) satisfy the conditions.
-    Let \(k \in \{0, ..., r\}\).
+    Let \(k \in \{0, ..., s\}\).
     We need to show that \(\max_{j : q_j < q_{i_k}} p_j = p_{i_{k + 1}}\).
     Given the conditions (1)--(4) on \(\rho_i\), it suffices to show that for each \(i \notin I\) with \(q_i < q_{i_k}\), we have \(p_i \leq p_{i_{k + 1}}\).
     Indeed, given \(i \notin I\) with \(q_i < q_{i_k}\), we cannot have \(\lambda_i > q_{i_k} + p_{i_{k + 1}}\), as that would imply (by hypothesis) that \(q_{i_k} \leq q_i\).
@@ -581,12 +581,12 @@ As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \
 \begin{corollary}\label{alternative_bs_two}
     \(B_{I, (\rho_i)}\) is the set of \(b \in \mathbb{C}^m\) satisfying the following conditions.
     \begin{itemize}
-        \item For all \(k \in \{1, ..., r\}\), \(p_{i_k} = \rho_{i_k}\).
+        \item For all \(k \in \{1, ..., s\}\), \(p_{i_k} = \rho_{i_k}\).
         \item For \(i \notin I\),
         \begin{itemize}
             \item If \(\lambda_i \geq q_{i_0} + p_{i_1}\), then \(p_i \leq \lambda_i - q_{i_0}\).
-            \item If there is \(k \in \{1, ..., r\}\) with \(q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\), then \(p_i \leq \min(p_{i_k}, \lambda_i - q_{i_k})\).
-            \item If \(q_{i_r} + p_{i_{r + 1}} > \lambda_i\), then \(p_i \leq p_{i_{r + 1}}\).
+            \item If there is \(k \in \{1, ..., s\}\) with \(q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\), then \(p_i \leq \min(p_{i_k}, \lambda_i - q_{i_k})\).
+            \item If \(q_{i_s} + p_{i_{s + 1}} > \lambda_i\), then \(p_i \leq p_{i_{s + 1}}\).
         \end{itemize}
     \end{itemize}
 \end{corollary}
@@ -597,20 +597,20 @@ As before, we write \(\{i_1 < \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \
 
 \begin{corollary}\label{bs_iso}
     \begin{align*}
-        B_{I, (\rho_i)} \cong & \prod_{k = 1}^r (\mathbb{C}^{\rho_{i_k} - 1} \times (\mathbb{C} \setminus \{0\})) \times \prod_{i : \lambda_i \geq q_{i_0} + p_{i_1}} \mathbb{C}^{\lambda_i - q_{i_0}} \times \\
-        & \prod_{k = 1}^r \prod_{\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}}\mathbb{C}^{\min(p_{i_k}, \lambda_i - q_{i_k})}.
+        B_{I, (\rho_i)} \cong & \prod_{k = 1}^s (\mathbb{C}^{\rho_{i_k} - 1} \times (\mathbb{C} \setminus \{0\})) \times \prod_{i : \lambda_i \geq q_{i_0} + p_{i_1}} \mathbb{C}^{\lambda_i - q_{i_0}} \times \\
+        & \prod_{k = 1}^s \prod_{\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}}\mathbb{C}^{\min(p_{i_k}, \lambda_i - q_{i_k})}.
     \end{align*}
 \end{corollary}
 \begin{proof}
     Here we use the notation \(x \times y = (x, y)\), and so on.
     The isomorphism sends \(b \in B_{I, (\rho_i)}\) to 
-    \[\prod_{k = 1}^{r}(b_{i_k1},..., b_{i_k\rho_{i_k}}) \times \prod_{i : \lambda_i \geq q_{i_0} + p_{i_1}} (b_{i1}, ..., b_{i, \lambda_i - q_{i_0}}) \times\]
-    \[\prod_{k = 1}^r \prod_{\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} (b_{i1}, ..., b_{i,\min(p_{i_k}, \lambda_i - q_{i_k})}).\]
+    \[\prod_{k = 1}^s (b_{i_k1},..., b_{i_k\rho_{i_k}}) \times \prod_{i : \lambda_i \geq q_{i_0} + p_{i_1}} (b_{i1}, ..., b_{i, \lambda_i - q_{i_0}}) \times\]
+    \[\prod_{k = 1}^s \prod_{\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} (b_{i1}, ..., b_{i,\min(p_{i_k}, \lambda_i - q_{i_k})}).\]
     \cref{alternative_bs_two} says that this is an isomorphism.
 \end{proof}
 
 \begin{corollary}\label{bs_dim}
-    \[\dim B_{I, (\rho_i)} = \sum_{i : \lambda_i \geq q_{i_0} + \rho_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^r \sum_{\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} \min(p_{i_k}, \lambda_i - q_{i_k}).\]
+    \[\dim B_{I, (\rho_i)} = \sum_{i : \lambda_i \geq q_{i_0} + \rho_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^s \sum_{\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} \min(p_{i_k}, \lambda_i - q_{i_k}).\]
 \end{corollary}
 \begin{proof}
     Immediate from \cref{bs_iso}.
@@ -622,7 +622,7 @@ In this subsection we find the irreducible components of \(\mathcal{Q}_{I, (\rho
 \par We will find a partition \(\mu\), depending only on \(I\) and \((\rho_i)\), such that for every \(b \in B_{I, (\rho_i)}\), the matrix \(A_{0,b}\) is similar to \(J(\mu)\).
 By finding an algebraic map taking \(b \in B_{I, (\rho_i)}\) to a Jordan basis for \(A_{0,b}\), we will put \(\mathcal{Q}_{I, (\rho_i)}\) in isomorphism with the product \(B_{I, (\rho_i)} \times \mathcal{F}_{J(\mu)}\).
 \par So, now we find a Jordan basis for \(A_{0, b}\).
-As before, we write \(\{i_1 <  \cdots < i_r\} := I\), and \(q_{i_0} := n\), and \(p_{i_{r + 1}} := 0\).
+As before, we write \(\{i_1 <  \cdots < i_s\} := I\), and \(q_{i_0} := n\), and \(p_{i_{s + 1}} := 0\).
 We will also write, somewhat abusively, \(b \in \mathbb{C}^{m + n}\) to refer to the vector \((b, 0) \in \mathbb{C}^{m} \times \mathbb{C}^n\).
 \par Given a vector \(v\) such that \(A^k v \neq 0\) but \(A^{k + 1} v = 0\), we refer to the list of vectors \([v, A_{0,b} v, ..., A_{0,b}^k v]\) as the \emph{chain starting with \(v\)}.
 Given a vector \(v = \sum_{ij} v_{ij} e_{ij} \in \mathbb{C}^{m + n}\), we define the left-shift operator \(v \leftshift k := \sum_{ij} v_{ij} e_{i,j - k}\).
@@ -634,7 +634,7 @@ If (and only if) \(v \in \langle e_{ij} \rangle_{i,j: j \leq \lambda_i - k}\), t
     \begin{itemize}
         \item For \(i \notin I\), the chain of length \(\lambda_i\) beginning with \(e_{i, \lambda_i}\)
         \item The chain of length \(q_{i_0} + p_{i_1}\) beginning with \(f_n - (A^{n + p_{i_1}}f_n \rightshift n + p_{i_1})\)
-        \item For \(k \in \{1, ..., r\}\), the chain of length \(q_{i_k} + p_{i_{k + 1}}\) beginning with \(v_{i_k} - (A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}})\), where \(v_{i_k} := A^{n - q_{i_k}} f_n - \sum_{j = 1}^{p_{i_k}} b_{i_kj} e_{i,j + q_{i_k}}\)
+        \item For \(k \in \{1, ..., s\}\), the chain of length \(q_{i_k} + p_{i_{k + 1}}\) beginning with \(v_{i_k} - (A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}})\), where \(v_{i_k} := A^{n - q_{i_k}} f_n - \sum_{j = 1}^{p_{i_k}} b_{i_kj} e_{i,j + q_{i_k}}\)
     \end{itemize}
 \end{lemma}
 \begin{proof}
@@ -654,7 +654,7 @@ If (and only if) \(v \in \langle e_{ij} \rangle_{i,j: j \leq \lambda_i - k}\), t
             A^{n + p_{i_1}}(A^{n + p_{i_1}}f_n \rightshift n + p_{i_1}) & .
         \end{align*}
         This shows that the chain has length at most \(n + p_{i_1}\), as desired.
-        \par Now, let \(k \in \{1, ..., r\}\).
+        \par Now, let \(k \in \{1, ..., s\}\).
         Since \(b \in B_{I, (\rho_i)}\), we have \(q_{i_k} < n\), and thus the definition of \(v_{i_k}\) makes sense---i.e., the exponent of \(A\) is nonnegative.
         We consider the chain beginning with \(v_{i_k} - (A^{q_{i_k} + p_{i_{k + 1}}} v_{i_k} \rightshift q_{i_k} + p_{i_{k + 1}})\).
         Note that \(A^{q_{i_k}} v_{i_k}\) is just \(b\) with row \(i_k\) zeroed out.
@@ -687,7 +687,7 @@ If (and only if) \(v \in \langle e_{ij} \rangle_{i,j: j \leq \lambda_i - k}\), t
         \par Now we are left with showing that \(\langle e_{ij} \rangle_{i,j : q_i < n} \subseteq W\).
         It suffices to show that \(e_{i, \lambda_i} \in W\) for each \(i\) with \(q_i < n\).
         This is obvious for \(i \notin I\).
-        So, we just need to show that \(e_{i_k\lambda_{i_k}} \in W\) for each \(k \in \{1, ..., r\}\).
+        So, we just need to show that \(e_{i_k\lambda_{i_k}} \in W\) for each \(k \in \{1, ..., s\}\).
         We do this inductively; fix \(k\), and suppose we have already shown that \(e_{i_{k'}, \lambda_{i_{k'}}} \in W\) for \(k' < k\).
         We will show that \(e_{i_k, \lambda_{i_k}} \in W\).
         \par Since \(AW \subseteq W\), and \(b_{i_k,p_{i_k}} \neq 0\) by definition of \(p_{i_k}\), it suffices to show that \(\sum_{j = 1}^{p_{i_k}} b_{i_kj} e_{i_k,j + q_{i_k}} \in W\).
@@ -707,14 +707,13 @@ Let \((\mathcal{F}_{\mu,\alpha})_{\alpha \in \mathrm{SYT}(\mu)}\) be the irreduc
 We are interested in \(\gamma\) because the dimension of each \(\mathcal{F}_{\mu, \alpha}\) is \(\gamma(\mu) = \gamma([\mu_1, ..., \mu_{\ell + 1}])\).
 
 \begin{lemma}\label{springer_fiber_dim}
-    \[\gamma([\mu_1, ..., \mu_{k + 1}]) = \gamma([0, \lambda_1, ..., \lambda_k]) - \] 
+    \[\gamma(\mu) = \gamma([0, \lambda_1, ..., \lambda_k]) - \] 
     \[\left[\sum_{i : \lambda_i \geq q_{i_0} + \rho_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^r \sum_{\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} \min(p_{i_k}, \lambda_i - q_{i_k})\right].\]
 \end{lemma}
-\begin{proof}
-    We have
-    \[\mu = [..., q_{i_0} + p_{i_1}, ..., q_{i_1} + p_{i_2}, ..., ..., q_{i_r} + p_{i_{r + 1}}, ...].\]
-    Let \(L'\) be the result of taking \(\mu\) and, for each \(k\), replacing one occurence of \(q_{i_k} + p_{i_{k + 1}}\) by \(q_{i_k} + p_{i_k}\); that is,
-    \[L' = [..., q_{i_0}, ..., q_{i_1} + p_{i_1}, ..., q_{i_2} + p_{i_2}, ..., ..., q_{i_r} + p_{i_r}, ...].\]
+\begin{proof} We have
+    \[\mu = [..., q_{i_0} + p_{i_1}, ..., q_{i_1} + p_{i_2}, ..., ..., q_{i_s} + p_{i_{s + 1}}, ...].\]
+    Let \(L'\) be the result of taking \(\mu\) and, for each \(k\), replacing an occurence of \(q_{i_k} + p_{i_{k + 1}}\) by \(q_{i_k} + p_{i_k}\); that is,
+    \[L' = [..., q_{i_0}, ..., q_{i_1} + p_{i_1}, ..., q_{i_2} + p_{i_2}, ..., ..., q_{i_s} + p_{i_s}, ...].\]
     We can transform \(\mu\) into \(L'\) by just `moving' each \(p_{i_k}\) to the right by \(1 + \#\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}\) slots.
     So,
     \[\gamma(L') - \gamma(\mu) = \sum_{k = 1}^r p_{i_k} (1 + \#\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}) = \]
