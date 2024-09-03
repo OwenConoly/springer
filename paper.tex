@@ -283,7 +283,7 @@ Embedding this into \(\gl_{m + n}\) as described previously, we obtain
     Looking at the definition of \(f\) from the previous section (and zero-padding the matrices), we see that \((fX)_{ij} = i (n - i) X_{i + 1,j}\), and \((Xf)_{ij} = (j - 1)(n - (j - 1)) X_{i, j - 1}\).
     So, for any \(i, j \in \{1,...,n\}\),
     \[i(n - i)X_{i + 1,j} = (j - 1)(n - (j - 1))X_{i, j - 1}.\]
-    Taking \(j = 1\), the condition above tells us that for all \(i \geq 2\) we have \(X_{i, 1} = 0\).
+    Taking \(j = 1\), the condition above says that for all \(i \geq 2\) we have \(X_{i, 1} = 0\).
     Taking \(j > 1\) and \(i < n\), we get that for all \(i,j \in \{1,...,n-1\}\),
     \[X_{i + 1, j + 1} = \frac{j(n - j)}{i(n - i)} X_{ij}.\]
     So, every \(X \in \mathfrak{z}_{\gl_n}(f)\) is upper triangular and satisfies the condition above.
@@ -424,7 +424,7 @@ Also, define
 \[\mathcal{Q}_{wr} = \{(A_{e_{wr}, b}, V_\bullet) \in \mathcal{P}_{wr}\}.\]
 Let \(G\) act on \(\mathcal{P}_{wr}\) by
 \[P \cdot (A_{a,b}, V_\bullet) := ((P, I_n) A_{a, b} (P, I_n)^{-1}, (P, I_n)V_\bullet) = (A_{a P^{-1}, Pb}, (P, I_n) V_\bullet).\]
-Note that for any \(x \in \mathcal{Q}_{wr}\), we have \(G_{wr} = \{g \in G : g \cdot x \in \mathcal{Q}_{wr}\}\).
+For any \(x \in \mathcal{Q}_{wr}\), we have \(G_{wr} = \{g \in G : g \cdot x \in \mathcal{Q}_{wr}\}\).
 So, by restriction of \(G\) to \(G_{wr}\) and \(\mathcal{P}_{wr}\) to \(\mathcal{Q}_{wr}\), we obtain an action of \(G_{wr}\) on \(\mathcal{Q}_{wr}\).
 \par Consider the map \(\varphi_{wr} : \mathcal{Q}_{wr} \times G \to \mathcal{P}_{wr}\) defined by
 \[(x, P) \mapsto P \cdot x.\]
@@ -498,7 +498,7 @@ Let \(\mathcal{Q}' = \{(A'_{X', 0, b}, V_\bullet) : \forall i. \; A'_{X', 0, b} 
 The next section finds the irreducible components of \(\mathcal{Q}'\).
 To make the notation nicer, we will refer to it as \(\mathcal{Q}\), and refer to \(m',n'\) as \(m,n\) (and so on), throughout the next section.
 
-\section{The components of \texorpdfstring{\(\mathcal{Q}\)}{Q}}\label{q_comp}
+\section{The Components of \texorpdfstring{\(\mathcal{Q}\)}{Q}}\label{q_comp}
 \subsection{Setup}
 Let \(X = J(\lambda) \in \gl_m\).
 Let \((e_{ij})_{1 \leq i \leq \ell, 1 \leq j \leq \lambda_i}\) be the standard (Jordan) basis for \(\mathbb{C}^m\).
@@ -516,7 +516,7 @@ Then, we define \(B_{I, (\rho_i)}\) as the set of \(b \in \mathbb{C}^m\) satisfy
     \item For all \(k \in \{1, ..., r\}\), \(p_i = \rho_i\).
     \item For all \(k \in \{0, ..., r\}\), \(p_{i_{k + 1}} = \max_{i : q_i < q_{i_k}} p_i\).
 \end{itemize}
-Note that for any \(b \in B_{I, (\rho_i)}\) we have \(p_{i_1} > \cdots > p_{i_r} > p_{i_{r + 1}}\), and also \(q_{i_0} > q_{i_1} > \cdots > q_{i_r}\).
+For any \(b \in B_{I, (\rho_i)}\) we have \(p_{i_1} > \cdots > p_{i_r} > p_{i_{r + 1}}\), and also \(q_{i_0} > q_{i_1} > \cdots > q_{i_r}\).
 
 \begin{lemma}\label{bs_union}
     \(\mathbb{C}^m = \bigcup_{I, (\rho_i)} B_{I, (\rho_i)}\), where \(I\) ranges over all subsets of \(\{1, ..., \ell\}\), and \((\rho_i)\) ranges over all maps \(I \to \mathbb{N}_{>0}\) satisfying conditions (1),(2),(3),(4).
@@ -711,20 +711,20 @@ We are interested in \(\gamma\) because the dimension of each \(\mathcal{F}_{\mu
     \[\left[\sum_{i : \lambda_i \geq q_{i_0} + \rho_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^r \sum_{\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} \min(p_{i_k}, \lambda_i - q_{i_k})\right].\]
 \end{lemma}
 \begin{proof}
-    Let \(L = [q_{i_0}, \lambda_1, ..., \lambda_k]\).
-    Note that
+    We have
     \[\mu = [..., q_{i_0} + p_{i_1}, ..., q_{i_1} + p_{i_2}, ..., ..., q_{i_r} + p_{i_{r + 1}}, ...].\]
-    Let \(L'\) be the result of taking \(\mu\) and, for each \(x\), replacing one occurence of \(q_{i_x} + p_{i_{x + 1}}\) by \(q_{i_x} + p_{i_x}\); that is,
-    \[L' = [..., q_{i_0}, ..., q_{i_1} + p_{i_1}, ..., q_{i_2} + p_{i_2}, ..., q_{i_r} + p_{i_r}].\]
+    Let \(L'\) be the result of taking \(\mu\) and, for each \(k\), replacing one occurence of \(q_{i_k} + p_{i_{k + 1}}\) by \(q_{i_k} + p_{i_k}\); that is,
+    \[L' = [..., q_{i_0}, ..., q_{i_1} + p_{i_1}, ..., q_{i_2} + p_{i_2}, ..., ..., q_{i_r} + p_{i_r}, ...].\]
     We can transform \(\mu\) into \(L'\) by just `moving' each \(p_{i_k}\) to the right by \(1 + \#\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}\) slots.
     So,
     \[\gamma(L') - \gamma(\mu) = \sum_{k = 1}^r p_{i_k} (1 + \#\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}) = \]
     \[\sum_{k = 1}^r p_{i_k} \cdot \#\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}.\]
-    \par Now we consider how to transform \(L'\) into \(L\).
+    \par Let \(L = [q_{i_0}, \lambda_1, ..., \lambda_k]\).
+    Now we consider how to transform \(L'\) into \(L\).
     First we shift \(q_{i_0}\) to the left by \(\#\{i \notin I : \lambda_i \geq q_{i_0} + p_{i_1}\}\) slots.
     Then we leave \(q_{i_0}\) in place and sort the rest of the list.
-    This entails shifting each \(q_{i_x} + p_{i_x}\) to the left by \(\#\{i \notin I : q_{i_x} + p_{i_x} > \lambda_i \geq q_{i_x} + p_{i_{x + 1}}\}\) slots.
-    Shifting \(q_{i_x} + p_{i_x}\) to the left one slot, by swapping it with \(\lambda_i\), changes the value of \(\gamma\) by \(\lambda_i - (q_{i_x} + p_{i_x})\).
+    This entails shifting each \(q_{i_k} + p_{i_k}\) to the left by \(\#\{i \notin I : q_{i_k} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}\) slots.
+    Shifting \(q_{i_k} + p_{i_k}\) to the left one slot, by swapping it with \(\lambda_i\), changes the value of \(\gamma\) by \(\lambda_i - (q_{i_k} + p_{i_k})\).
     To go from \(L'\) to \(L\), we can just make these swaps repeatedly.  
     So,
     \[\gamma(L) - \gamma(L') = \]
@@ -777,18 +777,18 @@ We are interested in \(\gamma\) because the dimension of each \(\mathcal{F}_{\mu
     Then \cref{bs_union} says that their union is \(\mathcal{Q}\), and in addition that none is contained in the union of the others.
 \end{proof}
 
-\section{The components of \texorpdfstring{\(\mathcal{P}_{J(\lambda)}\)}{P\_\{J(\textbackslash lambda)\}}}\label{p_comp}
+\section{The Components of \texorpdfstring{\(\mathcal{P}_{J(\lambda)}\)}{P\_\{J(\textbackslash lambda)\}}}\label{p_comp}
 As in section 5, we write \(X = J(\lambda) \in \gl_m\), where \(\lambda = (\lambda_1, ..., \lambda_k)\).
 We write \(\mathcal{P} := \mathcal{P}_{J(\lambda)}\), and \(A_{a,b} := A_{J(\lambda), a, b}\).
 And as before, \((e_{ij})_{ij}\) and \((f_j)_j\) form the standard basis for \(\mathbb{C}^{m + n}\).
-\subsection{The components of \texorpdfstring{\(\mathcal{Q}_{wr}\)}{Q\_\{wr\}}}
+\subsection{The Components of \texorpdfstring{\(\mathcal{Q}_{wr}\)}{Q\_\{wr\}}}
 Recall from section 5 the varieties
 \[\mathcal{Q}_{wr} = \{(A_{e_{wr}, b}, V_\bullet) \in \mathcal{P}\}.\]
 Fix any \(w,r\).
-\cref{a_zero} tells us that 
+\cref{a_zero} says that 
 \[\mathcal{Q}_{wr} \cong \mathcal{Q}' := \{(A'_{X', 0, b}, V_\bullet) : \forall i. \; A'_{X', 0, b} V_{i + 1} \subseteq V_i\},\]
 where \(X' = J(\lambda')\), and \(\lambda' = (\lambda_1, ..., \lambda_w - r, ..., \lambda_k)\), and \(m' = m - r\), and \(n' = n + r\).
-\par Let \((\mathcal{Q}'_{I, (\rho_i), \alpha})_{I, (\rho_i), \alpha}\) be the irreducible components of \(\mathcal{Q}'\) give by \cref{Q_comps}.
+\par Let \((\mathcal{Q}'_{I, (\rho_i), \alpha})_{I, (\rho_i), \alpha}\) be the irreducible components of \(\mathcal{Q}'\) given by \cref{Q_comps}.
 Write \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) to denote the irreducible component of \(\mathcal{Q}_{wr}\) corresponding to \(\mathcal{Q}'_{I, (\rho_i), \alpha}\) via the isomorphism \(\mathcal{Q}_{wr} \cong \mathcal{Q}'\) of \cref{a_zero}.
 
 \begin{theorem}\label{qwr_comps}
@@ -800,7 +800,7 @@ Write \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) to denote the irreducible componen
     To calculate the dimension, we refer to \cref{u_i_rho_irred_and_dim}, which says the dimension is \(\gamma([0, \lambda_1', ..., \lambda_k'])\).
 \end{proof}
 
-\subsection{The varieties \texorpdfstring{\(G_{wr}\)}{G\_\{wr\}} and \texorpdfstring{\(G\)}{G}}
+\subsection{The Varieties \texorpdfstring{\(G_{wr}\)}{G\_\{wr\}} and \texorpdfstring{\(G\)}{G}}
 Fix \(w,r\).
 Recall from section 5 the groups \(G = \{P \in \GL_m : P^{-1}XP = X\}\) and \(G_{wr} = \{A \in G : e_{wr} A = e_{wr}\}\).
 \begin{lemma}\label{g_irred_dim}
@@ -823,7 +823,7 @@ Recall from section 5 the groups \(G = \{P \in \GL_m : P^{-1}XP = X\}\) and \(G_
     Hence \(V \cong \mathbb{C}^{\sum_{ij}\min(\lambda_i', \lambda_j')}\).
 \end{proof}
 
-\subsection{The components of \texorpdfstring{\(\mathcal{P}_{wr}\)}{P\_\{wr\}}}
+\subsection{The Components of \texorpdfstring{\(\mathcal{P}_{wr}\)}{P\_\{wr\}}}
 Recall from section 5 the subvarieties \(\mathcal{P}_{wr} \subseteq \mathcal{P}\).
 From \cref{principal_bundle} we have the principal \(G_{wr}\)-bundle \(\varphi_{wr} : \mathcal{Q}_{wr} \times G \to \mathcal{P}_{wr}\).
 % \par Together, \cref{g_irred_dim} and \cref{gwr_irred_dim} tell us that the irreducible components of \(\mathcal{Q}_{wr} \times G\) are the subvarieties \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G\).
@@ -863,7 +863,7 @@ From \cref{principal_bundle} we have the principal \(G_{wr}\)-bundle \(\varphi_{
     \[\sum_{i \leq j} \min(\lambda_i, \lambda_j) + \sum_{ij} \min(\lambda_i, \lambda_j) - \sum_{ij} \min(\lambda_i, \lambda_j) = \sum_{i \leq j} \min(\lambda_i, \lambda_j).\]
 \end{proof}
 
-\subsection{The components of \texorpdfstring{\(\mathcal{P}\)}{P}}
+\subsection{The Components of \texorpdfstring{\(\mathcal{P}\)}{P}}
 \begin{corollary}\label{p_comps}
     Every irreducible component of \(\mathcal{P}\) is the closure of some subvariety of the form \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G)\), and the closure of each subvariety of this form is an irreducible component.
     Each has dimension \(\sum_{i \leq j} \min(\lambda_i, \lambda_j)\).
@@ -872,7 +872,7 @@ From \cref{principal_bundle} we have the principal \(G_{wr}\)-bundle \(\varphi_{
     Follows directly from \cref{pwr_comps}.
 \end{proof}
 
-\section{The components of \texorpdfstring{\(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}{S x\_g N}}\label{sxn_comps}
+\section{The Components of \texorpdfstring{\(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}{S x\_g N}}\label{sxn_comps}
 Recall from \cref{sn_iso} that 
 \[S \times_\mathfrak{g} \widetilde{\mathcal{N}} \cong \{(A_{X,a,b}, U_\bullet, V_\bullet) : \forall i. \; XU_{i + 1} \subseteq U_i; \forall i. \; A_{X,a,b} V_{i + 1} \subseteq V_i\}.\]
 We defined \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}_m\) by \((A_{X,a,b}, U_\bullet, V_\bullet) \mapsto X\), and called \(\pi^{-1}(X)\) the \(n\)-Slodowy-slice Springer fiber at \(X\).
