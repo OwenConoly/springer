@@ -777,22 +777,21 @@ We are interested in \(\gamma\) because the dimension of each \(\mathcal{F}_{\mu
 \end{proof}
 
 \section{The Components of \texorpdfstring{\(\mathcal{P}_{J(\lambda)}\)}{P\_\{J(\textbackslash lambda)\}}}\label{p_comp}
-As in section 5, we write \(X = J(\lambda) \in \gl_m\), where \(\lambda = (\lambda_1, ..., \lambda_\ell)\).
+As before, we write \(X = J(\lambda) \in \gl_m\), where \(\lambda = (\lambda_1, ..., \lambda_\ell)\).
 We write \(\mathcal{P} := \mathcal{P}_{J(\lambda)}\), and \(A_{a,b} := A_{J(\lambda), a, b}\).
 And as before, \((e_{ij})_{ij}\) and \((f_j)_j\) form the standard basis for \(\mathbb{C}^{m + n}\).
 \subsection{The Components of \texorpdfstring{\(\mathcal{Q}_{wr}\)}{Q\_\{wr\}}}
-Recall from section 5 the varieties
-\[\mathcal{Q}_{wr} = \{(A_{e_{wr}, b}, V_\bullet) \in \mathcal{P}\}.\]
-Fix any \(w,r\).
+Fix any \(w\) and \(r\).
+Recall from \cref{p_comp_strat} the variety \(\mathcal{Q}_{wr} = \{(A_{e_{wr}, b}, V_\bullet) \in \mathcal{P}\}\).
 \cref{a_zero} says that 
 \[\mathcal{Q}_{wr} \cong \mathcal{Q}' := \{(A'_{X', 0, b}, V_\bullet) : \forall i. \; A'_{X', 0, b} V_{i + 1} \subseteq V_i\},\]
-where \(X' = J(\lambda')\), and \(\lambda' = (\lambda_1, ..., \lambda_w - r, ..., \lambda_\ell)\), and \(m' = m - r\), and \(n' = n + r\).
+where \(X' = J(\lambda')\), and \(\lambda' = (\lambda_1, ..., R(r), ..., \lambda_\ell)\), and \(m' = m - \lambda_w + R(r)\), and \(n' = n + \lambda_w - R(r)\).
 \par Let \((\mathcal{Q}'_{I, (\rho_i), \alpha})_{I, (\rho_i), \alpha}\) be the irreducible components of \(\mathcal{Q}'\) given by \cref{Q_comps}.
 Write \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) to denote the irreducible component of \(\mathcal{Q}_{wr}\) corresponding to \(\mathcal{Q}'_{I, (\rho_i), \alpha}\) via the isomorphism \(\mathcal{Q}_{wr} \cong \mathcal{Q}'\) of \cref{a_zero}.
 
 \begin{theorem}\label{qwr_comps}
     The irreducible components of \(\mathcal{Q}_{wr}\) are the subvarieties \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\).
-    Each has dimension \(\sum_{i \leq j} \min(\lambda_i', \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_\ell)\).
+    Each has dimension \(\sum_{i \leq j} \min(\lambda_i', \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, R(r), \lambda_{w + 1}, ..., \lambda_\ell)\).
 \end{theorem}
 \begin{proof}
     From the foregoing discussion, it is clear that they are indeed the irreducible components.
@@ -801,7 +800,7 @@ Write \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) to denote the irreducible componen
 
 \subsection{The Varieties \texorpdfstring{\(G_{wr}\)}{G\_\{wr\}} and \texorpdfstring{\(G\)}{G}}
 Fix \(w,r\).
-Recall from section 5 the groups \(G = \{P \in \GL_m : P^{-1}XP = X\}\) and \(G_{wr} = \{A \in G : e_{wr} A = e_{wr}\}\).
+Recall from \cref{p_comp_strat} the groups \(G = \{P \in \GL_m : P^{-1}XP = X\}\) and \(G_{wr} = \{A \in G : e_{wr} A = e_{wr}\}\).
 \begin{lemma}\label{g_irred_dim}
     \(G\) is irreducible and has dimension \(\sum_{ij} \min(\lambda_i, \lambda_j)\).
 \end{lemma}
@@ -811,15 +810,15 @@ Recall from section 5 the groups \(G = \{P \in \GL_m : P^{-1}XP = X\}\) and \(G_
 \end{proof}
 
 \begin{lemma}\label{gwr_irred_dim}
-    \(G_{wr}\) is irreducible and has dimension \(\sum_{ij} \min(\lambda_i, \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_\ell)\).
+    \(G_{wr}\) is irreducible and has dimension \(\sum_{ij} \min(\lambda_i, \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, R(r), \lambda_{w + 1}, ..., \lambda_\ell)\).
 \end{lemma}
 \begin{proof}
     The closure of \(G_{wr}\) in \(\gl_m\) is \(V = \{Y \in \mathfrak{z}_{\gl_m}(X) : e_{wr} Y = e_{wr}\}\).
     In the case that \(r = 0\), the constraint that \(e_{wr}Y = e_{wr}\) is no constraint at all, so we have \(G_{wr} = G\), and the result follows from \cref{g_irred_dim}.
-    \par In the case that \(r > 0\), we observe that \(V = \{Y + I : Y \in \mathfrak{z}_{\gl_m}(X), e_{wr}Y = 0\}\).
-    The constraint \(e_{wr}Y = 0\) is just saying that a certain row of \(Y\) must be all zeroes.
+    \par In the case that \(r > 0\), observe that \(V = \{Y + I : Y \in \mathfrak{z}_{\gl_m}(X), e_{wr}Y = 0\}\).
+    The constraint \(e_{wr}Y = 0\) just says that a certain row of \(Y\), the row with index \(\sum_{i \leq w} \lambda_i - R(r)\), must be all zeroes.
     So, the set of \(Y\) such that \(Y + I \in V\) is the set described by \cref{nilpotent_centralizer_row_zero}.
-    Hence \(V \cong \mathbb{C}^{\sum_{ij}\min(\lambda_i', \lambda_j')}\).
+    Hence \(V \cong \mathbb{C}^{\sum_{ij}\min(\lambda_i, \lambda_j')}\).
 \end{proof}
 
 \subsection{The Components of \texorpdfstring{\(\mathcal{P}_{wr}\)}{P\_\{wr\}}}
@@ -971,14 +970,14 @@ In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\
 \end{proof}
 
 \begin{corollary}\label{nilpotent_centralizer_row_zero}
-    Let \(\lambda = (\lambda_1, ..., \lambda_k)\) be a partition of \(m\).
-    Let \(w \in \{1, ..., k\}\) and \(r \in \{1, ..., \lambda_w\}\).
-    Let \(i = [\sum_{j < w} \lambda_j] + r\).
+    Let \(\lambda = (\lambda_1, ..., \lambda_\ell)\) be a partition of \(m\).
+    Let \(w \in \{1, ..., \ell\}\) and \(R \in \{0, ..., \lambda_w - 1\}\).
+    Let \(i = [\sum_{j \leq w} \lambda_j] - R\).
     The set of \(M \in \mathfrak{z}_{\gl_m}(J(\lambda))\) such that the \(i\)th row of \(M\) is equal to zero is the set of matrices
     \[M = \begin{pmatrix}
-        M_{11} & \cdots & M_{1k} \\
+        M_{11} & \cdots & M_{1\ell} \\
         \vdots & & \vdots\\
-        M_{k1} & \cdots & M_{kk}
+        M_{\ell 1} & \cdots & M_{\ell\ell}
     \end{pmatrix},\]
     where each \(M_{ij}\) is a \(\lambda_i \times \lambda_j\) matrix, such that:
     \begin{itemize}
@@ -988,7 +987,7 @@ In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\
             0\\
             M_{wj}'
         \end{pmatrix},\]
-        where \(M_{wj}'\) is a \((\lambda_w - r) \times \lambda_j\) lower-left Toeplitz matrix.
+        where \(M_{wj}'\) is a \(R \times \lambda_j\) lower-left Toeplitz matrix.
     \end{itemize}
 \end{corollary}
 
