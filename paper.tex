@@ -995,70 +995,70 @@ In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\
 
 \subsection{A `Standardization' Fact about Jordan Bases}
 \begin{lemma}\label{normalization_helper_one}
-    For any finite-dimensional \(V\), nilpotent \(A : V \to V\), and linear \(f : V \to \mathbb{C}\), there is a Jordan basis \(e_{ij}\) for \(A\) such that there is at most one \(i\) such that there exists \(j\) such that \(f(e_{ij}) \neq 0\).
+    For any finite-dimensional \(V\), nilpotent \(A : V \to V\) of Jordan type \(\lambda = (\lambda_1, ..., \lambda_\ell)\), and linear \(f : V \to \mathbb{C}\), there is a Jordan basis \((e_{ij})_{1 \leq i \leq \ell, 1 \leq j \leq \lambda_i}\) for \(A\) such that there is at most one \(i\) such that there exists \(j\) such that \(f(e_{ij}) \neq 0\).
 \end{lemma}
 \begin{proof}
     For any Jordan basis \((e_{ij})_{ij}\) of \(A\), define
-    \[S((e_{ij})_{1 \leq i \leq k, 1 \leq j \leq \lambda_i}) := \sum_i \begin{cases}-1, & \forall j. \; f (e_{ij}) = 0 \\ \lambda_i - \min\{j : f (e_{ij}) \neq 0\}, & \textrm{otherwise} \end{cases}.\]
+    \[S((e_{ij})_{ij}) := \sum_i \begin{cases}-1, & \forall j. \; f (e_{ij}) = 0 \\ \lambda_i - \min\{j : f (e_{ij}) \neq 0\}, & \textrm{otherwise} \end{cases}.\]
     We proceed by induction on the measure \(S\).
     That is, let \((e_{ij})_{ij}\) be a Jordan basis for \(A\).
-    Our inductive hypothesis is that if there exists a Jordan basis \((e_{ij}')_{ij}\) with \(S((e_{ij}')_{ij}) < S((e_{ij})_{ij})\), then we get the desired conclusion.
+    The inductive hypothesis is that if there exists a Jordan basis \((e_{ij}')_{ij}\) with \(S((e_{ij}')_{ij}) < S((e_{ij})_{ij})\), then we get the desired conclusion.
     \par Now, we have two cases.
     In the first case, \((e_{ij})_{ij}\) already satisfies the desired property.
     In this case we are done.
     In the other case, there exist \(i_1, j_1, i_2, j_2\) with \(i_1 \neq i_2\), and \(f(e_{i_1j_1}) \neq 0\), and \(f(e_{i_2j_2}) \neq 0\).
-    We let \(j_1, j_2\) be minimal with this property, so that \(\forall j < j_1. \; f(e_{i_1j}) = 0\), and \(\forall j < j_2. \; f(e_{i_2j}) = 0\).
-    Wlog, we assume that \(\lambda_{i_1} - j_1 \leq \lambda_{i_2} - j_2\).
-    \par By our inductive hypothesis, all we need to do is find a Jordan basis \((e_{ij}')_{ij}\) with \(S((e_{ij}')_{ij}) < S((e_{ij})_{ij})\).
+    Let \(j_1, j_2\) be minimal with this property, so that \(\forall j < j_1. \; f(e_{i_1j}) = 0\), and \(\forall j < j_2. \; f(e_{i_2j}) = 0\).
+    Without loss of generality, \(\lambda_{i_1} - j_1 \leq \lambda_{i_2} - j_2\).
+    \par By the inductive hypothesis, all we need to do is find a Jordan basis \((e_{ij}')_{ij}\) with \(S((e_{ij}')_{ij}) < S((e_{ij})_{ij})\).
     This is what we do.
-    Define \(e'_{ij}\) as follows.
+    Define \((e'_{ij})_{ij}\) as follows.
     \begin{itemize}
-        \item \(e_{i_1, \lambda_1}' := e_{i_1, \lambda_1} - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}\)
-        \item For \(j < \lambda_1\), \(e_{i_1, j}' := A^{\lambda_{i_1} - j} e_{i_1, \lambda_{i_1}}'\)
+        \item \(e_{i_1, \lambda_{i_1}}' := e_{i_1, \lambda_{i_1}} - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}\).
+        \item For \(j < \lambda_{i_1}\), \(e_{i_1, j}' := A^{\lambda_{i_1} - j} e_{i_1, \lambda_{i_1}}'\).
         \item For \(i \neq i_1\), \(e_{ij}' := e_{ij}\).
     \end{itemize}
     Clearly this is a Jordan basis for \(A\).
     Further, we claim that \(S((e'_{ij})_{ij})  < S((e_{ij})_{ij})\).
-    It suffices to show that \(\forall j \leq j_1. \; f (e_{i_1,j}) = 0\).
-    We have 
+    It suffices to show that for all \(j \leq j_1\) we have  \(f (e_{i_1,j}) = 0\).
+    Indeed,
     \[f (e_{i_1,j}') = f\left(A^{\lambda_{i_1} - j}\left(e_{i_1, \lambda_1} - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})}e_{i_2, j_2 + (\lambda_{i_1} - j_1)}\right)\right) =\]
     \[f\left(e_{i_1, j} - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})} e_{i_2, j_2 + (j - j_1)}\right) = f(e_{i_1, j}) - \frac{f(e_{i_1, j_1})}{f(e_{i_2, j_2})} f(e_{i_2, j_2 + (j - j_1)}).\]
     Clearly (by design), this expression is zero when \(j = j_1\).
-    And for \(j < j_1\), we have \(f(e_{i_1, j}) = f(e_{i_2, j_2 + (j - j_1)}) = 0\), so it is zero then as well.
-    Hence the measure \(S\) of this new basis is smaller, as desired.
+    And for \(j < j_1\), both \(f(e_{i_1, j})\) and \(f(e_{i_2, j_2 + (j - j_1)})\) are zero, so it is zero then as well.
+    Thus the measure \(S\) of this new basis is smaller, as desired.
 \end{proof}
 
 \begin{lemma}\label{normalization_helper_two}
-    For any \(n\) and linear \(f : \mathbb{C}^n \to \mathbb{C}\), there is a Jordan basis \(e_j\) for \(J_n\) such that there is at most one \(j\) with \(f(e_j) \neq 0\).
+    For any \(n\) and linear \(f : \mathbb{C}^n \to \mathbb{C}\), there is a Jordan basis \((e_j)_j\) for \(J_n\) such that there is at most one \(j\) with \(f(e_j) \neq 0\).
 \end{lemma}
 \begin{proof}
-    Let \(e_j\) be a Jordan basis for \(J_n\).
-    If \(\{j : f(e_j) \neq 0\}\) is the empty set, we are done.
-    Otherwise, let \(j_0 = \min\{j : f(e_j) \neq 0\}\).
-    For any Jordan basis \(f_j\) with \(j_0 = \min\{j : f(e_j) \neq 0\}\), define 
-    \[S((f_j)_j) := \begin{cases}
+    Let \((x_j)_j\) be a Jordan basis for \(J_n\).
+    If \(\{j : f(x_j) \neq 0\}\) is the empty set, we are done.
+    Otherwise, let \(j_0 = \min\{j : f(x_j) \neq 0\}\).
+    \par For any Jordan basis \((e_j)_j\) with \(j_0 = \min\{j : f(e_j) \neq 0\}\), define 
+    \[S((e_j)_j) := \begin{cases}
         -1, & \{j > j_0 : f(e_j) \neq 0\} = \emptyset \\
         n - \min\{j > j_0 : f(e_j) \neq 0\}, & \textrm{otherwise}
     \end{cases}.\]
     We proceed by induction on \(S\).
     That is, let \((e_j)_j\) be a Jordan basis for \(J_n\) with \(j_0 = \min\{j : f(e_j) \neq 0\}\).
-    Our inductive hypothesis is that if there exists a Jordan basis \((e_j')_j\) with \(j_0 = \min\{j : f(e_j') \neq 0\}\) and \(S((e_j')_j) < S((e_j)_j)\), then the conclusion holds.
+    The inductive hypothesis is that if there exists a Jordan basis \((e_j')_j\) with \(j_0 = \min\{j : f(e_j') \neq 0\}\) and \(S((e_j')_j) < S((e_j)_j)\), then the conclusion holds.
     \par We have two cases: either \((e_j)_j\) satisfies the desired property, or not.
-    If not, then let \(j_1 = \min\{j > j_0 : f(e_j) \neq 0\}\), and define a new Jordan basis \(e_j'\) as follows.
+    If not, then let \(j_1 = \min\{j > j_0 : f(e_j) \neq 0\}\), and define a new Jordan basis \((e_j')_j\) as follows.
     \begin{itemize}
         \item \(e_n' := e_n - \frac{f(e_{j_1})}{f(e_{j_0})} e_{n - (j_1 - j_0)}\)
         \item For \(j < n\), \(e_j' := J_n^{n - j} e_n'\)
     \end{itemize}
     It is straightforward to check that \(j_0 = \min\{j : f(e_j') \neq 0\}\), and that \(S((e_j')_j) \leq S((e_j)_j) - 1\).
-    By our inductive hypothesis, we are done.
+    By the inductive hypothesis, we are done.
 \end{proof}
 
 \begin{theorem}\label{normalization}
-    For any finite-dimensional \(V\), nilpotent \(A : V \to V\), and linear \(f : V \to \mathbb{C}\), there is a Jordan basis \(e_{ij}\) for \(A\) such that there is at most one pair \((i, j)\) with \(f(e_{ij}) \neq 0\).
+    For any finite-dimensional \(V\), nilpotent \(A : V \to V\), and linear \(f : V \to \mathbb{C}\), there is a Jordan basis \((e_{ij})_{ij}\) for \(A\) such that there is at most one pair \((i, j)\) with \(f(e_{ij}) \neq 0\).
 \end{theorem}
 \begin{proof}
-    \cref{normalization_helper_one} provides a Jordan basis \(e_{ij}\) such that for all \(i \neq i_0\) and all \(j\), we have \(f(e_{ij}) = 0\).
-    Restricting \(A\) to \(\langle e_{i_0j}\rangle_{j \textrm{ arbitrary}}\) gives a Jordan block, and then applying \cref{normalization_helper_two} gives the desired result.
+    \cref{normalization_helper_one} provides a Jordan basis \((e_{ij})_{ij}\) such that for all \(i \neq i_0\) and all \(j\), we have \(f(e_{ij}) = 0\).
+    Restricting \(A\) to \(\langle e_{ij}\rangle_{i,j : i = i_0}\) gives a Jordan block, and then applying \cref{normalization_helper_two} gives the desired result.
 \end{proof}
 
 \subsection{Nilpotency Lemmas}
