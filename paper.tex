@@ -872,23 +872,23 @@ From \cref{principal_bundle} we have the principal \(G_{wr}\)-bundle \(\varphi_{
 \section{The Components of \texorpdfstring{\(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\)}{S x\_g N}}\label{sxn_comps}
 Recall from \cref{sn_iso} that 
 \[S \times_\mathfrak{g} \widetilde{\mathcal{N}} \cong \{(A_{X,a,b}, U_\bullet, V_\bullet) : \forall i. \; XU_{i + 1} \subseteq U_i; \forall i. \; A_{X,a,b} V_{i + 1} \subseteq V_i\}.\]
-We defined \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}_m\) by \((A_{X,a,b}, U_\bullet, V_\bullet) \mapsto X\), and called \(\pi^{-1}(X)\) the \(n\)-Slodowy-slice Springer fiber at \(X\).
+We defined \(\pi : S \times_\mathfrak{g} \widetilde{\mathcal{N}} \to \mathcal{N}_m\) by \((A_{X,a,b}, U_\bullet, V_\bullet) \mapsto X\), and we called \(\pi^{-1}(X)\) the \(n\)-Slodowy-slice Springer fiber at \(X\).
 \begin{theorem}\label{springer_fiber_comps}
-    \(\pi^{-1}(J(\lambda)) \cong \mathcal{P}_{J(\lambda)} \times X_\lambda\).
+    For any partition \(\lambda\) of \(m\), we have \(\pi^{-1}(J(\lambda)) \cong \mathcal{P}_{J(\lambda)} \times \mathcal{F}_{J(\lambda)}\).
     Each irreducible component of \(\pi^{-1}(J(\lambda))\) has dimension \(\sum_{ij} \min(\lambda_i, \lambda_j)\).
 \end{theorem}
 \begin{proof}
     The isomorphism sends \((A_{X,a,b}, U_\bullet, V_\bullet)\) to \(((A_{X, a, b}, U_\bullet), V_\bullet)\).
     The irreducible components of \(\mathcal{P}_{J(\lambda)}\) are given by \cref{p_comps}.
-    Those of \(X_\lambda\) are given by \cref{usual_springer_fiber}.
+    Those of \(\mathcal{F}_{J(\lambda)}\) are given by \cref{usual_springer_fiber}.
     Adding the dimensions gives 
     \[\sum_{i \leq j} \min(\lambda_i, \lambda_j) + \sum_{i < j} \min(\lambda_i, \lambda_j) = \sum_{ij} \min(\lambda_i, \lambda_j).\]
 \end{proof}
 
-Let \(\lambda\) be any partition of \(m\).
-Let \(\GL_m \times \{I_n\}\) act on \(\pi^{-1}(J(\lambda))\) by conjugation; that is,
+Let \(\lambda\) be any partition of \(m\), and let \(X = J(\lambda)\).
+Let \(\GL_m \times \{I_n\}\) act on \(\pi^{-1}(J(\lambda))\) by change of basis; that is,
 \[(P, I_n) \cdot (A_{X, a, b}, U_\bullet, V_\bullet) := \]
-\[((P,I_n)A_{X,a,b}(P,I_n)^{-1},(P,I_n)U_\bullet, (P,I_n)V_\bullet).\]
+\[((P,I_n)A_{X,a,b}(P,I_n)^{-1},PU_\bullet, (P,I_n)V_\bullet).\]
 Let 
 \[K = \{(g, I_n) \in \GL_m \times \{I_n\} : gXg^{-1} = X\}.\]
 
@@ -905,11 +905,11 @@ Let \((C_{\lambda, \beta})_\beta\) be the irreducible components of \(\pi^{-1}(J
 These are described by \cref{springer_fiber_comps}.
 
 \begin{theorem}
-    Every irreducible component of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) is the closure of some subvariety of the form \(\phi_\lambda(C_{\lambda,\beta} \times (\GL_m \times \{I_n\}))\), and the closure of each subvariety of this form is an irreducible component.
+    Every irreducible component of \(S \times_\mathfrak{g} \widetilde{\mathcal{N}}\) is the closure of a subvariety of the form \(\phi_\lambda(C_{\lambda,\beta} \times (\GL_m \times \{I_n\}))\), and the closure of each subvariety of this form is an irreducible component.
     Each has dimension \(m^2\).
 \end{theorem}
 \begin{proof}
-    This is analogous to \cref{pwr_comps}; the only difference is the dimension calculation.
+    This is analogous to \cref{pwr_comps}; the main difference is the dimension calculation.
     This time, 
     \begin{align*}
         \dim \phi_\lambda(C_{\lambda, \beta} \times (\GL_m \times \{I_n\})) & = \\
@@ -917,7 +917,7 @@ These are described by \cref{springer_fiber_comps}.
         \sum_{ij} \min(\lambda_i, \lambda_j) + m^2 - \sum_{ij} \min(\lambda_i, \lambda_j) & = \\
         m^2 & .
     \end{align*}
-    The dimension of \(C_{\lambda, \beta}\) comes from \cref{pwr_comps}; the dimension of \(\GL_m\) is obvious; and the dimension of \(K\) comes from \cref{nilpotent_centralizer}.
+    The dimension of \(C_{\lambda, \beta}\) comes from \cref{springer_fiber_comps}; the dimension of \(\GL_m\) is obvious; and the dimension of \(K\) comes from \cref{nilpotent_centralizer}.
 \end{proof}
 
 \section{Linear Algebra Facts}\label{linalg}
