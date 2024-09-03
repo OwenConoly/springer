@@ -1069,13 +1069,13 @@ In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\
 \begin{proof}
     Clearly if \(X = 0\), then \(J_n + X\) is nilpotent.
     Inversely, suppose \(X \neq 0\).
-    Let \(e_1, ..., e_n\) be the standard basis, with \(J_n e_i = e_{i + 1}\).
-    Let \(i_1 = \max\{i : Xe_i \neq 0\}\).
-    As \(X\) is upper triangular, we have \(X e_{i_1} = v + ae_{i_2}\), with \(a \in \mathbb{C}\setminus\{0\}\), \(i_2 \leq i_1\), and \(v \in \langle e_1, ..., e_{i_1 - 1}\rangle\).
-    \par Now, \((J_n + X)^{i_1} e_1 = e_{i_1 + 1} + v + ae_{i_2}\).
-    Then, \((J_n + X)^{i_1 + (n - i_1)} e_1 = 0 + (J_n + X)^{n - i_1} (v + ae_{i_2})\).
-    Clearly \((J_n + X)^{n - i_1} (v + ae_{i_2}) = v' + ae_{i_2 + n - i_1}\), with \(v' \in \langle e_1, ..., e_{i_2 + n - i_1 - 1} \rangle\).
-    Now, since \(i_2 \leq i_1\), we have \(i_2 + n - i_1 \leq n\), and therefore \((J_n + X)^n e_1 \neq 0\).
+    Let \(e_1, ..., e_n\) be the standard basis, with \(J_n e_i = e_{i - 1}\).
+    Let \(i_1 = \min\{i : Xe_i \neq 0\}\).
+    Since \(X\) is upper triangular, there are \(a \in \mathbb{C} \setminus \{0\}\), \(i_2 \geq i_1\), and \(v \in \langle e_n, ..., e_{i_2 + 1}\rangle\) such that \(X e_{i_1} = v + ae_{i_2}\).
+    \par Now, \((J_n + X)^{n - i_1 + 1} e_n = e_{i_1 - 1} + v + ae_{i_2}\).
+    Then, \((J_n + X)^n e_n = 0 + (J_n + X)^{i_1 - 1} (v + ae_{i_2})\).
+    Clearly \((J_n + X)^{i_1 - 1} (v + ae_{i_2}) = v' + ae_{i_2 - (i_1 - 1)}\), with \(v' \in \langle e_n, ..., e_{i_2 - i_1} \rangle\).
+    Since \(i_2 \geq i_1\), we have \(i_2 - (i_1 - 1) \geq 1\), and therefore \((J_n + X)^n e_n \neq 0\).
     It follows that \(J_n + X\) is not nilpotent.
 \end{proof}
 
@@ -1083,11 +1083,11 @@ In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\
     Let \(X \in \gl_m\), and let 
     \[Y = \begin{pmatrix}
         y_{11} & y_{12} & y_{13} & \cdots & y_{1,n-1} & y_{1n} \\
-        d_1 & y_{22} & y_{23} & \cdots & y_{2,n-1} & y_{2n} \\
-            & d_2   & y_{33} & \cdots & y_{3,n-1} & y_{3n} \\
+        -d_1 & y_{22} & y_{23} & \cdots & y_{2,n-1} & y_{2n} \\
+            & -d_2   & y_{33} & \cdots & y_{3,n-1} & y_{3n} \\
             & & \ddots & \cdots & \vdots  & \vdots \\
-            & & & d_{n - 2} & y_{n-1,n-1} & y_{n - 1,n}\\
-            & & & & d_{n - 1} & y_{nn}
+            & & & -d_{n - 2} & y_{n-1,n-1} & y_{n - 1,n}\\
+            & & & & -d_{n - 1} & y_{nn}
     \end{pmatrix} \in \gl_n.\]
     For any \(a, b \in \mathbb{C}^m\),
     \[\det 
@@ -1110,7 +1110,7 @@ In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\
 \end{lemma}
 \begin{proof}
     By induction on \(n\).
-    In the case \(n = 1\), expanding along the last row (taking the usual interpretation of the empty product) gives the desired result.
+    In the case \(n = 1\), expanding along the last row (taking the empty product equal to 1) gives the desired result.
     \par Now suppose \(n > 1\).
     Expanding along the last row, we get 
     \[d_{n - 1} \det \begin{pNiceArray}{ccc|ccc}
@@ -1121,7 +1121,7 @@ In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\
        \text{---} & a & \text{---} &  \\
        & & & & Y_{n,n-1} & \\
        & & &  \\
-       \end{pNiceArray} -
+       \end{pNiceArray} +
     y_{nn} \det \begin{pNiceArray}{ccc|ccc}
         & & & & & \\
         & X & & & &   \\
@@ -1131,36 +1131,40 @@ In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\
        & & & & Y_{n,n} & \\
        & & &  \\
        \end{pNiceArray}.\]
-    Using our inductive hypothesis for the first determiniant, and using that \(\det \begin{pNiceArray}{c|c}
+    Applying the inductive hypothesis to the first determinant, and using that \(\det \begin{pmatrix}
         A_{11} & 0 \\
         A_{21} & A_{22}
-    \end{pNiceArray} = \det A_{11} \det A_{22}\) for the second, the expression becomes
-    \[d_{n - 1} \left(\det X \det Y_{n,n-1} + \left(\prod_{i \leq n - 2} d_i\right) \det \begin{pNiceArray}{ccc|c}
+    \end{pmatrix} = \det A_{11} \det A_{22}\) for the second, the expression becomes
+    \begin{align*}
+        y_{nn} \det X \det Y_{nn} + & \\
+        d_{n - 1} \left(\det X \det Y_{n,n-1} + \left(\prod_{i \leq n - 2} d_i\right) \det \begin{pNiceArray}{ccc|c}
+            & & & \vert \\
+            & X & & b     \\
+            & & & \vert \\
+            \hline 
+        \text{---} & a & \text{---} & 0
+       \end{pNiceArray}\right) & = \\
+       (y_{nn} \det Y_{nn} + d_{n - 1} Y_{n,n-1})\det X + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
         & & & \vert \\
         & X & & b     \\
         & & & \vert \\
         \hline 
     \text{---} & a & \text{---} & 0
-   \end{pNiceArray}\right)
-   - y_{nn} \det X \det Y_{nn} = \]
-   \[(d_{n - 1} Y_{n,n-1} - y_{nn} \det Y_{nn})\det X + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
-        & & & \vert \\
-        & X & & b     \\
-        & & & \vert \\
-        \hline 
-    \text{---} & a & \text{---} & 0
-   \end{pNiceArray} = \]
-   \[\det Y \det X + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
-        & & & \vert \\
-        & X & & b     \\
-        & & & \vert \\
-        \hline 
-    \text{---} & a & \text{---} & 0
-   \end{pNiceArray}.\]
+   \end{pNiceArray} & = \\
+   \det Y \det X + \left(\prod_i d_i\right) \det \begin{pNiceArray}{ccc|c}
+    & & & \vert \\
+    & X & & b     \\
+    & & & \vert \\
+    \hline 
+\text{---} & a & \text{---} & 0
+\end{pNiceArray} & .
+\end{align*}
 \end{proof}
 
 \begin{corollary}\label{bottom_right_nilp}
-    If \(X\) is nilpotent, and
+    Let \(X \in \gl_m\) be nilpotent.
+    Let \(Y \in \gl_n\) be such that for all \(i\) and \(j\) with \(i > j + 1\) we have \(y_{ij} = 0\).
+    If the matrix
     \[\begin{pNiceArray}{ccc|ccc}
         & & & & & \vert \\
         & X & & & & b    \\
@@ -1170,7 +1174,7 @@ In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\
        & & & & Y & \\
        & & &  \\
        \end{pNiceArray}\]
-    is nilpotent  as well, then \(Y\) is nilpotent.
+    is nilpotent, then \(Y\) is nilpotent.
 %     If all the \(d_i\) are nonzero, then
 %     \[\begin{pNiceArray}{ccc|c}
 %         & & & \vert \\
@@ -1182,9 +1186,10 @@ In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\
 %    is nilpotent as well.
 % ^That is false.  I want to say something about its characteristic polynomial.  not sure that I care enough to take the space though.
     \begin{proof}
-        By the previous lemma, the characteristic polynomial of the big matrix is
+        By \cref{block_determinant}, the characteristic polynomial of the big matrix is
         \[g_X(\lambda) g_Y(\lambda) + f(\lambda),\]
-        where \(g_X(\lambda) = \lambda^m\) is the characteristic polynomial of \(X\), and \(f(\lambda)\) is some polynomial of degree at most \(m - 1\).
+        where \(g_X(\lambda) = \lambda^m\) is the characteristic polynomial of \(X\), \(g_Y(\lambda)\) is the characteristic polynomial of \(Y\), and \(f(\lambda)\) is some polynomial of degree at most \(m - 1\).
+        Since the characteristic polynomial of the big matrix is \(\lambda^{m + n}\), we must have \(g_Y(\lambda) = \lambda^n\).
     \end{proof}
 \end{corollary}
 
