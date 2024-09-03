@@ -628,7 +628,7 @@ We will also write, somewhat abusively, \(b \in \mathbb{C}^{m + n}\) to refer to
 Given a vector \(v = \sum_{ij} v_{ij} e_{ij} \in \mathbb{C}^{m + n}\), we define the left-shift operator \(v \leftshift k := \sum_{ij} v_{ij} e_{i,j - k}\).
 If (and only if) \(v \in \langle e_{ij} \rangle_{i,j: j \leq \lambda_i - k}\), then we define the right-shift operator \(v \rightshift k := \sum_{ij} v_{ij} e_{i,j + k}\).
 
-\begin{lemma}
+\begin{lemma}\label{jordan_basis}
     For any \(b \in B_{I, (\rho_i)}\), the following vectors give a Jordan basis for \(A_{0,b}\).
     (For convenience, we write \(A := A_{0,b}\) in this lemma and proof.)
     \begin{itemize}
@@ -742,28 +742,28 @@ We are interested in \(\gamma\) because the dimension of each \(\mathcal{F}_{\mu
 \end{proof}
 
 \begin{lemma}\label{u_i_rho_iso}
-    \(\mathcal{Q}_{I, (\rho_i)} \cong B_{I, (\rho_i)} \times X_\mu\).
+    \(\mathcal{Q}_{I, (\rho_i)} \cong B_{I, (\rho_i)} \times \mathcal{F}_{J(\mu)}\).
 \end{lemma}
 \begin{proof}
-    For \(b \in B_{I, (\rho_i)}\), let \(P_b\) be the change-of-basis matrix, with columns given by the Jordan basis of the previous lemma, so that \(J(\mu) = P_b^{-1} A_{0,b} P_b\).
+    For each \(b \in B_{I, (\rho_i)}\), let \(P_b\) be the change-of-basis matrix, with columns given by the Jordan basis of \cref{jordan_basis}, such that \(J(\mu) = P_b^{-1} A_{0,b} P_b\).
     From looking at the Jordan basis, it is clear that the map \(P : B_{I, (\rho_i)} \to \GL_{m + n}\), given by \(b \mapsto P_b\), is algebraic.
-    \par Now, we remark that the Springer fiber at \(A_{0,b}\) is simply \(\{P_b V_\bullet : V_\bullet \in X_\mu\}\).
-    This gives the isomorphism \(B_{I, (\rho_i)} \times X_\mu \to \mathcal{Q}_{I, (\rho_i)}\) defined by
+    \par The Springer fiber at \(A_{0,b}\) is \(\{P_b V_\bullet : V_\bullet \in \mathcal{F}_{J(\mu)}\}\).
+    So, there is an isomorphism \(B_{I, (\rho_i)} \times \mathcal{F}_{J(\mu)} \to \mathcal{Q}_{I, (\rho_i)}\) given by
     \[(b, V_\bullet) \mapsto (P_b J(\mu) P_b^{-1}, P_b V_\bullet),\]
     with inverse
     \[(A_{0,b}, V_\bullet) \mapsto (b, P_b^{-1} V_\bullet).\]
 \end{proof}
 
 \begin{corollary}\label{u_i_rho_irred_and_dim}
-    For \(\alpha \in \mathrm{SYT}(\mu)\), let \(\mathcal{Q}_{I, (\rho_i), \alpha}\) be the subvariety of \(\mathcal{Q}_{I, (\rho_i)}\) which corresponds to \(B_{I, (\rho_i)} \times X_{\mu, \alpha}\) via the isomorphism of \cref{u_i_rho_iso}.
+    For \(\alpha \in \mathrm{SYT}(\mu)\), let \(\mathcal{Q}_{I, (\rho_i), \alpha}\) be the subvariety of \(\mathcal{Q}_{I, (\rho_i)}\) corresponding to \(B_{I, (\rho_i)} \times \mathcal{F}_{\mu, \alpha}\) via the isomorphism of \cref{u_i_rho_iso}.
     The subvarieties \((\mathcal{Q}_{I, (\rho_i), \alpha})_{\alpha \in \mathrm{SYT}(\mu)}\) are the irreducible components of \(\mathcal{Q}_{I, (\rho_i)}\).
     Each has dimension \(\gamma([0, \lambda_1, ..., \lambda_\ell])\).
 \end{corollary}
 \begin{proof}
     We know that \(B_{I, (\rho_i)}\) is irreducible by \cref{bs_iso}.
-    Then, the fact that the \(B_{I, (\rho_i)} \times X_{\mu, \alpha}\) are the irreducible components of \(B_{I, (\rho_i)} \times X_\mu\) just follows from the fact that the \(X_{\mu, \alpha}\) are the irreducible components of \(X_\mu\).
-    \par To get the dimension, we add the dimension of \(B_{I, (\rho_i)}\) to the dimension of \(X_{\mu, \alpha}\).
-    We get the dimension of \(B_{I, (\rho_i)}\) from \cref{bs_dim}, and we get the dimension of \(X_{\mu, \alpha}\) from \cref{springer_fiber_dim}.
+    Then, the fact that the \(B_{I, (\rho_i)} \times \mathcal{F}_{\mu, \alpha}\) are the irreducible components of \(B_{I, (\rho_i)} \times \mathcal{F}_{J(\mu)}\) just follows from the fact that the \(\mathcal{F}_{\mu, \alpha}\) are the irreducible components of \(\mathcal{F}_{J(\mu)}\).
+    \par To get the dimension, we add the dimension of \(B_{I, (\rho_i)}\) to the dimension of \(\mathcal{F}_{\mu, \alpha}\).
+    We get the dimension of \(B_{I, (\rho_i)}\) from \cref{bs_dim}, and we get the dimension of \(\mathcal{F}_{\mu, \alpha}\) from \cref{springer_fiber_dim}.
     Adding them together, things cancel out and we get \(\gamma([0, \lambda_1, ..., \lambda_\ell])\).
 \end{proof}
 
@@ -773,7 +773,7 @@ We are interested in \(\gamma\) because the dimension of each \(\mathcal{F}_{\mu
 \end{theorem}
 \begin{proof}
     By \cref{u_i_rho_irred_and_dim}, the \(\mathcal{Q}_{I, (\rho_i), \alpha}\) are irreducible and equidimensional.
-    Then \cref{bs_union} says that their union is \(\mathcal{Q}\), and in addition that none is contained in the union of the others.
+    Then \cref{bs_union} says that their union is \(\mathcal{Q}\), and none is contained in the union of the others.
 \end{proof}
 
 \section{The Components of \texorpdfstring{\(\mathcal{P}_{J(\lambda)}\)}{P\_\{J(\textbackslash lambda)\}}}\label{p_comp}
