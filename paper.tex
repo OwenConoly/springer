@@ -672,7 +672,7 @@ If (and only if) \(v \in \langle e_{ij} \rangle_{i,j: j \leq \lambda_i - k}\), t
     \end{proof}
     \begin{proof}[Proof of (2)]
         The sum of the lengths is
-        \[\sum_{i \notin I} \lambda_i + \sum_{k = 0}^r (q_{i_k} + p_{i_{k + 1}}) = n + \sum_i (q_i + p_i) = m + n.\]
+        \[\sum_{i \notin I} \lambda_i + \sum_{k = 0}^s (q_{i_k} + p_{i_{k + 1}}) = n + \sum_i (q_i + p_i) = m + n.\]
     \end{proof}
     \begin{proof}[Proof of (3)]
         Let \(W\) be the span of the chains listed.
@@ -707,8 +707,8 @@ Let \((\mathcal{F}_{\mu,\alpha})_{\alpha \in \mathrm{SYT}(\mu)}\) be the irreduc
 We are interested in \(\gamma\) because the dimension of each \(\mathcal{F}_{\mu, \alpha}\) is \(\gamma(\mu) = \gamma([\mu_1, ..., \mu_{\ell + 1}])\).
 
 \begin{lemma}\label{springer_fiber_dim}
-    \[\gamma(\mu) = \gamma([0, \lambda_1, ..., \lambda_k]) - \] 
-    \[\left[\sum_{i : \lambda_i \geq q_{i_0} + \rho_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^r \sum_{\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} \min(p_{i_k}, \lambda_i - q_{i_k})\right].\]
+    \[\gamma(\mu) = \gamma([0, \lambda_1, ..., \lambda_\ell]) - \] 
+    \[\left[\sum_{i : \lambda_i \geq q_{i_0} + \rho_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^s \sum_{\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} \min(p_{i_k}, \lambda_i - q_{i_k})\right].\]
 \end{lemma}
 \begin{proof} We have
     \[\mu = [..., q_{i_0} + p_{i_1}, ..., q_{i_1} + p_{i_2}, ..., ..., q_{i_s} + p_{i_{s + 1}}, ...].\]
@@ -716,9 +716,9 @@ We are interested in \(\gamma\) because the dimension of each \(\mathcal{F}_{\mu
     \[L' = [..., q_{i_0}, ..., q_{i_1} + p_{i_1}, ..., q_{i_2} + p_{i_2}, ..., ..., q_{i_s} + p_{i_s}, ...].\]
     We can transform \(\mu\) into \(L'\) by just `moving' each \(p_{i_k}\) to the right by \(1 + \#\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}\) slots.
     So,
-    \[\gamma(L') - \gamma(\mu) = \sum_{k = 1}^r p_{i_k} (1 + \#\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}) = \]
-    \[\sum_{k = 1}^r p_{i_k} \cdot \#\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}.\]
-    \par Let \(L = [q_{i_0}, \lambda_1, ..., \lambda_k]\).
+    \[\gamma(L') - \gamma(\mu) = \sum_{k = 1}^s p_{i_k} (1 + \#\{i \notin I : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}) = \]
+    \[\sum_{k = 1}^s p_{i_k} \cdot \#\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}.\]
+    \par Let \(L = [q_{i_0}, \lambda_1, ..., \lambda_\ell]\).
     Now we consider how to transform \(L'\) into \(L\).
     First we shift \(q_{i_0}\) to the left by \(\#\{i \notin I : \lambda_i \geq q_{i_0} + p_{i_1}\}\) slots.
     Then we leave \(q_{i_0}\) in place and sort the rest of the list.
@@ -738,7 +738,7 @@ We are interested in \(\gamma\) because the dimension of each \(\mathcal{F}_{\mu
         \sum_{k = 1}^s \sum_{i : q_{i_k} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}} (\lambda_i - q_{i_k}) & = \\
         \sum_{i : \lambda_i \geq q_{i_0} + p_{i_1}} (\lambda_i - q_{i_0}) + \sum_{k = 1}^s \sum_{\{i : q_{i_{k - 1}} + p_{i_k} > \lambda_i \geq q_{i_k} + p_{i_{k + 1}}\}} \min(p_{i_k}, \lambda_i - q_{i_k}) & .
     \end{align*}
-    Since \(\gamma(L) = \gamma([0, \lambda_1, ..., \lambda_k])\), the equation above implies the desired result.
+    Since \(\gamma(L) = \gamma([0, \lambda_1, ..., \lambda_\ell])\), the equation above implies the desired result.
 \end{proof}
 
 \begin{lemma}\label{u_i_rho_iso}
@@ -757,14 +757,14 @@ We are interested in \(\gamma\) because the dimension of each \(\mathcal{F}_{\mu
 \begin{corollary}\label{u_i_rho_irred_and_dim}
     For \(\alpha \in \mathrm{SYT}(\mu)\), let \(\mathcal{Q}_{I, (\rho_i), \alpha}\) be the subvariety of \(\mathcal{Q}_{I, (\rho_i)}\) which corresponds to \(B_{I, (\rho_i)} \times X_{\mu, \alpha}\) via the isomorphism of \cref{u_i_rho_iso}.
     The subvarieties \((\mathcal{Q}_{I, (\rho_i), \alpha})_{\alpha \in \mathrm{SYT}(\mu)}\) are the irreducible components of \(\mathcal{Q}_{I, (\rho_i)}\).
-    Each has dimension \(\gamma([0, \lambda_1, ..., \lambda_k])\).
+    Each has dimension \(\gamma([0, \lambda_1, ..., \lambda_\ell])\).
 \end{corollary}
 \begin{proof}
     We know that \(B_{I, (\rho_i)}\) is irreducible by \cref{bs_iso}.
     Then, the fact that the \(B_{I, (\rho_i)} \times X_{\mu, \alpha}\) are the irreducible components of \(B_{I, (\rho_i)} \times X_\mu\) just follows from the fact that the \(X_{\mu, \alpha}\) are the irreducible components of \(X_\mu\).
     \par To get the dimension, we add the dimension of \(B_{I, (\rho_i)}\) to the dimension of \(X_{\mu, \alpha}\).
     We get the dimension of \(B_{I, (\rho_i)}\) from \cref{bs_dim}, and we get the dimension of \(X_{\mu, \alpha}\) from \cref{springer_fiber_dim}.
-    Adding them together, things cancel out and we get \(\gamma([0, \lambda_1, ..., \lambda_k])\).
+    Adding them together, things cancel out and we get \(\gamma([0, \lambda_1, ..., \lambda_\ell])\).
 \end{proof}
 
 \subsection{Conclusion}
@@ -777,7 +777,7 @@ We are interested in \(\gamma\) because the dimension of each \(\mathcal{F}_{\mu
 \end{proof}
 
 \section{The Components of \texorpdfstring{\(\mathcal{P}_{J(\lambda)}\)}{P\_\{J(\textbackslash lambda)\}}}\label{p_comp}
-As in section 5, we write \(X = J(\lambda) \in \gl_m\), where \(\lambda = (\lambda_1, ..., \lambda_k)\).
+As in section 5, we write \(X = J(\lambda) \in \gl_m\), where \(\lambda = (\lambda_1, ..., \lambda_\ell)\).
 We write \(\mathcal{P} := \mathcal{P}_{J(\lambda)}\), and \(A_{a,b} := A_{J(\lambda), a, b}\).
 And as before, \((e_{ij})_{ij}\) and \((f_j)_j\) form the standard basis for \(\mathbb{C}^{m + n}\).
 \subsection{The Components of \texorpdfstring{\(\mathcal{Q}_{wr}\)}{Q\_\{wr\}}}
@@ -786,17 +786,17 @@ Recall from section 5 the varieties
 Fix any \(w,r\).
 \cref{a_zero} says that 
 \[\mathcal{Q}_{wr} \cong \mathcal{Q}' := \{(A'_{X', 0, b}, V_\bullet) : \forall i. \; A'_{X', 0, b} V_{i + 1} \subseteq V_i\},\]
-where \(X' = J(\lambda')\), and \(\lambda' = (\lambda_1, ..., \lambda_w - r, ..., \lambda_k)\), and \(m' = m - r\), and \(n' = n + r\).
+where \(X' = J(\lambda')\), and \(\lambda' = (\lambda_1, ..., \lambda_w - r, ..., \lambda_\ell)\), and \(m' = m - r\), and \(n' = n + r\).
 \par Let \((\mathcal{Q}'_{I, (\rho_i), \alpha})_{I, (\rho_i), \alpha}\) be the irreducible components of \(\mathcal{Q}'\) given by \cref{Q_comps}.
 Write \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) to denote the irreducible component of \(\mathcal{Q}_{wr}\) corresponding to \(\mathcal{Q}'_{I, (\rho_i), \alpha}\) via the isomorphism \(\mathcal{Q}_{wr} \cong \mathcal{Q}'\) of \cref{a_zero}.
 
 \begin{theorem}\label{qwr_comps}
     The irreducible components of \(\mathcal{Q}_{wr}\) are the subvarieties \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\).
-    Each has dimension \(\sum_{i \leq j} \min(\lambda_i', \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_k)\).
+    Each has dimension \(\sum_{i \leq j} \min(\lambda_i', \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_\ell)\).
 \end{theorem}
 \begin{proof}
     From the foregoing discussion, it is clear that they are indeed the irreducible components.
-    To calculate the dimension, we refer to \cref{u_i_rho_irred_and_dim}, which says the dimension is \(\gamma([0, \lambda_1', ..., \lambda_k'])\).
+    To calculate the dimension, we refer to \cref{u_i_rho_irred_and_dim}, which says the dimension is \(\gamma([0, \lambda_1', ..., \lambda_\ell'])\).
 \end{proof}
 
 \subsection{The Varieties \texorpdfstring{\(G_{wr}\)}{G\_\{wr\}} and \texorpdfstring{\(G\)}{G}}
@@ -811,7 +811,7 @@ Recall from section 5 the groups \(G = \{P \in \GL_m : P^{-1}XP = X\}\) and \(G_
 \end{proof}
 
 \begin{lemma}\label{gwr_irred_dim}
-    \(G_{wr}\) is irreducible and has dimension \(\sum_{ij} \min(\lambda_i, \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_k)\).
+    \(G_{wr}\) is irreducible and has dimension \(\sum_{ij} \min(\lambda_i, \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, \lambda_w - r, \lambda_{w + 1}, ..., \lambda_\ell)\).
 \end{lemma}
 \begin{proof}
     The closure of \(G_{wr}\) in \(\gl_m\) is \(V = \{Y \in \mathfrak{z}_{\gl_m}(X) : e_{wr} Y = e_{wr}\}\).
