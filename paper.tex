@@ -789,10 +789,10 @@ where \(X' = J(\lambda')\), and \(\lambda' = (\lambda_1, ..., R(r), ..., \lambda
 \par Let \((\mathcal{Q}'_{I, (\rho_i), \alpha})_{I, (\rho_i), \alpha}\) be the irreducible components of \(\mathcal{Q}'\) given by \cref{Q_comps}.
 Write \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) to denote the irreducible component of \(\mathcal{Q}_{wr}\) corresponding to \(\mathcal{Q}'_{I, (\rho_i), \alpha}\) via the isomorphism \(\mathcal{Q}_{wr} \cong \mathcal{Q}'\) of \cref{a_zero}.
 
-\begin{theorem}\label{qwr_comps}
+\begin{lemma}\label{qwr_comps}
     The irreducible components of \(\mathcal{Q}_{wr}\) are the subvarieties \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\).
     Each has dimension \(\sum_{i \leq j} \min(\lambda_i', \lambda_j')\), where \(\lambda' = (\lambda_1, ..., \lambda_{w - 1}, R(r), \lambda_{w + 1}, ..., \lambda_\ell)\).
-\end{theorem}
+\end{lemma}
 \begin{proof}
     From the foregoing discussion, it is clear that they are indeed the irreducible components.
     To calculate the dimension, we refer to \cref{u_i_rho_irred_and_dim}, which says the dimension is \(\gamma([0, \lambda_1', ..., \lambda_\ell'])\).
@@ -822,28 +822,27 @@ Recall from \cref{p_comp_strat} the groups \(G = \{P \in \GL_m : P^{-1}XP = X\}\
 \end{proof}
 
 \subsection{The Components of \texorpdfstring{\(\mathcal{P}_{wr}\)}{P\_\{wr\}}}
-Recall from section 5 the subvarieties \(\mathcal{P}_{wr} \subseteq \mathcal{P}\).
+Recall from \cref{p_comp_strat} the subvarieties \(\mathcal{P}_{wr} \subseteq \mathcal{P}\).
 From \cref{principal_bundle} we have the principal \(G_{wr}\)-bundle \(\varphi_{wr} : \mathcal{Q}_{wr} \times G \to \mathcal{P}_{wr}\).
-% \par Together, \cref{g_irred_dim} and \cref{gwr_irred_dim} tell us that the irreducible components of \(\mathcal{Q}_{wr} \times G\) are the subvarieties \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G\).
 
-\begin{theorem}\label{pwr_comps}
+\begin{lemma}\label{pwr_comps}
     Every irreducible component of \(\mathcal{P}_{wr}\) is the closure of some subvariety of the form \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G)\), and the closure of each subvariety of this form is an irreducible component.
     Each has dimension \(\sum_{i \leq j} \min(\lambda_i, \lambda_j)\).
-\end{theorem}
+\end{lemma}
 \begin{remark}
     \cref{pwr_comps} does not say ``the irreducible components of \(\mathcal{P}_{wr}\) are the closures of the subvarieties \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G)\)'', as that would seem to suggest some claim about distinctness.
     Further analysis is required to determine which ones are distinct.
 \end{remark}
 \begin{proof}
-    Together, \cref{Q_comps} and \cref{g_irred_dim} tell us that the \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha}\) are irreducible, and their union is \(\mathcal{Q}_{wr}\).
-    Hence their images are irreducible, and the surjectivity of \(\varphi_{wr}\) implies that their union of their images is \(\mathcal{P}_{wr}\).
+    Together, \cref{Q_comps} and \cref{g_irred_dim} imply that the \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G\) are irreducible, and their union is \(\mathcal{Q}_{wr} \times G\).
+    Hence their images are irreducible, and the surjectivity of \(\varphi_{wr}\) implies that the union of their images is \(\mathcal{P}_{wr}\).
     \par Now, to verify that each image is an irreducible component, we need only verify that they are equidimensional.
     We use the result of \cref{principal_bundle}, namely that \(\varphi_{wr}\) is a principal \(G_{wr}\)-bundle.
     \par Let \(V_{w,r,I,(\rho_i),\alpha}\) be the closure of \(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G\) in \(\mathcal{Q}_{wr} \times G\) under action by \(G_{wr}\).
     Clearly \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G) = \varphi_{wr}(V_{w,r,I,(\rho_i),\alpha})\).
     So, we have only to compute the dimension of \(\varphi(V_{w,r,I,(\rho_i),\alpha})\).
-    \par This is easy, because \(\varphi_{wr}\) (and, consequently, the restriction of \(\varphi_{wr}\) to \(V_{w,r,I,(\rho_i),\alpha}\)) is a principal \(G_{wr}\)-bundle, and principal bundles play nicely with dimensions.
-    That is, we can conclude that 
+    \par This is easy, because \(\varphi_{wr}\)---and, consequently, the restriction of \(\varphi_{wr}\) to \(V_{w,r,I,(\rho_i),\alpha}\)---is a principal \(G_{wr}\)-bundle, and principal bundles respect dimensions.
+    That is,
     \[\dim \varphi_{wr}(V_{w,r,I,(\rho_i),\alpha}) = \dim V_{w,r,I,(\rho_i),\alpha} - \dim G_{wr}.\]
     Since \(\dim (\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G) = \dim (\mathcal{Q}_{wr} \times G)\) by \cref{qwr_comps}, we know that \(\dim V_{w,r,I,(\rho_i),\alpha} = \dim (\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G) = \dim \mathcal{Q}_{w,r,I,(\rho_i),\alpha} + \dim G\).
     By the equation above then, we get 
@@ -854,18 +853,18 @@ From \cref{principal_bundle} we have the principal \(G_{wr}\)-bundle \(\varphi_{
         \dim \varphi_{wr}(V_{w,r,I,(\rho_i),\alpha}) = \sum_{i \leq j} \min(\lambda_i', \lambda_j') + \sum_{ij} \min(\lambda_i, \lambda_j) - \sum_{ij} \min(\lambda_i, \lambda_j').
     \end{equation}
     Now,
-    \[\sum_{i \leq j} \min(\lambda_i', \lambda_j') = \sum_{i \leq j} \min(\lambda_i, \lambda_j) - \sum_j \min(\lambda_w, \lambda_j) + \sum_j \min(\lambda_w - r, \lambda_j),\]
+    \[\sum_{i \leq j} \min(\lambda_i', \lambda_j') = \sum_{i \leq j} \min(\lambda_i, \lambda_j) - \sum_j \min(\lambda_w, \lambda_j) + \sum_j \min(R(r), \lambda_j),\]
     and
-    \[\sum_{ij} \min(\lambda_i, \lambda_j') = \sum_{ij} \min(\lambda_i, \lambda_j) - \sum_i \min(\lambda_i, \lambda_w) + \sum_i \min(\lambda_i, \lambda_w - r).\]
+    \[\sum_{ij} \min(\lambda_i, \lambda_j') = \sum_{ij} \min(\lambda_i, \lambda_j) - \sum_i \min(\lambda_i, \lambda_w) + \sum_i \min(\lambda_i, R(r)).\]
     Substituting these into the RHS of \cref{the_equation}, things cancel out, and we get
     \[\sum_{i \leq j} \min(\lambda_i, \lambda_j) + \sum_{ij} \min(\lambda_i, \lambda_j) - \sum_{ij} \min(\lambda_i, \lambda_j) = \sum_{i \leq j} \min(\lambda_i, \lambda_j).\]
 \end{proof}
 
 \subsection{The Components of \texorpdfstring{\(\mathcal{P}\)}{P}}
-\begin{corollary}\label{p_comps}
-    Every irreducible component of \(\mathcal{P}\) is the closure of some subvariety of the form \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G)\), and the closure of each subvariety of this form is an irreducible component.
+\begin{theorem}\label{p_comps}
+    Every irreducible component of \(\mathcal{P}\) is the closure of a subvariety of the form \(\varphi_{wr}(\mathcal{Q}_{w,r,I,(\rho_i),\alpha} \times G)\), and the closure of each subvariety of this form is an irreducible component.
     Each has dimension \(\sum_{i \leq j} \min(\lambda_i, \lambda_j)\).
-\end{corollary}
+\end{theorem}
 \begin{proof}
     Follows directly from \cref{pwr_comps}.
 \end{proof}
