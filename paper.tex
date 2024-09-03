@@ -927,43 +927,46 @@ They are confined to this section to avoid interrupting the rest of the paper.
 \subsection{The Centralizer of a Nilpotent Matrix}
 \begin{definition}
     A matrix \(Y\) is \emph{Toeplitz} if it is constant along bands parallel to the main diagonal.
-    That is, \(\forall i,j,k. \; Y_{ij} = Y_{i + k, j + k}\).
+    That is, \(Y\) is Toeplitz if for all \(i,j,k\) we have \(Y_{ij} = Y_{i + k, j + k}\).
 \end{definition}
 \begin{definition}
-    An \(m \times n\) matrix \(Y\) is \emph{lower-left Toeplitz} if it is Toeplitz and, in addition, we have \(y_{n - i, j - 1} = 0\) whenever \(i + j \geq \min(m,n)\).
+    An \(m \times n\) matrix \(Y\) is \emph{lower-left Toeplitz} if it is Toeplitz and, in addition, for all \(i\) and \(j\) with \(i + j \geq \min(m,n)\), we have \(y_{n - i, j - 1} = 0\).
 \end{definition}
 That is, \(Y\) is lower-left Toeplitz if it is Toeplitz, and the only nonzero entries are those with Manhattan distance less than \(\min(m,n)\) from the entry in the bottom-left corner.
 In yet other words, all but the leftmost (equivalently, bottommost) \(\min(m,n)\) diagonal bands are zero.
 
 \begin{lemma}\label{nilpotent_centralizer}
-    Let \(\lambda = (\lambda_1, ..., \lambda_k)\) be a partition of \(m\).
-    The centralizer of \(J(\lambda)\) in \(\gl_m\) is the subalgebra consisting of matrices 
+    Let \(\lambda = (\lambda_1, ..., \lambda_\ell)\) be a partition of \(m\).
+    The centralizer of \(J(\lambda)\) in \(\gl_m\) is the subalgebra consisting of the matrices 
     \[M = \begin{pmatrix}
-        M_{11} & \cdots & M_{1k}\\
+        M_{11} & \cdots & M_{1\ell}\\
         \vdots &        & \vdots\\
-        M_{k1} & \cdots & M_{kk}
+        M_{\ell 1} & \cdots & M_{\ell\ell}
     \end{pmatrix},\]
     where each \(M_{ij}\) is a \(\lambda_i \times \lambda_j\) matrix, such that each \(M_{ij}\) is lower-left Toeplitz.
 \end{lemma}
 \begin{proof}
     Let 
     \[M = \begin{pmatrix}
-        M_{11} & \cdots & M_{1k}\\
+        M_{11} & \cdots & M_{1\ell}\\
         \vdots &        & \vdots\\
-        M_{k1} & \cdots & M_{kk}
+        M_{\ell 1} & \cdots & M_{\ell\ell}
     \end{pmatrix}.\]
     We need to show that \(J(\lambda)M = MJ(\lambda)\) if and only if each \(M_{ij}\) is lower-left Toeplitz.
     \par We have 
-    \[J(\lambda)M = \begin{pmatrix}
-        J_{\lambda_1}M_{11} & \cdots & J_{\lambda_1}M_{1k}\\
-        \vdots & & \vdots\\
-        J_{\lambda_k}M_{k1} & \cdots & J_{\lambda_k}M_{kk}
-    \end{pmatrix}, \textrm{ and } MJ(\lambda) = \begin{pmatrix}
-        M_{11} J_{\lambda_1} & \cdots & M_{1k} J_{\lambda_k}\\
-        \vdots & & \vdots\\
-        M_{k1} J_{\lambda_1} & \cdots & M_{kk} J_{\lambda_k}
-    \end{pmatrix}.\]
-    So, we have \(J(\lambda)M = MJ(\lambda)\) if and only if \(\forall i,j. \; J_{\lambda_i} M_{ij} = M_{ij} J_{\lambda_j}\).
+    \begin{align*}
+        J(\lambda)M = \begin{pmatrix}
+            J_{\lambda_1}M_{11} & \cdots & J_{\lambda_1}M_{1\ell}\\
+            \vdots & & \vdots\\
+            J_{\lambda_\ell}M_{\ell 1} & \cdots & J_{\lambda_\ell}M_{\ell\ell}
+        \end{pmatrix} & , \textrm{ and} \\
+        MJ(\lambda) = \begin{pmatrix}
+            M_{11} J_{\lambda_1} & \cdots & M_{1\ell} J_{\lambda_\ell}\\
+            \vdots & & \vdots\\
+            M_{\ell 1} J_{\lambda_1} & \cdots & M_{\ell\ell} J_{\lambda_\ell}
+        \end{pmatrix} & .
+    \end{align*}
+    So, \(J(\lambda)M = MJ(\lambda)\) if and only if for all \(i\) and \(j\) we have \(J_{\lambda_i} M_{ij} = M_{ij} J_{\lambda_j}\).
     Multiplying on the left by \(J_{\lambda_i}\) just shifts each row down by one, and multiplying on the right by \(J_{\lambda_j}\) shifts each column left by one.
     The matrices for which left-shifting gives the same result as down-shifting are exactly the lower-left Toeplitz matrices.
 \end{proof}
